@@ -1,0 +1,1 @@
+import e from"./AdminChildrenView-DQ7Wsrrz.js";var t=class{constructor(t){this.childId=t,this._delegate=new e}async render(){return await this._delegate.render()}mount(){this._delegate.mount(),requestAnimationFrame(()=>{this._delegate._showChildForm(this.childId)})}unmount(){this._delegate.unmount()}};export{t as default};
