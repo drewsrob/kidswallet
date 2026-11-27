@@ -1,0 +1,957 @@
+{
+  "version": 2,
+  "createdAt": "2026-11-27T08:59:53.968Z",
+  "app": "KidsWallet",
+  "data": {
+    "children": [
+      {
+        "id": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "name": "Mila",
+        "avatar": "star",
+        "colorPaletteIndex": 3,
+        "balance": 81.29,
+        "createdAt": "2026-05-29T07:12:00.000Z",
+        "financialRules": {
+          "allowAdvances": true,
+          "maxDebt": 10,
+          "feeModel": "interest",
+          "fixedFee": 0.5,
+          "repaymentPercent": 10
+        },
+        "debt": {
+          "principal": 0,
+          "fees": 0
+        }
+      },
+      {
+        "id": "6323467d-3146-4493-b3ad-d6b4ce875205",
+        "name": "Jonas",
+        "avatar": "rocket",
+        "colorPaletteIndex": 1,
+        "balance": 5.7,
+        "createdAt": "2026-11-02T08:30:00.000Z",
+        "financialRules": {
+          "allowAdvances": true,
+          "maxDebt": 15,
+          "feeModel": "interest",
+          "fixedFee": 0.5,
+          "repaymentPercent": 20
+        },
+        "debt": {
+          "principal": 6.2,
+          "fees": 0
+        }
+      }
+    ],
+    "allowances": [
+      {
+        "id": "36f3d8bb-2535-4e9f-9400-77c1df262835",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": 2.5,
+        "frequency": "weekly",
+        "dayOfWeek": 6,
+        "dayOfMonth": null,
+        "lastExecuted": "2026-11-21",
+        "activeSince": "2026-05-29",
+        "createdAt": "2026-05-29T07:12:00.000Z",
+        "isActive": true
+      },
+      {
+        "id": "3e83997a-ce78-499f-84ef-ee74a7f55755",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": 5,
+        "frequency": "monthly",
+        "dayOfWeek": null,
+        "dayOfMonth": 1,
+        "lastExecuted": "2026-11-01",
+        "activeSince": "2026-05-29",
+        "createdAt": "2026-05-29T07:12:00.000Z",
+        "isActive": true
+      },
+      {
+        "id": "110def87-7178-40f6-b572-859b5988140c",
+        "childId": "6323467d-3146-4493-b3ad-d6b4ce875205",
+        "amount": 3,
+        "frequency": "weekly",
+        "dayOfWeek": 6,
+        "dayOfMonth": null,
+        "lastExecuted": "2026-11-21",
+        "activeSince": "2026-11-06",
+        "createdAt": "2026-11-02T08:35:00.000Z",
+        "isActive": true
+      }
+    ],
+    "transactions": [
+      {
+        "id": "01a90dd2-19bb-464c-8b09-3bed16af4911",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": 5,
+        "type": "manual",
+        "description": "Laub gerecht",
+        "date": "2026-11-23T14:00:00.000Z"
+      },
+      {
+        "id": "3485abcf-a625-458f-9ff8-cdf104073028",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": 2.5,
+        "type": "allowance",
+        "description": "",
+        "date": "2026-11-21T07:00:00.000Z",
+        "schedule": {
+          "frequency": "weekly",
+          "dayOfWeek": 6
+        }
+      },
+      {
+        "id": "56ff0fc8-11a3-4965-964d-b7076ce69eeb",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": -1.2,
+        "type": "manual",
+        "description": "Süßigkeiten",
+        "date": "2026-11-20T16:45:00.000Z"
+      },
+      {
+        "id": "cdc436b0-69d6-40d5-a326-31b61be4d5d1",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": 2.25,
+        "type": "manual",
+        "description": "Pfandflaschen",
+        "date": "2026-11-15T16:20:00.000Z"
+      },
+      {
+        "id": "b8ee4583-d3ed-4c14-ad5d-759074c0abf4",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": 2.5,
+        "type": "allowance",
+        "description": "",
+        "date": "2026-11-14T07:00:00.000Z",
+        "schedule": {
+          "frequency": "weekly",
+          "dayOfWeek": 6
+        }
+      },
+      {
+        "id": "b85efa2d-375c-4e69-8293-4dca3f443b65",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": -4.2,
+        "type": "manual",
+        "description": "Bastelmaterial",
+        "date": "2026-11-13T14:10:00.000Z"
+      },
+      {
+        "id": "65940177-351f-4a31-92c2-a2eb67d1ea11",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": 2.5,
+        "type": "allowance",
+        "description": "",
+        "date": "2026-11-07T07:00:00.000Z",
+        "schedule": {
+          "frequency": "weekly",
+          "dayOfWeek": 6
+        }
+      },
+      {
+        "id": "3924bc4c-4c2d-4ce6-9656-fa9eed73a6b7",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": -3.95,
+        "type": "manual",
+        "description": "Sammelkarten",
+        "date": "2026-11-05T15:05:00.000Z"
+      },
+      {
+        "id": "955086ec-1d82-446a-8d4f-4e9b2b235247",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": 5,
+        "type": "allowance",
+        "description": "",
+        "date": "2026-11-01T07:00:00.000Z",
+        "schedule": {
+          "frequency": "monthly",
+          "dayOfMonth": 1
+        }
+      },
+      {
+        "id": "3978595c-5ddb-4c5e-85d0-5d9de8d014c5",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": 2.5,
+        "type": "allowance",
+        "description": "",
+        "date": "2026-10-31T07:00:00.000Z",
+        "schedule": {
+          "frequency": "weekly",
+          "dayOfWeek": 6
+        }
+      },
+      {
+        "id": "99602955-e572-412e-ae53-b5a69797f40b",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": 6,
+        "type": "manual",
+        "description": "Flohmarkt",
+        "date": "2026-10-26T13:00:00.000Z"
+      },
+      {
+        "id": "75757a62-bf7a-44ec-ab03-3696cadb7ffb",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": 2.5,
+        "type": "allowance",
+        "description": "",
+        "date": "2026-10-24T06:00:00.000Z",
+        "schedule": {
+          "frequency": "weekly",
+          "dayOfWeek": 6
+        }
+      },
+      {
+        "id": "a4e12e09-d7a4-4a24-a374-0f892995c253",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": -12.99,
+        "type": "manual",
+        "description": "Hörspiel-Figur",
+        "date": "2026-10-21T12:25:00.000Z"
+      },
+      {
+        "id": "52d29d08-7472-4ae8-9cd3-d8734b049a2d",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": 2.5,
+        "type": "allowance",
+        "description": "",
+        "date": "2026-10-17T06:00:00.000Z",
+        "schedule": {
+          "frequency": "weekly",
+          "dayOfWeek": 6
+        }
+      },
+      {
+        "id": "46d54444-41a4-490c-b02d-2fe600c45a14",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": -1.5,
+        "type": "manual",
+        "description": "Kakao im Schwimmbad",
+        "date": "2026-10-14T13:40:00.000Z"
+      },
+      {
+        "id": "9629bfcc-95b7-4956-bf8f-aa44c75b757f",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": 2.5,
+        "type": "allowance",
+        "description": "",
+        "date": "2026-10-10T06:00:00.000Z",
+        "schedule": {
+          "frequency": "weekly",
+          "dayOfWeek": 6
+        }
+      },
+      {
+        "id": "263e7b80-93b0-4430-84b5-a811f59b89e4",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": 3,
+        "type": "manual",
+        "description": "Nachbarin beim Einkaufen geholfen",
+        "date": "2026-10-06T14:30:00.000Z"
+      },
+      {
+        "id": "77d967a4-adb9-480d-bd81-4b031f3b7f2c",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": 2.5,
+        "type": "allowance",
+        "description": "",
+        "date": "2026-10-03T06:00:00.000Z",
+        "schedule": {
+          "frequency": "weekly",
+          "dayOfWeek": 6
+        }
+      },
+      {
+        "id": "4a7060f9-9c1e-44c0-87b3-ec6c082ea08d",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": -6,
+        "type": "manual",
+        "description": "Geschenk für Mama",
+        "date": "2026-10-01T09:00:00.000Z"
+      },
+      {
+        "id": "0e4d6a9f-e802-4fc9-a775-1e62d287e1ed",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": 5,
+        "type": "allowance",
+        "description": "",
+        "date": "2026-10-01T06:00:00.000Z",
+        "schedule": {
+          "frequency": "monthly",
+          "dayOfMonth": 1
+        }
+      },
+      {
+        "id": "abf1be88-8dc8-4a26-bee2-447c7b469bde",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": 2.5,
+        "type": "allowance",
+        "description": "",
+        "date": "2026-09-26T06:00:00.000Z",
+        "schedule": {
+          "frequency": "weekly",
+          "dayOfWeek": 6
+        }
+      },
+      {
+        "id": "5d9d0883-601b-466d-b044-e76ff1dd281a",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": -3.95,
+        "type": "manual",
+        "description": "Sammelkarten",
+        "date": "2026-09-21T14:50:00.000Z"
+      },
+      {
+        "id": "c5586017-1548-4074-85dd-cfc05f2da569",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": 2.5,
+        "type": "allowance",
+        "description": "",
+        "date": "2026-09-19T06:00:00.000Z",
+        "schedule": {
+          "frequency": "weekly",
+          "dayOfWeek": 6
+        }
+      },
+      {
+        "id": "c49d8f0e-d982-4135-972b-2d267b9af4f5",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": 4,
+        "type": "manual",
+        "description": "Auto gewaschen",
+        "date": "2026-09-16T09:45:00.000Z"
+      },
+      {
+        "id": "57895bd7-843d-449b-af96-245c62e9d912",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": 2.5,
+        "type": "allowance",
+        "description": "",
+        "date": "2026-09-12T06:00:00.000Z",
+        "schedule": {
+          "frequency": "weekly",
+          "dayOfWeek": 6
+        }
+      },
+      {
+        "id": "0bb21058-0bf0-4d07-9f60-36b5fc807408",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": -2.5,
+        "type": "manual",
+        "description": "Schulbasar",
+        "date": "2026-09-06T08:30:00.000Z"
+      },
+      {
+        "id": "8c7d609a-7ce1-42e2-9c37-b51c4e085d22",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": 2.5,
+        "type": "allowance",
+        "description": "",
+        "date": "2026-09-05T06:00:00.000Z",
+        "schedule": {
+          "frequency": "weekly",
+          "dayOfWeek": 6
+        }
+      },
+      {
+        "id": "1bc09eb4-cdcf-4f25-b8c6-50e5d22fecf5",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": 1.75,
+        "type": "manual",
+        "description": "Pfandflaschen",
+        "date": "2026-09-01T15:05:00.000Z"
+      },
+      {
+        "id": "2e790741-4360-46c1-a7a7-045525abdf9d",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": 5,
+        "type": "allowance",
+        "description": "",
+        "date": "2026-09-01T06:00:00.000Z",
+        "schedule": {
+          "frequency": "monthly",
+          "dayOfMonth": 1
+        }
+      },
+      {
+        "id": "9e913e34-21cc-4bba-9753-b1a734275d92",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": 2.5,
+        "type": "allowance",
+        "description": "",
+        "date": "2026-08-29T06:00:00.000Z",
+        "schedule": {
+          "frequency": "weekly",
+          "dayOfWeek": 6
+        }
+      },
+      {
+        "id": "0a382a80-3433-447a-80db-a016ea27b6f4",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": -8.99,
+        "type": "manual",
+        "description": "Spielzeugauto",
+        "date": "2026-08-25T10:10:00.000Z"
+      },
+      {
+        "id": "b2668879-b142-4e8c-9c72-90d947c4711c",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": 2,
+        "type": "allowance",
+        "description": "",
+        "date": "2026-08-22T06:00:00.000Z",
+        "schedule": {
+          "frequency": "weekly",
+          "dayOfWeek": 6
+        }
+      },
+      {
+        "id": "e5b9abf0-702d-4f7d-ad0f-f7ce386e803b",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": -29.99,
+        "type": "goal_purchase",
+        "description": "Lego-Set",
+        "date": "2026-08-17T08:30:00.000Z"
+      },
+      {
+        "id": "fcecbec3-ef6e-4b42-9647-74e5b88ec25c",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": 2,
+        "type": "allowance",
+        "description": "",
+        "date": "2026-08-15T06:00:00.000Z",
+        "schedule": {
+          "frequency": "weekly",
+          "dayOfWeek": 6
+        }
+      },
+      {
+        "id": "49dd8955-9bcd-49eb-8582-361d29a8de5e",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": 15,
+        "type": "manual",
+        "description": "Geburtstag – Tante Jule",
+        "date": "2026-08-09T13:20:00.000Z"
+      },
+      {
+        "id": "703b9ce4-ec7f-4841-ad6e-5c2655e89318",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": 25,
+        "type": "manual",
+        "description": "Geburtstag – Oma und Opa",
+        "date": "2026-08-09T08:00:00.000Z"
+      },
+      {
+        "id": "e5299f87-f9ce-436c-8727-54d4e555388e",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": 2,
+        "type": "allowance",
+        "description": "",
+        "date": "2026-08-08T06:00:00.000Z",
+        "schedule": {
+          "frequency": "weekly",
+          "dayOfWeek": 6
+        }
+      },
+      {
+        "id": "7da61546-9b52-4c7f-bfae-ffd525c89d5e",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": -3.95,
+        "type": "manual",
+        "description": "Sammelkarten",
+        "date": "2026-08-01T15:30:00.000Z"
+      },
+      {
+        "id": "fda56a3f-1a7b-4140-b47e-8fb205439673",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": 5,
+        "type": "allowance",
+        "description": "",
+        "date": "2026-08-01T06:00:00.000Z",
+        "schedule": {
+          "frequency": "monthly",
+          "dayOfMonth": 1
+        }
+      },
+      {
+        "id": "b05b0e51-6a28-43ed-8a5f-d11f3c6921f9",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": 2,
+        "type": "allowance",
+        "description": "",
+        "date": "2026-08-01T06:00:00.000Z",
+        "schedule": {
+          "frequency": "weekly",
+          "dayOfWeek": 6
+        }
+      },
+      {
+        "id": "ac7e5c7c-1d7e-4942-9d7c-d4ce9f6343af",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": -1.2,
+        "type": "manual",
+        "description": "Süßigkeiten",
+        "date": "2026-07-26T14:15:00.000Z"
+      },
+      {
+        "id": "9ffa7a47-81d4-4197-af7a-830bfa67f6d9",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": 2,
+        "type": "allowance",
+        "description": "",
+        "date": "2026-07-25T06:00:00.000Z",
+        "schedule": {
+          "frequency": "weekly",
+          "dayOfWeek": 6
+        }
+      },
+      {
+        "id": "63f93797-18ee-4025-9b59-8e781e75d837",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": 8.5,
+        "type": "manual",
+        "description": "Flohmarkt",
+        "date": "2026-07-18T11:30:00.000Z"
+      },
+      {
+        "id": "346e1127-a2b6-454e-b160-73095aa21184",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": 2,
+        "type": "allowance",
+        "description": "",
+        "date": "2026-07-18T06:00:00.000Z",
+        "schedule": {
+          "frequency": "weekly",
+          "dayOfWeek": 6
+        }
+      },
+      {
+        "id": "91182d37-5278-4529-a92e-7ee5160df2e0",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": -7.5,
+        "type": "manual",
+        "description": "Kino",
+        "date": "2026-07-13T13:00:00.000Z"
+      },
+      {
+        "id": "179c496a-177a-44a0-8163-bf3c9ce121de",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": 2,
+        "type": "allowance",
+        "description": "",
+        "date": "2026-07-11T06:00:00.000Z",
+        "schedule": {
+          "frequency": "weekly",
+          "dayOfWeek": 6
+        }
+      },
+      {
+        "id": "5b99c758-d236-4009-b437-356e71de0470",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": -3,
+        "type": "manual",
+        "description": "Freibad",
+        "date": "2026-07-08T11:40:00.000Z"
+      },
+      {
+        "id": "86ac2c57-cace-4633-8e6f-32c5e6124b22",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": 2,
+        "type": "allowance",
+        "description": "",
+        "date": "2026-07-04T06:00:00.000Z",
+        "schedule": {
+          "frequency": "weekly",
+          "dayOfWeek": 6
+        }
+      },
+      {
+        "id": "2afdacab-9833-4961-bd48-7e0bb15daa8a",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": 10,
+        "type": "manual",
+        "description": "Oma zu Besuch",
+        "date": "2026-07-01T16:40:00.000Z"
+      },
+      {
+        "id": "f58b67d2-87ad-47a1-9f9a-72200aec4a51",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": 5,
+        "type": "allowance",
+        "description": "",
+        "date": "2026-07-01T06:00:00.000Z",
+        "schedule": {
+          "frequency": "monthly",
+          "dayOfMonth": 1
+        }
+      },
+      {
+        "id": "1137f7f7-8afa-4652-97b7-04baab442cb9",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": -4.5,
+        "type": "manual",
+        "description": "Comic",
+        "date": "2026-06-29T09:20:00.000Z"
+      },
+      {
+        "id": "842cfeae-79df-4fb1-8ee9-69dece0d2e30",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": 2,
+        "type": "allowance",
+        "description": "",
+        "date": "2026-06-27T06:00:00.000Z",
+        "schedule": {
+          "frequency": "weekly",
+          "dayOfWeek": 6
+        }
+      },
+      {
+        "id": "7ed8ba91-50a5-4737-841d-e5e1767d035a",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": -1.8,
+        "type": "manual",
+        "description": "Eis",
+        "date": "2026-06-24T17:00:00.000Z"
+      },
+      {
+        "id": "08b7f5ca-3792-4544-9387-47b98ad0f3ef",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": 2,
+        "type": "allowance",
+        "description": "",
+        "date": "2026-06-20T06:00:00.000Z",
+        "schedule": {
+          "frequency": "weekly",
+          "dayOfWeek": 6
+        }
+      },
+      {
+        "id": "19330d76-e268-4e5e-93dc-40f082c52a2e",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": -3,
+        "type": "manual",
+        "description": "Freibad",
+        "date": "2026-06-18T12:10:00.000Z"
+      },
+      {
+        "id": "dc1f049b-0930-4ce5-bcbd-1162a1b199bb",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": 2,
+        "type": "manual",
+        "description": "Zahnfee",
+        "date": "2026-06-15T05:15:00.000Z"
+      },
+      {
+        "id": "bf3766e1-b584-43bc-9444-97b31900207c",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": 2,
+        "type": "allowance",
+        "description": "",
+        "date": "2026-06-13T06:00:00.000Z",
+        "schedule": {
+          "frequency": "weekly",
+          "dayOfWeek": 6
+        }
+      },
+      {
+        "id": "d9a18b65-6c33-4643-bd29-c9c00e248caf",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": -2.99,
+        "type": "manual",
+        "description": "Sticker",
+        "date": "2026-06-10T14:45:00.000Z"
+      },
+      {
+        "id": "452c79cc-a87d-4f83-97ff-f1a4dacad082",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": 2,
+        "type": "allowance",
+        "description": "",
+        "date": "2026-06-06T06:00:00.000Z",
+        "schedule": {
+          "frequency": "weekly",
+          "dayOfWeek": 6
+        }
+      },
+      {
+        "id": "3a811ca7-6c09-4788-826c-a4203d697429",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": -1.5,
+        "type": "manual",
+        "description": "Eis",
+        "date": "2026-06-03T13:30:00.000Z"
+      },
+      {
+        "id": "c99b3170-e35d-4903-8fae-8f4148382e1f",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": 5,
+        "type": "manual",
+        "description": "Rasen gemäht",
+        "date": "2026-06-01T14:10:00.000Z"
+      },
+      {
+        "id": "fda69713-9122-4f75-ab8f-371b0f24c8c1",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": 5,
+        "type": "allowance",
+        "description": "",
+        "date": "2026-06-01T06:00:00.000Z",
+        "schedule": {
+          "frequency": "monthly",
+          "dayOfMonth": 1
+        }
+      },
+      {
+        "id": "1599fefb-b35d-4765-807e-2d4d00574243",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": 2,
+        "type": "allowance",
+        "description": "",
+        "date": "2026-05-30T06:00:00.000Z",
+        "schedule": {
+          "frequency": "weekly",
+          "dayOfWeek": 6
+        }
+      },
+      {
+        "id": "d324cb0a-5fe9-4134-aaa1-f6d64df0f4df",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "amount": 10,
+        "type": "initial",
+        "description": "",
+        "date": "2026-05-29T07:12:00.000Z"
+      },
+      {
+        "id": "be4cf09c-2158-4111-b3a3-295206edc28b",
+        "childId": "6323467d-3146-4493-b3ad-d6b4ce875205",
+        "amount": 4,
+        "type": "initial",
+        "description": "",
+        "date": "2026-11-02T08:30:00.000Z"
+      },
+      {
+        "id": "81efad68-1c5e-443c-bd44-bbd6a213736b",
+        "childId": "6323467d-3146-4493-b3ad-d6b4ce875205",
+        "type": "advance",
+        "amount": 8,
+        "description": "",
+        "date": "2026-11-05T14:45:00.000Z",
+        "groupId": "f6c39ece-c7c6-414b-ba3f-4de141b33d3a",
+        "cashChange": 8,
+        "principalChange": 8,
+        "feeChange": 0,
+        "balanceAfter": 12,
+        "debtAfter": {
+          "principal": 8,
+          "fees": 0
+        }
+      },
+      {
+        "description": "Lego-Figur",
+        "id": "41fe8eb2-b575-4ba6-bdf8-8dc0f5a9a360",
+        "childId": "6323467d-3146-4493-b3ad-d6b4ce875205",
+        "type": "manual",
+        "amount": -12,
+        "date": "2026-11-05T14:45:00.000Z",
+        "groupId": "f6c39ece-c7c6-414b-ba3f-4de141b33d3a",
+        "cashChange": -12,
+        "principalChange": 0,
+        "feeChange": 0,
+        "balanceAfter": 0,
+        "debtAfter": {
+          "principal": 8,
+          "fees": 0
+        }
+      },
+      {
+        "description": "",
+        "schedule": {
+          "frequency": "weekly",
+          "dayOfWeek": 6
+        },
+        "allowanceId": "110def87-7178-40f6-b572-859b5988140c",
+        "id": "929a9b78-4882-4bd4-a4f1-99922c8ff19c",
+        "childId": "6323467d-3146-4493-b3ad-d6b4ce875205",
+        "type": "allowance",
+        "amount": 3,
+        "date": "2026-11-07T07:00:00.000Z",
+        "groupId": "b5dc1ebd-b57f-4011-a2a4-9e4f00eaa731",
+        "cashChange": 3,
+        "principalChange": 0,
+        "feeChange": 0,
+        "balanceAfter": 3,
+        "debtAfter": {
+          "principal": 8,
+          "fees": 0
+        }
+      },
+      {
+        "sourceTransactionId": "929a9b78-4882-4bd4-a4f1-99922c8ff19c",
+        "repaymentPercent": 20,
+        "id": "5851fd38-16e6-40c3-a751-4a6dd32abf45",
+        "childId": "6323467d-3146-4493-b3ad-d6b4ce875205",
+        "type": "debt_repayment",
+        "amount": -0.6,
+        "description": "",
+        "date": "2026-11-07T07:00:00.000Z",
+        "groupId": "b5dc1ebd-b57f-4011-a2a4-9e4f00eaa731",
+        "cashChange": -0.6,
+        "principalChange": -0.6,
+        "feeChange": 0,
+        "balanceAfter": 2.4,
+        "debtAfter": {
+          "principal": 7.4,
+          "fees": 0
+        }
+      },
+      {
+        "description": "",
+        "schedule": {
+          "frequency": "weekly",
+          "dayOfWeek": 6
+        },
+        "allowanceId": "110def87-7178-40f6-b572-859b5988140c",
+        "id": "90543528-a8ed-4ffb-9f10-2d666036f5d4",
+        "childId": "6323467d-3146-4493-b3ad-d6b4ce875205",
+        "type": "allowance",
+        "amount": 3,
+        "date": "2026-11-14T07:00:00.000Z",
+        "groupId": "e7b5e4cd-56d2-42dc-b506-0140e6fa43c0",
+        "cashChange": 3,
+        "principalChange": 0,
+        "feeChange": 0,
+        "balanceAfter": 5.4,
+        "debtAfter": {
+          "principal": 7.4,
+          "fees": 0
+        }
+      },
+      {
+        "sourceTransactionId": "90543528-a8ed-4ffb-9f10-2d666036f5d4",
+        "repaymentPercent": 20,
+        "id": "6d25efc0-7342-426b-83e2-b012c59bde59",
+        "childId": "6323467d-3146-4493-b3ad-d6b4ce875205",
+        "type": "debt_repayment",
+        "amount": -0.6,
+        "description": "",
+        "date": "2026-11-14T07:00:00.000Z",
+        "groupId": "e7b5e4cd-56d2-42dc-b506-0140e6fa43c0",
+        "cashChange": -0.6,
+        "principalChange": -0.6,
+        "feeChange": 0,
+        "balanceAfter": 4.8,
+        "debtAfter": {
+          "principal": 6.8,
+          "fees": 0
+        }
+      },
+      {
+        "description": "",
+        "schedule": {
+          "frequency": "weekly",
+          "dayOfWeek": 6
+        },
+        "allowanceId": "110def87-7178-40f6-b572-859b5988140c",
+        "id": "fa26ad53-c458-409a-90a1-4b7f19bc47ab",
+        "childId": "6323467d-3146-4493-b3ad-d6b4ce875205",
+        "type": "allowance",
+        "amount": 3,
+        "date": "2026-11-21T07:00:00.000Z",
+        "groupId": "11f058c0-bfa3-4c8c-95bd-b45efef0b773",
+        "cashChange": 3,
+        "principalChange": 0,
+        "feeChange": 0,
+        "balanceAfter": 7.8,
+        "debtAfter": {
+          "principal": 6.8,
+          "fees": 0
+        }
+      },
+      {
+        "sourceTransactionId": "fa26ad53-c458-409a-90a1-4b7f19bc47ab",
+        "repaymentPercent": 20,
+        "id": "ec89b7a1-edc9-4aa8-92d5-420a3e1722b2",
+        "childId": "6323467d-3146-4493-b3ad-d6b4ce875205",
+        "type": "debt_repayment",
+        "amount": -0.6,
+        "description": "",
+        "date": "2026-11-21T07:00:00.000Z",
+        "groupId": "11f058c0-bfa3-4c8c-95bd-b45efef0b773",
+        "cashChange": -0.6,
+        "principalChange": -0.6,
+        "feeChange": 0,
+        "balanceAfter": 7.2,
+        "debtAfter": {
+          "principal": 6.2,
+          "fees": 0
+        }
+      },
+      {
+        "description": "Eis",
+        "id": "696927a0-b277-46f1-a0fe-74e44c662322",
+        "childId": "6323467d-3146-4493-b3ad-d6b4ce875205",
+        "type": "manual",
+        "amount": -1.5,
+        "date": "2026-11-24T15:20:00.000Z",
+        "groupId": "3068c13f-4868-4c0e-a0ab-8637fdfd1875",
+        "cashChange": -1.5,
+        "principalChange": 0,
+        "feeChange": 0,
+        "balanceAfter": 5.7,
+        "debtAfter": {
+          "principal": 6.2,
+          "fees": 0
+        }
+      }
+    ],
+    "goals": [
+      {
+        "id": "9bf4e2d2-2fa5-4fd9-93a5-224059f399e8",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "name": "Lego-Set",
+        "targetAmount": 29.99,
+        "savedAmount": 0,
+        "initialSaved": 0,
+        "icon": "blocks",
+        "createdAt": "2026-06-08T16:00:00.000Z",
+        "completedAt": "2026-08-17T08:30:00.000Z",
+        "purchasedAt": "2026-08-17T08:30:00.000Z"
+      },
+      {
+        "id": "8e155918-e90c-4c61-b7d5-f946b0d4427b",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "name": "Fahrradhelm",
+        "targetAmount": 35,
+        "savedAmount": 0,
+        "initialSaved": 0,
+        "icon": "bike",
+        "createdAt": "2026-09-06T17:00:00.000Z",
+        "completedAt": null,
+        "purchasedAt": null
+      },
+      {
+        "id": "9807ef6f-0241-4765-bff9-52bb5657a2c3",
+        "childId": "6b7fe3b5-e2bf-4ba4-b338-9cc9803fa343",
+        "name": "Kopfhörer",
+        "targetAmount": 119.99,
+        "savedAmount": 0,
+        "initialSaved": 0,
+        "icon": "headphones",
+        "createdAt": "2026-10-16T16:30:00.000Z",
+        "completedAt": null,
+        "purchasedAt": null
+      }
+    ],
+    "settings": {
+      "currency": "€",
+      "adminPinHash": null,
+      "pinConfigured": true
+    },
+    "preferences": {
+      "theme": null,
+      "accent": null,
+      "language": "de"
+    }
+  }
+}

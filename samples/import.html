@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <title>KidsWallet – Beispielkind importieren</title>
+</head>
+<body style="font-family: system-ui, sans-serif; padding: 2rem;">
+  <p id="status">Beispielkind wird hinzugefügt …</p>
+  <script type="module">
+    // Nur für den Dev-Server: fügt das Beispielkind zu den vorhandenen Daten hinzu (ohne sie zu ersetzen).
+    const status = document.getElementById('status');
+    try {
+      const res = await fetch('./kidswallet-beispielkind.json', { cache: 'no-store' });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const sample = (await res.json()).data;
+      const raw = localStorage.getItem('kidswallet-data');
+      const data = raw
+        ? JSON.parse(raw)
+        : { children: [], allowances: [], transactions: [], goals: [], settings: sample.settings };
+      const ids = new Set(sample.children.map((c) => c.id));
+      for (const key of ['children', 'allowances', 'transactions', 'goals']) {
+        data[key] = (data[key] || [])
+          .filter((x) => !ids.has(x.id) && !ids.has(x.childId))
+          .concat(sample[key]);
+      }
+      data.settings ??= sample.settings;
+      localStorage.setItem('kidswallet-data', JSON.stringify(data));
+      status.textContent = 'Fertig – weiter zur App …';
+      location.replace('../');
+    } catch (err) {
+      status.textContent = `Import fehlgeschlagen: ${err.message}`;
+    }
+  </script>
+</body>
+</html>
