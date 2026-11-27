@@ -1,0 +1,185 @@
+/* skeleton.css – Shimmer-Skeleton-Screens für Ladezustände */
+
+/* ── Shimmer-Keyframe ────────────────────────────────────────────────────── */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+/* ── Basis-Element ───────────────────────────────────────────────────────── */
+.skel {
+  background: linear-gradient(
+    90deg,
+    var(--color-border) 25%,
+    var(--color-surface) 50%,
+    var(--color-border) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+  border-radius: var(--radius-md);
+  flex-shrink: 0;
+}
+
+[data-theme="dark"] .skel {
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--color-bg) 60%, var(--color-surface)) 25%,
+    var(--color-surface) 50%,
+    color-mix(in srgb, var(--color-bg) 60%, var(--color-surface)) 75%
+  );
+  background-size: 200% 100%;
+}
+
+/* ── Zeilen-Shapes ───────────────────────────────────────────────────────── */
+.skel-line       { height: 13px; border-radius: var(--radius-full); }
+.skel-line--xs   { width: 50px; }
+.skel-line--sm   { width: 90px; }
+.skel-line--md   { width: 140px; }
+.skel-line--lg   { width: 180px; }
+.skel-line--xl   { width: 220px; }
+.skel-line--full { width: 100%; }
+
+.skel-bar        { height: 12px; border-radius: var(--radius-full); width: 100%; }
+
+/* ── Runde Shapes ────────────────────────────────────────────────────────── */
+.skel-avatar-sm { width: 44px;  height: 44px;  border-radius: 50%; flex-shrink: 0; }
+.skel-avatar    { width: 72px;  height: 72px;  border-radius: 50%; }
+.skel-avatar-lg { width: 96px;  height: 96px;  border-radius: 50%; }
+.skel-icon-sm   { width: 32px;  height: 32px;  border-radius: var(--radius-sm); flex-shrink: 0; }
+.skel-icon-md   { width: 48px;  height: 48px;  border-radius: var(--radius-md); flex-shrink: 0; }
+.skel-quick-btn { height: 88px; border-radius: var(--radius-xl); }
+
+/* ── Layout-Helfer ───────────────────────────────────────────────────────── */
+.skel-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.skel-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  flex: 1;
+  min-width: 0;
+}
+
+/* ── Kind-Karte ──────────────────────────────────────────────────────────── */
+.skeleton-child-card {
+  border-radius: var(--radius-xl);
+  padding: var(--space-xl) var(--space-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+/* ── Wallet-Hero ─────────────────────────────────────────────────────────── */
+.skeleton-wallet-hero {
+  border-radius: var(--radius-xl);
+  padding: var(--hero-padding);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.skeleton-wallet-hero__identity {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  align-self: stretch;
+}
+
+/* ── Aktions-Grid ────────────────────────────────────────────────────────── */
+.skeleton-quick-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+}
+
+/* ── Ziel-Karte ──────────────────────────────────────────────────────────── */
+.skeleton-goal-card {
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.skeleton-goals-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+/* ── Buchungs-Reihe ──────────────────────────────────────────────────────── */
+.skeleton-tx-section {
+  background: var(--color-surface);
+  border-radius: var(--radius-xl);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.skeleton-tx-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.skeleton-tx-row:last-child { border-bottom: none; }
+
+/* ── Abschnitts-Container ────────────────────────────────────────────────── */
+.skeleton-section {
+  background: var(--color-surface);
+  border-radius: var(--radius-xl);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+/* Layout für Skeleton-View-Container: kein Warten auf View-spezifisches CSS */
+.view-section[aria-busy="true"] {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+/* Raster für Kind-Kacheln im Home-Skeleton */
+.skeleton-child-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--space-lg);
+}
+
+/* ── Admin-Listenreihe ───────────────────────────────────────────────────── */
+.skeleton-admin-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-md) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.skeleton-admin-row:last-child { border-bottom: none; }
+
+/* ── Barrierefreiheit ────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .skel { animation: none; }
+}

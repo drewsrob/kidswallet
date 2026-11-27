@@ -1,0 +1,832 @@
+{
+  "common": {
+    "appName": "KidsWallet",
+    "cancel": "Cancel",
+    "save": "Save",
+    "create": "Create",
+    "record": "Record",
+    "confirm": "Confirm",
+    "delete": "Delete",
+    "edit": "Edit",
+    "close": "Close",
+    "optional": "optional",
+    "retry": "Retry",
+    "tryAgain": "Try again",
+    "toHome": "Go to home",
+    "reload": "Reload",
+    "loading": "Loading …",
+    "appDescription": "Pocket money manager for kids",
+    "hints": "Notes",
+    "manage": "Manage"
+  },
+  "format": {
+    "currency": "{{currency}}{{amount}}",
+    "today": "Today",
+    "yesterday": "Yesterday",
+    "daysAgo_one": "{{count}} day ago",
+    "daysAgo_other": "{{count}} days ago",
+    "relToday": "today",
+    "relTomorrow": "tomorrow",
+    "relInDays_one": "in {{count}} day",
+    "relInDays_other": "in {{count}} days",
+    "dateTime": "{{date}}, {{time}}",
+    "percent": "{{value}}%"
+  },
+  "empty": {
+    "childNotFound": {
+      "title": "Child not found",
+      "text": "This child doesn't exist (anymore). Choose another child on the home screen."
+    },
+    "loadError": {
+      "title": "Page couldn't be loaded",
+      "text": "Something went wrong while opening this page. Please try again."
+    },
+    "offline": {
+      "title": "Data unavailable",
+      "text": "The data couldn't be loaded. Please reload the app."
+    }
+  },
+  "child": {
+    "emptyTitle": "No children yet",
+    "emptyText": "Add your first child to manage allowance, savings goals and transactions.",
+    "create": "Add child",
+    "titleCreate": "Add child",
+    "titleEdit": "Edit {{name}}",
+    "subtitleCreate": "Set up a separate account for another child.",
+    "subtitleEdit": "Change name, symbol or colour.",
+    "created": "{{name}} was added.",
+    "createdRuleFailed": "{{name}} was added, but the allowance rule couldn't be saved.",
+    "updated": "Changes saved.",
+    "deleted": "{{name}} was deleted.",
+    "saveFailed": "The child couldn't be saved.",
+    "deleteFailed": "The child couldn't be deleted.",
+    "deleteTitle": "Delete child?",
+    "deleteMessage": "<strong>{{name}}</strong> will be permanently deleted.",
+    "deleteWarning": "All transactions, allowance rules and savings goals will be deleted too.",
+    "nameLabel": "Name",
+    "namePlaceholder": "e.g. Mia",
+    "startBalanceLabel": "Starting balance ({{currency}})",
+    "startBalanceHint": "Credited to the account when it's created.",
+    "avatarLabel": "Choose avatar",
+    "colorLabel": "Choose colour",
+    "allowanceSetup": "Set up allowance",
+    "allowanceAmountPlaceholder": "e.g. 2.00",
+    "allowanceEmptyHint": "Leave empty if you don't want to set up an allowance."
+  },
+  "allowance": {
+    "title": "Allowance rule",
+    "emptyTitle": "No rule yet",
+    "emptyText": "No allowance rule has been set up for this child yet.",
+    "create": "Create rule",
+    "nextPayout": "Next payout: {{date}} ({{relative}})",
+    "payoutToday": "Allowance day is today",
+    "payoutTomorrow": "Allowance day is tomorrow",
+    "payoutPaidToday": "Allowance was paid today",
+    "paused": "Allowance is paused – nothing is being paid out right now.",
+    "pausedShort": "Allowance paused",
+    "noRule": "No allowance rule set up",
+    "scheduleWeekly": "Every {{day}}",
+    "scheduleMonthly": "Monthly on day {{day}}",
+    "titleCreate": "Create allowance rule",
+    "titleEdit": "Edit allowance rule",
+    "subtitle": "{{name}} receives the amount automatically on a regular basis.",
+    "frequencyLabel": "Frequency",
+    "weekdayLabel": "Weekday",
+    "monthDayLabel": "Day of month",
+    "monthDayHint": "Day 1–28, so every month is covered.",
+    "created": "Allowance rule created.",
+    "updated": "Allowance rule updated.",
+    "deleted": "Allowance rule deleted.",
+    "activated": "Allowance rule activated.",
+    "pausedToast": "Allowance rule paused.",
+    "saveFailed": "The allowance rule couldn't be saved.",
+    "deleteFailed": "The allowance rule couldn't be deleted.",
+    "toggleFailed": "The allowance rule couldn't be switched.",
+    "frequencyWeekly": "Weekly",
+    "frequencyMonthly": "Monthly",
+    "manage": "Manage allowance rules",
+    "listTitle": "Allowance rules",
+    "toolbarTitle": "Allowance – {{name}}",
+    "pausedBadge": "Paused",
+    "autoPayoutNote": "Allowance is credited automatically when the app is opened – missed paydays are caught up.",
+    "lastExecuted": "Last: {{date}}",
+    "activeToggle": "Allowance rule active",
+    "deleteLabel": "Delete allowance rule",
+    "deleteTitle": "Delete allowance rule?",
+    "deleteMessage": "The rule ({{amount}}, {{schedule}}) will be permanently deleted."
+  },
+  "goal": {
+    "title": "Savings goals",
+    "emptyTitle": "No savings goals yet",
+    "emptyText": "No savings goals have been created for this child yet.",
+    "allDoneTitle": "All goals bought",
+    "allDoneText": "All savings goals have been bought. Time for a new goal?",
+    "create": "Create savings goal",
+    "reached": "Goal reached",
+    "almost": "Almost there – {{rest}} to go",
+    "remaining": "{{rest}} to go",
+    "reachedNamed": "Savings goal “{{name}}” reached!",
+    "reachedCount_one": "{{count}} savings goal reached!",
+    "reachedCount_other": "{{count}} savings goals reached!",
+    "firstCreated": "First savings goal created – keep it up!",
+    "saved": "{{saved}} of {{target}} saved",
+    "cardSummary": "{{countText}}, {{name}}: {{progress}}",
+    "activeCount_one": "{{count}} active savings goal",
+    "activeCount_other": "{{count}} active savings goals",
+    "titleCreate": "Create savings goal",
+    "titleEdit": "Edit savings goal",
+    "subtitleCreate": "What is {{name}} saving for?",
+    "subtitleEdit": "Change name, target amount or symbol.",
+    "nameLabel": "Savings goal name",
+    "namePlaceholder": "e.g. New bike",
+    "targetLabel": "Target amount ({{currency}})",
+    "iconLabel": "Symbol",
+    "symbolSearchPlaceholder": "Search symbols …",
+    "symbolSearchLabel": "Search symbols",
+    "symbolNoResults": "No matching symbols found.",
+    "symbolSelected": "Selected: {{name}}",
+    "symbolResults_one": "{{count}} symbol found",
+    "symbolResults_other": "{{count}} symbols found",
+    "symbolGroupCount_one": "{{count}} symbol",
+    "symbolGroupCount_other": "{{count}} symbols",
+    "createdToast": "Savings goal created.",
+    "updated": "Savings goal updated.",
+    "deleted": "Savings goal deleted.",
+    "purchased": "Congratulations! {{name}} is yours now.",
+    "saveFailed": "The savings goal couldn't be saved.",
+    "deleteFailed": "The savings goal couldn't be deleted.",
+    "purchaseFailed": "The purchase couldn't be recorded.",
+    "manage": "Manage savings goals",
+    "pageLabel": "{{name}}'s savings goals",
+    "availableBalance": "Available balance",
+    "activeLabel": "Active savings goals",
+    "purchasedTitle": "Purchased savings goals",
+    "paid": "{{amount}} paid",
+    "canBuy": "{{amount}} – you can buy it!",
+    "purchasedBadge": "Bought",
+    "purchasedBadgeText": "Bought!",
+    "targetShort": "Goal: {{amount}}",
+    "progressLabel": "Progress {{name}}",
+    "buy": "Buy",
+    "buyWithAmount": "Buy ({{amount}})",
+    "editLabel": "Edit savings goal {{name}}",
+    "deleteLabel": "Delete savings goal {{name}}",
+    "purchaseTitle": "Buy {{name}}?",
+    "purchaseDeducted": "{{amount}} will be deducted from the balance.",
+    "purchaseBalanceAfter": "Balance afterwards: {{amount}}",
+    "deleteTitle": "Delete savings goal?",
+    "deleteMessage": "The savings goal “{{name}}” will be permanently deleted."
+  },
+  "dashboard": {
+    "activityTitle": "Activity",
+    "activityWeek": "This week",
+    "activityMonth": "This month",
+    "statIncome": "Income",
+    "statExpense": "Expenses",
+    "statNet": "Net",
+    "activityNoWeek": "No transactions this week yet.",
+    "activityEmpty": "Once transactions are recorded, you'll see how the balance develops here.",
+    "trendWeekUp": "Balance went up this week",
+    "trendWeekDown": "Balance went down this week",
+    "trendMonthUp": "Money was saved this month",
+    "weekTransactions_one": "{{count}} transaction this week",
+    "weekTransactions_other": "{{count}} transactions this week"
+  },
+  "transaction": {
+    "recentTitle": "Recent transactions",
+    "emptyTitle": "No transactions yet",
+    "emptyText": "No transactions have been recorded for this child yet.",
+    "earnTitle": "Record income",
+    "earnSubtitle": "Will be added to {{name}}'s balance.",
+    "earnPlaceholder": "e.g. Gift from Grandma",
+    "spendTitle": "Record expense",
+    "spendSubtitle": "Will be deducted from {{name}}'s balance.",
+    "spendPlaceholder": "e.g. Bought ice cream",
+    "available": "Available balance: {{amount}}",
+    "amountLabel": "Amount ({{currency}})",
+    "descriptionLabel": "Description",
+    "earnSaved": "Income recorded: +{{amount}}",
+    "spendSaved": "Expense recorded: −{{amount}}",
+    "bookingFailed": "The transaction couldn't be saved.",
+    "listLabel": "Transactions",
+    "allowanceWeekly": "Allowance ({{day}})",
+    "allowanceMonthly": "Allowance (day {{day}} of the month)",
+    "goalPurchase": "Bought: {{name}}",
+    "kinds": {
+      "earn": {
+        "label": "Income",
+        "generic": "Manual income"
+      },
+      "spend": {
+        "label": "Expense",
+        "generic": "Manual expense"
+      },
+      "allowance": {
+        "label": "Allowance",
+        "generic": "Allowance"
+      },
+      "initial": {
+        "label": "Starting balance",
+        "generic": "Starting balance"
+      },
+      "goal": {
+        "label": "Savings goal",
+        "generic": "Savings goal"
+      },
+      "correction": {
+        "label": "Correction",
+        "generic": "Correction"
+      }
+    },
+    "showAll": "Show all transactions",
+    "allTitle": "All transactions",
+    "countFor_one": "{{count}} transaction for {{name}}",
+    "countFor_other": "{{count}} transactions for {{name}}"
+  },
+  "wallet": {
+    "income": "Income",
+    "expense": "Expense",
+    "label": "{{name}}'s wallet",
+    "factsLabel": "At a glance",
+    "statusLabel": "Current notes",
+    "actionsLabel": "Actions",
+    "allowanceRuleWeekly": "{{amount}} every {{day}}",
+    "allowanceRuleMonthly": "{{amount}} monthly on day {{day}}"
+  },
+  "dialog": {
+    "discardTitle": "Discard changes?",
+    "discardMessage": "Your changes haven't been saved yet and will be lost when you close.",
+    "discardKeep": "Keep editing",
+    "discardConfirm": "Discard"
+  },
+  "pin": {
+    "title": "Confirm with PIN",
+    "label": "PIN",
+    "hint": "{{reason}} – please enter the PIN to confirm.",
+    "required": "PIN required",
+    "reasons": {
+      "earn": "Save income",
+      "spend": "Save expense",
+      "childCreate": "Add child",
+      "childEdit": "Save changes to child",
+      "ruleCreate": "Create allowance rule",
+      "ruleEdit": "Save allowance rule",
+      "ruleDelete": "Delete allowance rule",
+      "ruleActivate": "Activate allowance rule",
+      "rulePause": "Pause allowance rule"
+    },
+    "changed": "PIN changed.",
+    "checkFailed": "The PIN couldn't be checked.",
+    "changeFailed": "The PIN couldn't be changed."
+  },
+  "management": {
+    "title": "Management",
+    "unlockHint": "Please enter the PIN to open Management.",
+    "unlock": "Unlock",
+    "lock": "Lock",
+    "intro": "Rarely needed settings. Income, expenses, savings goals and allowance rules are managed directly in the child's account.",
+    "unlockLabel": "Unlock Management",
+    "childrenDesc": "Add and delete children",
+    "settingsDesc": "Security and currency",
+    "appearanceDesc": "Colour scheme, accent colour and language",
+    "backupDesc": "Create and restore backups",
+    "childrenIntro": "Editing, allowance and transactions are handled directly in the child's wallet.",
+    "childBalance": "Balance: {{amount}}",
+    "deleteChildLabel": "Delete {{name}}"
+  },
+  "settings": {
+    "currencySaved": "Currency symbol saved.",
+    "currencySaveFailed": "The currency symbol couldn't be saved.",
+    "accentSaved": "Accent colour saved.",
+    "currencyTitle": "Currency symbol",
+    "currencyLabel": "Symbol (max. 3 characters)",
+    "changePin": "Change PIN",
+    "currentPin": "Current PIN",
+    "newPin": "New PIN",
+    "newPinHint": "4–12 digits",
+    "newPinConfirm": "Repeat new PIN"
+  },
+  "security": {
+    "title": "Security",
+    "pinProtection": "PIN protection",
+    "pinProtectionHint": "Asks for the PIN before bookings and changes to children or allowance rules, and locks the management area.",
+    "setPinTitle": "Set PIN",
+    "setPinHint": "From now on, the PIN will be requested before critical changes and when opening the management area.",
+    "pin": "PIN",
+    "pinConfirm": "Confirm PIN",
+    "setPinAction": "Set PIN",
+    "enabled": "PIN protection enabled.",
+    "disabled": "PIN protection disabled.",
+    "enableFailed": "PIN protection could not be enabled.",
+    "disableFailed": "PIN protection could not be disabled.",
+    "disableTitle": "Disable PIN protection",
+    "disableHint": "Please enter your current PIN to disable protection.",
+    "disableAction": "Disable",
+    "migrationTitle": "Use PIN protection?",
+    "migrationText": "Until now, the default PIN 1234 was set. PIN protection is now optional.",
+    "migrationChoice": "With PIN protection, you set your own PIN. Without it, bookings and changes are saved directly. You can change this at any time under Management → Settings.",
+    "migrationUse": "Use PIN protection",
+    "migrationDisable": "Disable PIN protection",
+    "migrationSetHint": "Set your own PIN. The previous default PIN 1234 will not be kept."
+  },
+  "backup": {
+    "title": "Backup",
+    "intro": "Create a backup of your data or restore an existing backup.",
+    "statusTitle": "Last backup",
+    "lastBackup": "Created on",
+    "never": "No backup created yet",
+    "version": "Backup version",
+    "exportTitle": "Create backup",
+    "exportText": "Saves children, transactions, savings goals, allowance rules, settings, PIN and appearance in one file.",
+    "create": "Create backup",
+    "importTitle": "Restore backup",
+    "importText": "Imports all data from a backup file. The current data on this device will be replaced.",
+    "restore": "Restore backup",
+    "shareTitle": "Save KidsWallet backup",
+    "confirmTitle": "Restore backup?",
+    "confirmWarning": "Restoring will replace the current data.",
+    "confirmSummary": "Backup from {{date}} · {{children}} · {{transactions}}",
+    "childrenCount_one": "{{count}} child",
+    "childrenCount_other": "{{count}} children",
+    "transactionsCount_one": "{{count}} transaction",
+    "transactionsCount_other": "{{count}} transactions",
+    "confirmPinNote": "PIN, appearance and language will also be restored from the backup.",
+    "confirmAction": "Restore",
+    "exported": "Backup created successfully.",
+    "restored": "Backup restored successfully.",
+    "exportFailed": "The backup couldn't be created.",
+    "restoreFailed": "The backup couldn't be restored.",
+    "readFailed": "The file couldn't be read.",
+    "errors": {
+      "invalid": "The selected file isn't a valid KidsWallet backup.",
+      "unsupportedVersion": "This backup version isn't supported.",
+      "corrupt": "The backup file is damaged."
+    }
+  },
+  "validation": {
+    "nameRequired": "Please enter a name.",
+    "amountRequired": "Please enter an amount greater than 0.",
+    "amountInvalid": "Please enter a valid amount, e.g. 2.50.",
+    "amountDecimals": "Please enter no more than two decimal places.",
+    "amountMax": "The amount can't exceed {{max}}.",
+    "amountNotNegative": "The amount can't be negative.",
+    "dayOfMonth": "Please enter a day between 1 and 28.",
+    "pinRequired": "Please enter the PIN.",
+    "pinWrong": "Wrong PIN. Please try again.",
+    "currentPinRequired": "Please enter the current PIN.",
+    "pinTooShort": "The new PIN must have 4–12 digits.",
+    "pinMismatch": "The new PINs don't match.",
+    "currencyRequired": "Please enter a currency symbol."
+  },
+  "errors": {
+    "saveFailed": "The changes couldn't be saved.",
+    "loadFailed": "The data couldn't be loaded.",
+    "storageFull": "The device storage is full.",
+    "withDetail": "{{message}} ({{detail}})",
+    "nameMissing": "Name missing",
+    "nameTooLong": "Name is too long (max. {{max}} characters)",
+    "invalidColor": "Invalid colour",
+    "invalidStartBalance": "Invalid starting balance",
+    "invalidAmountRange": "Invalid amount (0.01–9,999.99)",
+    "invalidFrequency": "Invalid frequency",
+    "invalidWeekday": "Invalid weekday (0–6)",
+    "invalidDay": "Invalid day (1–28)",
+    "invalidTarget": "Invalid target amount",
+    "invalidName": "Invalid name",
+    "invalidAmount": "Invalid amount",
+    "amountTooLarge": "Amount too large",
+    "pinMissing": "PIN missing",
+    "childNotFound": "Child not found",
+    "ruleNotFound": "Rule not found",
+    "goalNotFound": "Savings goal not found",
+    "notEnoughBalance": "Not enough balance",
+    "invalidCurrency": "Invalid currency",
+    "currentPinMissing": "Current PIN missing",
+    "currentPinWrong": "The current PIN is wrong",
+    "pinLength": "The PIN must have 4–12 digits",
+    "actionFailed": "The action couldn't be completed.",
+    "pinAlreadyEnabled": "PIN protection is already enabled",
+    "pinNotEnabled": "PIN protection is not enabled"
+  },
+  "help": {
+    "close": "Got it",
+    "buttonLabel": "What is “{{title}}” for?",
+    "home": {
+      "title": "Overview",
+      "paragraphs": [
+        "The overview shows all children and their current balance at a glance.",
+        "Active savings goals appear right on the card, so you can see how far each child has already come.",
+        "From here, one tap takes you to the child's account."
+      ]
+    },
+    "wallet": {
+      "title": "Child account",
+      "paragraphs": [
+        "The child account shows a child's currently available pocket money.",
+        "Income increases the balance, expenses reduce it. Every movement is recorded, so you can always see how the balance has developed.",
+        "The child account is the heart of the app and brings together all of a child's important information in one place."
+      ]
+    },
+    "allowances": {
+      "title": "Allowance rules",
+      "paragraphs": [
+        "Allowance rules make regular payments automatically.",
+        "That way you don't have to remember when the allowance is due. The balance is increased automatically at the chosen time.",
+        "Rules are ideal for recurring allowance payments and keep the balance always up to date."
+      ]
+    },
+    "goals": {
+      "title": "Savings goals",
+      "paragraphs": [
+        "Savings goals make bigger wishes visible.",
+        "Children see not only their balance, but also how close they are to something they want.",
+        "Progress is calculated automatically from the current balance and grows with every deposit."
+      ]
+    },
+    "activity": {
+      "title": "Activity",
+      "paragraphs": [
+        "Activity sums up the most important recent changes.",
+        "This lets you quickly see whether the balance has recently gone up or down, without reading the whole transaction history.",
+        "It gives you a quick look at the current trend."
+      ]
+    },
+    "transactions": {
+      "title": "Transactions",
+      "paragraphs": [
+        "Transactions record every change to the balance.",
+        "They form the account's history and make it clear when money was added or spent.",
+        "This way, changes can always be traced."
+      ]
+    },
+    "earn": {
+      "title": "Income",
+      "paragraphs": [
+        "Income increases a child's available balance.",
+        "Use it for things like pocket money, gifts, rewards or other extra amounts.",
+        "Every income entry is automatically recorded in the history."
+      ]
+    },
+    "spend": {
+      "title": "Expenses",
+      "paragraphs": [
+        "Expenses reduce the available balance.",
+        "Use them when a child pays for something with their pocket money or buys something they wanted.",
+        "This keeps the history easy to follow at all times."
+      ]
+    },
+    "admin": {
+      "title": "Management",
+      "paragraphs": [
+        "Management contains rarely used app settings.",
+        "While everyday use happens directly in the child's account, this is where you'll find app-wide features such as managing children, PIN settings, appearance options and backups.",
+        "Management is for organising the app, not for day-to-day pocket money tasks."
+      ]
+    },
+    "children": {
+      "title": "Children",
+      "paragraphs": [
+        "All existing children are managed here.",
+        "You can add new children and remove existing ones.",
+        "Everyday use then happens directly in each child's account."
+      ]
+    },
+    "settings": {
+      "title": "Settings",
+      "paragraphs": [
+        "Settings contain general app options.",
+        "These include the optional PIN protection as well as other basic configuration.",
+        "Changes apply to the whole app."
+      ]
+    },
+    "appearance": {
+      "title": "Appearance",
+      "paragraphs": [
+        "Appearance determines how the app looks.",
+        "Colours, theme options and language can be adjusted to personal preferences without changing how the app works.",
+        "These settings apply to the entire user interface."
+      ]
+    },
+    "currency": {
+      "title": "Currency symbol",
+      "paragraphs": [
+        "The currency symbol appears wherever amounts are shown.",
+        "This way, balances, transactions and savings goals match the currency your family actually saves in.",
+        "The amounts themselves stay the same – only how they're displayed changes."
+      ]
+    },
+    "pin": {
+      "title": "PIN",
+      "paragraphs": [
+        "PIN protection is optional. When it is enabled, the app asks for the PIN before changes to balances, children or allowance rules and locks the management area.",
+        "Children can view their account at any time, but with PIN protection they can’t record amounts, change rules or delete children.",
+        "Without PIN protection, these actions are carried out directly. Confirmations for deleting or restoring remain in place."
+      ]
+    },
+    "theme": {
+      "title": "Colour scheme",
+      "paragraphs": [
+        "The colour scheme sets whether the app is shown in light or dark mode.",
+        "“System” automatically follows your device’s setting and changes along with it, for example switching to dark mode in the evening.",
+        "“Light” and “Dark” fix the display regardless of the device."
+      ]
+    },
+    "accentColor": {
+      "title": "Accent colour",
+      "paragraphs": [
+        "The accent colour gives the app its personal touch.",
+        "It highlights important buttons and progress without changing the children's colours."
+      ]
+    },
+    "language": {
+      "title": "Language",
+      "paragraphs": [
+        "The language setting determines which language all app texts are shown in.",
+        "By default, the device language is used. A manual choice takes priority and is remembered.",
+        "Your data such as names, descriptions and savings goals stays unchanged when switching."
+      ]
+    },
+    "backup": {
+      "title": "Backup",
+      "paragraphs": [
+        "Backups protect children, transactions, savings goals and rules from being lost.",
+        "All data is stored only on this device. With a backup, everything can be fully restored after switching devices, reinstalling or accidental deletion.",
+        "It's safest to keep the file outside the device, for example in cloud storage or on a computer."
+      ]
+    }
+  },
+  "navigation": {
+    "home": "Home",
+    "wallet": "Wallet",
+    "goals": "Savings goals",
+    "transactions": "All transactions",
+    "allowances": "Allowance rules",
+    "management": "Management",
+    "children": "Children",
+    "settings": "Settings",
+    "appearance": "Appearance",
+    "backup": "Backup",
+    "back": "Back",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "mainMenu": "Main menu",
+    "helpDefault": "About this section"
+  },
+  "appearance": {
+    "themeTitle": "Colour scheme",
+    "instantHint": "Applied and saved instantly.",
+    "accentTitle": "Accent colour",
+    "accentSubtitle": "The accent colour is used for buttons, icons and progress bars throughout the app.",
+    "presetsLabel": "Colour presets",
+    "colors": {
+      "purple": "Purple",
+      "violet": "Violet",
+      "pink": "Pink",
+      "coral": "Coral",
+      "orange": "Orange",
+      "green": "Green",
+      "blue": "Blue",
+      "grey": "Grey"
+    },
+    "customColor": "Custom colour …",
+    "colorPickerLabel": "Colour picker",
+    "preview": "Preview",
+    "previewButton": "Sample button",
+    "previewBadge": "Badge",
+    "languageTitle": "Language",
+    "languageSaved": "Language saved.",
+    "themes": {
+      "system": "System",
+      "light": "Light",
+      "dark": "Dark"
+    },
+    "themeSystemHint": "System automatically uses your device’s display setting."
+  },
+  "symbols": {
+    "categories": {
+      "spielzeug": "Toys",
+      "forschen": "Science & Discovery",
+      "medien": "Media & Learning",
+      "freizeit": "Leisure & Hobbies",
+      "allgemein": "Wishes & General"
+    },
+    "items": {
+      "blocks": {
+        "name": "Building blocks",
+        "keywords": "build, lego, block, blocks, bricks, duplo, construction"
+      },
+      "teddy": {
+        "name": "Teddy",
+        "keywords": "teddy bear, bear, cuddly toy, plush, soft toy, stuffed animal"
+      },
+      "puzzle": {
+        "name": "Puzzle",
+        "keywords": "puzzle piece, jigsaw, riddle, brain teaser"
+      },
+      "car": {
+        "name": "Toy car",
+        "keywords": "car, race car, model car, vehicle, remote control, rc"
+      },
+      "gamepad": {
+        "name": "Game console",
+        "keywords": "console, video game, controller, gaming, games, switch, playstation, xbox"
+      },
+      "robot": {
+        "name": "Robot",
+        "keywords": "robo, tech, technology, coding, programming"
+      },
+      "kite": {
+        "name": "Kite",
+        "keywords": "flying kite, wind, fly"
+      },
+      "dice": {
+        "name": "Board game",
+        "keywords": "dice, board game, game, card game, family game"
+      },
+      "microscope": {
+        "name": "Microscope",
+        "keywords": "experiment, lab, science, research, cells"
+      },
+      "flask": {
+        "name": "Experiment",
+        "keywords": "science kit, chemistry set, chemistry, lab, test tube, flask, science"
+      },
+      "gem": {
+        "name": "Crystal",
+        "keywords": "experiment, gemstone, diamond, mineral, stone, crystal growing, jewellery, jewelry"
+      },
+      "fossil": {
+        "name": "Fossil",
+        "keywords": "dino, dinosaur, ammonite, petrified, excavation, dig, prehistoric"
+      },
+      "magnifier": {
+        "name": "Magnifying glass",
+        "keywords": "magnifier, detective, search, explore, discover"
+      },
+      "volcano": {
+        "name": "Volcano",
+        "keywords": "eruption, lava, mountain, geology"
+      },
+      "telescope": {
+        "name": "Telescope",
+        "keywords": "spyglass, stars, astronomy, observatory, sky"
+      },
+      "planet": {
+        "name": "Planet",
+        "keywords": "space, outer space, saturn, universe, cosmos"
+      },
+      "compass": {
+        "name": "Compass",
+        "keywords": "adventure, hiking, navigation, orientation, expedition"
+      },
+      "leaf": {
+        "name": "Nature",
+        "keywords": "plant, leaf, garden, environment, flower"
+      },
+      "book": {
+        "name": "Book",
+        "keywords": "read, reading, novel, comic, story, books"
+      },
+      "magazine": {
+        "name": "Magazine",
+        "keywords": "magazine, booklet, newspaper, comic, subscription"
+      },
+      "music": {
+        "name": "Music",
+        "keywords": "song, instrument, concert, notes, sheet music"
+      },
+      "headphones": {
+        "name": "Headphones",
+        "keywords": "audiobook, listening to music, earbuds, toniebox, listen, earphones"
+      },
+      "camera": {
+        "name": "Camera",
+        "keywords": "photo, photography, take pictures, video"
+      },
+      "film": {
+        "name": "Movie",
+        "keywords": "cinema, movies, dvd, series, video, film"
+      },
+      "phone": {
+        "name": "Phone",
+        "keywords": "smartphone, mobile, mobile phone, cell phone, iphone"
+      },
+      "tablet": {
+        "name": "Tablet",
+        "keywords": "ipad, e-reader, ebook, kindle"
+      },
+      "laptop": {
+        "name": "Computer",
+        "keywords": "laptop, pc, notebook, computer"
+      },
+      "bike": {
+        "name": "Bike",
+        "keywords": "bicycle, bike, cycling, mountain bike"
+      },
+      "ball": {
+        "name": "Ball",
+        "keywords": "football, soccer, sport, basketball, play, club"
+      },
+      "skateboard": {
+        "name": "Skateboard",
+        "keywords": "skating, board, skate, longboard"
+      },
+      "rocket": {
+        "name": "Rocket",
+        "keywords": "space, space travel, astronaut, flight"
+      },
+      "plane": {
+        "name": "Trip",
+        "keywords": "plane, airplane, holiday, vacation, flying, travel, outing"
+      },
+      "house": {
+        "name": "House",
+        "keywords": "playhouse, treehouse, dollhouse, home, room"
+      },
+      "tent": {
+        "name": "Tent",
+        "keywords": "camping, camp, adventure, outdoor"
+      },
+      "palette": {
+        "name": "Painting",
+        "keywords": "paint palette, crafts, art, colours, colors, drawing, creative"
+      },
+      "ticket": {
+        "name": "Day out",
+        "keywords": "ticket, admission, theme park, zoo, cinema, concert, outing"
+      },
+      "paw": {
+        "name": "Pet",
+        "keywords": "animal, dog, cat, paw, hamster, guinea pig, pet food"
+      },
+      "gift": {
+        "name": "Gift",
+        "keywords": "birthday, christmas, surprise, toy, present"
+      },
+      "wish": {
+        "name": "Wish",
+        "keywords": "dream, magic, glitter, sparkle, special"
+      },
+      "star": {
+        "name": "Star",
+        "keywords": "favourite, favorite, special"
+      },
+      "heart": {
+        "name": "Heart",
+        "keywords": "love, heart's desire, family, donation, charity"
+      },
+      "crown": {
+        "name": "Crown",
+        "keywords": "king, queen, princess, dress-up, costume"
+      },
+      "trophy": {
+        "name": "Trophy",
+        "keywords": "victory, win, competition, tournament, champion, cup"
+      },
+      "piggy": {
+        "name": "Piggy bank",
+        "keywords": "save, saving, money, savings, rainy day fund"
+      }
+    },
+    "avatarPickerLabel": "Choose avatar",
+    "avatars": {
+      "star": "Star",
+      "heart": "Heart",
+      "zap": "Lightning",
+      "crown": "Crown",
+      "trophy": "Trophy",
+      "rocket": "Rocket",
+      "gem": "Gem",
+      "flame": "Flame",
+      "sun": "Sun",
+      "moon": "Moon",
+      "music": "Music",
+      "gift": "Gift",
+      "shield": "Shield",
+      "compass": "Compass",
+      "anchor": "Anchor",
+      "cloud": "Cloud",
+      "leaf": "Leaf",
+      "snowflake": "Snowflake",
+      "smile": "Smile",
+      "target": "Target"
+    },
+    "colorPickerLabel": "Choose colour",
+    "colors": {
+      "purple": "Purple",
+      "coral": "Coral",
+      "green": "Green",
+      "orange": "Orange",
+      "pink": "Pink",
+      "blue": "Blue",
+      "lightGreen": "Light green",
+      "violet": "Violet"
+    }
+  },
+  "home": {
+    "label": "Home",
+    "childrenLabel": "Children",
+    "cardLabel": "{{name}}, balance: {{balance}}",
+    "cardLabelWithGoal": "{{name}}, balance: {{balance}}, {{goal}}"
+  }
+}

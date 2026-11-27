@@ -1,0 +1,92 @@
+/* animations.css – Animationen für KidsWallet */
+
+/* ── Keyframes ──────────────────────────────────────────────────────────── */
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-28px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fillProgress {
+  from { width: 0; }
+  to   { width: var(--target-width, 0%); }
+}
+
+@keyframes pageFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseReachable {
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-success) 40%, transparent); }
+  50%       { box-shadow: 0 0 0 8px color-mix(in srgb, var(--color-success) 0%, transparent); }
+}
+
+@keyframes slideInUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes flashPos {
+  0%   { color: inherit; transform: scale(1); }
+  25%  { color: var(--color-success-text); transform: scale(1.05); }
+  100% { color: inherit; transform: scale(1); }
+}
+
+@keyframes flashNeg {
+  0%   { color: inherit; transform: scale(1); }
+  25%  { color: var(--color-danger-text); transform: scale(1.05); }
+  100% { color: inherit; transform: scale(1); }
+}
+
+/* ── Kind-Kacheln: gestaffelt von links einblenden ──────────────────────── */
+.child-card {
+  animation: slideInLeft 380ms ease-out both;
+  animation-delay: calc(var(--card-index, 0) * 80ms);
+}
+
+/* ── Fortschrittsbalken: von 0 zum Zielwert animieren ───────────────────── */
+.progress-fill {
+  min-width: 0;
+  animation: fillProgress 700ms ease-out forwards;
+}
+
+/* ── Seitenübergang: sanftes Einblenden ─────────────────────────────────── */
+.view-section {
+  animation: pageFadeIn 220ms ease-out both;
+}
+
+/* ── Kaufbereit!-Puls ────────────────────────────────────────────────────── */
+.goal-card.reachable {
+  animation: pulseReachable 2.2s ease-in-out infinite;
+}
+
+.wallet-goal-card--reached {
+  animation: pulseReachable 2.2s ease-in-out infinite;
+}
+
+/* ── Transaktionsliste: gestaffelt einblenden ─────────────────────────────── */
+.transaction-item {
+  animation: slideInUp 280ms ease-out both;
+}
+
+/* ── Buchungs-Feedback: Guthaben aufleuchten ─────────────────────────────── */
+.wallet-balance--flash-pos {
+  animation: flashPos 650ms ease-out;
+}
+
+.wallet-balance--flash-neg {
+  animation: flashNeg 650ms ease-out;
+}
+
+/* ── Barrierefreiheit: Bewegungsreduzierung ──────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .child-card,
+  .view-section,
+  .transaction-item            { animation: none; opacity: 1; transform: none; }
+  .progress-fill               { animation: none; width: var(--target-width, 0%); }
+  .goal-card.reachable,
+  .wallet-goal-card--reached { animation: none; }
+  .wallet-balance--flash-pos,
+  .wallet-balance--flash-neg   { animation: none; }
+}

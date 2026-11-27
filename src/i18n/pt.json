@@ -1,0 +1,842 @@
+{
+  "common": {
+    "appName": "KidsWallet",
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "create": "Criar",
+    "record": "Registar",
+    "confirm": "Confirmar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "close": "Fechar",
+    "optional": "opcional",
+    "retry": "Repetir",
+    "tryAgain": "Tentar novamente",
+    "toHome": "Ir para o início",
+    "reload": "Recarregar",
+    "loading": "A carregar …",
+    "appDescription": "Gestão de mesadas para crianças",
+    "hints": "Avisos",
+    "manage": "Gerir"
+  },
+  "format": {
+    "currency": "{{amount}} {{currency}}",
+    "today": "Hoje",
+    "yesterday": "Ontem",
+    "daysAgo_one": "Há {{count}} dia",
+    "daysAgo_many": "Há {{count}} dias",
+    "daysAgo_other": "Há {{count}} dias",
+    "relToday": "hoje",
+    "relTomorrow": "amanhã",
+    "relInDays_one": "daqui a {{count}} dia",
+    "relInDays_many": "daqui a {{count}} dias",
+    "relInDays_other": "daqui a {{count}} dias",
+    "dateTime": "{{date}}, {{time}}",
+    "percent": "{{value}}%"
+  },
+  "empty": {
+    "childNotFound": {
+      "title": "Criança não encontrada",
+      "text": "Esta criança não existe (ou já não existe). Escolhe outra criança na página inicial."
+    },
+    "loadError": {
+      "title": "Não foi possível carregar a página",
+      "text": "Ocorreu um erro ao abrir esta página. Tenta novamente."
+    },
+    "offline": {
+      "title": "Dados indisponíveis",
+      "text": "Não foi possível carregar os dados. Recarrega a app."
+    }
+  },
+  "child": {
+    "emptyTitle": "Ainda sem crianças",
+    "emptyText": "Cria a primeira criança para gerir mesadas, objetivos de poupança e movimentos.",
+    "create": "Criar criança",
+    "titleCreate": "Criar criança",
+    "titleEdit": "Editar {{name}}",
+    "subtitleCreate": "Cria uma conta própria para mais uma criança.",
+    "subtitleEdit": "Ajusta o nome, o símbolo ou a cor.",
+    "created": "{{name}} foi criado(a).",
+    "createdRuleFailed": "{{name}} foi criado(a), mas não foi possível guardar a regra de mesada.",
+    "updated": "Alterações guardadas.",
+    "deleted": "{{name}} foi eliminado(a).",
+    "saveFailed": "Não foi possível guardar a criança.",
+    "deleteFailed": "Não foi possível eliminar a criança.",
+    "deleteTitle": "Eliminar criança?",
+    "deleteMessage": "<strong>{{name}}</strong> será eliminado(a) permanentemente.",
+    "deleteWarning": "Todos os movimentos, regras de mesada e objetivos de poupança também serão eliminados.",
+    "nameLabel": "Nome",
+    "namePlaceholder": "p. ex. Mia",
+    "startBalanceLabel": "Saldo inicial ({{currency}})",
+    "startBalanceHint": "É creditado na conta ao criar.",
+    "avatarLabel": "Escolher avatar",
+    "colorLabel": "Escolher cor",
+    "allowanceSetup": "Configurar mesada",
+    "allowanceAmountPlaceholder": "p. ex. 2.00",
+    "allowanceEmptyHint": "Deixa em branco se não quiseres configurar uma mesada."
+  },
+  "allowance": {
+    "title": "Regra de mesada",
+    "emptyTitle": "Ainda sem regra",
+    "emptyText": "Ainda não foi configurada nenhuma regra de mesada para esta criança.",
+    "create": "Criar regra",
+    "nextPayout": "Próximo pagamento: {{date}} ({{relative}})",
+    "payoutToday": "Hoje há mesada",
+    "payoutTomorrow": "Amanhã há mesada",
+    "payoutPaidToday": "A mesada foi creditada hoje",
+    "paused": "A mesada está em pausa – de momento não é paga.",
+    "pausedShort": "Mesada em pausa",
+    "noRule": "Nenhuma regra de mesada configurada",
+    "scheduleWeekly": "Cada {{day}}",
+    "scheduleMonthly": "Mensalmente, dia {{day}}",
+    "titleCreate": "Criar regra de mesada",
+    "titleEdit": "Editar regra de mesada",
+    "subtitle": "{{name}} recebe o valor de forma automática e regular.",
+    "frequencyLabel": "Frequência",
+    "weekdayLabel": "Dia da semana",
+    "monthDayLabel": "Dia do mês",
+    "monthDayHint": "Dia 1–28, para abranger todos os meses.",
+    "created": "Regra de mesada criada.",
+    "updated": "Regra de mesada atualizada.",
+    "deleted": "Regra de mesada eliminada.",
+    "activated": "Regra de mesada ativada.",
+    "pausedToast": "Regra de mesada em pausa.",
+    "saveFailed": "Não foi possível guardar a regra de mesada.",
+    "deleteFailed": "Não foi possível eliminar a regra de mesada.",
+    "toggleFailed": "Não foi possível alterar o estado da regra de mesada.",
+    "frequencyWeekly": "Semanal",
+    "frequencyMonthly": "Mensal",
+    "manage": "Gerir regras de mesada",
+    "listTitle": "Regras de mesada",
+    "toolbarTitle": "Mesada – {{name}}",
+    "pausedBadge": "Em pausa",
+    "autoPayoutNote": "A mesada é creditada automaticamente ao abrir a app – os pagamentos em falta são recuperados.",
+    "lastExecuted": "Último: {{date}}",
+    "activeToggle": "Regra de mesada ativa",
+    "deleteLabel": "Eliminar regra de mesada",
+    "deleteTitle": "Eliminar regra de mesada?",
+    "deleteMessage": "A regra ({{amount}}, {{schedule}}) será eliminada permanentemente."
+  },
+  "goal": {
+    "title": "Objetivos de poupança",
+    "emptyTitle": "Ainda sem objetivos",
+    "emptyText": "Ainda não foram criados objetivos de poupança para esta criança.",
+    "allDoneTitle": "Todos os objetivos comprados",
+    "allDoneText": "Todos os objetivos de poupança já foram comprados. Que tal um novo objetivo?",
+    "create": "Criar objetivo",
+    "reached": "Objetivo alcançado",
+    "almost": "Quase lá – faltam {{rest}} para o objetivo",
+    "remaining": "Faltam {{rest}} para o objetivo",
+    "reachedNamed": "Objetivo «{{name}}» alcançado!",
+    "reachedCount_one": "{{count}} objetivo alcançado!",
+    "reachedCount_many": "{{count}} objetivos alcançados!",
+    "reachedCount_other": "{{count}} objetivos alcançados!",
+    "firstCreated": "Primeiro objetivo criado – continua assim!",
+    "saved": "{{saved}} de {{target}} poupados",
+    "cardSummary": "{{countText}}, {{name}}: {{progress}}",
+    "activeCount_one": "{{count}} objetivo ativo",
+    "activeCount_many": "{{count}} objetivos ativos",
+    "activeCount_other": "{{count}} objetivos ativos",
+    "titleCreate": "Criar objetivo de poupança",
+    "titleEdit": "Editar objetivo de poupança",
+    "subtitleCreate": "Para que está {{name}} a poupar?",
+    "subtitleEdit": "Ajusta o nome, o valor ou o símbolo.",
+    "nameLabel": "Nome do objetivo",
+    "namePlaceholder": "p. ex. Bicicleta nova",
+    "targetLabel": "Valor do objetivo ({{currency}})",
+    "iconLabel": "Símbolo",
+    "symbolSearchPlaceholder": "Procurar símbolo …",
+    "symbolSearchLabel": "Pesquisar símbolos",
+    "symbolNoResults": "Nenhum símbolo encontrado.",
+    "symbolSelected": "Selecionado: {{name}}",
+    "symbolResults_one": "{{count}} símbolo encontrado",
+    "symbolResults_many": "{{count}} símbolos encontrados",
+    "symbolResults_other": "{{count}} símbolos encontrados",
+    "symbolGroupCount_one": "{{count}} símbolo",
+    "symbolGroupCount_many": "{{count}} símbolos",
+    "symbolGroupCount_other": "{{count}} símbolos",
+    "createdToast": "Objetivo de poupança criado.",
+    "updated": "Objetivo de poupança atualizado.",
+    "deleted": "Objetivo de poupança eliminado.",
+    "purchased": "Parabéns! {{name}} já é teu.",
+    "saveFailed": "Não foi possível guardar o objetivo de poupança.",
+    "deleteFailed": "Não foi possível eliminar o objetivo de poupança.",
+    "purchaseFailed": "Não foi possível registar a compra.",
+    "manage": "Gerir objetivos",
+    "pageLabel": "Objetivos de poupança de {{name}}",
+    "availableBalance": "Saldo disponível",
+    "activeLabel": "Objetivos ativos",
+    "purchasedTitle": "Objetivos comprados",
+    "paid": "{{amount}} pago",
+    "canBuy": "{{amount}} – já podes comprar!",
+    "purchasedBadge": "Comprado",
+    "purchasedBadgeText": "Comprado!",
+    "targetShort": "Objetivo: {{amount}}",
+    "progressLabel": "Progresso {{name}}",
+    "buy": "Comprar",
+    "buyWithAmount": "Comprar ({{amount}})",
+    "editLabel": "Editar objetivo {{name}}",
+    "deleteLabel": "Eliminar objetivo {{name}}",
+    "purchaseTitle": "Comprar {{name}}?",
+    "purchaseDeducted": "{{amount}} serão descontados do saldo.",
+    "purchaseBalanceAfter": "Saldo depois: {{amount}}",
+    "deleteTitle": "Eliminar objetivo de poupança?",
+    "deleteMessage": "O objetivo «{{name}}» será eliminado permanentemente."
+  },
+  "dashboard": {
+    "activityTitle": "Atividade",
+    "activityWeek": "Esta semana",
+    "activityMonth": "Este mês",
+    "statIncome": "Receitas",
+    "statExpense": "Despesas",
+    "statNet": "Saldo",
+    "activityNoWeek": "Ainda não houve movimentos esta semana.",
+    "activityEmpty": "Assim que houver movimentos registados, vês aqui como o saldo evolui.",
+    "trendWeekUp": "O saldo subiu esta semana",
+    "trendWeekDown": "O saldo desceu esta semana",
+    "trendMonthUp": "Este mês houve poupança",
+    "weekTransactions_one": "{{count}} movimento esta semana",
+    "weekTransactions_many": "{{count}} movimentos esta semana",
+    "weekTransactions_other": "{{count}} movimentos esta semana"
+  },
+  "transaction": {
+    "recentTitle": "Últimos movimentos",
+    "emptyTitle": "Ainda sem movimentos",
+    "emptyText": "Ainda não foram registados movimentos para esta criança.",
+    "earnTitle": "Registar receita",
+    "earnSubtitle": "É creditado no saldo de {{name}}.",
+    "earnPlaceholder": "p. ex. Presente da avó",
+    "spendTitle": "Registar despesa",
+    "spendSubtitle": "É descontado do saldo de {{name}}.",
+    "spendPlaceholder": "p. ex. Comprei um gelado",
+    "available": "Saldo disponível: {{amount}}",
+    "amountLabel": "Valor ({{currency}})",
+    "descriptionLabel": "Descrição",
+    "earnSaved": "Receita registada: +{{amount}}",
+    "spendSaved": "Despesa registada: −{{amount}}",
+    "bookingFailed": "Não foi possível guardar o movimento.",
+    "listLabel": "Movimentos",
+    "allowanceWeekly": "Mesada ({{day}})",
+    "allowanceMonthly": "Mesada (dia {{day}} do mês)",
+    "goalPurchase": "Comprado: {{name}}",
+    "kinds": {
+      "earn": {
+        "label": "Receita",
+        "generic": "Receita manual"
+      },
+      "spend": {
+        "label": "Despesa",
+        "generic": "Despesa manual"
+      },
+      "allowance": {
+        "label": "Mesada",
+        "generic": "Mesada"
+      },
+      "initial": {
+        "label": "Saldo inicial",
+        "generic": "Saldo inicial"
+      },
+      "goal": {
+        "label": "Objetivo de poupança",
+        "generic": "Objetivo de poupança"
+      },
+      "correction": {
+        "label": "Correção",
+        "generic": "Correção"
+      }
+    },
+    "showAll": "Ver todos os movimentos",
+    "allTitle": "Todos os movimentos",
+    "countFor_one": "{{count}} movimento de {{name}}",
+    "countFor_many": "{{count}} movimentos de {{name}}",
+    "countFor_other": "{{count}} movimentos de {{name}}"
+  },
+  "wallet": {
+    "income": "Receita",
+    "expense": "Despesa",
+    "label": "Carteira de {{name}}",
+    "factsLabel": "Resumo",
+    "statusLabel": "Avisos atuais",
+    "actionsLabel": "Ações",
+    "allowanceRuleWeekly": "{{amount}} cada {{day}}",
+    "allowanceRuleMonthly": "{{amount}} mensalmente, dia {{day}}"
+  },
+  "dialog": {
+    "discardTitle": "Descartar alterações?",
+    "discardMessage": "Os teus dados ainda não foram guardados e perdem-se ao fechar.",
+    "discardKeep": "Continuar a editar",
+    "discardConfirm": "Descartar"
+  },
+  "pin": {
+    "title": "Confirmar com PIN",
+    "label": "PIN",
+    "hint": "{{reason}} – introduz o PIN para confirmar.",
+    "required": "PIN obrigatório",
+    "reasons": {
+      "earn": "Guardar receita",
+      "spend": "Guardar despesa",
+      "childCreate": "Criar criança",
+      "childEdit": "Guardar alterações da criança",
+      "ruleCreate": "Criar regra de mesada",
+      "ruleEdit": "Guardar regra de mesada",
+      "ruleDelete": "Eliminar regra de mesada",
+      "ruleActivate": "Ativar regra de mesada",
+      "rulePause": "Pausar regra de mesada"
+    },
+    "changed": "PIN alterado.",
+    "checkFailed": "Não foi possível verificar o PIN.",
+    "changeFailed": "Não foi possível alterar o PIN."
+  },
+  "management": {
+    "title": "Gestão",
+    "unlockHint": "Introduz o PIN para abrir a gestão.",
+    "unlock": "Desbloquear",
+    "lock": "Bloquear",
+    "intro": "Definições raramente usadas. Receitas, despesas, objetivos de poupança e regras de mesada geres diretamente na conta da criança.",
+    "unlockLabel": "Desbloquear gestão",
+    "childrenDesc": "Criar e eliminar crianças",
+    "settingsDesc": "Segurança e moeda",
+    "appearanceDesc": "Esquema de cores, cor de destaque e idioma",
+    "backupDesc": "Criar e restaurar cópias de segurança",
+    "childrenIntro": "Editar, mesada e movimentos fazem-se diretamente na carteira da criança.",
+    "childBalance": "Saldo: {{amount}}",
+    "deleteChildLabel": "Eliminar {{name}}"
+  },
+  "settings": {
+    "currencySaved": "Símbolo da moeda guardado.",
+    "currencySaveFailed": "Não foi possível guardar o símbolo da moeda.",
+    "accentSaved": "Cor de destaque guardada.",
+    "currencyTitle": "Símbolo da moeda",
+    "currencyLabel": "Símbolo (máx. 3 caracteres)",
+    "changePin": "Alterar PIN",
+    "currentPin": "PIN atual",
+    "newPin": "Novo PIN",
+    "newPinHint": "4–12 algarismos",
+    "newPinConfirm": "Repetir novo PIN"
+  },
+  "security": {
+    "title": "Segurança",
+    "pinProtection": "Proteção por PIN",
+    "pinProtectionHint": "Pede o PIN antes de registos e de alterações a crianças ou regras de mesada, e bloqueia a gestão.",
+    "setPinTitle": "Definir PIN",
+    "setPinHint": "A partir de agora, o PIN será pedido antes de alterações importantes e ao abrir a gestão.",
+    "pin": "PIN",
+    "pinConfirm": "Confirmar PIN",
+    "setPinAction": "Definir PIN",
+    "enabled": "Proteção por PIN ativada.",
+    "disabled": "Proteção por PIN desativada.",
+    "enableFailed": "Não foi possível ativar a proteção por PIN.",
+    "disableFailed": "Não foi possível desativar a proteção por PIN.",
+    "disableTitle": "Desativar a proteção por PIN",
+    "disableHint": "Introduz o PIN atual para desativar a proteção.",
+    "disableAction": "Desativar",
+    "migrationTitle": "Usar a proteção por PIN?",
+    "migrationText": "Até agora estava definido o PIN predefinido 1234. A proteção por PIN passa a ser opcional.",
+    "migrationChoice": "Com a proteção por PIN, defines o teu próprio PIN. Sem ela, os registos e as alterações são guardados diretamente. Podes mudar isto a qualquer momento em Gestão → Definições.",
+    "migrationUse": "Usar a proteção por PIN",
+    "migrationDisable": "Desativar a proteção por PIN",
+    "migrationSetHint": "Define o teu próprio PIN. O anterior PIN predefinido 1234 não é mantido."
+  },
+  "backup": {
+    "title": "Cópia de segurança",
+    "intro": "Cria uma cópia de segurança dos teus dados ou restaura uma cópia existente.",
+    "statusTitle": "Última cópia",
+    "lastBackup": "Criada em",
+    "never": "Ainda não há cópias de segurança",
+    "version": "Versão da cópia",
+    "exportTitle": "Criar cópia de segurança",
+    "exportText": "Guarda crianças, movimentos, objetivos de poupança, regras de mesada, definições, PIN e aspeto num ficheiro.",
+    "create": "Criar cópia",
+    "importTitle": "Restaurar cópia de segurança",
+    "importText": "Importa todos os dados de um ficheiro de cópia. Os dados atuais neste dispositivo serão substituídos.",
+    "restore": "Restaurar cópia",
+    "shareTitle": "Guardar cópia do KidsWallet",
+    "confirmTitle": "Restaurar cópia de segurança?",
+    "confirmWarning": "Ao restaurar, os dados atuais serão substituídos.",
+    "confirmSummary": "Cópia de {{date}} · {{children}} · {{transactions}}",
+    "childrenCount_one": "{{count}} criança",
+    "childrenCount_many": "{{count}} crianças",
+    "childrenCount_other": "{{count}} crianças",
+    "transactionsCount_one": "{{count}} movimento",
+    "transactionsCount_many": "{{count}} movimentos",
+    "transactionsCount_other": "{{count}} movimentos",
+    "confirmPinNote": "O PIN, o aspeto e o idioma também são importados da cópia.",
+    "confirmAction": "Restaurar",
+    "exported": "Cópia de segurança criada com sucesso.",
+    "restored": "Cópia de segurança restaurada com sucesso.",
+    "exportFailed": "Não foi possível criar a cópia de segurança.",
+    "restoreFailed": "Não foi possível restaurar a cópia de segurança.",
+    "readFailed": "Não foi possível ler o ficheiro.",
+    "errors": {
+      "invalid": "O ficheiro selecionado não é uma cópia de segurança válida do KidsWallet.",
+      "unsupportedVersion": "Esta versão de cópia de segurança não é suportada.",
+      "corrupt": "O ficheiro de cópia está danificado."
+    }
+  },
+  "validation": {
+    "nameRequired": "Introduz um nome.",
+    "amountRequired": "Introduz um valor superior a 0.",
+    "amountInvalid": "Introduz um valor válido, p. ex. 2,50.",
+    "amountDecimals": "Introduz no máximo duas casas decimais.",
+    "amountMax": "O valor não pode exceder {{max}}.",
+    "amountNotNegative": "O valor não pode ser negativo.",
+    "dayOfMonth": "Introduz um dia entre 1 e 28.",
+    "pinRequired": "Introduz o PIN.",
+    "pinWrong": "PIN incorreto. Tenta novamente.",
+    "currentPinRequired": "Introduz o PIN atual.",
+    "pinTooShort": "O novo PIN deve ter 4–12 algarismos.",
+    "pinMismatch": "Os novos PIN não coincidem.",
+    "currencyRequired": "Introduz um símbolo de moeda."
+  },
+  "errors": {
+    "saveFailed": "Não foi possível guardar as alterações.",
+    "loadFailed": "Não foi possível carregar os dados.",
+    "storageFull": "O armazenamento do dispositivo está cheio.",
+    "withDetail": "{{message}} ({{detail}})",
+    "nameMissing": "Falta o nome",
+    "nameTooLong": "Nome demasiado longo (máx. {{max}} caracteres)",
+    "invalidColor": "Cor inválida",
+    "invalidStartBalance": "Saldo inicial inválido",
+    "invalidAmountRange": "Valor inválido (0,01–9999,99)",
+    "invalidFrequency": "Frequência inválida",
+    "invalidWeekday": "Dia da semana inválido (0–6)",
+    "invalidDay": "Dia inválido (1–28)",
+    "invalidTarget": "Valor do objetivo inválido",
+    "invalidName": "Nome inválido",
+    "invalidAmount": "Valor inválido",
+    "amountTooLarge": "Valor demasiado alto",
+    "pinMissing": "Falta o PIN",
+    "childNotFound": "Criança não encontrada",
+    "ruleNotFound": "Regra não encontrada",
+    "goalNotFound": "Objetivo de poupança não encontrado",
+    "notEnoughBalance": "Saldo insuficiente",
+    "invalidCurrency": "Moeda inválida",
+    "currentPinMissing": "Falta o PIN atual",
+    "currentPinWrong": "O PIN atual está incorreto",
+    "pinLength": "O PIN deve ter 4–12 algarismos",
+    "actionFailed": "Não foi possível executar a ação.",
+    "pinAlreadyEnabled": "A proteção por PIN já está ativa",
+    "pinNotEnabled": "A proteção por PIN não está ativa"
+  },
+  "help": {
+    "close": "Percebi",
+    "buttonLabel": "Para que serve «{{title}}»?",
+    "home": {
+      "title": "Visão geral",
+      "paragraphs": [
+        "A visão geral mostra todas as crianças e o respetivo saldo atual num relance.",
+        "Os objetivos de poupança ativos aparecem diretamente no cartão, para que vejas o progresso de cada criança.",
+        "Daqui chegas à conta da criança com um toque."
+      ]
+    },
+    "wallet": {
+      "title": "Conta da criança",
+      "paragraphs": [
+        "A conta da criança mostra a mesada disponível de momento.",
+        "As receitas aumentam o saldo e as despesas diminuem-no. Todos os movimentos ficam registados, para que se perceba sempre como o saldo evoluiu.",
+        "A conta da criança é o centro da app e reúne num só lugar todas as informações importantes de cada criança."
+      ]
+    },
+    "allowances": {
+      "title": "Regras de mesada",
+      "paragraphs": [
+        "As regras de mesada fazem depósitos regulares de forma automática.",
+        "Assim, não precisas de te lembrar de quando pagar a mesada. O saldo aumenta automaticamente na data escolhida.",
+        "As regras são ideais para mesadas recorrentes e mantêm o saldo sempre atualizado."
+      ]
+    },
+    "goals": {
+      "title": "Objetivos de poupança",
+      "paragraphs": [
+        "Os objetivos de poupança tornam visíveis os desejos maiores.",
+        "As crianças veem não só o saldo, mas também quanto falta para o objeto que desejam.",
+        "O progresso é calculado automaticamente a partir do saldo atual e cresce a cada depósito."
+      ]
+    },
+    "activity": {
+      "title": "Atividade",
+      "paragraphs": [
+        "A atividade resume as alterações mais importantes dos últimos tempos.",
+        "Assim percebes rapidamente se o saldo subiu ou desceu recentemente, sem teres de ler todo o histórico de movimentos.",
+        "Este resumo dá uma visão rápida da evolução atual."
+      ]
+    },
+    "transactions": {
+      "title": "Movimentos",
+      "paragraphs": [
+        "Os movimentos registam cada alteração do saldo.",
+        "Formam o histórico da conta e mostram com transparência quando foi adicionado ou gasto dinheiro.",
+        "Assim, as alterações podem ser verificadas a qualquer momento."
+      ]
+    },
+    "earn": {
+      "title": "Receitas",
+      "paragraphs": [
+        "As receitas aumentam o saldo disponível de uma criança.",
+        "Servem, por exemplo, para mesadas, presentes, recompensas ou outros valores extra.",
+        "Cada receita fica automaticamente registada no histórico."
+      ]
+    },
+    "spend": {
+      "title": "Despesas",
+      "paragraphs": [
+        "As despesas reduzem o saldo disponível.",
+        "Usam-se quando uma criança paga algo com a sua mesada ou quando compra um objeto desejado.",
+        "Assim, o histórico mantém-se sempre claro."
+      ]
+    },
+    "admin": {
+      "title": "Gestão",
+      "paragraphs": [
+        "A gestão contém definições da app raramente usadas.",
+        "Enquanto o uso diário acontece diretamente na conta da criança, aqui encontras funções gerais como a gestão de crianças, as definições do PIN, as opções de aspeto e a cópia de segurança.",
+        "A gestão serve para organizar a app e não para o dia a dia das mesadas."
+      ]
+    },
+    "children": {
+      "title": "Crianças",
+      "paragraphs": [
+        "Aqui são geridas todas as crianças existentes.",
+        "Podes adicionar novas crianças e remover as existentes.",
+        "O uso propriamente dito faz-se depois diretamente na conta de cada criança."
+      ]
+    },
+    "settings": {
+      "title": "Definições",
+      "paragraphs": [
+        "As definições contêm opções gerais da app.",
+        "Incluem a proteção opcional por PIN e outras configurações básicas.",
+        "As alterações aplicam-se a toda a app."
+      ]
+    },
+    "appearance": {
+      "title": "Aspeto",
+      "paragraphs": [
+        "O aspeto define a aparência da app.",
+        "As cores, o tema e o idioma podem ser ajustados às tuas preferências, sem alterar as funções da app.",
+        "As definições aplicam-se a toda a interface."
+      ]
+    },
+    "currency": {
+      "title": "Símbolo da moeda",
+      "paragraphs": [
+        "O símbolo da moeda aparece em todos os locais onde são mostrados valores.",
+        "Assim, saldos, movimentos e objetivos de poupança correspondem à moeda com que a tua família realmente poupa.",
+        "Os valores em si não mudam – muda apenas a forma como são apresentados."
+      ]
+    },
+    "pin": {
+      "title": "PIN",
+      "paragraphs": [
+        "A proteção por PIN é opcional. Quando está ativa, a app pede o PIN antes de alterações a saldos, crianças ou regras de mesada e bloqueia a gestão.",
+        "As crianças podem ver a sua conta a qualquer momento, mas com a proteção por PIN não podem registar valores, alterar regras nem eliminar crianças.",
+        "Sem proteção por PIN, estas ações são executadas diretamente. As confirmações ao eliminar ou restaurar mantêm-se."
+      ]
+    },
+    "theme": {
+      "title": "Esquema de cores",
+      "paragraphs": [
+        "O esquema de cores define se a app é apresentada em modo claro ou escuro.",
+        "«Sistema» segue automaticamente a definição do teu dispositivo e muda com ela, por exemplo para o modo escuro à noite.",
+        "«Claro» e «Escuro» fixam a apresentação independentemente do dispositivo."
+      ]
+    },
+    "accentColor": {
+      "title": "Cor de destaque",
+      "paragraphs": [
+        "A cor de destaque dá à app o seu carácter pessoal.",
+        "Realça botões importantes e o progresso, sem alterar as cores das crianças."
+      ]
+    },
+    "language": {
+      "title": "Idioma",
+      "paragraphs": [
+        "O idioma define em que língua são mostrados todos os textos da app.",
+        "Por predefinição, é usado o idioma do dispositivo. Uma escolha manual tem prioridade e fica guardada.",
+        "Os teus dados, como nomes, descrições e objetivos de poupança, não mudam ao trocar de idioma."
+      ]
+    },
+    "backup": {
+      "title": "Cópia de segurança",
+      "paragraphs": [
+        "A cópia de segurança protege crianças, movimentos, objetivos de poupança e regras contra perdas.",
+        "Todos os dados ficam apenas neste dispositivo. Com uma cópia de segurança, podem ser totalmente recuperados após uma troca de dispositivo, uma reinstalação ou uma eliminação acidental.",
+        "O mais seguro é guardar o ficheiro fora do dispositivo, por exemplo num serviço de armazenamento na nuvem ou no computador."
+      ]
+    }
+  },
+  "navigation": {
+    "home": "Início",
+    "wallet": "Carteira",
+    "goals": "Objetivos de poupança",
+    "transactions": "Todos os movimentos",
+    "allowances": "Regras de mesada",
+    "management": "Gestão",
+    "children": "Crianças",
+    "settings": "Definições",
+    "appearance": "Aspeto",
+    "backup": "Cópia de segurança",
+    "back": "Voltar",
+    "openMenu": "Abrir menu",
+    "closeMenu": "Fechar menu",
+    "mainMenu": "Menu principal",
+    "helpDefault": "Informações sobre esta secção"
+  },
+  "appearance": {
+    "themeTitle": "Esquema de cores",
+    "instantHint": "Aplicado e guardado de imediato.",
+    "accentTitle": "Cor de destaque",
+    "accentSubtitle": "A cor de destaque é usada em botões, ícones e barras de progresso em toda a app.",
+    "presetsLabel": "Sugestões de cores",
+    "colors": {
+      "purple": "Roxo",
+      "violet": "Violeta",
+      "pink": "Rosa",
+      "coral": "Coral",
+      "orange": "Laranja",
+      "green": "Verde",
+      "blue": "Azul",
+      "grey": "Cinzento"
+    },
+    "customColor": "Outra cor …",
+    "colorPickerLabel": "Seletor de cor",
+    "preview": "Pré-visualização",
+    "previewButton": "Botão de exemplo",
+    "previewBadge": "Etiqueta",
+    "languageTitle": "Idioma",
+    "languageSaved": "Idioma guardado.",
+    "themes": {
+      "system": "Sistema",
+      "light": "Claro",
+      "dark": "Escuro"
+    },
+    "themeSystemHint": "Sistema usa automaticamente a definição de visualização do teu dispositivo."
+  },
+  "symbols": {
+    "categories": {
+      "spielzeug": "Brinquedos",
+      "forschen": "Explorar e descobrir",
+      "medien": "Media e saber",
+      "freizeit": "Lazer e hobbies",
+      "allgemein": "Desejos e geral"
+    },
+    "items": {
+      "blocks": {
+        "name": "Blocos de construção",
+        "keywords": "construir, lego, bloco, blocos, peças, duplo"
+      },
+      "teddy": {
+        "name": "Peluche",
+        "keywords": "urso, ursinho, peluche, pelúcia, boneco, bicho de pelúcia"
+      },
+      "puzzle": {
+        "name": "Puzzle",
+        "keywords": "quebra-cabeça, peça, enigma, jogo de encaixe"
+      },
+      "car": {
+        "name": "Carrinho",
+        "keywords": "carro, carro de corrida, miniatura, veículo, telecomandado, controle remoto"
+      },
+      "gamepad": {
+        "name": "Consola de jogos",
+        "keywords": "consola, console, videojogo, videogame, comando, controle, jogar, gaming, switch, playstation"
+      },
+      "robot": {
+        "name": "Robô",
+        "keywords": "robot, tecnologia, programar, programação"
+      },
+      "kite": {
+        "name": "Papagaio",
+        "keywords": "papagaio de papel, pipa, vento, lançar"
+      },
+      "dice": {
+        "name": "Jogo de tabuleiro",
+        "keywords": "dado, dados, tabuleiro, jogo, jogo de cartas"
+      },
+      "microscope": {
+        "name": "Microscópio",
+        "keywords": "experiência, experimento, laboratório, ciência, investigação, células"
+      },
+      "flask": {
+        "name": "Experiência",
+        "keywords": "kit de experiências, química, laboratório, tubo de ensaio, frasco, ciência"
+      },
+      "gem": {
+        "name": "Cristal",
+        "keywords": "experiência, pedra preciosa, diamante, mineral, pedra, cristais, joia"
+      },
+      "fossil": {
+        "name": "Fóssil",
+        "keywords": "dino, dinossauro, amonite, fossilizado, escavação, pré-história"
+      },
+      "magnifier": {
+        "name": "Lupa",
+        "keywords": "lente, detetive, procurar, descobrir"
+      },
+      "volcano": {
+        "name": "Vulcão",
+        "keywords": "erupção, lava, montanha, geologia"
+      },
+      "telescope": {
+        "name": "Telescópio",
+        "keywords": "luneta, estrelas, astronomia, observatório, céu"
+      },
+      "planet": {
+        "name": "Planeta",
+        "keywords": "espaço, cosmos, saturno, universo, galáxia"
+      },
+      "compass": {
+        "name": "Bússola",
+        "keywords": "aventura, caminhada, orientação, expedição"
+      },
+      "leaf": {
+        "name": "Natureza",
+        "keywords": "planta, folha, jardim, ambiente, flor"
+      },
+      "book": {
+        "name": "Livro",
+        "keywords": "ler, leitura, romance, banda desenhada, gibi, história, livros"
+      },
+      "magazine": {
+        "name": "Revista",
+        "keywords": "revista, caderno, jornal, banda desenhada, gibi, assinatura"
+      },
+      "music": {
+        "name": "Música",
+        "keywords": "canção, instrumento, música, concerto, notas"
+      },
+      "headphones": {
+        "name": "Auscultadores",
+        "keywords": "fones, fones de ouvido, audiolivro, ouvir música, earbuds, toniebox, ouvir"
+      },
+      "camera": {
+        "name": "Câmara",
+        "keywords": "câmera, foto, máquina fotográfica, fotografar, vídeo"
+      },
+      "film": {
+        "name": "Filme",
+        "keywords": "cinema, dvd, série, vídeo, movie"
+      },
+      "phone": {
+        "name": "Telemóvel",
+        "keywords": "smartphone, telefone, celular, iphone"
+      },
+      "tablet": {
+        "name": "Tablet",
+        "keywords": "ipad, leitor, ebook, e-reader"
+      },
+      "laptop": {
+        "name": "Computador",
+        "keywords": "portátil, laptop, pc, notebook"
+      },
+      "bike": {
+        "name": "Bicicleta",
+        "keywords": "bici, bike, pedalar, ciclismo, btt, mountain bike"
+      },
+      "ball": {
+        "name": "Bola",
+        "keywords": "futebol, desporto, esporte, basquetebol, basquete, jogar, clube"
+      },
+      "skateboard": {
+        "name": "Skate",
+        "keywords": "skateboard, andar de skate, prancha, longboard"
+      },
+      "rocket": {
+        "name": "Foguetão",
+        "keywords": "foguete, espaço, viagem espacial, astronauta, voo"
+      },
+      "plane": {
+        "name": "Viagem",
+        "keywords": "avião, férias, voar, passeio, excursão"
+      },
+      "house": {
+        "name": "Casa",
+        "keywords": "casinha, casa na árvore, casa de bonecas, lar, quarto"
+      },
+      "tent": {
+        "name": "Tenda",
+        "keywords": "barraca, campismo, acampar, camping, aventura, ar livre"
+      },
+      "palette": {
+        "name": "Pintar",
+        "keywords": "paleta, trabalhos manuais, arte, cores, desenhar, criativo"
+      },
+      "ticket": {
+        "name": "Passeio",
+        "keywords": "bilhete, ingresso, entrada, parque de diversões, zoo, jardim zoológico, cinema, concerto"
+      },
+      "paw": {
+        "name": "Animal de estimação",
+        "keywords": "animal, cão, cachorro, gato, pata, hamster, porquinho-da-índia, ração"
+      },
+      "gift": {
+        "name": "Presente",
+        "keywords": "aniversário, natal, surpresa, brinquedo, prenda"
+      },
+      "wish": {
+        "name": "Desejo",
+        "keywords": "sonho, magia, brilho, especial, mágico"
+      },
+      "star": {
+        "name": "Estrela",
+        "keywords": "favorito, preferido, especial"
+      },
+      "heart": {
+        "name": "Coração",
+        "keywords": "amor, desejo do coração, família, donativo, doação"
+      },
+      "crown": {
+        "name": "Coroa",
+        "keywords": "rei, princesa, disfarce, fantasia, máscara"
+      },
+      "trophy": {
+        "name": "Taça",
+        "keywords": "troféu, vitória, ganhar, competição, torneio, campeão"
+      },
+      "piggy": {
+        "name": "Mealheiro",
+        "keywords": "cofrinho, poupar, dinheiro, poupança, reserva, economizar"
+      }
+    },
+    "avatarPickerLabel": "Escolher avatar",
+    "avatars": {
+      "star": "Estrela",
+      "heart": "Coração",
+      "zap": "Relâmpago",
+      "crown": "Coroa",
+      "trophy": "Taça",
+      "rocket": "Foguetão",
+      "gem": "Pedra preciosa",
+      "flame": "Chama",
+      "sun": "Sol",
+      "moon": "Lua",
+      "music": "Música",
+      "gift": "Presente",
+      "shield": "Escudo",
+      "compass": "Bússola",
+      "anchor": "Âncora",
+      "cloud": "Nuvem",
+      "leaf": "Folha",
+      "snowflake": "Floco de neve",
+      "smile": "Sorriso",
+      "target": "Alvo"
+    },
+    "colorPickerLabel": "Escolher cor",
+    "colors": {
+      "purple": "Roxo",
+      "coral": "Coral",
+      "green": "Verde",
+      "orange": "Laranja",
+      "pink": "Rosa",
+      "blue": "Azul",
+      "lightGreen": "Verde-claro",
+      "violet": "Violeta"
+    }
+  },
+  "home": {
+    "label": "Início",
+    "childrenLabel": "Crianças",
+    "cardLabel": "{{name}}, saldo: {{balance}}",
+    "cardLabelWithGoal": "{{name}}, saldo: {{balance}}, {{goal}}"
+  }
+}

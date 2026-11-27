@@ -1,0 +1,272 @@
+/* variables.css – Alle Design-Tokens als CSS Custom Properties */
+:root {
+  /* Native Bedienelemente (Scrollbars, Formularfelder) passend zum Farbschema */
+  color-scheme: light;
+
+  /* ── Kind-Farbpaletten (8 Stück, Index 0–7) ──────────────────────────────── */
+  --palette-0-primary: #6c63ff; --palette-0-light: #ede9ff; /* Lila */
+  --palette-1-primary: #ff6b6b; --palette-1-light: #fff0f0; /* Rot/Koralle */
+  --palette-2-primary: #43aa8b; --palette-2-light: #e8f8f1; /* Grün */
+  --palette-3-primary: #f9a826; --palette-3-light: #fff8e1; /* Orange/Gelb */
+  --palette-4-primary: #ef476f; --palette-4-light: #fce4ec; /* Pink */
+  --palette-5-primary: #118ab2; --palette-5-light: #e1f5fe; /* Blau */
+  --palette-6-primary: #8ac926; --palette-6-light: #f1f8e9; /* Hellgrün */
+  --palette-7-primary: #9b5de5; --palette-7-light: #f3e5ff; /* Violett */
+
+  /* Aktives Kind-Farbschema (wird per JS auf :root gesetzt) */
+  --child-primary: #6c63ff;
+  --child-light: #ede9ff;
+
+  /* ── Barrierefreie Farbableitungen (WCAG AA) ─────────────────────────────────
+     Werden per JS aus der Basisfarbe berechnet (utils.js → applyColorTokens).
+     Die Werte hier sind die Fallbacks für das Standard-Lila.
+     *-text     : Farbe als Schrift/Icon auf Flächen (≥ 4.5:1)
+     *-fill     : Füllfarbe für Buttons, *-on-fill: Schrift darauf (≥ 4.5:1)        */
+  --child-text-l: #5a52d4;   --child-text-d: #b0abff;
+  --child-fill-l: #6960f7;   --child-on-fill-l: #ffffff;
+  --child-fill-d: #847cff;   --child-on-fill-d: #22272e;
+  --child-hero-ink-l: #000000;
+  --child-hero-start-l: #7f77ff; --child-hero-end-l: #675eff;
+  --child-hero-start-d: #6058e1; --child-hero-end-d: #3f35db;
+  --accent-text-l: #5a52d4;  --accent-text-d: #b0abff;
+  --accent-fill-l: #6960f7;  --accent-on-fill-l: #ffffff;
+  --accent-fill-d: #847cff;  --accent-on-fill-d: #22272e;
+
+  --child-text:    var(--child-text-l);
+  --child-fill:    var(--child-fill-l);
+  --child-on-fill: var(--child-on-fill-l);
+  --accent-text:    var(--accent-text-l);
+  --accent-fill:    var(--accent-fill-l);
+  --accent-on-fill: var(--accent-on-fill-l);
+  /* Kopfbereich der App (Sidenav) nutzt in beiden Themes die helle Füllvariante */
+  --accent-header-fill:    var(--accent-fill-l);
+  --accent-header-on-fill: var(--accent-on-fill-l);
+
+  /* Hero-Karte: subtiler tonaler Verlauf (Kinderfarbe → leicht dunkler; utils.js → heroGradient) */
+  --hero-start: var(--child-hero-start-l);
+  --hero-end:   var(--child-hero-end-l);
+  --hero-ink:   var(--child-hero-ink-l);
+  /* Weiches Licht oben links, leicht dunkler zum Rand – Stopps setzt das jeweilige Element */
+  --hero-shape: 130% 110% at 15% 0%;
+
+  /* ── Systemfarben ─────────────────────────────────────────────────────────── */
+  --color-bg: #ffffff;
+  --color-surface: #f4f6fb;
+  --color-surface-raised: #ffffff;
+  --color-border: #e2e8f0;
+  --color-border-focus: var(--child-primary);
+  --color-text: #4a5058;
+  --color-text-muted: #5a636d;
+  --color-text-inverse: #ffffff;
+  /* Select-Pfeil: Strichfarbe = --color-text (Data-URLs können keine CSS-Variablen auflösen) */
+  --select-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%234a5058' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+
+  /* Statusfarben: Basis = Flächen/Balken/Buttons, *-text = Schrift & Icons */
+  --color-success: #2f855a;
+  --color-success-text: #276749;
+  --color-success-light: #f0fff4;
+  --color-danger: #c53030;
+  --color-danger-text: #b02a2a;
+  --color-danger-light: #fff5f5;
+
+  /* Hauptaktionen „Einnahme“ / „Ausgabe“: gefüllte Buttons in Statusfarbe */
+  --action-earn-bg:        var(--color-success);
+  --action-earn-bg-hover:  #276749;
+  --action-earn-bg-active: #22543d;
+  --action-earn-ink:       #ffffff;
+  --action-spend-bg:        var(--color-danger);
+  --action-spend-bg-hover:  #9b2c2c;
+  --action-spend-bg-active: #822727;
+  --action-spend-ink:       #ffffff;
+  --action-focus-ring:      var(--color-text);
+
+  --color-warning: #b7791f;
+  --color-warning-text: #8a5214;
+  --color-warning-light: #fffff0;
+  --color-info: #2b6cb0;
+  --color-info-text: #245a94;
+  --color-info-light: #ebf8ff;
+
+  /* ── Spacing (8pt-System) ─────────────────────────────────────────────────── */
+  --space-xs:  0.25rem;  /*  4px */
+  --space-sm:  0.5rem;   /*  8px */
+  --space-ms:  0.75rem;  /* 12px */
+  --space-md:  1rem;     /* 16px */
+  --space-lg:  1.5rem;   /* 24px */
+  --space-xl:  2rem;     /* 32px */
+  --space-2xl: 3rem;     /* 48px */
+
+  /* ── Typografie (Fluid mit clamp) ─────────────────────────────────────────── */
+  --text-xs:   clamp(0.7rem,  1.2vw, 0.75rem);
+  --text-sm:   clamp(0.8rem,  1.5vw, 0.875rem);
+  --text-base: clamp(0.95rem, 2vw,   1rem);
+  --text-lg:   clamp(1.1rem,  2.5vw, 1.25rem);
+  --text-xl:   clamp(1.3rem,  3vw,   1.5rem);
+  --text-2xl:  clamp(1.6rem,  4vw,   2rem);
+  --text-3xl:  clamp(2rem,    5vw,   2.5rem);
+
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-bold:   700;
+  --line-height: 1.5;
+  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+  /* ── Border-Radius ────────────────────────────────────────────────────────── */
+  --radius-sm:   8px;
+  --radius-md:   12px;
+  --radius-lg:   20px;
+  --radius-xl:   28px;
+  --radius-full: 9999px;
+
+  /* ── Schatten ─────────────────────────────────────────────────────────────── */
+  --shadow-sm:  0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-md:  0 4px 12px rgba(0,0,0,0.10), 0 2px 4px rgba(0,0,0,0.06);
+  --shadow-lg:  0 8px 24px rgba(0,0,0,0.12), 0 4px 8px rgba(0,0,0,0.08);
+  --shadow-xl:  0 16px 48px rgba(0,0,0,0.15);
+
+  /* ── Übergänge ────────────────────────────────────────────────────────────── */
+  --transition-fast:   150ms ease;
+  --transition:        200ms ease;
+  --transition-slow:   350ms ease;
+
+  /* Bottom-Sheet: weich auslaufend wie bei nativen Sheets */
+  --sheet-duration-in:  420ms;
+  --sheet-duration-out: 260ms;
+  --sheet-ease-in:      cubic-bezier(0.32, 0.72, 0, 1);
+  --sheet-ease-out:     cubic-bezier(0.4, 0, 1, 1);
+
+  /* ── Touch ────────────────────────────────────────────────────────────────── */
+  --touch-min: 48px;
+
+  /* ── Z-Index-Skala ────────────────────────────────────────────────────────── */
+  --z-base:    0;
+  --z-sticky:  10;
+  --z-overlay: 50;
+  --z-modal:   100;
+  --z-toast:   200;
+
+  /* ── App-Primärfarbe ──────────────────────────────────────────────────────── */
+  --color-primary: #6c63ff;
+
+  /* ── Responsive Layout-Tokens ─────────────────────────────────────────────── */
+  /* Komponenten verwenden nur diese Tokens; die Breakpoints unten passen sie an. */
+  --app-padding:       var(--space-lg);
+  --section-gap:       var(--space-lg);
+  --card-padding:      var(--space-lg);
+  --modal-padding:     var(--space-xl);
+  --list-item-padding: var(--space-md);
+  --list-item-gap:     var(--space-md);
+  --touch-sm:          36px;   /* Mindesthöhe kleiner Buttons */
+  --touch-target:      44px;   /* Mindest-Trefferfläche für Icon- und Kopf-Aktionen */
+  --card-title-size:   var(--text-xl);
+
+  --hero-padding:      var(--space-xl);
+
+  --quick-action-direction: column;
+  --quick-action-padding:   var(--space-lg);
+
+  --actions-direction: row;    /* Button-Gruppen (z. B. in Empty States) */
+  --actions-align:     center;
+
+  /* Kinder-Übersicht: mehrspaltiges Grid, auf Smartphones einspaltig */
+  --children-columns: repeat(auto-fill, minmax(200px, 1fr));
+  --children-gap:     var(--space-lg);
+}
+
+/* ══ Breakpoints (zentral) ═══════════════════════════════════════════════════
+   tablet-sm: max-width 600px  – kleine Tablets / große Smartphones quer
+   phone:     max-width 480px  – Smartphones (ca. 360–430px)
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 600px) {
+  :root {
+    --app-padding: var(--space-md);
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --section-gap:       var(--space-md);
+    --card-padding:      var(--space-md);
+    --modal-padding:     var(--space-lg);
+    --list-item-padding: var(--space-ms);
+    --list-item-gap:     var(--space-ms);
+    --touch-sm:          44px;
+    --card-title-size:   var(--text-lg);
+
+    --hero-padding:      var(--space-lg) var(--space-md);
+
+    --quick-action-direction: row;
+    --quick-action-padding:   var(--space-sm) var(--space-md);
+
+    --actions-direction: column;
+    --actions-align:     stretch;
+
+    --children-columns: 1fr;
+    --children-gap:     var(--space-md);
+  }
+}
+
+/* ── Dunkles Farbschema (gedimmt) ────────────────────────────────────────────── */
+/* Gilt bei Auswahl „Dunkel“. Für „System“ erzeugt vite.config.js automatisch dieselben Regeln
+   in @media (prefers-color-scheme: dark) – dunkle Styles daher immer über [data-theme="dark"] schreiben. */
+[data-theme="dark"] {
+  color-scheme: dark;
+  --color-bg:             #22272e;
+  --color-surface:        #2d333b;
+  --color-surface-raised: #373e47;
+  --color-border:         #444c56;
+  --color-text:           #edf2f7;
+  --color-text-muted:     #a3b1bf;
+  --color-text-inverse:   #22272e;
+  --select-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23edf2f7' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+
+  /* Helle Pastellflächen der Kinderpaletten würden im Dark Mode hellen Text verschlucken */
+  --palette-0-light: color-mix(in srgb, var(--palette-0-primary) 15%, transparent);
+  --palette-1-light: color-mix(in srgb, var(--palette-1-primary) 15%, transparent);
+  --palette-2-light: color-mix(in srgb, var(--palette-2-primary) 15%, transparent);
+  --palette-3-light: color-mix(in srgb, var(--palette-3-primary) 15%, transparent);
+  --palette-4-light: color-mix(in srgb, var(--palette-4-primary) 15%, transparent);
+  --palette-5-light: color-mix(in srgb, var(--palette-5-primary) 15%, transparent);
+  --palette-6-light: color-mix(in srgb, var(--palette-6-primary) 15%, transparent);
+  --palette-7-light: color-mix(in srgb, var(--palette-7-primary) 15%, transparent);
+
+  --child-text:    var(--child-text-d);
+  --child-fill:    var(--child-fill-d);
+  --child-on-fill: var(--child-on-fill-d);
+  --accent-text:    var(--accent-text-d);
+  --accent-fill:    var(--accent-fill-d);
+  --accent-on-fill: var(--accent-on-fill-d);
+
+  --hero-start: var(--child-hero-start-d);
+  --hero-end:   var(--child-hero-end-d);
+  --hero-ink:   var(--color-text);
+
+  --color-success: #48bb78;
+  --color-success-text: #68d391;
+  --color-danger: #fc8181;
+  --color-danger-text: #fea3a3;
+  --color-warning: #f6ad55;
+  --color-warning-text: #f6ad55;
+  --color-info: #63b3ed;
+  --color-info-text: #90cdf4;
+
+  --color-success-light: #1e3a2a;
+  --color-danger-light:  #3a1e1e;
+  --color-warning-light: #3a341e;
+  --color-info-light:    #1e2e3a;
+
+  /* Hauptaktionen: helle Fläche, dunkle Schrift (weiß wäre auf #48bb78 zu kontrastarm) */
+  --action-earn-bg:        var(--color-success);
+  --action-earn-bg-hover:  #68d391;
+  --action-earn-bg-active: #38a169;
+  --action-earn-ink:       #0f2a1a;
+  --action-spend-bg:        var(--color-danger);
+  --action-spend-bg-hover:  #fea3a3;
+  --action-spend-bg-active: #f56565;
+  --action-spend-ink:       #3b0d0d;
+  --action-focus-ring:      var(--color-text);
+
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.25);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.30), 0 2px 4px rgba(0,0,0,0.20);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.40), 0 4px 8px rgba(0,0,0,0.25);
+}

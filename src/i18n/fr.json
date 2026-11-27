@@ -1,0 +1,842 @@
+{
+  "common": {
+    "appName": "KidsWallet",
+    "cancel": "Annuler",
+    "save": "Enregistrer",
+    "create": "Créer",
+    "record": "Enregistrer",
+    "confirm": "Confirmer",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "close": "Fermer",
+    "optional": "facultatif",
+    "retry": "Réessayer",
+    "tryAgain": "Réessayer",
+    "toHome": "Vers l'accueil",
+    "reload": "Recharger",
+    "loading": "Chargement …",
+    "appDescription": "Gestion de l'argent de poche des enfants",
+    "hints": "Infos",
+    "manage": "Gérer"
+  },
+  "format": {
+    "currency": "{{amount}} {{currency}}",
+    "today": "Aujourd'hui",
+    "yesterday": "Hier",
+    "daysAgo_one": "Il y a {{count}} jour",
+    "daysAgo_many": "Il y a {{count}} jours",
+    "daysAgo_other": "Il y a {{count}} jours",
+    "relToday": "aujourd'hui",
+    "relTomorrow": "demain",
+    "relInDays_one": "dans {{count}} jour",
+    "relInDays_many": "dans {{count}} jours",
+    "relInDays_other": "dans {{count}} jours",
+    "dateTime": "{{date}} à {{time}}",
+    "percent": "{{value}} %"
+  },
+  "empty": {
+    "childNotFound": {
+      "title": "Enfant introuvable",
+      "text": "Cet enfant n'existe pas (ou plus). Choisis un autre enfant sur la page d'accueil."
+    },
+    "loadError": {
+      "title": "Impossible de charger la page",
+      "text": "Une erreur s'est produite à l'ouverture de cette page. Réessaie."
+    },
+    "offline": {
+      "title": "Données inaccessibles",
+      "text": "Les données n'ont pas pu être chargées. Recharge l'appli."
+    }
+  },
+  "child": {
+    "emptyTitle": "Aucun enfant pour l'instant",
+    "emptyText": "Crée le premier enfant pour gérer l'argent de poche, les objectifs d'épargne et les opérations.",
+    "create": "Créer un enfant",
+    "titleCreate": "Créer un enfant",
+    "titleEdit": "Modifier {{name}}",
+    "subtitleCreate": "Crée un compte pour un autre enfant.",
+    "subtitleEdit": "Modifier le nom, le symbole ou la couleur.",
+    "created": "{{name}} a été créé·e.",
+    "createdRuleFailed": "{{name}} a été créé·e, mais la règle d'argent de poche n'a pas pu être enregistrée.",
+    "updated": "Modifications enregistrées.",
+    "deleted": "{{name}} a été supprimé·e.",
+    "saveFailed": "Impossible d'enregistrer l'enfant.",
+    "deleteFailed": "Impossible de supprimer l'enfant.",
+    "deleteTitle": "Supprimer l'enfant ?",
+    "deleteMessage": "<strong>{{name}}</strong> sera supprimé·e définitivement.",
+    "deleteWarning": "Toutes les opérations, règles d'argent de poche et objectifs d'épargne seront également supprimés.",
+    "nameLabel": "Prénom",
+    "namePlaceholder": "ex. Mia",
+    "startBalanceLabel": "Solde initial ({{currency}})",
+    "startBalanceHint": "Crédité sur le compte lors de la création.",
+    "avatarLabel": "Choisir un avatar",
+    "colorLabel": "Choisir une couleur",
+    "allowanceSetup": "Configurer l'argent de poche",
+    "allowanceAmountPlaceholder": "ex. 2,00",
+    "allowanceEmptyHint": "Laisse vide si tu ne veux pas configurer d'argent de poche."
+  },
+  "allowance": {
+    "title": "Règle d'argent de poche",
+    "emptyTitle": "Aucune règle pour l'instant",
+    "emptyText": "Aucune règle d'argent de poche n'a encore été configurée pour cet enfant.",
+    "create": "Créer une règle",
+    "nextPayout": "Prochain versement : {{date}} ({{relative}})",
+    "payoutToday": "Argent de poche aujourd'hui",
+    "payoutTomorrow": "Argent de poche demain",
+    "payoutPaidToday": "L'argent de poche a été versé aujourd'hui",
+    "paused": "Argent de poche en pause – aucun versement pour le moment.",
+    "pausedShort": "Argent de poche en pause",
+    "noRule": "Aucune règle d'argent de poche configurée",
+    "scheduleWeekly": "Chaque {{day}}",
+    "scheduleMonthly": "Le {{day}} de chaque mois",
+    "titleCreate": "Créer une règle d'argent de poche",
+    "titleEdit": "Modifier la règle d'argent de poche",
+    "subtitle": "{{name}} reçoit le montant automatiquement et régulièrement.",
+    "frequencyLabel": "Fréquence",
+    "weekdayLabel": "Jour de la semaine",
+    "monthDayLabel": "Jour du mois",
+    "monthDayHint": "Jour 1 à 28, pour que chaque mois soit couvert.",
+    "created": "Règle d'argent de poche créée.",
+    "updated": "Règle d'argent de poche mise à jour.",
+    "deleted": "Règle d'argent de poche supprimée.",
+    "activated": "Règle d'argent de poche activée.",
+    "pausedToast": "Règle d'argent de poche mise en pause.",
+    "saveFailed": "Impossible d'enregistrer la règle d'argent de poche.",
+    "deleteFailed": "Impossible de supprimer la règle d'argent de poche.",
+    "toggleFailed": "Impossible de modifier l'état de la règle d'argent de poche.",
+    "frequencyWeekly": "Hebdomadaire",
+    "frequencyMonthly": "Mensuel",
+    "manage": "Gérer les règles d'argent de poche",
+    "listTitle": "Règles d'argent de poche",
+    "toolbarTitle": "Argent de poche – {{name}}",
+    "pausedBadge": "En pause",
+    "autoPayoutNote": "L'argent de poche est crédité automatiquement à l'ouverture de l'appli – les versements manqués sont rattrapés.",
+    "lastExecuted": "Dernier : {{date}}",
+    "activeToggle": "Règle d'argent de poche active",
+    "deleteLabel": "Supprimer la règle d'argent de poche",
+    "deleteTitle": "Supprimer la règle d'argent de poche ?",
+    "deleteMessage": "La règle ({{amount}}, {{schedule}}) sera supprimée définitivement."
+  },
+  "goal": {
+    "title": "Objectifs d'épargne",
+    "emptyTitle": "Aucun objectif d'épargne",
+    "emptyText": "Aucun objectif d'épargne n'a encore été créé pour cet enfant.",
+    "allDoneTitle": "Tous les objectifs achetés",
+    "allDoneText": "Tous les objectifs d'épargne ont déjà été achetés. Et si tu en créais un nouveau ?",
+    "create": "Créer un objectif",
+    "reached": "Objectif atteint",
+    "almost": "Presque ! Encore {{rest}} avant l'objectif",
+    "remaining": "Encore {{rest}} avant l'objectif",
+    "reachedNamed": "Objectif « {{name}} » atteint !",
+    "reachedCount_one": "{{count}} objectif d'épargne atteint !",
+    "reachedCount_many": "{{count}} objectifs d'épargne atteints !",
+    "reachedCount_other": "{{count}} objectifs d'épargne atteints !",
+    "firstCreated": "Premier objectif d'épargne créé – continue comme ça !",
+    "saved": "{{saved}} sur {{target}} économisés",
+    "cardSummary": "{{countText}}, {{name}} : {{progress}}",
+    "activeCount_one": "{{count}} objectif d'épargne actif",
+    "activeCount_many": "{{count}} objectifs d'épargne actifs",
+    "activeCount_other": "{{count}} objectifs d'épargne actifs",
+    "titleCreate": "Créer un objectif d'épargne",
+    "titleEdit": "Modifier l'objectif d'épargne",
+    "subtitleCreate": "Pour quoi {{name}} économise-t-il/elle ?",
+    "subtitleEdit": "Modifier le nom, le montant cible ou le symbole.",
+    "nameLabel": "Nom de l'objectif",
+    "namePlaceholder": "ex. Nouveau vélo",
+    "targetLabel": "Montant cible ({{currency}})",
+    "iconLabel": "Symbole",
+    "symbolSearchPlaceholder": "Rechercher un symbole …",
+    "symbolSearchLabel": "Rechercher parmi les symboles",
+    "symbolNoResults": "Aucun symbole correspondant.",
+    "symbolSelected": "Sélectionné : {{name}}",
+    "symbolResults_one": "{{count}} symbole trouvé",
+    "symbolResults_many": "{{count}} symboles trouvés",
+    "symbolResults_other": "{{count}} symboles trouvés",
+    "symbolGroupCount_one": "{{count}} symbole",
+    "symbolGroupCount_many": "{{count}} symboles",
+    "symbolGroupCount_other": "{{count}} symboles",
+    "createdToast": "Objectif d'épargne créé.",
+    "updated": "Objectif d'épargne mis à jour.",
+    "deleted": "Objectif d'épargne supprimé.",
+    "purchased": "Bravo ! {{name}} est à toi maintenant.",
+    "saveFailed": "Impossible d'enregistrer l'objectif d'épargne.",
+    "deleteFailed": "Impossible de supprimer l'objectif d'épargne.",
+    "purchaseFailed": "Impossible d'enregistrer l'achat.",
+    "manage": "Gérer les objectifs d'épargne",
+    "pageLabel": "Objectifs d'épargne de {{name}}",
+    "availableBalance": "Solde disponible",
+    "activeLabel": "Objectifs actifs",
+    "purchasedTitle": "Objectifs achetés",
+    "paid": "{{amount}} payé",
+    "canBuy": "{{amount}} – tu peux l'acheter !",
+    "purchasedBadge": "Acheté",
+    "purchasedBadgeText": "Acheté !",
+    "targetShort": "Objectif : {{amount}}",
+    "progressLabel": "Progression {{name}}",
+    "buy": "Acheter",
+    "buyWithAmount": "Acheter ({{amount}})",
+    "editLabel": "Modifier l'objectif {{name}}",
+    "deleteLabel": "Supprimer l'objectif {{name}}",
+    "purchaseTitle": "Acheter {{name}} ?",
+    "purchaseDeducted": "{{amount}} seront déduits du solde.",
+    "purchaseBalanceAfter": "Solde après achat : {{amount}}",
+    "deleteTitle": "Supprimer l'objectif d'épargne ?",
+    "deleteMessage": "L'objectif d'épargne « {{name}} » sera supprimé définitivement."
+  },
+  "dashboard": {
+    "activityTitle": "Activité",
+    "activityWeek": "Cette semaine",
+    "activityMonth": "Ce mois-ci",
+    "statIncome": "Revenus",
+    "statExpense": "Dépenses",
+    "statNet": "Solde",
+    "activityNoWeek": "Aucune opération cette semaine pour l'instant.",
+    "activityEmpty": "Dès que des opérations sont enregistrées, tu verras ici l'évolution du solde.",
+    "trendWeekUp": "Solde en hausse cette semaine",
+    "trendWeekDown": "Solde en baisse cette semaine",
+    "trendMonthUp": "De l'argent a été épargné ce mois-ci",
+    "weekTransactions_one": "{{count}} opération cette semaine",
+    "weekTransactions_many": "{{count}} opérations cette semaine",
+    "weekTransactions_other": "{{count}} opérations cette semaine"
+  },
+  "transaction": {
+    "recentTitle": "Dernières opérations",
+    "emptyTitle": "Aucune opération",
+    "emptyText": "Aucune opération n'a encore été enregistrée pour cet enfant.",
+    "earnTitle": "Ajouter un revenu",
+    "earnSubtitle": "Sera crédité sur le solde de {{name}}.",
+    "earnPlaceholder": "ex. Cadeau de mamie",
+    "spendTitle": "Ajouter une dépense",
+    "spendSubtitle": "Sera déduit du solde de {{name}}.",
+    "spendPlaceholder": "ex. Glace achetée",
+    "available": "Solde disponible : {{amount}}",
+    "amountLabel": "Montant ({{currency}})",
+    "descriptionLabel": "Description",
+    "earnSaved": "Revenu enregistré : +{{amount}}",
+    "spendSaved": "Dépense enregistrée : −{{amount}}",
+    "bookingFailed": "Impossible d'enregistrer l'opération.",
+    "listLabel": "Opérations",
+    "allowanceWeekly": "Argent de poche ({{day}})",
+    "allowanceMonthly": "Argent de poche (le {{day}} du mois)",
+    "goalPurchase": "Acheté : {{name}}",
+    "kinds": {
+      "earn": {
+        "label": "Revenu",
+        "generic": "Revenu manuel"
+      },
+      "spend": {
+        "label": "Dépense",
+        "generic": "Dépense manuelle"
+      },
+      "allowance": {
+        "label": "Argent de poche",
+        "generic": "Argent de poche"
+      },
+      "initial": {
+        "label": "Solde initial",
+        "generic": "Solde initial"
+      },
+      "goal": {
+        "label": "Objectif d'épargne",
+        "generic": "Objectif d'épargne"
+      },
+      "correction": {
+        "label": "Correction",
+        "generic": "Correction"
+      }
+    },
+    "showAll": "Voir toutes les opérations",
+    "allTitle": "Toutes les opérations",
+    "countFor_one": "{{count}} opération pour {{name}}",
+    "countFor_many": "{{count}} opérations pour {{name}}",
+    "countFor_other": "{{count}} opérations pour {{name}}"
+  },
+  "wallet": {
+    "income": "Revenu",
+    "expense": "Dépense",
+    "label": "Portefeuille de {{name}}",
+    "factsLabel": "Aperçu",
+    "statusLabel": "Infos actuelles",
+    "actionsLabel": "Actions",
+    "allowanceRuleWeekly": "{{amount}} chaque {{day}}",
+    "allowanceRuleMonthly": "{{amount}} le {{day}} de chaque mois"
+  },
+  "dialog": {
+    "discardTitle": "Abandonner les saisies ?",
+    "discardMessage": "Tes saisies n'ont pas encore été enregistrées et seront perdues à la fermeture.",
+    "discardKeep": "Continuer",
+    "discardConfirm": "Abandonner"
+  },
+  "pin": {
+    "title": "Confirmer avec le PIN",
+    "label": "PIN",
+    "hint": "{{reason}} – saisis le PIN pour confirmer.",
+    "required": "PIN requis",
+    "reasons": {
+      "earn": "Enregistrer le revenu",
+      "spend": "Enregistrer la dépense",
+      "childCreate": "Créer un enfant",
+      "childEdit": "Enregistrer les modifications de l'enfant",
+      "ruleCreate": "Créer la règle d'argent de poche",
+      "ruleEdit": "Enregistrer la règle d'argent de poche",
+      "ruleDelete": "Supprimer la règle d'argent de poche",
+      "ruleActivate": "Activer la règle d'argent de poche",
+      "rulePause": "Mettre en pause la règle d'argent de poche"
+    },
+    "changed": "PIN modifié.",
+    "checkFailed": "Impossible de vérifier le PIN.",
+    "changeFailed": "Impossible de modifier le PIN."
+  },
+  "management": {
+    "title": "Gestion",
+    "unlockHint": "Saisis le PIN pour ouvrir la gestion.",
+    "unlock": "Déverrouiller",
+    "lock": "Verrouiller",
+    "intro": "Réglages rarement utilisés. Tu gères les revenus, dépenses, objectifs d'épargne et règles d'argent de poche directement dans le compte de l'enfant.",
+    "unlockLabel": "Déverrouiller la gestion",
+    "childrenDesc": "Créer et supprimer des enfants",
+    "settingsDesc": "Sécurité et devise",
+    "appearanceDesc": "Jeu de couleurs, couleur d’accent et langue",
+    "backupDesc": "Créer et restaurer une sauvegarde",
+    "childrenIntro": "La modification, l'argent de poche et les opérations se font directement dans le portefeuille de l'enfant.",
+    "childBalance": "Solde : {{amount}}",
+    "deleteChildLabel": "Supprimer {{name}}"
+  },
+  "settings": {
+    "currencySaved": "Symbole monétaire enregistré.",
+    "currencySaveFailed": "Impossible d'enregistrer le symbole monétaire.",
+    "accentSaved": "Couleur d'accent enregistrée.",
+    "currencyTitle": "Symbole monétaire",
+    "currencyLabel": "Symbole (3 caractères max.)",
+    "changePin": "Modifier le PIN",
+    "currentPin": "PIN actuel",
+    "newPin": "Nouveau PIN",
+    "newPinHint": "4 à 12 chiffres",
+    "newPinConfirm": "Confirmer le nouveau PIN"
+  },
+  "security": {
+    "title": "Sécurité",
+    "pinProtection": "Protection par PIN",
+    "pinProtectionHint": "Demande le PIN avant les opérations et les modifications des enfants ou des règles d’argent de poche, et verrouille la gestion.",
+    "setPinTitle": "Définir le PIN",
+    "setPinHint": "Le PIN sera désormais demandé avant les modifications importantes et à l’ouverture de la gestion.",
+    "pin": "PIN",
+    "pinConfirm": "Confirmer le PIN",
+    "setPinAction": "Définir le PIN",
+    "enabled": "Protection par PIN activée.",
+    "disabled": "Protection par PIN désactivée.",
+    "enableFailed": "La protection par PIN n’a pas pu être activée.",
+    "disableFailed": "La protection par PIN n’a pas pu être désactivée.",
+    "disableTitle": "Désactiver la protection par PIN",
+    "disableHint": "Saisis le PIN actuel pour désactiver la protection.",
+    "disableAction": "Désactiver",
+    "migrationTitle": "Utiliser la protection par PIN ?",
+    "migrationText": "Jusqu’à présent, le PIN par défaut 1234 était défini. La protection par PIN est désormais facultative.",
+    "migrationChoice": "Avec la protection par PIN, tu définis ton propre PIN. Sans elle, les opérations et les modifications sont enregistrées directement. Tu peux changer cela à tout moment dans Gestion → Réglages.",
+    "migrationUse": "Utiliser la protection par PIN",
+    "migrationDisable": "Désactiver la protection par PIN",
+    "migrationSetHint": "Définis ton propre PIN. L’ancien PIN par défaut 1234 n’est pas conservé."
+  },
+  "backup": {
+    "title": "Sauvegarde",
+    "intro": "Crée une sauvegarde de tes données ou restaure une sauvegarde existante.",
+    "statusTitle": "Dernière sauvegarde",
+    "lastBackup": "Créée le",
+    "never": "Aucune sauvegarde pour l'instant",
+    "version": "Version de la sauvegarde",
+    "exportTitle": "Créer une sauvegarde",
+    "exportText": "Enregistre les enfants, opérations, objectifs d'épargne, règles d'argent de poche, réglages, PIN et apparence dans un fichier.",
+    "create": "Créer une sauvegarde",
+    "importTitle": "Restaurer une sauvegarde",
+    "importText": "Reprend toutes les données d'un fichier de sauvegarde. Les données actuelles de cet appareil seront remplacées.",
+    "restore": "Restaurer la sauvegarde",
+    "shareTitle": "Enregistrer la sauvegarde KidsWallet",
+    "confirmTitle": "Restaurer la sauvegarde ?",
+    "confirmWarning": "La restauration remplace les données actuelles.",
+    "confirmSummary": "Sauvegarde du {{date}} · {{children}} · {{transactions}}",
+    "childrenCount_one": "{{count}} enfant",
+    "childrenCount_many": "{{count}} enfants",
+    "childrenCount_other": "{{count}} enfants",
+    "transactionsCount_one": "{{count}} opération",
+    "transactionsCount_many": "{{count}} opérations",
+    "transactionsCount_other": "{{count}} opérations",
+    "confirmPinNote": "Le PIN, l'apparence et la langue sont aussi repris de la sauvegarde.",
+    "confirmAction": "Restaurer",
+    "exported": "Sauvegarde créée avec succès.",
+    "restored": "Sauvegarde restaurée avec succès.",
+    "exportFailed": "Impossible de créer la sauvegarde.",
+    "restoreFailed": "Impossible de restaurer la sauvegarde.",
+    "readFailed": "Impossible de lire le fichier.",
+    "errors": {
+      "invalid": "Le fichier sélectionné n'est pas une sauvegarde KidsWallet valide.",
+      "unsupportedVersion": "Cette version de sauvegarde n'est pas prise en charge.",
+      "corrupt": "Le fichier de sauvegarde est endommagé."
+    }
+  },
+  "validation": {
+    "nameRequired": "Saisis un nom.",
+    "amountRequired": "Saisis un montant supérieur à 0.",
+    "amountInvalid": "Saisis un montant valide, ex. 2,50.",
+    "amountDecimals": "Saisis au maximum deux décimales.",
+    "amountMax": "Le montant ne peut pas dépasser {{max}}.",
+    "amountNotNegative": "Le montant ne peut pas être négatif.",
+    "dayOfMonth": "Saisis un jour entre 1 et 28.",
+    "pinRequired": "Saisis le PIN.",
+    "pinWrong": "PIN incorrect. Réessaie.",
+    "currentPinRequired": "Saisis le PIN actuel.",
+    "pinTooShort": "Le nouveau PIN doit comporter 4 à 12 chiffres.",
+    "pinMismatch": "Les nouveaux PIN ne correspondent pas.",
+    "currencyRequired": "Saisis un symbole monétaire."
+  },
+  "errors": {
+    "saveFailed": "Impossible d'enregistrer les modifications.",
+    "loadFailed": "Impossible de charger les données.",
+    "storageFull": "La mémoire de l'appareil est pleine.",
+    "withDetail": "{{message}} ({{detail}})",
+    "nameMissing": "Nom manquant",
+    "nameTooLong": "Nom trop long ({{max}} caractères max.)",
+    "invalidColor": "Couleur non valide",
+    "invalidStartBalance": "Solde initial non valide",
+    "invalidAmountRange": "Montant non valide (0,01–9999,99)",
+    "invalidFrequency": "Fréquence non valide",
+    "invalidWeekday": "Jour de la semaine non valide (0–6)",
+    "invalidDay": "Jour non valide (1–28)",
+    "invalidTarget": "Montant cible non valide",
+    "invalidName": "Nom non valide",
+    "invalidAmount": "Montant non valide",
+    "amountTooLarge": "Montant trop élevé",
+    "pinMissing": "PIN manquant",
+    "childNotFound": "Enfant introuvable",
+    "ruleNotFound": "Règle introuvable",
+    "goalNotFound": "Objectif d'épargne introuvable",
+    "notEnoughBalance": "Solde insuffisant",
+    "invalidCurrency": "Devise non valide",
+    "currentPinMissing": "PIN actuel manquant",
+    "currentPinWrong": "Le PIN actuel est incorrect",
+    "pinLength": "Le PIN doit comporter 4 à 12 chiffres",
+    "actionFailed": "Impossible d'effectuer l'action.",
+    "pinAlreadyEnabled": "La protection par PIN est déjà active",
+    "pinNotEnabled": "La protection par PIN n’est pas active"
+  },
+  "help": {
+    "close": "Compris",
+    "buttonLabel": "À quoi sert « {{title}} » ?",
+    "home": {
+      "title": "Aperçu",
+      "paragraphs": [
+        "L'aperçu affiche tous les enfants et leur solde actuel en un coup d'œil.",
+        "Les objectifs d'épargne actifs apparaissent directement sur la carte, pour que tu voies où en est chaque enfant.",
+        "D'ici, un simple appui t'amène au compte de l'enfant."
+      ]
+    },
+    "wallet": {
+      "title": "Compte de l'enfant",
+      "paragraphs": [
+        "Le compte de l'enfant affiche l'argent de poche actuellement disponible.",
+        "Les revenus augmentent le solde, les dépenses le diminuent. Tous les mouvements sont enregistrés pour qu'on puisse toujours retracer l'évolution du solde.",
+        "Le compte de l'enfant est au cœur de l'appli et regroupe toutes les informations importantes d'un enfant au même endroit."
+      ]
+    },
+    "allowances": {
+      "title": "Règles d'argent de poche",
+      "paragraphs": [
+        "Les règles d'argent de poche effectuent automatiquement des versements réguliers.",
+        "Tu n'as donc pas besoin de te rappeler quand verser l'argent de poche. Le solde augmente automatiquement au moment choisi.",
+        "Les règles conviennent aux versements d'argent de poche récurrents et gardent le solde toujours à jour."
+      ]
+    },
+    "goals": {
+      "title": "Objectifs d'épargne",
+      "paragraphs": [
+        "Les objectifs d'épargne rendent les grandes envies visibles.",
+        "Les enfants voient non seulement leur solde, mais aussi combien il leur manque pour l'objet qu'ils désirent.",
+        "La progression est calculée automatiquement à partir du solde actuel et augmente à chaque versement."
+      ]
+    },
+    "activity": {
+      "title": "Activité",
+      "paragraphs": [
+        "L'activité résume les principaux changements récents.",
+        "On voit ainsi rapidement si le solde a augmenté ou diminué dernièrement, sans devoir lire tout l'historique des opérations.",
+        "Cet aperçu donne un coup d'œil rapide sur l'évolution actuelle."
+      ]
+    },
+    "transactions": {
+      "title": "Opérations",
+      "paragraphs": [
+        "Les opérations enregistrent chaque changement du solde.",
+        "Elles forment l'historique du compte et indiquent clairement quand de l'argent a été ajouté ou dépensé.",
+        "Les changements restent ainsi toujours traçables."
+      ]
+    },
+    "earn": {
+      "title": "Revenus",
+      "paragraphs": [
+        "Les revenus augmentent le solde disponible d'un enfant.",
+        "Ils conviennent par exemple pour l'argent de poche, les cadeaux, les récompenses ou d'autres montants supplémentaires.",
+        "Chaque revenu est automatiquement enregistré dans l'historique."
+      ]
+    },
+    "spend": {
+      "title": "Dépenses",
+      "paragraphs": [
+        "Les dépenses réduisent le solde disponible.",
+        "On les utilise quand un enfant paie quelque chose avec son argent de poche ou qu'un objet désiré a été acheté.",
+        "L'historique reste ainsi toujours traçable."
+      ]
+    },
+    "admin": {
+      "title": "Gestion",
+      "paragraphs": [
+        "La gestion contient les réglages rarement utilisés de l'appli.",
+        "Alors que l'utilisation quotidienne se fait directement dans le compte de l'enfant, tu trouveras ici les fonctions globales comme la gestion des enfants, les réglages du PIN, les options d'apparence et la sauvegarde.",
+        "La gestion sert à organiser l'appli et non au suivi quotidien de l'argent de poche."
+      ]
+    },
+    "children": {
+      "title": "Enfants",
+      "paragraphs": [
+        "Ici, tu gères tous les enfants existants.",
+        "Tu peux ajouter de nouveaux enfants et supprimer des enfants existants.",
+        "L'utilisation au quotidien se fait ensuite directement dans le compte de chaque enfant."
+      ]
+    },
+    "settings": {
+      "title": "Réglages",
+      "paragraphs": [
+        "Les réglages contiennent les options générales de l'appli.",
+        "Ils comprennent la protection par PIN facultative ainsi que d’autres paramètres de base.",
+        "Les modifications s'appliquent à toute l'appli."
+      ]
+    },
+    "appearance": {
+      "title": "Apparence",
+      "paragraphs": [
+        "L'apparence détermine l'aspect visuel de l'appli.",
+        "Les couleurs, le thème et la langue peuvent être adaptés à tes préférences, sans modifier les fonctions.",
+        "Ces réglages s'appliquent à toute l'interface."
+      ]
+    },
+    "currency": {
+      "title": "Symbole monétaire",
+      "paragraphs": [
+        "Le symbole monétaire apparaît partout où des montants sont affichés.",
+        "Ainsi, le solde, les opérations et les objectifs d'épargne correspondent à la devise avec laquelle ta famille épargne vraiment.",
+        "Les montants eux-mêmes ne changent pas – seul leur affichage change."
+      ]
+    },
+    "pin": {
+      "title": "PIN",
+      "paragraphs": [
+        "La protection par PIN est facultative. Lorsqu’elle est activée, l’appli demande le PIN avant toute modification du solde, des enfants ou des règles d’argent de poche et verrouille la gestion.",
+        "Les enfants peuvent consulter leur compte à tout moment, mais avec la protection par PIN ils ne peuvent pas enregistrer de montants, modifier des règles ni supprimer des enfants.",
+        "Sans protection par PIN, ces actions sont exécutées directement. Les confirmations de suppression ou de restauration restent en place."
+      ]
+    },
+    "theme": {
+      "title": "Jeu de couleurs",
+      "paragraphs": [
+        "Le jeu de couleurs détermine si l’appli s’affiche en clair ou en sombre.",
+        "« Système » reprend automatiquement le réglage de ton appareil et change avec lui, par exemple en passant au mode sombre le soir.",
+        "« Clair » et « Sombre » fixent l’affichage indépendamment de l’appareil."
+      ]
+    },
+    "accentColor": {
+      "title": "Couleur d'accent",
+      "paragraphs": [
+        "La couleur d'accent donne à l'appli sa touche personnelle.",
+        "Elle met en valeur les boutons importants et les progressions, sans changer les couleurs des enfants."
+      ]
+    },
+    "language": {
+      "title": "Langue",
+      "paragraphs": [
+        "La langue détermine dans quelle langue tous les textes de l'appli s'affichent.",
+        "Par défaut, la langue de l'appareil est utilisée. Un choix manuel est prioritaire et reste enregistré.",
+        "Tes données comme les noms, descriptions et objectifs d'épargne restent inchangées lors du changement."
+      ]
+    },
+    "backup": {
+      "title": "Sauvegarde",
+      "paragraphs": [
+        "La sauvegarde protège les enfants, opérations, objectifs d'épargne et règles contre la perte.",
+        "Toutes les données sont stockées uniquement sur cet appareil. Avec une sauvegarde, tu peux tout récupérer après un changement d'appareil, une réinstallation ou une suppression accidentelle.",
+        "Le plus sûr est de conserver le fichier en dehors de l'appareil, par exemple dans un stockage cloud ou sur un ordinateur."
+      ]
+    }
+  },
+  "navigation": {
+    "home": "Accueil",
+    "wallet": "Portefeuille",
+    "goals": "Objectifs d'épargne",
+    "transactions": "Toutes les opérations",
+    "allowances": "Règles d'argent de poche",
+    "management": "Gestion",
+    "children": "Enfants",
+    "settings": "Réglages",
+    "appearance": "Apparence",
+    "backup": "Sauvegarde",
+    "back": "Retour",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu",
+    "mainMenu": "Menu principal",
+    "helpDefault": "Infos sur cette section"
+  },
+  "appearance": {
+    "themeTitle": "Jeu de couleurs",
+    "instantHint": "Appliqué et enregistré immédiatement.",
+    "accentTitle": "Couleur d'accent",
+    "accentSubtitle": "La couleur d'accent est utilisée pour les boutons, icônes et barres de progression dans toute l'appli.",
+    "presetsLabel": "Suggestions de couleurs",
+    "colors": {
+      "purple": "Mauve",
+      "violet": "Violet",
+      "pink": "Rose",
+      "coral": "Corail",
+      "orange": "Orange",
+      "green": "Vert",
+      "blue": "Bleu",
+      "grey": "Gris"
+    },
+    "customColor": "Autre couleur …",
+    "colorPickerLabel": "Sélecteur de couleur",
+    "preview": "Aperçu",
+    "previewButton": "Bouton d'exemple",
+    "previewBadge": "Badge",
+    "languageTitle": "Langue",
+    "languageSaved": "Langue enregistrée.",
+    "themes": {
+      "system": "Système",
+      "light": "Clair",
+      "dark": "Sombre"
+    },
+    "themeSystemHint": "Système utilise automatiquement le réglage d’affichage de ton appareil."
+  },
+  "symbols": {
+    "categories": {
+      "spielzeug": "Jouets",
+      "forschen": "Science & découverte",
+      "medien": "Médias & savoir",
+      "freizeit": "Loisirs & hobbies",
+      "allgemein": "Envies & divers"
+    },
+    "items": {
+      "blocks": {
+        "name": "Briques",
+        "keywords": "construire, lego, cubes, blocs, briques, duplo, construction"
+      },
+      "teddy": {
+        "name": "Nounours",
+        "keywords": "ours en peluche, ours, doudou, peluche, nounours, teddy"
+      },
+      "puzzle": {
+        "name": "Puzzle",
+        "keywords": "pièce de puzzle, jeu d'assemblage, casse-tête, énigme"
+      },
+      "car": {
+        "name": "Petite voiture",
+        "keywords": "voiture, voiture de course, modèle réduit, véhicule, télécommandée"
+      },
+      "gamepad": {
+        "name": "Console de jeux",
+        "keywords": "console, jeu vidéo, manette, jouer, gaming, switch, playstation"
+      },
+      "robot": {
+        "name": "Robot",
+        "keywords": "robo, technique, technologie, programmer, coder"
+      },
+      "kite": {
+        "name": "Cerf-volant",
+        "keywords": "cerf-volant, vent, faire voler"
+      },
+      "dice": {
+        "name": "Jeu de société",
+        "keywords": "dés, dé, jeu de plateau, jeu, jeu de cartes"
+      },
+      "microscope": {
+        "name": "Microscope",
+        "keywords": "expérience, labo, laboratoire, science, recherche, cellules"
+      },
+      "flask": {
+        "name": "Expérience",
+        "keywords": "kit d'expériences, chimie, labo, éprouvette, fiole, science"
+      },
+      "gem": {
+        "name": "Cristal",
+        "keywords": "expérience, pierre précieuse, diamant, minéral, pierre, culture de cristaux, bijou"
+      },
+      "fossil": {
+        "name": "Fossile",
+        "keywords": "dino, dinosaure, ammonite, fossilisation, fouilles, préhistoire"
+      },
+      "magnifier": {
+        "name": "Loupe",
+        "keywords": "verre grossissant, détective, chercher, découvrir"
+      },
+      "volcano": {
+        "name": "Volcan",
+        "keywords": "éruption, lave, montagne, géologie"
+      },
+      "telescope": {
+        "name": "Télescope",
+        "keywords": "lunette, longue-vue, étoiles, astronomie, observatoire, ciel"
+      },
+      "planet": {
+        "name": "Planète",
+        "keywords": "espace, cosmos, saturne, univers"
+      },
+      "compass": {
+        "name": "Boussole",
+        "keywords": "aventure, randonnée, orientation, expédition"
+      },
+      "leaf": {
+        "name": "Nature",
+        "keywords": "plante, feuille, jardin, environnement, fleur"
+      },
+      "book": {
+        "name": "Livre",
+        "keywords": "lire, lecture, roman, bd, bande dessinée, histoire, livres"
+      },
+      "magazine": {
+        "name": "Magazine",
+        "keywords": "revue, journal, bd, abonnement, presse"
+      },
+      "music": {
+        "name": "Musique",
+        "keywords": "chanson, instrument, morceau, concert, partition, notes"
+      },
+      "headphones": {
+        "name": "Casque audio",
+        "keywords": "casque, écouteurs, histoire audio, écouter de la musique, earbuds, toniebox, écouter"
+      },
+      "camera": {
+        "name": "Appareil photo",
+        "keywords": "photo, caméra, photographier, vidéo"
+      },
+      "film": {
+        "name": "Film",
+        "keywords": "cinéma, dvd, série, vidéo, movie"
+      },
+      "phone": {
+        "name": "Téléphone",
+        "keywords": "smartphone, portable, mobile, téléphone, iphone"
+      },
+      "tablet": {
+        "name": "Tablette",
+        "keywords": "ipad, liseuse, ebook, e-reader, tablette"
+      },
+      "laptop": {
+        "name": "Ordinateur",
+        "keywords": "ordinateur portable, laptop, pc, ordi, notebook"
+      },
+      "bike": {
+        "name": "Vélo",
+        "keywords": "bicyclette, bike, vtt, faire du vélo, cyclisme"
+      },
+      "ball": {
+        "name": "Ballon",
+        "keywords": "foot, football, sport, basket, basketball, jouer, club"
+      },
+      "skateboard": {
+        "name": "Skateboard",
+        "keywords": "skate, planche à roulettes, board, longboard"
+      },
+      "rocket": {
+        "name": "Fusée",
+        "keywords": "espace, conquête spatiale, astronaute, vol"
+      },
+      "plane": {
+        "name": "Voyage",
+        "keywords": "avion, vacances, congés, voler, excursion, sortie"
+      },
+      "house": {
+        "name": "Maison",
+        "keywords": "cabane, cabane dans les arbres, maison de poupée, chez moi, chambre"
+      },
+      "tent": {
+        "name": "Tente",
+        "keywords": "camping, camper, aventure, plein air, outdoor"
+      },
+      "palette": {
+        "name": "Peinture",
+        "keywords": "palette, bricolage, art, couleurs, dessiner, peindre, créatif"
+      },
+      "ticket": {
+        "name": "Sortie",
+        "keywords": "billet, ticket, entrée, parc d'attractions, zoo, cinéma, concert"
+      },
+      "paw": {
+        "name": "Animal de compagnie",
+        "keywords": "animal, chien, chat, patte, hamster, cochon d'inde, nourriture, croquettes"
+      },
+      "gift": {
+        "name": "Cadeau",
+        "keywords": "anniversaire, noël, surprise, jouet, présent"
+      },
+      "wish": {
+        "name": "Souhait",
+        "keywords": "rêve, magie, paillettes, spécial, envie, vœu"
+      },
+      "star": {
+        "name": "Étoile",
+        "keywords": "favori, préféré, spécial"
+      },
+      "heart": {
+        "name": "Cœur",
+        "keywords": "amour, souhait du cœur, famille, don"
+      },
+      "crown": {
+        "name": "Couronne",
+        "keywords": "roi, reine, princesse, déguisement, costume"
+      },
+      "trophy": {
+        "name": "Trophée",
+        "keywords": "coupe, victoire, gagner, compétition, tournoi, champion"
+      },
+      "piggy": {
+        "name": "Tirelire",
+        "keywords": "épargner, économiser, argent, réserve, cochon, économies"
+      }
+    },
+    "avatarPickerLabel": "Choisir un avatar",
+    "avatars": {
+      "star": "Étoile",
+      "heart": "Cœur",
+      "zap": "Éclair",
+      "crown": "Couronne",
+      "trophy": "Trophée",
+      "rocket": "Fusée",
+      "gem": "Pierre précieuse",
+      "flame": "Flamme",
+      "sun": "Soleil",
+      "moon": "Lune",
+      "music": "Musique",
+      "gift": "Cadeau",
+      "shield": "Bouclier",
+      "compass": "Boussole",
+      "anchor": "Ancre",
+      "cloud": "Nuage",
+      "leaf": "Feuille",
+      "snowflake": "Flocon de neige",
+      "smile": "Sourire",
+      "target": "Cible"
+    },
+    "colorPickerLabel": "Choisir une couleur",
+    "colors": {
+      "purple": "Mauve",
+      "coral": "Corail",
+      "green": "Vert",
+      "orange": "Orange",
+      "pink": "Rose",
+      "blue": "Bleu",
+      "lightGreen": "Vert clair",
+      "violet": "Violet"
+    }
+  },
+  "home": {
+    "label": "Accueil",
+    "childrenLabel": "Enfants",
+    "cardLabel": "{{name}}, solde : {{balance}}",
+    "cardLabelWithGoal": "{{name}}, solde : {{balance}}, {{goal}}"
+  }
+}

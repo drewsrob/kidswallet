@@ -1,0 +1,258 @@
+/* layout.css – App-Shell, Toolbar, Sidenav, View-Container */
+
+/* ── App-Wrapper ──────────────────────────────────────────────────────────── */
+#app-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  max-width: 1024px;
+  margin: 0 auto;
+  background: var(--color-bg);
+  box-shadow: 0 0 0 1px var(--color-border), 0 8px 48px rgba(0, 0, 0, 0.10);
+}
+
+/* ── Toolbar ──────────────────────────────────────────────────────────────── */
+.toolbar {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  height: 56px;
+  padding: 0 var(--space-md);
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.toolbar-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+  background: none;
+  border: none;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 150ms ease;
+}
+
+.toolbar-btn:hover {
+  background: var(--color-surface);
+}
+
+.toolbar-btn:active {
+  background: var(--color-border);
+}
+
+.toolbar-title {
+  font-size: var(--text-lg);
+  font-weight: var(--font-bold);
+  color: var(--color-text);
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Sidenav Backdrop ────────────────────────────────────────────────────── */
+.sidenav-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: calc(var(--z-sticky) + 1);
+  backdrop-filter: blur(2px);
+  animation: fadeIn 200ms ease;
+}
+
+.sidenav-backdrop.open {
+  display: block;
+}
+
+/* ── Sidenav ──────────────────────────────────────────────────────────────── */
+.sidenav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 280px;
+  height: 100dvh;
+  z-index: calc(var(--z-sticky) + 2);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+  transform: translateX(-100%);
+  transition: transform 280ms cubic-bezier(0.4, 0, 0.2, 1);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.sidenav.open {
+  transform: translateX(0);
+}
+
+.sidenav-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 0 var(--space-md);
+  height: 64px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  background: var(--accent-header-fill);
+  color: var(--accent-header-on-fill);
+  flex-shrink: 0;
+}
+
+.sidenav-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius-sm);
+  padding: var(--space-xs);
+}
+
+.sidenav-logo svg {
+  stroke: currentColor;
+}
+
+.sidenav-app-title {
+  font-size: var(--text-lg);
+  font-weight: var(--font-bold);
+  flex: 1;
+  color: inherit;
+  letter-spacing: -0.01em;
+}
+
+.sidenav-close-btn {
+  color: inherit;
+}
+
+.sidenav-close-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: inherit;
+}
+
+.sidenav-nav {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-md) 0;
+  gap: var(--space-xs);
+}
+
+.sidenav-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-md) var(--space-lg);
+  font-size: var(--text-base);
+  font-weight: var(--font-medium);
+  color: var(--color-text);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  border-radius: 0;
+  min-height: var(--touch-min);
+  transition: background 150ms ease;
+  width: 100%;
+}
+
+.sidenav-item:hover {
+  background: var(--color-bg);
+}
+
+.sidenav-item:active {
+  background: var(--color-border);
+}
+
+.sidenav-item svg {
+  flex-shrink: 0;
+  color: var(--color-text);
+}
+
+/* ── Haupt-Content ────────────────────────────────────────────────────────── */
+#app {
+  flex: 1;
+  padding: var(--app-padding);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background: var(--color-bg);
+  /* Reserviert Platz bevor JS rendert → verhindert Layout Shift (CLS) */
+  min-height: calc(100dvh - 56px);
+  contain: layout;
+}
+
+/* ── View-Layouts ─────────────────────────────────────────────────────────── */
+.view-section {
+  animation: fadeIn 200ms ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Seitenüberschrift mit optionalem Action-Button */
+.view-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--section-gap);
+  gap: var(--space-sm) var(--space-md);
+}
+
+.view-header h1,
+.view-header h2 {
+  margin: 0;
+}
+
+/* ── Grid-Layouts ─────────────────────────────────────────────────────────── */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-md);
+}
+
+.grid-auto {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: var(--space-md);
+}
+
+/* ── Flex-Utilities ───────────────────────────────────────────────────────── */
+.flex        { display: flex; }
+.flex-col    { display: flex; flex-direction: column; }
+.flex-center { display: flex; align-items: center; justify-content: center; }
+.flex-between{ display: flex; align-items: center; justify-content: space-between; }
+.gap-sm      { gap: var(--space-sm); }
+.gap-md      { gap: var(--space-md); }
+.gap-lg      { gap: var(--space-lg); }
+
+/* ── Spacing-Utilities ────────────────────────────────────────────────────── */
+.mt-md  { margin-top: var(--space-md); }
+.mt-lg  { margin-top: var(--space-lg); }
+.mt-xl  { margin-top: var(--space-xl); }
+.mb-md  { margin-bottom: var(--space-md); }
+.mb-lg  { margin-bottom: var(--space-lg); }
+
+/* ── Toast-Container ──────────────────────────────────────────────────────── */
+#toast-container {
+  position: fixed;
+  bottom: var(--space-xl);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: var(--z-toast);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  pointer-events: none;
+  width: min(90vw, 400px);
+}

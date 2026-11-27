@@ -1,0 +1,832 @@
+{
+  "common": {
+    "appName": "KidsWallet",
+    "cancel": "Abbrechen",
+    "save": "Speichern",
+    "create": "Erstellen",
+    "record": "Erfassen",
+    "confirm": "Bestätigen",
+    "delete": "Löschen",
+    "edit": "Bearbeiten",
+    "close": "Schließen",
+    "optional": "optional",
+    "retry": "Wiederholen",
+    "tryAgain": "Erneut versuchen",
+    "toHome": "Zur Startseite",
+    "reload": "Neu laden",
+    "loading": "Wird geladen …",
+    "appDescription": "Taschengeld-Verwaltung für Kinder",
+    "hints": "Hinweise",
+    "manage": "Verwalten"
+  },
+  "format": {
+    "currency": "{{amount}} {{currency}}",
+    "today": "Heute",
+    "yesterday": "Gestern",
+    "daysAgo_one": "Vor {{count}} Tag",
+    "daysAgo_other": "Vor {{count}} Tagen",
+    "relToday": "heute",
+    "relTomorrow": "morgen",
+    "relInDays_one": "in {{count}} Tag",
+    "relInDays_other": "in {{count}} Tagen",
+    "dateTime": "{{date}}, {{time}} Uhr",
+    "percent": "{{value}} %"
+  },
+  "empty": {
+    "childNotFound": {
+      "title": "Kind nicht gefunden",
+      "text": "Dieses Kind existiert nicht (mehr). Wähle auf der Startseite ein anderes Kind aus."
+    },
+    "loadError": {
+      "title": "Seite konnte nicht geladen werden",
+      "text": "Beim Öffnen dieser Seite ist ein Fehler aufgetreten. Bitte versuche es erneut."
+    },
+    "offline": {
+      "title": "Daten nicht erreichbar",
+      "text": "Die Daten konnten nicht geladen werden. Bitte lade die App neu."
+    }
+  },
+  "child": {
+    "emptyTitle": "Noch keine Kinder",
+    "emptyText": "Erstelle das erste Kind, um Taschengeld, Sparziele und Buchungen zu verwalten.",
+    "create": "Kind erstellen",
+    "titleCreate": "Kind erstellen",
+    "titleEdit": "{{name}} bearbeiten",
+    "subtitleCreate": "Lege ein eigenes Konto für ein weiteres Kind an.",
+    "subtitleEdit": "Name, Symbol oder Farbe anpassen.",
+    "created": "{{name}} wurde erstellt.",
+    "createdRuleFailed": "{{name}} wurde erstellt, die Taschengeld-Regel konnte aber nicht gespeichert werden.",
+    "updated": "Änderungen gespeichert.",
+    "deleted": "{{name}} wurde gelöscht.",
+    "saveFailed": "Das Kind konnte nicht gespeichert werden.",
+    "deleteFailed": "Das Kind konnte nicht gelöscht werden.",
+    "deleteTitle": "Kind löschen?",
+    "deleteMessage": "<strong>{{name}}</strong> wird dauerhaft gelöscht.",
+    "deleteWarning": "Alle Buchungen, Taschengeld-Regeln und Sparziele werden ebenfalls gelöscht.",
+    "nameLabel": "Name",
+    "namePlaceholder": "z. B. Mia",
+    "startBalanceLabel": "Startguthaben ({{currency}})",
+    "startBalanceHint": "Wird dem Konto beim Erstellen gutgeschrieben.",
+    "avatarLabel": "Avatar wählen",
+    "colorLabel": "Farbe wählen",
+    "allowanceSetup": "Taschengeld einrichten",
+    "allowanceAmountPlaceholder": "z. B. 2.00",
+    "allowanceEmptyHint": "Leer lassen, falls kein Taschengeld eingerichtet werden soll."
+  },
+  "allowance": {
+    "title": "Taschengeld-Regel",
+    "emptyTitle": "Noch keine Regel",
+    "emptyText": "Für dieses Kind wurde noch keine Taschengeld-Regel eingerichtet.",
+    "create": "Regel erstellen",
+    "nextPayout": "Nächste Auszahlung: {{date}} ({{relative}})",
+    "payoutToday": "Heute gibt es Taschengeld",
+    "payoutTomorrow": "Morgen gibt es Taschengeld",
+    "payoutPaidToday": "Heute wurde Taschengeld gutgeschrieben",
+    "paused": "Taschengeld ist pausiert – zurzeit wird nichts ausgezahlt.",
+    "pausedShort": "Taschengeld pausiert",
+    "noRule": "Keine Taschengeld-Regel eingerichtet",
+    "scheduleWeekly": "Jeden {{day}}",
+    "scheduleMonthly": "Monatlich am {{day}}.",
+    "titleCreate": "Taschengeld-Regel erstellen",
+    "titleEdit": "Taschengeld-Regel bearbeiten",
+    "subtitle": "{{name}} bekommt den Betrag automatisch und regelmäßig gutgeschrieben.",
+    "frequencyLabel": "Häufigkeit",
+    "weekdayLabel": "Wochentag",
+    "monthDayLabel": "Tag im Monat",
+    "monthDayHint": "Tag 1–28, damit jeder Monat abgedeckt ist.",
+    "created": "Taschengeld-Regel erstellt.",
+    "updated": "Taschengeld-Regel aktualisiert.",
+    "deleted": "Taschengeld-Regel gelöscht.",
+    "activated": "Taschengeld-Regel aktiviert.",
+    "pausedToast": "Taschengeld-Regel pausiert.",
+    "saveFailed": "Die Taschengeld-Regel konnte nicht gespeichert werden.",
+    "deleteFailed": "Die Taschengeld-Regel konnte nicht gelöscht werden.",
+    "toggleFailed": "Die Taschengeld-Regel konnte nicht umgeschaltet werden.",
+    "frequencyWeekly": "Wöchentlich",
+    "frequencyMonthly": "Monatlich",
+    "manage": "Taschengeld-Regeln verwalten",
+    "listTitle": "Taschengeld-Regeln",
+    "toolbarTitle": "Taschengeld – {{name}}",
+    "pausedBadge": "Pausiert",
+    "autoPayoutNote": "Das Taschengeld wird automatisch beim Öffnen der App gutgeschrieben – verpasste Zahltage werden dabei nachgeholt.",
+    "lastExecuted": "Zuletzt: {{date}}",
+    "activeToggle": "Taschengeld-Regel aktiv",
+    "deleteLabel": "Taschengeld-Regel löschen",
+    "deleteTitle": "Taschengeld-Regel löschen?",
+    "deleteMessage": "Die Regel ({{amount}}, {{schedule}}) wird dauerhaft gelöscht."
+  },
+  "goal": {
+    "title": "Sparziele",
+    "emptyTitle": "Noch keine Sparziele",
+    "emptyText": "Für dieses Kind wurden noch keine Sparziele erstellt.",
+    "allDoneTitle": "Alle Ziele gekauft",
+    "allDoneText": "Alle Sparziele wurden bereits gekauft. Zeit für ein neues Ziel?",
+    "create": "Sparziel erstellen",
+    "reached": "Ziel erreicht",
+    "almost": "Fast erreicht – noch {{rest}} bis zum Ziel",
+    "remaining": "Noch {{rest}} bis zum Ziel",
+    "reachedNamed": "Sparziel „{{name}}“ erreicht!",
+    "reachedCount_one": "{{count}} Sparziel erreicht!",
+    "reachedCount_other": "{{count}} Sparziele erreicht!",
+    "firstCreated": "Erstes Sparziel erstellt – weiter so!",
+    "saved": "{{saved}} von {{target}} gespart",
+    "cardSummary": "{{countText}}, {{name}}: {{progress}}",
+    "activeCount_one": "{{count}} Sparziel aktiv",
+    "activeCount_other": "{{count}} Sparziele aktiv",
+    "titleCreate": "Sparziel erstellen",
+    "titleEdit": "Sparziel bearbeiten",
+    "subtitleCreate": "Worauf spart {{name}}?",
+    "subtitleEdit": "Name, Zielbetrag oder Symbol anpassen.",
+    "nameLabel": "Name des Sparziels",
+    "namePlaceholder": "z. B. Neues Fahrrad",
+    "targetLabel": "Zielbetrag ({{currency}})",
+    "iconLabel": "Symbol",
+    "symbolSearchPlaceholder": "Symbol suchen …",
+    "symbolSearchLabel": "Symbole durchsuchen",
+    "symbolNoResults": "Keine passenden Symbole gefunden.",
+    "symbolSelected": "Ausgewählt: {{name}}",
+    "symbolResults_one": "{{count}} Symbol gefunden",
+    "symbolResults_other": "{{count}} Symbole gefunden",
+    "symbolGroupCount_one": "{{count}} Symbol",
+    "symbolGroupCount_other": "{{count}} Symbole",
+    "createdToast": "Sparziel erstellt.",
+    "updated": "Sparziel aktualisiert.",
+    "deleted": "Sparziel gelöscht.",
+    "purchased": "Glückwunsch! {{name}} ist jetzt deins.",
+    "saveFailed": "Das Sparziel konnte nicht gespeichert werden.",
+    "deleteFailed": "Das Sparziel konnte nicht gelöscht werden.",
+    "purchaseFailed": "Der Kauf konnte nicht gebucht werden.",
+    "manage": "Sparziele verwalten",
+    "pageLabel": "Sparziele von {{name}}",
+    "availableBalance": "Verfügbares Guthaben",
+    "activeLabel": "Aktive Sparziele",
+    "purchasedTitle": "Gekaufte Sparziele",
+    "paid": "{{amount}} bezahlt",
+    "canBuy": "{{amount}} – du kannst es kaufen!",
+    "purchasedBadge": "Gekauft",
+    "purchasedBadgeText": "Gekauft!",
+    "targetShort": "Ziel: {{amount}}",
+    "progressLabel": "Fortschritt {{name}}",
+    "buy": "Kaufen",
+    "buyWithAmount": "Kaufen ({{amount}})",
+    "editLabel": "Sparziel {{name}} bearbeiten",
+    "deleteLabel": "Sparziel {{name}} löschen",
+    "purchaseTitle": "{{name}} kaufen?",
+    "purchaseDeducted": "{{amount}} werden vom Guthaben abgezogen.",
+    "purchaseBalanceAfter": "Guthaben danach: {{amount}}",
+    "deleteTitle": "Sparziel löschen?",
+    "deleteMessage": "Das Sparziel „{{name}}“ wird dauerhaft gelöscht."
+  },
+  "dashboard": {
+    "activityTitle": "Aktivität",
+    "activityWeek": "Diese Woche",
+    "activityMonth": "Diesen Monat",
+    "statIncome": "Einnahmen",
+    "statExpense": "Ausgaben",
+    "statNet": "Saldo",
+    "activityNoWeek": "Diese Woche gab es noch keine Buchungen.",
+    "activityEmpty": "Sobald Buchungen erfasst werden, siehst du hier, wie sich das Guthaben entwickelt.",
+    "trendWeekUp": "Guthaben diese Woche gestiegen",
+    "trendWeekDown": "Guthaben diese Woche gesunken",
+    "trendMonthUp": "Diesen Monat wurde gespart",
+    "weekTransactions_one": "{{count}} Buchung diese Woche",
+    "weekTransactions_other": "{{count}} Buchungen diese Woche"
+  },
+  "transaction": {
+    "recentTitle": "Letzte Buchungen",
+    "emptyTitle": "Noch keine Buchungen",
+    "emptyText": "Für dieses Kind wurden noch keine Buchungen erfasst.",
+    "earnTitle": "Einnahme erfassen",
+    "earnSubtitle": "Wird dem Guthaben von {{name}} gutgeschrieben.",
+    "earnPlaceholder": "z. B. Geschenk von Oma",
+    "spendTitle": "Ausgabe erfassen",
+    "spendSubtitle": "Wird vom Guthaben von {{name}} abgezogen.",
+    "spendPlaceholder": "z. B. Eis gekauft",
+    "available": "Verfügbares Guthaben: {{amount}}",
+    "amountLabel": "Betrag ({{currency}})",
+    "descriptionLabel": "Beschreibung",
+    "earnSaved": "Einnahme erfasst: +{{amount}}",
+    "spendSaved": "Ausgabe erfasst: −{{amount}}",
+    "bookingFailed": "Die Buchung konnte nicht gespeichert werden.",
+    "listLabel": "Buchungen",
+    "allowanceWeekly": "Taschengeld ({{day}})",
+    "allowanceMonthly": "Taschengeld ({{day}}. des Monats)",
+    "goalPurchase": "Gekauft: {{name}}",
+    "kinds": {
+      "earn": {
+        "label": "Einnahme",
+        "generic": "Manuelle Einnahme"
+      },
+      "spend": {
+        "label": "Ausgabe",
+        "generic": "Manuelle Ausgabe"
+      },
+      "allowance": {
+        "label": "Taschengeld",
+        "generic": "Taschengeld"
+      },
+      "initial": {
+        "label": "Startguthaben",
+        "generic": "Startguthaben"
+      },
+      "goal": {
+        "label": "Sparziel",
+        "generic": "Sparziel"
+      },
+      "correction": {
+        "label": "Korrektur",
+        "generic": "Korrektur"
+      }
+    },
+    "showAll": "Alle Buchungen anzeigen",
+    "allTitle": "Alle Buchungen",
+    "countFor_one": "{{count}} Buchung für {{name}}",
+    "countFor_other": "{{count}} Buchungen für {{name}}"
+  },
+  "wallet": {
+    "income": "Einnahme",
+    "expense": "Ausgabe",
+    "label": "Wallet von {{name}}",
+    "factsLabel": "Kurzübersicht",
+    "statusLabel": "Aktuelle Hinweise",
+    "actionsLabel": "Aktionen",
+    "allowanceRuleWeekly": "{{amount}} jeden {{day}}",
+    "allowanceRuleMonthly": "{{amount}} monatlich am {{day}}."
+  },
+  "dialog": {
+    "discardTitle": "Eingaben verwerfen?",
+    "discardMessage": "Deine Eingaben wurden noch nicht gespeichert und gehen beim Schließen verloren.",
+    "discardKeep": "Weiter bearbeiten",
+    "discardConfirm": "Verwerfen"
+  },
+  "pin": {
+    "title": "Mit PIN bestätigen",
+    "label": "PIN",
+    "hint": "{{reason}} – zum Bestätigen bitte die PIN eingeben.",
+    "required": "PIN erforderlich",
+    "reasons": {
+      "earn": "Einnahme speichern",
+      "spend": "Ausgabe speichern",
+      "childCreate": "Kind erstellen",
+      "childEdit": "Änderungen am Kind speichern",
+      "ruleCreate": "Taschengeld-Regel erstellen",
+      "ruleEdit": "Taschengeld-Regel speichern",
+      "ruleDelete": "Taschengeld-Regel löschen",
+      "ruleActivate": "Taschengeld-Regel aktivieren",
+      "rulePause": "Taschengeld-Regel pausieren"
+    },
+    "changed": "PIN geändert.",
+    "checkFailed": "Die PIN konnte nicht geprüft werden.",
+    "changeFailed": "Die PIN konnte nicht geändert werden."
+  },
+  "management": {
+    "title": "Verwaltung",
+    "unlockHint": "Bitte PIN eingeben, um die Verwaltung zu öffnen.",
+    "unlock": "Entsperren",
+    "lock": "Sperren",
+    "intro": "Selten benötigte Einstellungen. Einnahmen, Ausgaben, Sparziele und Taschengeld-Regeln verwaltest du direkt im Konto des Kindes.",
+    "unlockLabel": "Verwaltung entsperren",
+    "childrenDesc": "Kinder erstellen und löschen",
+    "settingsDesc": "Sicherheit und Währung",
+    "appearanceDesc": "Farbschema, Akzentfarbe und Sprache",
+    "backupDesc": "Backup erstellen und wiederherstellen",
+    "childrenIntro": "Bearbeiten, Taschengeld und Buchungen erfolgen direkt in der Wallet des Kindes.",
+    "childBalance": "Guthaben: {{amount}}",
+    "deleteChildLabel": "{{name}} löschen"
+  },
+  "settings": {
+    "currencySaved": "Währungssymbol gespeichert.",
+    "currencySaveFailed": "Das Währungssymbol konnte nicht gespeichert werden.",
+    "accentSaved": "Akzentfarbe gespeichert.",
+    "currencyTitle": "Währungssymbol",
+    "currencyLabel": "Symbol (max. 3 Zeichen)",
+    "changePin": "PIN ändern",
+    "currentPin": "Aktuelle PIN",
+    "newPin": "Neue PIN",
+    "newPinHint": "4–12 Ziffern",
+    "newPinConfirm": "Neue PIN wiederholen"
+  },
+  "security": {
+    "title": "Sicherheit",
+    "pinProtection": "PIN-Schutz",
+    "pinProtectionHint": "Fragt vor Buchungen und Änderungen an Kindern oder Taschengeld-Regeln nach der PIN und sperrt die Verwaltung.",
+    "setPinTitle": "PIN festlegen",
+    "setPinHint": "Die PIN wird künftig vor kritischen Änderungen und beim Öffnen der Verwaltung abgefragt.",
+    "pin": "PIN",
+    "pinConfirm": "PIN bestätigen",
+    "setPinAction": "PIN festlegen",
+    "enabled": "PIN-Schutz aktiviert.",
+    "disabled": "PIN-Schutz deaktiviert.",
+    "enableFailed": "Der PIN-Schutz konnte nicht aktiviert werden.",
+    "disableFailed": "Der PIN-Schutz konnte nicht deaktiviert werden.",
+    "disableTitle": "PIN-Schutz deaktivieren",
+    "disableHint": "Bitte gib zum Deaktivieren die aktuelle PIN ein.",
+    "disableAction": "Deaktivieren",
+    "migrationTitle": "PIN-Schutz verwenden?",
+    "migrationText": "Bisher war die Standard-PIN 1234 eingestellt. Der PIN-Schutz ist jetzt freiwillig.",
+    "migrationChoice": "Mit PIN-Schutz legst du eine eigene PIN fest. Ohne PIN-Schutz werden Buchungen und Änderungen direkt gespeichert. Du kannst das jederzeit unter Verwaltung → Einstellungen ändern.",
+    "migrationUse": "PIN-Schutz verwenden",
+    "migrationDisable": "PIN-Schutz deaktivieren",
+    "migrationSetHint": "Lege eine eigene PIN fest. Die bisherige Standard-PIN 1234 wird nicht übernommen."
+  },
+  "backup": {
+    "title": "Datensicherung",
+    "intro": "Erstelle ein Backup deiner Daten oder stelle ein bestehendes Backup wieder her.",
+    "statusTitle": "Letztes Backup",
+    "lastBackup": "Erstellt am",
+    "never": "Noch kein Backup erstellt",
+    "version": "Backup-Version",
+    "exportTitle": "Backup erstellen",
+    "exportText": "Sichert Kinder, Buchungen, Sparziele, Taschengeld-Regeln, Einstellungen, PIN und Darstellung in einer Datei.",
+    "create": "Backup erstellen",
+    "importTitle": "Backup wiederherstellen",
+    "importText": "Übernimmt alle Daten aus einer Sicherungsdatei. Die aktuellen Daten auf diesem Gerät werden dabei ersetzt.",
+    "restore": "Backup wiederherstellen",
+    "shareTitle": "KidsWallet-Backup speichern",
+    "confirmTitle": "Backup wiederherstellen?",
+    "confirmWarning": "Durch das Wiederherstellen werden die aktuellen Daten ersetzt.",
+    "confirmSummary": "Backup vom {{date}} · {{children}} · {{transactions}}",
+    "childrenCount_one": "{{count}} Kind",
+    "childrenCount_other": "{{count}} Kinder",
+    "transactionsCount_one": "{{count}} Buchung",
+    "transactionsCount_other": "{{count}} Buchungen",
+    "confirmPinNote": "Auch PIN, Darstellung und Sprache werden aus dem Backup übernommen.",
+    "confirmAction": "Wiederherstellen",
+    "exported": "Backup erfolgreich erstellt.",
+    "restored": "Backup erfolgreich wiederhergestellt.",
+    "exportFailed": "Das Backup konnte nicht erstellt werden.",
+    "restoreFailed": "Das Backup konnte nicht wiederhergestellt werden.",
+    "readFailed": "Die Datei konnte nicht gelesen werden.",
+    "errors": {
+      "invalid": "Die ausgewählte Datei ist kein gültiges KidsWallet-Backup.",
+      "unsupportedVersion": "Diese Backup-Version wird nicht unterstützt.",
+      "corrupt": "Die Sicherungsdatei ist beschädigt."
+    }
+  },
+  "validation": {
+    "nameRequired": "Bitte gib einen Namen ein.",
+    "amountRequired": "Bitte gib einen Betrag größer als 0 ein.",
+    "amountInvalid": "Bitte gib einen gültigen Betrag ein, z. B. 2,50.",
+    "amountDecimals": "Bitte gib höchstens zwei Nachkommastellen ein.",
+    "amountMax": "Der Betrag darf höchstens {{max}} betragen.",
+    "amountNotNegative": "Der Betrag darf nicht negativ sein.",
+    "dayOfMonth": "Bitte gib einen Tag zwischen 1 und 28 ein.",
+    "pinRequired": "Bitte gib die PIN ein.",
+    "pinWrong": "Falsche PIN. Bitte versuche es erneut.",
+    "currentPinRequired": "Bitte gib die aktuelle PIN ein.",
+    "pinTooShort": "Die neue PIN muss aus 4–12 Ziffern bestehen.",
+    "pinMismatch": "Die neuen PINs stimmen nicht überein.",
+    "currencyRequired": "Bitte gib ein Währungssymbol ein."
+  },
+  "errors": {
+    "saveFailed": "Die Änderungen konnten nicht gespeichert werden.",
+    "loadFailed": "Die Daten konnten nicht geladen werden.",
+    "storageFull": "Der Gerätespeicher ist voll.",
+    "withDetail": "{{message}} ({{detail}})",
+    "nameMissing": "Name fehlt",
+    "nameTooLong": "Name ist zu lang (max. {{max}} Zeichen)",
+    "invalidColor": "Ungültige Farbe",
+    "invalidStartBalance": "Ungültiges Startguthaben",
+    "invalidAmountRange": "Ungültiger Betrag (0,01–9999,99)",
+    "invalidFrequency": "Ungültige Häufigkeit",
+    "invalidWeekday": "Ungültiger Wochentag (0–6)",
+    "invalidDay": "Ungültiger Tag (1–28)",
+    "invalidTarget": "Ungültiger Zielbetrag",
+    "invalidName": "Ungültiger Name",
+    "invalidAmount": "Ungültiger Betrag",
+    "amountTooLarge": "Betrag zu groß",
+    "pinMissing": "PIN fehlt",
+    "childNotFound": "Kind nicht gefunden",
+    "ruleNotFound": "Regel nicht gefunden",
+    "goalNotFound": "Sparziel nicht gefunden",
+    "notEnoughBalance": "Nicht genug Guthaben",
+    "invalidCurrency": "Ungültige Währung",
+    "currentPinMissing": "Aktuelle PIN fehlt",
+    "currentPinWrong": "Die aktuelle PIN ist falsch",
+    "pinLength": "Die PIN muss 4–12 Ziffern haben",
+    "actionFailed": "Die Aktion konnte nicht ausgeführt werden.",
+    "pinAlreadyEnabled": "Der PIN-Schutz ist bereits aktiv",
+    "pinNotEnabled": "Der PIN-Schutz ist nicht aktiv"
+  },
+  "help": {
+    "close": "Verstanden",
+    "buttonLabel": "Wofür ist „{{title}}“ gedacht?",
+    "home": {
+      "title": "Übersicht",
+      "paragraphs": [
+        "Die Übersicht zeigt alle Kinder mit ihrem aktuellen Guthaben auf einen Blick.",
+        "Aktive Sparziele erscheinen direkt auf der Karte, sodass du siehst, wie weit jedes Kind schon gekommen ist.",
+        "Von hier aus gelangst du mit einem Tippen in das Kinderkonto."
+      ]
+    },
+    "wallet": {
+      "title": "Kinderkonto",
+      "paragraphs": [
+        "Das Kinderkonto zeigt das aktuell verfügbare Taschengeld eines Kindes.",
+        "Einnahmen erhöhen das Guthaben, Ausgaben verringern es. Alle Bewegungen werden dokumentiert, damit jederzeit nachvollziehbar bleibt, wie sich der Kontostand entwickelt hat.",
+        "Das Kinderkonto bildet den Mittelpunkt der Anwendung und fasst alle wichtigen Informationen eines Kindes an einem Ort zusammen."
+      ]
+    },
+    "allowances": {
+      "title": "Taschengeld-Regeln",
+      "paragraphs": [
+        "Taschengeld-Regeln nehmen regelmäßige Einzahlungen automatisch vor.",
+        "Dadurch musst du dir nicht merken, wann Taschengeld ausgezahlt werden soll. Das Guthaben wird automatisch zum gewählten Zeitpunkt erhöht.",
+        "Regeln eignen sich für wiederkehrende Taschengeldzahlungen und sorgen für einen stets aktuellen Kontostand."
+      ]
+    },
+    "goals": {
+      "title": "Sparziele",
+      "paragraphs": [
+        "Sparziele machen größere Wünsche sichtbar.",
+        "Kinder sehen nicht nur ihren Kontostand, sondern auch, wie weit sie von einem gewünschten Gegenstand entfernt sind.",
+        "Der Fortschritt wird automatisch aus dem aktuellen Guthaben berechnet und wächst mit jeder Einzahlung."
+      ]
+    },
+    "activity": {
+      "title": "Aktivität",
+      "paragraphs": [
+        "Die Aktivität fasst die wichtigsten Veränderungen der letzten Zeit zusammen.",
+        "So lässt sich schnell erkennen, ob das Guthaben zuletzt gestiegen oder gesunken ist, ohne den gesamten Buchungsverlauf lesen zu müssen.",
+        "Die Übersicht dient als schneller Blick auf die aktuelle Entwicklung."
+      ]
+    },
+    "transactions": {
+      "title": "Buchungen",
+      "paragraphs": [
+        "Buchungen dokumentieren jede Veränderung des Guthabens.",
+        "Sie bilden die Historie des Kontos und schaffen Transparenz darüber, wann Geld hinzugefügt oder ausgegeben wurde.",
+        "So lassen sich Änderungen jederzeit nachvollziehen."
+      ]
+    },
+    "earn": {
+      "title": "Einnahmen",
+      "paragraphs": [
+        "Einnahmen erhöhen das verfügbare Guthaben eines Kindes.",
+        "Sie eignen sich beispielsweise für Taschengeld, Geschenke, Belohnungen oder andere zusätzliche Beträge.",
+        "Jede Einnahme wird automatisch in der Historie dokumentiert."
+      ]
+    },
+    "spend": {
+      "title": "Ausgaben",
+      "paragraphs": [
+        "Ausgaben reduzieren das verfügbare Guthaben.",
+        "Sie werden verwendet, wenn ein Kind etwas von seinem Taschengeld bezahlt oder ein gewünschter Gegenstand gekauft wurde.",
+        "Die Historie bleibt dadurch jederzeit nachvollziehbar."
+      ]
+    },
+    "admin": {
+      "title": "Verwaltung",
+      "paragraphs": [
+        "Die Verwaltung enthält selten genutzte Einstellungen der Anwendung.",
+        "Während die tägliche Nutzung direkt im Konto des Kindes stattfindet, befinden sich hier systemweite Funktionen wie Kinderverwaltung, PIN-Einstellungen, Darstellungsoptionen und Datensicherung.",
+        "Die Verwaltung dient der Organisation der Anwendung und nicht der täglichen Taschengeldpflege."
+      ]
+    },
+    "children": {
+      "title": "Kinder",
+      "paragraphs": [
+        "Hier werden alle vorhandenen Kinder verwaltet.",
+        "Neue Kinder können hinzugefügt und bestehende Kinder entfernt werden.",
+        "Die eigentliche Nutzung erfolgt anschließend direkt im jeweiligen Kinderkonto."
+      ]
+    },
+    "settings": {
+      "title": "Einstellungen",
+      "paragraphs": [
+        "Die Einstellungen enthalten allgemeine Optionen der Anwendung.",
+        "Dazu gehören der optionale PIN-Schutz sowie weitere grundlegende Konfigurationen.",
+        "Änderungen wirken sich auf die gesamte Anwendung aus."
+      ]
+    },
+    "appearance": {
+      "title": "Darstellung",
+      "paragraphs": [
+        "Die Darstellung bestimmt das Erscheinungsbild der Anwendung.",
+        "Farben, Designoptionen und Sprache können an persönliche Vorlieben angepasst werden, ohne dass sich die eigentlichen Funktionen verändern.",
+        "Die Einstellungen wirken sich auf die gesamte Benutzeroberfläche aus."
+      ]
+    },
+    "currency": {
+      "title": "Währungssymbol",
+      "paragraphs": [
+        "Das Währungssymbol erscheint überall dort, wo Beträge angezeigt werden.",
+        "So passen Guthaben, Buchungen und Sparziele zu der Währung, mit der in deiner Familie tatsächlich gespart wird.",
+        "Die Beträge selbst bleiben unverändert – es ändert sich nur ihre Darstellung."
+      ]
+    },
+    "pin": {
+      "title": "PIN",
+      "paragraphs": [
+        "Der PIN-Schutz ist freiwillig. Ist er aktiviert, fragt die Anwendung vor Änderungen an Guthaben, Kindern oder Taschengeld-Regeln nach der PIN und sperrt die Verwaltung.",
+        "Kinder können ihr Konto jederzeit ansehen, mit PIN-Schutz aber keine Beträge buchen, Regeln ändern oder Kinder löschen.",
+        "Ohne PIN-Schutz werden diese Aktionen direkt ausgeführt. Sicherheitsabfragen beim Löschen oder Wiederherstellen bleiben bestehen."
+      ]
+    },
+    "theme": {
+      "title": "Farbschema",
+      "paragraphs": [
+        "Das Farbschema legt fest, ob die Anwendung hell oder dunkel dargestellt wird.",
+        "„System“ übernimmt automatisch die Einstellung deines Geräts und wechselt mit ihr, zum Beispiel abends in den Dunkelmodus.",
+        "„Hell“ und „Dunkel“ legen die Darstellung unabhängig vom Gerät fest."
+      ]
+    },
+    "accentColor": {
+      "title": "Akzentfarbe",
+      "paragraphs": [
+        "Die Akzentfarbe gibt der Anwendung ihren persönlichen Charakter.",
+        "Sie hebt wichtige Schaltflächen und Fortschritte hervor, ohne die Farben der Kinder zu verändern."
+      ]
+    },
+    "language": {
+      "title": "Sprache",
+      "paragraphs": [
+        "Die Sprache legt fest, in welcher Sprache alle Texte der Anwendung angezeigt werden.",
+        "Standardmäßig wird die Sprache des Geräts verwendet. Eine manuelle Auswahl hat Vorrang und bleibt gespeichert.",
+        "Deine Daten wie Namen, Beschreibungen und Sparziele bleiben beim Wechsel unverändert."
+      ]
+    },
+    "backup": {
+      "title": "Datensicherung",
+      "paragraphs": [
+        "Die Datensicherung schützt Kinder, Buchungen, Sparziele und Regeln vor Verlust.",
+        "Alle Daten liegen nur auf diesem Gerät. Mit einem Backup lassen sie sich nach einem Gerätewechsel, einer Neuinstallation oder versehentlichem Löschen vollständig zurückholen.",
+        "Am sichersten ist die Datei außerhalb des Geräts aufgehoben, zum Beispiel in einem Cloud-Speicher oder auf dem Computer."
+      ]
+    }
+  },
+  "navigation": {
+    "home": "Startseite",
+    "wallet": "Wallet",
+    "goals": "Sparziele",
+    "transactions": "Alle Buchungen",
+    "allowances": "Taschengeld-Regeln",
+    "management": "Verwaltung",
+    "children": "Kinder",
+    "settings": "Einstellungen",
+    "appearance": "Darstellung",
+    "backup": "Datensicherung",
+    "back": "Zurück",
+    "openMenu": "Menü öffnen",
+    "closeMenu": "Menü schließen",
+    "mainMenu": "Hauptmenü",
+    "helpDefault": "Informationen zu diesem Bereich"
+  },
+  "appearance": {
+    "themeTitle": "Farbschema",
+    "instantHint": "Wird sofort übernommen und gespeichert.",
+    "accentTitle": "Akzentfarbe",
+    "accentSubtitle": "Die Akzentfarbe wird für Buttons, Icons und Fortschrittsbalken in der gesamten App verwendet.",
+    "presetsLabel": "Farbvorschläge",
+    "colors": {
+      "purple": "Lila",
+      "violet": "Violett",
+      "pink": "Pink",
+      "coral": "Koralle",
+      "orange": "Orange",
+      "green": "Grün",
+      "blue": "Blau",
+      "grey": "Grau"
+    },
+    "customColor": "Beliebige Farbe …",
+    "colorPickerLabel": "Farbauswahl",
+    "preview": "Vorschau",
+    "previewButton": "Beispiel-Button",
+    "previewBadge": "Badge",
+    "languageTitle": "Sprache",
+    "languageSaved": "Sprache gespeichert.",
+    "themes": {
+      "system": "System",
+      "light": "Hell",
+      "dark": "Dunkel"
+    },
+    "themeSystemHint": "System verwendet automatisch die Darstellungs-Einstellung deines Geräts."
+  },
+  "symbols": {
+    "categories": {
+      "spielzeug": "Spielzeug",
+      "forschen": "Forschen & Entdecken",
+      "medien": "Medien & Wissen",
+      "freizeit": "Freizeit & Hobby",
+      "allgemein": "Wünsche & Allgemein"
+    },
+    "items": {
+      "blocks": {
+        "name": "Bausteine",
+        "keywords": "bauen, lego, klotz, klötze, steine, duplo"
+      },
+      "teddy": {
+        "name": "Teddy",
+        "keywords": "teddybär, bär, kuscheltier, plüsch, stofftier"
+      },
+      "puzzle": {
+        "name": "Puzzle",
+        "keywords": "puzzleteil, legespiel, rätsel"
+      },
+      "car": {
+        "name": "Spielzeugauto",
+        "keywords": "auto, rennauto, modellauto, fahrzeug, ferngesteuert"
+      },
+      "gamepad": {
+        "name": "Spielkonsole",
+        "keywords": "konsole, videospiel, controller, zocken, gaming, switch, playstation"
+      },
+      "robot": {
+        "name": "Roboter",
+        "keywords": "robo, technik, programmieren"
+      },
+      "kite": {
+        "name": "Drachen",
+        "keywords": "flugdrache, wind, steigen lassen"
+      },
+      "dice": {
+        "name": "Gesellschaftsspiel",
+        "keywords": "würfel, brettspiel, spiel, kartenspiel"
+      },
+      "microscope": {
+        "name": "Mikroskop",
+        "keywords": "experiment, labor, wissenschaft, forschung, zellen"
+      },
+      "flask": {
+        "name": "Experiment",
+        "keywords": "experimentierkasten, chemie, labor, reagenzglas, kolben, wissenschaft"
+      },
+      "gem": {
+        "name": "Kristall",
+        "keywords": "experiment, edelstein, diamant, mineral, stein, kristallzucht, schmuck"
+      },
+      "fossil": {
+        "name": "Fossil",
+        "keywords": "dino, dinosaurier, ammonit, versteinerung, ausgrabung, urzeit"
+      },
+      "magnifier": {
+        "name": "Lupe",
+        "keywords": "vergrößerungsglas, detektiv, suchen, entdecken"
+      },
+      "volcano": {
+        "name": "Vulkan",
+        "keywords": "ausbruch, lava, berg, geologie"
+      },
+      "telescope": {
+        "name": "Teleskop",
+        "keywords": "fernrohr, sterne, astronomie, sternwarte, himmel"
+      },
+      "planet": {
+        "name": "Planet",
+        "keywords": "weltall, weltraum, saturn, universum, all"
+      },
+      "compass": {
+        "name": "Kompass",
+        "keywords": "abenteuer, wandern, orientierung, expedition"
+      },
+      "leaf": {
+        "name": "Natur",
+        "keywords": "pflanze, blatt, garten, umwelt, blume"
+      },
+      "book": {
+        "name": "Buch",
+        "keywords": "lesen, roman, comic, geschichte, bücher"
+      },
+      "magazine": {
+        "name": "Zeitschrift",
+        "keywords": "magazin, heft, zeitung, comic, abo"
+      },
+      "music": {
+        "name": "Musik",
+        "keywords": "lied, instrument, song, konzert, noten"
+      },
+      "headphones": {
+        "name": "Kopfhörer",
+        "keywords": "hörspiel, musik hören, earbuds, toniebox, hören"
+      },
+      "camera": {
+        "name": "Kamera",
+        "keywords": "foto, fotoapparat, fotografieren, video"
+      },
+      "film": {
+        "name": "Film",
+        "keywords": "kino, dvd, serie, video, movie"
+      },
+      "phone": {
+        "name": "Handy",
+        "keywords": "smartphone, telefon, mobiltelefon, iphone"
+      },
+      "tablet": {
+        "name": "Tablet",
+        "keywords": "ipad, lesegerät, ebook, e-reader"
+      },
+      "laptop": {
+        "name": "Computer",
+        "keywords": "laptop, pc, notebook, rechner"
+      },
+      "bike": {
+        "name": "Fahrrad",
+        "keywords": "rad, bike, velo, radfahren, mountainbike"
+      },
+      "ball": {
+        "name": "Ball",
+        "keywords": "fußball, sport, basketball, spielen, verein"
+      },
+      "skateboard": {
+        "name": "Skateboard",
+        "keywords": "skaten, board, rollbrett, longboard"
+      },
+      "rocket": {
+        "name": "Rakete",
+        "keywords": "weltraum, raumfahrt, astronaut, flug"
+      },
+      "plane": {
+        "name": "Reise",
+        "keywords": "flugzeug, urlaub, ferien, fliegen, ausflug"
+      },
+      "house": {
+        "name": "Haus",
+        "keywords": "spielhaus, baumhaus, puppenhaus, zuhause, zimmer"
+      },
+      "tent": {
+        "name": "Zelt",
+        "keywords": "camping, zelten, abenteuer, outdoor"
+      },
+      "palette": {
+        "name": "Malen",
+        "keywords": "malpalette, basteln, kunst, farben, zeichnen, kreativ"
+      },
+      "ticket": {
+        "name": "Ausflug",
+        "keywords": "ticket, eintritt, freizeitpark, zoo, kino, konzert"
+      },
+      "paw": {
+        "name": "Haustier",
+        "keywords": "tier, hund, katze, pfote, hamster, meerschweinchen, futter"
+      },
+      "gift": {
+        "name": "Geschenk",
+        "keywords": "geburtstag, weihnachten, überraschung, spielzeug, präsent"
+      },
+      "wish": {
+        "name": "Wunsch",
+        "keywords": "traum, zauber, glitzer, besonders, magie"
+      },
+      "star": {
+        "name": "Stern",
+        "keywords": "favorit, lieblings, besonders"
+      },
+      "heart": {
+        "name": "Herz",
+        "keywords": "liebe, herzenswunsch, familie, spende"
+      },
+      "crown": {
+        "name": "Krone",
+        "keywords": "könig, prinzessin, verkleidung, kostüm"
+      },
+      "trophy": {
+        "name": "Pokal",
+        "keywords": "sieg, gewinnen, wettbewerb, turnier, meister"
+      },
+      "piggy": {
+        "name": "Sparschwein",
+        "keywords": "sparen, geld, rücklage, notgroschen"
+      }
+    },
+    "avatarPickerLabel": "Avatar auswählen",
+    "avatars": {
+      "star": "Stern",
+      "heart": "Herz",
+      "zap": "Blitz",
+      "crown": "Krone",
+      "trophy": "Pokal",
+      "rocket": "Rakete",
+      "gem": "Edelstein",
+      "flame": "Flamme",
+      "sun": "Sonne",
+      "moon": "Mond",
+      "music": "Musik",
+      "gift": "Geschenk",
+      "shield": "Schild",
+      "compass": "Kompass",
+      "anchor": "Anker",
+      "cloud": "Wolke",
+      "leaf": "Blatt",
+      "snowflake": "Schneeflocke",
+      "smile": "Lächeln",
+      "target": "Zielscheibe"
+    },
+    "colorPickerLabel": "Farbe auswählen",
+    "colors": {
+      "purple": "Lila",
+      "coral": "Koralle",
+      "green": "Grün",
+      "orange": "Orange",
+      "pink": "Pink",
+      "blue": "Blau",
+      "lightGreen": "Hellgrün",
+      "violet": "Violett"
+    }
+  },
+  "home": {
+    "label": "Startseite",
+    "childrenLabel": "Kinder",
+    "cardLabel": "{{name}}, Guthaben: {{balance}}",
+    "cardLabelWithGoal": "{{name}}, Guthaben: {{balance}}, {{goal}}"
+  }
+}
