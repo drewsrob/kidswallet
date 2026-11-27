@@ -1,0 +1,35 @@
+# Abhängigkeiten
+node_modules/
+
+# Build-Ausgabe (wird separat per gh-pages veröffentlicht)
+dist/
+
+# Logs
+*.log
+
+# Lokale Nutzerdaten des Express-Servers
+data/
+
+# Android: Build-Artefakte und lokale Konfiguration
+android/.gradle/
+android/build/
+android/app/build/
+android/capacitor-cordova-android-plugins/build/
+android/local.properties
+android/app/src/main/assets/public/
+android/app/src/main/assets/capacitor.config.json
+android/app/src/main/assets/capacitor.plugins.json
+android/app/release/
+*.apk
+*.aab
+*.keystore
+*.jks
+
+# IDE / OS
+.idea/
+*.iml
+.DS_Store
+Thumbs.db
+
+# Tooling-Hooks (lokal erzeugt)
+.github/modernize/
