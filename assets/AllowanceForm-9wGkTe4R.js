@@ -1,4 +1,4 @@
-import{E as e,G as t,L as n,P as r,c as i}from"./security-CtCnMpu7.js";import{t as a}from"./api-D0XJvEL6.js";import{t as o}from"./Modal-DHEdphQb.js";import{o as s}from"./index-C__9U8Hp.js";import{a as c,c as l,n as u,s as d,t as f}from"./template-jTQYgMln.js";var p=f(`<!-- @block: allowanceForm -->\r
+import{E as e,G as t,L as n,P as r,c as i}from"./security-BjFG_6IR.js";import{t as a}from"./api-DitHL2SU.js";import{t as o}from"./Modal-BZqi9zWF.js";import{o as s}from"./index-DzoDuFfR.js";import{a as c,c as l,n as u,s as d,t as f}from"./template-eUISzhwL.js";var p=f(`<!-- @block: allowanceForm -->\r
 <div class="form-group form-group--primary">\r
   <label class="form-label" for="allowance-amount">\${t('transaction.amountLabel', { currency: escapeHtml(currency) })}</label>\r
   <div class="input-affix">\r

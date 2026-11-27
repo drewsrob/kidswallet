@@ -1,4 +1,4 @@
-import{E as e,F as t,G as n,L as r,M as i,P as a,c as o,t as s}from"./security-CtCnMpu7.js";import{t as c}from"./api-D0XJvEL6.js";import{a as l,t as u}from"./Modal-DHEdphQb.js";import{n as d,t as f}from"./template-jTQYgMln.js";import{t as p}from"./ChildForm-tM6sI7KZ.js";/* empty css              */var m=f(`<!-- @block: childrenList -->\r
+import{E as e,F as t,G as n,L as r,M as i,P as a,c as o,t as s}from"./security-BjFG_6IR.js";import{t as c}from"./api-DitHL2SU.js";import{a as l,t as u}from"./Modal-BZqi9zWF.js";import{n as d,t as f}from"./template-eUISzhwL.js";import{t as p}from"./ChildForm-DQXPMz9V.js";/* empty css              */var m=f(`<!-- @block: childrenList -->\r
 <section class="view-section" aria-label="\${t('navigation.children')}">\r
   \${sectionHeader({\r
     level: 1, title: t('navigation.children'),\r

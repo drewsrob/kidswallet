@@ -1,4 +1,4 @@
-import{A as e,B as t,D as n,E as r,G as i,M as a,O as o,T as s,d as c,f as l,i as u,j as d,m as f,p}from"./security-CtCnMpu7.js";function m(e){let t=String(e??``).replace(/[\s€$£]/g,``);return t?/^[-−]/.test(t)?{empty:!1,value:NaN,error:`negative`}:(t.includes(`,`)&&t.includes(`.`)&&(t=t.lastIndexOf(`,`)>t.lastIndexOf(`.`)?t.replace(/\./g,``):t.replace(/,/g,``)),t=t.replace(`,`,`.`),/^(\d+\.?\d*|\.\d+)$/.test(t)?(t.split(`.`)[1]??``).length>2?{empty:!1,value:NaN,error:`decimals`}:{empty:!1,value:Number(t),error:``}:{empty:!1,value:NaN,error:`invalid`}):{empty:!0,value:NaN,error:``}}function h(){try{return new Intl.NumberFormat(t()).formatToParts(1.5).find(e=>e.type===`decimal`)?.value??`.`}catch{return`.`}}function g(e){return e==null||isNaN(e)?``:Number(e).toFixed(2).replace(`.`,h())}function _({max:e,currency:t=`€`}){return n=>{let{empty:r,value:a,error:s}=m(n);return r?i(`validation.amountRequired`):s===`negative`?i(`validation.amountNotNegative`):s===`decimals`?i(`validation.amountDecimals`):s?i(`validation.amountInvalid`):a<=0?i(`validation.amountRequired`):a>e?i(`validation.amountMax`,{max:o(e,t)}):``}}function v(e){return t=>String(t??``).trim()?``:e??i(`validation.nameRequired`)}function y(e,t,n){return r=>{let i=String(r??``).trim(),a=Number(i);return/^\d+$/.test(i)&&a>=e&&a<=t?``:typeof n==`function`?n():n}}function b(e=`star`,t=`avatar-picker`){let n=l.map(n=>`
+import{A as e,B as t,D as n,E as r,G as i,M as a,O as o,T as s,d as c,f as l,i as u,j as d,m as f,p}from"./security-BjFG_6IR.js";function m(e){let t=String(e??``).replace(/[\s€$£]/g,``);return t?/^[-−]/.test(t)?{empty:!1,value:NaN,error:`negative`}:(t.includes(`,`)&&t.includes(`.`)&&(t=t.lastIndexOf(`,`)>t.lastIndexOf(`.`)?t.replace(/\./g,``):t.replace(/,/g,``)),t=t.replace(`,`,`.`),/^(\d+\.?\d*|\.\d+)$/.test(t)?(t.split(`.`)[1]??``).length>2?{empty:!1,value:NaN,error:`decimals`}:{empty:!1,value:Number(t),error:``}:{empty:!1,value:NaN,error:`invalid`}):{empty:!0,value:NaN,error:``}}function h(){try{return new Intl.NumberFormat(t()).formatToParts(1.5).find(e=>e.type===`decimal`)?.value??`.`}catch{return`.`}}function g(e){return e==null||isNaN(e)?``:Number(e).toFixed(2).replace(`.`,h())}function _({max:e,currency:t=`€`}){return n=>{let{empty:r,value:a,error:s}=m(n);return r?i(`validation.amountRequired`):s===`negative`?i(`validation.amountNotNegative`):s===`decimals`?i(`validation.amountDecimals`):s?i(`validation.amountInvalid`):a<=0?i(`validation.amountRequired`):a>e?i(`validation.amountMax`,{max:o(e,t)}):``}}function v(e){return t=>String(t??``).trim()?``:e??i(`validation.nameRequired`)}function y(e,t,n){return r=>{let i=String(r??``).trim(),a=Number(i);return/^\d+$/.test(i)&&a>=e&&a<=t?``:typeof n==`function`?n():n}}function b(e=`star`,t=`avatar-picker`){let n=l.map(n=>`
     <button
       type="button"
       class="avatar-option${n===e?` selected`:``}"
@@ -37,15 +37,15 @@ import{A as e,B as t,D as n,E as r,G as i,M as a,O as o,T as s,d as c,f as l,i a
     <div class="stat-group">
       ${t?`<h3 class="stat-group__title">${r(t)}</h3>`:``}
       <dl class="stat-group__tiles">${e.map(j).join(``)}</dl>
-    </div>`}function N({income:e,expense:t,net:n},r,a=`€`){return M([{value:A(e,a),label:i(`dashboard.statIncome`),tone:e?`pos`:`muted`},{value:A(-t,a),label:i(`dashboard.statExpense`),tone:t?`neg`:`muted`},{value:A(n,a),label:i(`dashboard.statNet`),tone:`neutral`,emphasis:!0}],r)}function P({title:e,id:t,level:n=2,icon:i,subtitle:a,action:o,help:s,className:c=``}){let l=`h${n}`,d=n===1?24:18;return`
-    <header class="section-header section-header--h${n}${c?` ${c}`:``}">
+    </div>`}function N({income:e,expense:t,net:n},r,a=`€`){return M([{value:A(e,a),label:i(`dashboard.statIncome`),tone:e?`pos`:`muted`},{value:A(-t,a),label:i(`dashboard.statExpense`),tone:t?`neg`:`muted`},{value:A(n,a),label:i(`dashboard.statNet`),tone:`neutral`,emphasis:!0}],r)}function P({title:e,id:t,level:n=2,icon:i,subtitle:a,action:o,controls:s,help:c,className:l=``}){let d=`h${n}`,f=n===1?24:18;return`
+    <header class="section-header section-header--h${n}${l?` ${l}`:``}">
       <div class="section-header__row">
-        <${l} class="section-header__title"${t?` id="${t}"`:``}>
-          ${i?p(i,{size:d,className:`inline-icon`}):``}<span>${r(e)}</span>
-        </${l}>
-        ${s?u(s):``}
+        <${d} class="section-header__title"${t?` id="${t}"`:``}>
+          ${i?p(i,{size:f,className:`inline-icon`}):``}<span>${r(e)}</span>
+        </${d}>
+        ${c?u(c):``}
       </div>
-      ${o?`<div class="section-header__actions">${F(o)}</div>`:``}
+      ${o||s?`<div class="section-header__actions">${s??``}${o?F(o):``}</div>`:``}
       ${a?`<p class="section-header__subtitle">${r(a)}</p>`:``}
     </header>`}function F({id:e,label:t,icon:n,ariaLabel:i,variant:a=`ghost`}){return`<button class="btn btn-${a}${a===`ghost`?` btn-sm`:``} section-header__action" id="${e}" type="button"${i?` aria-label="${r(i)}"`:``}>
     ${n?p(n,{size:a===`ghost`?16:18}):``}<span>${r(t)}</span>

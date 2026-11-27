@@ -1,4 +1,4 @@
-import{C as e,E as t,F as n,G as r,L as i,O as a,P as o,S as s,c,u as l}from"./security-CtCnMpu7.js";import{t as u}from"./api-D0XJvEL6.js";import{a as d,r as f,t as p}from"./Modal-DHEdphQb.js";import{n as m,t as h}from"./template-jTQYgMln.js";import{a as g}from"./status-tzF0Ti06.js";import{t as _}from"./GoalForm-BuuDFTr2.js";var v=h(`<!-- @block: main -->\r
+import{C as e,E as t,F as n,G as r,L as i,O as a,P as o,S as s,c,u as l}from"./security-BjFG_6IR.js";import{t as u}from"./api-DitHL2SU.js";import{a as d,r as f,t as p}from"./Modal-BZqi9zWF.js";import{n as m,t as h}from"./template-eUISzhwL.js";import{r as g}from"./status-06dWPduS.js";import{t as _}from"./GoalForm-CUTukSkg.js";var v=h(`<!-- @block: main -->\r
 <section class="view-goals view-section" aria-label="\${t('goal.pageLabel', { name: escapeHtml(child.name) })}">\r
 \r
   <div class="goals-balance-info">\r

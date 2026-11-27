@@ -1,4 +1,4 @@
-import{E as e,F as t,G as n,L as r,O as i,P as a,c as o}from"./security-CtCnMpu7.js";import{t as s}from"./api-D0XJvEL6.js";import{t as c}from"./Modal-DHEdphQb.js";import{o as l}from"./index-C__9U8Hp.js";import{i as u,n as d,r as f,t as p}from"./template-jTQYgMln.js";var m=p(`<!-- @block: childForm -->\r
+import{E as e,F as t,G as n,L as r,O as i,P as a,c as o}from"./security-BjFG_6IR.js";import{t as s}from"./api-DitHL2SU.js";import{t as c}from"./Modal-BZqi9zWF.js";import{o as l}from"./index-DzoDuFfR.js";import{i as u,n as d,r as f,t as p}from"./template-eUISzhwL.js";var m=p(`<!-- @block: childForm -->\r
 <div class="form-group">\r
   <label class="form-label" for="child-name">\${t('child.nameLabel')}</label>\r
   <input class="form-input" id="child-name" type="text"\r

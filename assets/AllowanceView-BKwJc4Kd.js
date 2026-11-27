@@ -1,4 +1,4 @@
-import{C as e,D as t,G as n,L as r,O as i,P as a,c as o,u as s}from"./security-CtCnMpu7.js";import{t as c}from"./api-D0XJvEL6.js";import{a as l,r as u}from"./Modal-DHEdphQb.js";import{o as d}from"./index-C__9U8Hp.js";import{n as f,t as p}from"./template-jTQYgMln.js";import{t as m}from"./AllowanceForm-C2FVr2T_.js";import{s as h}from"./status-tzF0Ti06.js";var g=p(`<!-- @block: main -->\r
+import{C as e,D as t,G as n,L as r,O as i,P as a,c as o,u as s}from"./security-BjFG_6IR.js";import{t as c}from"./api-DitHL2SU.js";import{a as l,r as u}from"./Modal-BZqi9zWF.js";import{o as d}from"./index-DzoDuFfR.js";import{n as f,t as p}from"./template-eUISzhwL.js";import{t as m}from"./AllowanceForm-9wGkTe4R.js";import{a as h}from"./status-06dWPduS.js";var g=p(`<!-- @block: main -->\r
 <section class="view-section" aria-label="\${t('allowance.listTitle')}">\r
   \${sectionHeader({\r
     level: 1, icon: child.avatar, title: child.name, subtitle: t('allowance.listTitle'),\r

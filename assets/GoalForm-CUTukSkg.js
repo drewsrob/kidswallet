@@ -1,4 +1,4 @@
-import{E as e,G as t,L as n,P as r,_ as i,b as a,c as o,g as s,h as c,p as l,v as u,x as d,y as f}from"./security-CtCnMpu7.js";import{t as p}from"./api-D0XJvEL6.js";import{t as m}from"./Modal-DHEdphQb.js";import{a as h,c as g,l as _,n as v,t as y}from"./template-jTQYgMln.js";function b(t,n){let r=t.id===n,i=e(a(t.id));return`
+import{E as e,G as t,L as n,P as r,_ as i,b as a,c as o,g as s,h as c,p as l,v as u,x as d,y as f}from"./security-BjFG_6IR.js";import{t as p}from"./api-DitHL2SU.js";import{t as m}from"./Modal-BZqi9zWF.js";import{a as h,c as g,l as _,n as v,t as y}from"./template-eUISzhwL.js";function b(t,n){let r=t.id===n,i=e(a(t.id));return`
     <button type="button" class="symbol-option${r?` selected`:``}" data-symbol="${t.id}"
       aria-pressed="${r}" aria-label="${i}" title="${i}">
       ${l(t.id,{size:24})}

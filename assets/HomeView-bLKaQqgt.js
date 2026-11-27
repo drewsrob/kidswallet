@@ -1,4 +1,4 @@
-import{E as e,F as t,M as n,P as r,S as i,p as a}from"./security-CtCnMpu7.js";import{t as o}from"./api-D0XJvEL6.js";import{n as s,t as c}from"./template-jTQYgMln.js";import{r as l}from"./status-tzF0Ti06.js";import{t as u}from"./ChildForm-tM6sI7KZ.js";var d=c(`<!-- @block: main -->\r
+import{E as e,F as t,M as n,P as r,S as i,p as a}from"./security-BjFG_6IR.js";import{t as o}from"./api-DitHL2SU.js";import{n as s,t as c}from"./template-eUISzhwL.js";import{t as l}from"./status-06dWPduS.js";import{t as u}from"./ChildForm-DQXPMz9V.js";var d=c(`<!-- @block: main -->\r
 <section class="view-home view-section" aria-label="\${t('home.label')}">\r
 \r
   \${children.length > 0\r

@@ -1,4 +1,4 @@
-import{F as e,G as t,L as n,c as r,n as i,t as a}from"./security-CtCnMpu7.js";import{t as o}from"./api-D0XJvEL6.js";import{n as s,t as c}from"./template-jTQYgMln.js";/* empty css              */var l=c(`<!-- @block: pinScreen -->\r
+import{F as e,G as t,L as n,c as r,n as i,t as a}from"./security-BjFG_6IR.js";import{t as o}from"./api-DitHL2SU.js";import{n as s,t as c}from"./template-eUISzhwL.js";/* empty css              */var l=c(`<!-- @block: pinScreen -->\r
 <section class="view-admin-pin view-section" aria-label="\${t('management.unlockLabel')}">\r
   <div class="card admin-pin-card">\r
     <div class="admin-pin-icon" aria-hidden="true">\${icon('lock', { size: 48 })}</div>\r

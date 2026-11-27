@@ -1,4 +1,4 @@
-import{G as e,L as t,R as n,W as r,c as i,t as a,w as o,z as s}from"./security-CtCnMpu7.js";import{d as c,l,u}from"./index-C__9U8Hp.js";import{n as d,t as f}from"./template-jTQYgMln.js";var p=`<!-- @block: layout -->\r
+import{G as e,L as t,R as n,W as r,c as i,t as a,w as o,z as s}from"./security-BjFG_6IR.js";import{d as c,l,u}from"./index-DzoDuFfR.js";import{n as d,t as f}from"./template-eUISzhwL.js";var p=`<!-- @block: layout -->\r
 <section class="appearance-view view-section" aria-label="\${t('navigation.appearance')}">\r
   \${sectionHeader({ level: 1, title: t('navigation.appearance') })}\r
 \r
