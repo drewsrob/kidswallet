@@ -1,0 +1,41 @@
+<!-- @block: main -->
+<section class="view-section view-backup" aria-labelledby="backup-title">
+  ${sectionHeader({ level: 1, id: 'backup-title', title: t('backup.title'), subtitle: t('backup.intro') })}
+
+  <div class="settings-list">
+
+    <div class="settings-item" id="backup-status">
+      ${status}
+    </div>
+
+    <div class="settings-item">
+      ${sectionHeader({ icon: 'download', title: t('backup.exportTitle') })}
+      <p class="backup-text">${t('backup.exportText')}</p>
+      <button class="btn btn-primary" type="button" id="btn-backup-export">
+        ${icon('download', { size: 18 })} ${t('backup.create')}
+      </button>
+    </div>
+
+    <div class="settings-item">
+      ${sectionHeader({ icon: 'upload', title: t('backup.importTitle') })}
+      <p class="backup-text">${t('backup.importText')}</p>
+      <button class="btn btn-secondary" type="button" id="btn-backup-import">
+        ${icon('upload', { size: 18 })} ${t('backup.restore')}
+      </button>
+    </div>
+
+  </div>
+</section>
+
+<!-- @block: status -->
+${sectionHeader({ icon: 'clock', title: t('backup.statusTitle') })}
+<dl class="backup-status">
+  <div class="backup-status-row">
+    <dt>${t('backup.lastBackup')}</dt>
+    <dd>${lastBackup}</dd>
+  </div>
+  <div class="backup-status-row">
+    <dt>${t('backup.version')}</dt>
+    <dd>${version}</dd>
+  </div>
+</dl>

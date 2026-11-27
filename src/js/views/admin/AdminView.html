@@ -1,0 +1,59 @@
+<!-- @block: pinScreen -->
+<section class="view-admin-pin view-section" aria-label="${t('management.unlockLabel')}">
+  <div class="card admin-pin-card">
+    <div class="admin-pin-icon" aria-hidden="true">${icon('lock', { size: 48 })}</div>
+    <h1 class="admin-pin-title">${t('management.title')}</h1>
+    <p class="admin-pin-hint" id="pin-hint">${t('management.unlockHint')}</p>
+    <form id="pin-form" novalidate>
+      <div class="form-group">
+        <label class="form-label" for="pin-input">${t('pin.label')}</label>
+        <input
+          class="form-input pin-input"
+          id="pin-input"
+          type="password"
+          inputmode="numeric"
+          autocomplete="current-password"
+          maxlength="12"
+          placeholder="••••"
+          aria-describedby="pin-hint pin-error"
+          autofocus
+        >
+      </div>
+      <p class="form-error" id="pin-error" hidden role="alert"></p>
+      <button class="btn btn-primary btn-full" type="submit" id="btn-pin-submit">
+        ${t('management.unlock')}
+      </button>
+    </form>
+  </div>
+</section>
+
+<!-- @block: dashboard -->
+<section class="view-admin view-section" aria-labelledby="admin-title">
+  ${sectionHeader({
+    level: 1, id: 'admin-title', title: t('management.title'), subtitle: t('management.intro'),
+    action: pinEnabled ? { id: 'btn-logout', icon: 'lock', label: t('management.lock') } : null,
+  })}
+
+  <nav class="admin-nav" aria-label="${t('management.title')}">
+    <button class="admin-nav-item" data-nav="children" type="button">
+      <span class="nav-icon" aria-hidden="true">${icon('user', { size: 32 })}</span>
+      <span>${t('navigation.children')}</span>
+      <small class="admin-nav-desc">${t('management.childrenDesc')}</small>
+    </button>
+    <button class="admin-nav-item" data-nav="settings" type="button">
+      <span class="nav-icon" aria-hidden="true">${icon('settings', { size: 32 })}</span>
+      <span>${t('navigation.settings')}</span>
+      <small class="admin-nav-desc">${t('management.settingsDesc')}</small>
+    </button>
+    <button class="admin-nav-item" data-nav="appearance" type="button">
+      <span class="nav-icon" aria-hidden="true">${icon('palette', { size: 32 })}</span>
+      <span>${t('navigation.appearance')}</span>
+      <small class="admin-nav-desc">${t('management.appearanceDesc')}</small>
+    </button>
+    <button class="admin-nav-item" data-nav="backup" type="button">
+      <span class="nav-icon" aria-hidden="true">${icon('database', { size: 32 })}</span>
+      <span>${t('navigation.backup')}</span>
+      <small class="admin-nav-desc">${t('management.backupDesc')}</small>
+    </button>
+  </nav>
+</section>

@@ -1,0 +1,63 @@
+<!-- @block: main -->
+<section class="view-section" aria-label="${t('navigation.settings')}">
+  ${sectionHeader({ level: 1, title: t('navigation.settings') })}
+
+  <div class="settings-list">
+
+    <div class="settings-item">
+      ${sectionHeader({ icon: 'lock', title: t('security.title'), help: 'pin' })}
+      <div class="settings-switch-row">
+        <span class="settings-switch-text">
+          <span class="settings-switch-label" id="pin-protection-label">${t('security.pinProtection')}</span>
+          <span class="settings-switch-hint" id="pin-protection-hint">${t('security.pinProtectionHint')}</span>
+        </span>
+        <button class="toggle-switch" id="pin-protection-switch" type="button" role="switch"
+          aria-checked="${pinEnabled}" aria-labelledby="pin-protection-label" aria-describedby="pin-protection-hint">
+          <span class="toggle-thumb" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="settings-item">
+      ${sectionHeader({ icon: 'exchange', title: t('settings.currencyTitle'), help: 'currency' })}
+      <form id="currency-form" novalidate>
+        <div class="form-group">
+          <label class="form-label" for="currency-input">${t('settings.currencyLabel')}</label>
+          <input class="form-input settings-currency-input" id="currency-input"
+            type="text" maxlength="3" value="${currency}"
+            placeholder="€" autocomplete="off">
+        </div>
+        <button class="btn btn-primary" type="submit">${t('common.save')}</button>
+      </form>
+    </div>
+
+    ${pinEnabled ? `
+    <div class="settings-item">
+      ${sectionHeader({ icon: 'key', title: t('settings.changePin'), help: 'pin' })}
+      <form id="pin-form" novalidate>
+        <div class="form-group">
+          <label class="form-label" for="current-pin">${t('settings.currentPin')}</label>
+          <input class="form-input pin-input" id="current-pin"
+            type="password" inputmode="numeric"
+            maxlength="12" placeholder="••••" autocomplete="current-password">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="new-pin">${t('settings.newPin')}</label>
+          <input class="form-input pin-input" id="new-pin"
+            type="password" inputmode="numeric"
+            maxlength="12" placeholder="••••" autocomplete="new-password">
+          <span class="form-hint">${t('settings.newPinHint')}</span>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="new-pin-confirm">${t('settings.newPinConfirm')}</label>
+          <input class="form-input pin-input" id="new-pin-confirm"
+            type="password" inputmode="numeric"
+            maxlength="12" placeholder="••••" autocomplete="new-password">
+        </div>
+        <button class="btn btn-primary" type="submit">${t('settings.changePin')}</button>
+      </form>
+    </div>
+    ` : ''}
+
+  </div>
+</section>

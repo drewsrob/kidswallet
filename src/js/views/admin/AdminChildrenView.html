@@ -1,0 +1,38 @@
+<!-- @block: childrenList -->
+<section class="view-section" aria-label="${t('navigation.children')}">
+  ${sectionHeader({
+    level: 1, title: t('navigation.children'),
+    action: { id: 'btn-admin-add-child', variant: 'primary', icon: 'plus', label: t('child.create') },
+  })}
+  <p class="text-muted text-sm mb-md">
+    ${t('management.childrenIntro')}
+  </p>
+
+  ${children.length > 0
+    ? `<ul class="admin-children-list" id="children-list" aria-label="${t('navigation.children')}">
+        ${children.map(child => childItem({ child, currency })).join('')}
+      </ul>`
+    : renderEmptyState({
+        icon: 'users',
+        title: t('child.emptyTitle'),
+        text: t('child.emptyText'),
+        actions: [{ id: 'btn-admin-empty-add-child', label: t('child.create'), icon: 'plus' }],
+      })}
+</section>
+
+<!-- @block: childItem -->
+<li class="admin-child-item" style="--child-color: ${colors.primary}; --child-ink: ${colors.ink}">
+  <span class="admin-child-avatar"
+    aria-hidden="true">${icon(child.avatar, { size: 28 })}</span>
+  <div class="admin-child-info">
+    <div class="admin-child-name">${escapeHtml(child.name)}</div>
+    <div class="admin-child-balance">${t('management.childBalance', { amount: formatCurrency(child.balance, currency) })}</div>
+  </div>
+  <div class="admin-child-actions">
+    <button class="btn btn-ghost btn-sm"
+      data-action="delete" data-child-id="${child.id}" type="button"
+      aria-label="${t('management.deleteChildLabel', { name: escapeHtml(child.name) })}">
+      ${icon('trash', { size: 18 })} ${t('common.delete')}
+    </button>
+  </div>
+</li>
