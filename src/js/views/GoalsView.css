@@ -134,11 +134,25 @@
   height: 14px;
 }
 
-.goal-footer {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-sm);
-  justify-content: flex-end;
+/* Abstand zur Trennlinie liefert bereits der Card-Gap */
+.goal-card > .card-footer {
+  margin-top: 0;
+}
+
+/* Kaufen ist die Hauptaktion eines erreichten Ziels – eigene Zeile über Bearbeiten/Löschen */
+.goal-card .card-footer { flex-wrap: wrap; }
+
+.goal-card .goal-footer__buy {
+  flex-basis: 100%;
+  border-radius: 0;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-success-text);
+  font-weight: var(--font-bold);
+}
+
+.goal-card .goal-footer__buy + .card-footer__action {
+  border-left: 0;
+  border-bottom-left-radius: var(--radius-lg);
 }
 
 /* ── Abgeschlossenes Ziel ─────────────────────────────────────────────────── */
@@ -150,3 +164,33 @@
   color: var(--color-success-text);
   font-weight: var(--font-bold);
 }
+
+/* Kaufdialog: geplanter Preis + Hinweis bei fehlender Deckung */
+.goal-purchase-planned {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-md);
+  margin: 0 0 var(--space-md);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+}
+.goal-purchase-planned dd {
+  margin: 0;
+  font-weight: 700;
+  color: var(--color-text);
+  font-variant-numeric: tabular-nums;
+}
+.goal-purchase-shortfall {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  background: var(--color-danger-light);
+  color: var(--color-danger-text);
+}
+.goal-purchase-shortfall[hidden] { display: none; }
+.goal-purchase-shortfall p { margin: 0; font-weight: 600; }

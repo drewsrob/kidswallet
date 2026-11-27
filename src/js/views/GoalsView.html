@@ -43,7 +43,7 @@
       <div class="goal-name">${escapeHtml(goal.name)}</div>
       <div class="goal-amounts">
         ${isPurchased
-          ? t('goal.paid', { amount: `<strong>${formatCurrency(goal.targetAmount, currency)}</strong>` })
+          ? t('goal.paid', { amount: `<strong>${          formatCurrency(goal.purchasePrice ?? goal.targetAmount, currency)}</strong>` })
           : isReachable
             ? t('goal.canBuy', { amount: `<strong class="goal-reachable">${formatCurrency(goal.targetAmount, currency)}</strong>` })
             : escapeHtml(status.text)
@@ -70,21 +70,21 @@
     </div>
   ` : ''}
 
-  <footer class="goal-footer">
+  <footer class="card-footer">
     ${!isPurchased && isReachable ? `
-      <button class="btn btn-primary btn-sm" data-action="purchase" data-goal-id="${goal.id}" type="button">
-        🛍️ ${t('goal.buyWithAmount', { amount: formatCurrency(goal.targetAmount, currency) })}
+      <button class="btn btn-ghost card-footer__action goal-footer__buy" data-action="purchase" data-goal-id="${goal.id}" type="button">
+        ${icon('shopping-bag', { size: 18 })}<span>${t('goal.buyWithAmount', { amount: formatCurrency(goal.targetAmount, currency) })}</span>
       </button>
     ` : ''}
     ${!isPurchased ? `
-      <button class="btn btn-ghost btn-sm" data-action="edit" data-goal-id="${goal.id}" type="button"
-        aria-label="${t('goal.editLabel', { name: escapeHtml(goal.name) })}">
-        ${icon('edit', { size: 16 })} ${t('common.edit')}
+      <button class="btn btn-ghost card-footer__action" data-action="edit" data-goal-id="${goal.id}" type="button"
+        aria-label="${t(isReachable ? 'goal.adjustLabel' : 'goal.editLabel', { name: escapeHtml(goal.name) })}">
+        ${icon('edit', { size: 18 })}<span>${isReachable ? t('goal.adjust') : t('common.edit')}</span>
       </button>
     ` : ''}
-    <button class="btn btn-ghost btn-sm" data-action="delete" data-goal-id="${goal.id}" type="button"
+    <button class="btn btn-ghost card-footer__action card-footer__action--danger" data-action="delete" data-goal-id="${goal.id}" type="button"
       aria-label="${t('goal.deleteLabel', { name: escapeHtml(goal.name) })}">
-      ${icon('trash', { size: 16 })} ${t('common.delete')}
+      ${icon('trash', { size: 18 })}<span>${t('common.delete')}</span>
     </button>
   </footer>
 </li>

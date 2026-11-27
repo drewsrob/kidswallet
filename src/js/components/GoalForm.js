@@ -21,10 +21,14 @@ const MAX_TARGET = 99999;
  * Formular zum Erstellen (ohne existing) oder Bearbeiten eines Sparziels öffnen.
  * @param {string} childId
  * @param {object|null} [existing] – zu bearbeitendes Sparziel
+ * @param {object} [options]
+ * @param {boolean} [options.adjust] – erreichtes Ziel an die Realität anpassen (z. B. geänderter Preis)
+ * @param {number} [options.targetAmount] – vorbelegter Zielbetrag statt des gespeicherten
  * @returns {Promise<boolean>} true, wenn gespeichert wurde
  */
-export async function openGoalForm(childId, existing = null) {
+export async function openGoalForm(childId, existing = null, { adjust = false, targetAmount } = {}) {
   const isEdit = !!existing;
+  if (isEdit && targetAmount !== undefined) existing = { ...existing, targetAmount };
   const { settings, children } = getState();
   const currency = settings.currency ?? '€';
   const child = children.find(c => c.id === childId);
@@ -36,7 +40,7 @@ export async function openGoalForm(childId, existing = null) {
   });
 
   const modal = new Modal({
-    title: isEdit ? t('goal.titleEdit') : t('goal.titleCreate'),
+    title: adjust ? t('goal.titleAdjust') : isEdit ? t('goal.titleEdit') : t('goal.titleCreate'),
     subtitle: isEdit ? t('goal.subtitleEdit') : (child ? t('goal.subtitleCreate', { name: escapeHtml(child.name) }) : ''),
     icon: 'target',
     tone: 'goal',

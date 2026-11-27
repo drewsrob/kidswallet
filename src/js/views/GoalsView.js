@@ -11,10 +11,16 @@ import { renderChildNotFound } from '../components/EmptyState.js';
 import { getGoalStatus } from '../status.js';
 import { describeError } from '../errors.js';
 import { t } from '../i18n.js';
+import { icon } from '../icons.js';
+import { getFinancialStatus, toCents } from '../finance.js';
+import { amountRule, parseAmount, formatAmountInput } from '../validation.js';
 import { parseBlocks, render } from '../template.js';
 import goalsHtml from './GoalsView.html?raw';
 
 const blocks = parseBlocks(goalsHtml);
+
+// Wie der Zielbetrag im Sparziel-Formular
+const MAX_PRICE = 99999;
 
 export default class GoalsView {
   constructor(childId) {
@@ -101,10 +107,11 @@ export default class GoalsView {
     if (await openGoalForm(this.childId)) await this._refresh();
   }
 
-  async _editGoal(goalId) {
+  async _editGoal(goalId, options) {
     const goal = this.goals.find(g => g.id === goalId);
     if (!goal) return;
-    if (await openGoalForm(this.childId, goal)) await this._refresh();
+    const reached = !goal.purchasedAt && this.child.balance >= goal.targetAmount;
+    if (await openGoalForm(this.childId, goal, { adjust: reached, ...options })) await this._refresh();
   }
 
   async _purchaseGoal(goalId) {
@@ -113,36 +120,87 @@ export default class GoalsView {
 
     const { settings } = getState();
     const currency = settings.currency ?? '€';
+    const finance = getFinancialStatus(this.child);
+    const availableCents = toCents(finance.availableBalance);
+    // Deckung wie bei bookExpense: Guthaben + noch möglicher Vorschuss (abzgl. einer anfallenden Leihgebühr)
+    const coverCents = availableCents + toCents(finance.remainingAdvance);
+    const openingFee = finance.advanceActive ? 0 : finance.fixedFee;
+    const readPrice = (root) => parseAmount(root.querySelector('#goal-purchase-price')?.value);
 
-    const confirmed = await new Modal({
+    const modal = new Modal({
       title: t('goal.purchaseTitle', { name: escapeHtml(goal.name) }),
-      content: `<p>${t('goal.purchaseDeducted', { amount: formatCurrency(goal.targetAmount, currency) })}</p>
-               <p>${t('goal.purchaseBalanceAfter', { amount: `<strong>${formatCurrency(this.child.balance - goal.targetAmount, currency)}</strong>` })}</p>`,
+      icon: 'shopping-bag',
+      tone: 'goal',
+      help: 'goals',
+      sheet: true,
+      content: /* html */`
+        <dl class="goal-purchase-planned">
+          <dt>${t('goal.plannedPrice')}</dt>
+          <dd>${formatCurrency(goal.targetAmount, currency)}</dd>
+        </dl>
+        <div class="form-group form-group--primary">
+          <label class="form-label" for="goal-purchase-price">${t('goal.actualPrice', { currency: escapeHtml(currency) })}</label>
+          <div class="input-affix">
+            <input class="form-input form-input--amount" id="goal-purchase-price" type="text" inputmode="decimal"
+              enterkeyhint="done" aria-required="true" autocomplete="off" aria-describedby="goal-purchase-hint"
+              value="${formatAmountInput(goal.targetAmount)}">
+            <span class="input-affix__unit" aria-hidden="true">${escapeHtml(currency)}</span>
+          </div>
+          <p class="form-hint" id="goal-purchase-hint" aria-live="polite"></p>
+        </div>
+        <div class="goal-purchase-shortfall" id="goal-purchase-shortfall" role="alert" hidden>
+          <p>${t('goal.notEnoughFunds')}</p>
+          <button type="button" class="btn btn-secondary btn-sm" data-value="adjust">
+            ${icon('edit', { size: 16 })} ${t('goal.adjustGoal')}
+          </button>
+        </div>`,
       actions: [
         { label: t('common.cancel'), value: 'cancel', variant: 'secondary' },
-        { label: t('goal.buy'), value: 'confirm', variant: 'primary' },
+        { label: t('goal.buy'), value: 'buy', variant: 'primary' },
       ],
-    }).open();
+      fields: { 'goal-purchase-price': amountRule({ max: MAX_PRICE, currency }) },
+      validate: (value, ctx) => value !== 'buy' || toCents(readPrice(ctx.root).value) <= coverCents,
+      submit: (value, ctx) => (value === 'buy'
+        ? api.updateGoal(goal.id, { purchaseGoal: true, purchasePrice: readPrice(ctx.root).value })
+        : undefined),
+      errorMessage: (e) => describeError(e, t('goal.purchaseFailed')),
+    });
 
-    if (confirmed !== 'confirm') return;
-    await this._doPurchase(goal);
-  }
+    const resultPromise = modal.open();
+    const root = document.getElementById('goal-purchase-price').closest('.modal');
+    const hint = root.querySelector('#goal-purchase-hint');
+    const shortfall = root.querySelector('#goal-purchase-shortfall');
+    const buyButton = root.querySelector('.modal-actions [data-value="buy"]');
+    const update = () => {
+      const { value, error, empty } = readPrice(root);
+      const valid = !empty && !error && value > 0 && value <= MAX_PRICE;
+      const cents = valid ? toCents(value) : 0;
+      const covered = cents <= coverCents;
+      shortfall.hidden = !valid || covered;
+      buyButton.disabled = valid && !covered;
+      if (!valid || !covered) { hint.textContent = ''; return; }
+      const advance = Math.max(0, cents - availableCents) / 100;
+      hint.innerHTML = advance > 0
+        ? t(openingFee > 0 ? 'goal.purchaseAdvanceFee' : 'goal.purchaseAdvance', {
+          amount: `<strong>${formatCurrency(advance, currency)}</strong>`,
+          fee: formatCurrency(openingFee, currency),
+        })
+        : t('goal.purchaseBalanceAfter', { amount: `<strong>${formatCurrency((availableCents - cents) / 100, currency)}</strong>` });
+    };
+    root.addEventListener('input', update);
+    update();
 
-  async _doPurchase(goal) {
-    try {
-      const response = await api.updateGoal(goal.id, { purchaseGoal: true });
-      const { children } = getState();
-      const updated = children.map(c => c.id === this.childId ? { ...c, balance: response.newBalance } : c);
-      setState({ children: updated });
-      this.child = { ...this.child, balance: response.newBalance };
-      Toast.success(t('goal.purchased', { name: escapeHtml(goal.name) }));
-      await this._refresh();
-    } catch (e) {
-      console.error(e);
-      Toast.error(describeError(e, t('goal.purchaseFailed')), {
-        action: { label: t('common.retry'), onClick: () => this._doPurchase(goal) },
-      });
+    const result = await resultPromise;
+    if (result === 'adjust') {
+      await this._editGoal(goal.id, { targetAmount: readPrice(root).value });
+      return;
     }
+    if (result !== 'buy') return;
+    const { child } = modal.result;
+    setState({ children: getState().children.map(c => c.id === this.childId ? { ...c, ...child } : c) });
+    this.child = { ...this.child, ...child };
+    Toast.success(t('goal.purchased', { name: escapeHtml(goal.name) }));
+    await this._refresh();
   }
 
   async _deleteGoal(goalId) {
