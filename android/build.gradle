@@ -1,0 +1,41 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    
+    repositories {
+        google()
+        // Maven Central über repo1.maven.org zuerst: repo.maven.apache.org (Ziel von mavenCentral())
+        // antwortet in manchen Netzen mit 403, und Gradle probiert bei 403 kein weiteres Repository.
+        maven { url 'https://repo1.maven.org/maven2/' }
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:9.1.0'
+        classpath 'com.google.gms:google-services:4.4.4'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+apply from: "variables.gradle"
+
+allprojects {
+    // Gilt auch für Module mit eigenem buildscript-Block (z. B. capacitor-android in node_modules)
+    buildscript {
+        repositories {
+            maven { url 'https://repo1.maven.org/maven2/' }
+        }
+    }
+    repositories {
+        google()
+        // Maven Central über repo1.maven.org zuerst: repo.maven.apache.org (Ziel von mavenCentral())
+        // antwortet in manchen Netzen mit 403, und Gradle probiert bei 403 kein weiteres Repository.
+        maven { url 'https://repo1.maven.org/maven2/' }
+        mavenCentral()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
