@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <!-- Hintergrund-Kreis -->
+    <circle cx="16" cy="16" r="16" fill="#6c63ff"/>
+    <!-- Wallet-Icon (zentriert, skaliert von 24×24 auf ~18×18 ab Offset 7,7) -->
+    <g transform="translate(7,7) scale(0.75)" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+        <rect x="2" y="8" width="20" height="13" rx="2"/>
+        <path d="M2 13h20"/>
+        <path d="M14 16h3"/>
+        <rect x="9" y="5" width="6" height="3" rx="1"/>
+        <circle cx="12" cy="2.5" r="1.5" fill="#ffffff" stroke="none"/>
+        <line x1="12" y1="4" x2="12" y2="5"/>
+    </g>
+</svg>
