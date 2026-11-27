@@ -283,16 +283,8 @@
 }
 
 /* ── Aktivität ───────────────────────────────────────────────────────────── */
-.activity-periods {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-md);
-}
-
-.activity-note {
-  margin: 0;
-  font-size: var(--text-sm);
-  color: var(--color-text-muted);
+.activity-chart {
+  min-height: 2.5rem;
 }
 
 /* ── Taschengeld-Regeln (Compact) ────────────────────────────────────────── */

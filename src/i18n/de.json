@@ -179,18 +179,31 @@
   },
   "dashboard": {
     "activityTitle": "Aktivität",
-    "activityWeek": "Diese Woche",
-    "activityMonth": "Diesen Monat",
+    "activityRangeLabel": "Zeitraum",
+    "ranges": {
+      "1m": {
+        "short": "1M",
+        "long": "Letzter Monat"
+      },
+      "3m": {
+        "short": "3M",
+        "long": "Letzte 3 Monate"
+      },
+      "6m": {
+        "short": "6M",
+        "long": "Letzte 6 Monate"
+      }
+    },
     "statIncome": "Einnahmen",
     "statExpense": "Ausgaben",
     "statNet": "Saldo",
-    "activityNoWeek": "Diese Woche gab es noch keine Buchungen.",
-    "activityEmpty": "Sobald Buchungen erfasst werden, siehst du hier, wie sich das Guthaben entwickelt.",
-    "trendWeekUp": "Guthaben diese Woche gestiegen",
-    "trendWeekDown": "Guthaben diese Woche gesunken",
-    "trendMonthUp": "Diesen Monat wurde gespart",
+    "activityEmpty": "Sobald Buchungen erfasst werden, siehst du hier, wie sich Einnahmen und Ausgaben entwickeln.",
     "weekTransactions_one": "{{count}} Buchung diese Woche",
-    "weekTransactions_other": "{{count}} Buchungen diese Woche"
+    "weekTransactions_other": "{{count}} Buchungen diese Woche",
+    "activityNotEnoughData": "Für diesen Zeitraum sind noch nicht genügend Daten vorhanden.",
+    "chartLabel": "Einnahmen und Ausgaben – {{range}}",
+    "chartPeriod": "Zeitraum",
+    "chartWeekOf": "Woche ab {{date}}"
   },
   "transaction": {
     "recentTitle": "Letzte Buchungen",
@@ -241,7 +254,9 @@
     "showAll": "Alle Buchungen anzeigen",
     "allTitle": "Alle Buchungen",
     "countFor_one": "{{count}} Buchung für {{name}}",
-    "countFor_other": "{{count}} Buchungen für {{name}}"
+    "countFor_other": "{{count}} Buchungen für {{name}}",
+    "totalTitle": "Gesamt",
+    "totalSince": "Seit {{date}}"
   },
   "wallet": {
     "income": "Einnahme",
@@ -446,17 +461,17 @@
     "activity": {
       "title": "Aktivität",
       "paragraphs": [
-        "Die Aktivität fasst die wichtigsten Veränderungen der letzten Zeit zusammen.",
-        "So lässt sich schnell erkennen, ob das Guthaben zuletzt gestiegen oder gesunken ist, ohne den gesamten Buchungsverlauf lesen zu müssen.",
-        "Die Übersicht dient als schneller Blick auf die aktuelle Entwicklung."
+        "Die Aktivität zeigt, wie sich das Konto in letzter Zeit entwickelt hat.",
+        "Die grüne Linie steht für Einnahmen, die rote für Ausgaben. So lassen sich Trends erkennen – etwa ob mehr Geld hinzukommt, ob die Ausgaben steigen oder wann besonders viel los war.",
+        "Über 1M, 3M und 6M wählst du, welcher Zeitraum angezeigt wird."
       ]
     },
     "transactions": {
       "title": "Buchungen",
       "paragraphs": [
         "Buchungen dokumentieren jede Veränderung des Guthabens.",
-        "Sie bilden die Historie des Kontos und schaffen Transparenz darüber, wann Geld hinzugefügt oder ausgegeben wurde.",
-        "So lassen sich Änderungen jederzeit nachvollziehen."
+        "Auf der Seite „Alle Buchungen“ siehst du oben die Summe aller Einnahmen und Ausgaben seit Beginn. Vor jedem Monat zeigt eine kurze Zusammenfassung, wie der Monat gelaufen ist.",
+        "Darunter folgen die einzelnen Buchungen – so lässt sich jederzeit nachvollziehen, was tatsächlich passiert ist."
       ]
     },
     "earn": {

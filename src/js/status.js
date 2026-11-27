@@ -154,34 +154,3 @@ function startOfWeek(now) {
   d.setDate(d.getDate() - ((d.getDay() + 6) % 7));
   return d;
 }
-
-function sumPeriod(transactions, from) {
-  let income = 0, expense = 0, count = 0;
-  for (const tx of transactions) {
-    if (new Date(tx.date) < from) continue;
-    count++;
-    if (tx.amount >= 0) income += tx.amount; else expense -= tx.amount;
-  }
-  const round = (n) => Math.round(n * 100) / 100;
-  return { income: round(income), expense: round(expense), net: round(income - expense), count };
-}
-
-/**
- * Kennzahlen für die laufende Woche (ab Montag) und den laufenden Monat.
- * @returns {{ week: Period, month: Period, total: number }} Period = { income, expense, net, count }
- */
-export function getActivitySummary(transactions, now = new Date()) {
-  return {
-    week: sumPeriod(transactions, startOfWeek(now)),
-    month: sumPeriod(transactions, new Date(now.getFullYear(), now.getMonth(), 1)),
-    total: transactions.length,
-  };
-}
-
-/** Ein prägnanter Hinweis zur Kontoentwicklung – oder null, wenn es nichts Sinnvolles zu sagen gibt. */
-export function getActivityTrend({ week, month }) {
-  if (week.net > 0) return { tone: 'success', icon: 'trending-up', text: t('dashboard.trendWeekUp') };
-  if (week.net < 0) return { tone: 'info', icon: 'trending-down', text: t('dashboard.trendWeekDown') };
-  if (month.net > 0) return { tone: 'success', icon: 'piggy', text: t('dashboard.trendMonthUp') };
-  return null;
-}

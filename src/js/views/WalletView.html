@@ -74,18 +74,12 @@
   </section>
 
   <section class="card dashboard-card" aria-labelledby="activity-card-title">
-    ${sectionHeader({ id: 'activity-card-title', icon: 'trending-up', title: t('dashboard.activityTitle'), help: 'activity' })}
-    ${activity.total > 0
-      ? `<div class="activity-periods">
-          ${activity.week.count > 0
-            ? renderPeriodStats(activity.week, t('dashboard.activityWeek'), currency)
-            : `<div class="stat-group">
-                <h3 class="stat-group__title">${t('dashboard.activityWeek')}</h3>
-                <p class="activity-note">${t('dashboard.activityNoWeek')}</p>
-              </div>`}
-          ${renderPeriodStats(activity.month, t('dashboard.activityMonth'), currency)}
-        </div>
-        ${activityTrend ? `<div class="dashboard-card__status">${renderStatusHint(activityTrend)}</div>` : ''}`
+    ${sectionHeader({
+      id: 'activity-card-title', icon: 'trending-up', title: t('dashboard.activityTitle'), help: 'activity',
+      controls: transactions.length > 0 ? activityRangeControl : null,
+    })}
+    ${transactions.length > 0
+      ? `<div class="activity-chart" id="activity-chart">${activityChart}</div>`
       : renderEmptyState({
           variant: 'inline',
           icon: 'trending-up',

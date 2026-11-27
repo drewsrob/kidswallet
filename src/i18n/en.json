@@ -179,18 +179,31 @@
   },
   "dashboard": {
     "activityTitle": "Activity",
-    "activityWeek": "This week",
-    "activityMonth": "This month",
+    "activityRangeLabel": "Period",
+    "ranges": {
+      "1m": {
+        "short": "1M",
+        "long": "Last month"
+      },
+      "3m": {
+        "short": "3M",
+        "long": "Last 3 months"
+      },
+      "6m": {
+        "short": "6M",
+        "long": "Last 6 months"
+      }
+    },
     "statIncome": "Income",
     "statExpense": "Expenses",
     "statNet": "Net",
-    "activityNoWeek": "No transactions this week yet.",
-    "activityEmpty": "Once transactions are recorded, you'll see how the balance develops here.",
-    "trendWeekUp": "Balance went up this week",
-    "trendWeekDown": "Balance went down this week",
-    "trendMonthUp": "Money was saved this month",
+    "activityEmpty": "Once transactions are recorded, you'll see how income and expenses develop here.",
     "weekTransactions_one": "{{count}} transaction this week",
-    "weekTransactions_other": "{{count}} transactions this week"
+    "weekTransactions_other": "{{count}} transactions this week",
+    "activityNotEnoughData": "There isn't enough data for this period yet.",
+    "chartLabel": "Income and expenses – {{range}}",
+    "chartPeriod": "Period",
+    "chartWeekOf": "Week of {{date}}"
   },
   "transaction": {
     "recentTitle": "Recent transactions",
@@ -241,7 +254,9 @@
     "showAll": "Show all transactions",
     "allTitle": "All transactions",
     "countFor_one": "{{count}} transaction for {{name}}",
-    "countFor_other": "{{count}} transactions for {{name}}"
+    "countFor_other": "{{count}} transactions for {{name}}",
+    "totalTitle": "Total",
+    "totalSince": "Since {{date}}"
   },
   "wallet": {
     "income": "Income",
@@ -446,17 +461,17 @@
     "activity": {
       "title": "Activity",
       "paragraphs": [
-        "Activity sums up the most important recent changes.",
-        "This lets you quickly see whether the balance has recently gone up or down, without reading the whole transaction history.",
-        "It gives you a quick look at the current trend."
+        "Activity shows how the account has developed recently.",
+        "The green line stands for income, the red line for expenses. This makes trends easy to spot – for example whether more money is coming in, whether spending is rising, or when there was a lot going on.",
+        "Use 1M, 3M and 6M to choose which period is shown."
       ]
     },
     "transactions": {
       "title": "Transactions",
       "paragraphs": [
         "Transactions record every change to the balance.",
-        "They form the account's history and make it clear when money was added or spent.",
-        "This way, changes can always be traced."
+        "At the top of “All transactions” you can see the total of all income and expenses since the start. Before each month, a short summary shows how that month went.",
+        "Below that come the individual transactions, so you can always trace what actually happened."
       ]
     },
     "earn": {

@@ -10,7 +10,10 @@ import { openAllowanceForm } from '../components/AllowanceForm.js';
 import { openGoalForm } from '../components/GoalForm.js';
 import { renderTransactionList } from '../components/TransactionList.js';
 import { renderChildNotFound } from '../components/EmptyState.js';
-import { getActivitySummary, getActivityTrend, getDashboardStatuses, getGoalStatus, getHeroFacts, getNextPayout } from '../status.js';
+import { renderActivityChart, renderActivityRangeControl } from '../components/ActivityChart.js';
+import { bindSegmentedControl } from '../components/SegmentedControl.js';
+import { DEFAULT_RANGE_ID } from '../stats.js';
+import { getDashboardStatuses, getGoalStatus, getHeroFacts, getNextPayout } from '../status.js';
 import { t } from '../i18n.js';
 import { Toast } from '../components/Toast.js';
 import { rerenderKeepingFocus } from '../components/Modal.js';
@@ -31,6 +34,9 @@ export default class WalletView {
     this.child = null;
     this._handlers = [];
     this._flashType = null;
+    // Gewählter Zeitraum bleibt beim Neu-Rendern (z. B. nach einer Buchung) erhalten
+    this._activityRange = DEFAULT_RANGE_ID;
+    this._transactions = [];
   }
 
   async render() {
@@ -74,8 +80,8 @@ export default class WalletView {
 
     const statuses = getDashboardStatuses({ childId: this.childId, allowances, goals, balance });
     const heroFacts = getHeroFacts({ goals, transactions });
-    const activity = getActivitySummary(transactions);
-    const activityTrend = getActivityTrend(activity);
+    this._transactions = transactions;
+    this._currency = currency;
 
     return render(blocks.main, {
       child: this.child,
@@ -91,8 +97,8 @@ export default class WalletView {
       allowanceStatus,
       statuses,
       heroFacts,
-      activity,
-      activityTrend,
+      activityRangeControl: renderActivityRangeControl(this._activityRange),
+      activityChart: transactions.length > 0 ? renderActivityChart(transactions, this._activityRange, currency) : '',
     });
   }
 
@@ -130,6 +136,16 @@ export default class WalletView {
       if (!btn) continue;
       btn.addEventListener('click', h);
       this._handlers.push({ el: btn, type: 'click', fn: h });
+    }
+
+    // Zeitraumwechsel: nur das Diagramm neu zeichnen, die übrige Ansicht bleibt unverändert
+    const rangeEl = document.getElementById('activity-range');
+    const chartEl = document.getElementById('activity-chart');
+    if (rangeEl && chartEl) {
+      this._unbindRange = bindSegmentedControl(rangeEl, (range) => {
+        this._activityRange = range;
+        chartEl.innerHTML = renderActivityChart(this._transactions, range, this._currency);
+      });
     }
   }
 
@@ -181,5 +197,7 @@ export default class WalletView {
   unmount() {
     this._handlers.forEach(({ el, type, fn }) => el.removeEventListener(type, fn));
     this._handlers = [];
+    this._unbindRange?.();
+    this._unbindRange = null;
   }
 }

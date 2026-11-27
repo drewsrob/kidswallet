@@ -185,19 +185,32 @@
   },
   "dashboard": {
     "activityTitle": "Atividade",
-    "activityWeek": "Esta semana",
-    "activityMonth": "Este mês",
+    "activityRangeLabel": "Período",
+    "ranges": {
+      "1m": {
+        "short": "1M",
+        "long": "Último mês"
+      },
+      "3m": {
+        "short": "3M",
+        "long": "Últimos 3 meses"
+      },
+      "6m": {
+        "short": "6M",
+        "long": "Últimos 6 meses"
+      }
+    },
     "statIncome": "Receitas",
     "statExpense": "Despesas",
     "statNet": "Saldo",
-    "activityNoWeek": "Ainda não houve movimentos esta semana.",
-    "activityEmpty": "Assim que houver movimentos registados, vês aqui como o saldo evolui.",
-    "trendWeekUp": "O saldo subiu esta semana",
-    "trendWeekDown": "O saldo desceu esta semana",
-    "trendMonthUp": "Este mês houve poupança",
+    "activityEmpty": "Assim que houver movimentos registados, vês aqui como evoluem as receitas e as despesas.",
     "weekTransactions_one": "{{count}} movimento esta semana",
     "weekTransactions_many": "{{count}} movimentos esta semana",
-    "weekTransactions_other": "{{count}} movimentos esta semana"
+    "weekTransactions_other": "{{count}} movimentos esta semana",
+    "activityNotEnoughData": "Ainda não há dados suficientes para este período.",
+    "chartLabel": "Receitas e despesas – {{range}}",
+    "chartPeriod": "Período",
+    "chartWeekOf": "Semana de {{date}}"
   },
   "transaction": {
     "recentTitle": "Últimos movimentos",
@@ -249,7 +262,9 @@
     "allTitle": "Todos os movimentos",
     "countFor_one": "{{count}} movimento de {{name}}",
     "countFor_many": "{{count}} movimentos de {{name}}",
-    "countFor_other": "{{count}} movimentos de {{name}}"
+    "countFor_other": "{{count}} movimentos de {{name}}",
+    "totalTitle": "Total",
+    "totalSince": "Desde {{date}}"
   },
   "wallet": {
     "income": "Receita",
@@ -456,17 +471,17 @@
     "activity": {
       "title": "Atividade",
       "paragraphs": [
-        "A atividade resume as alterações mais importantes dos últimos tempos.",
-        "Assim percebes rapidamente se o saldo subiu ou desceu recentemente, sem teres de ler todo o histórico de movimentos.",
-        "Este resumo dá uma visão rápida da evolução atual."
+        "A atividade mostra como a conta evoluiu nos últimos tempos.",
+        "A linha verde representa as receitas e a vermelha, as despesas. Assim reconhecem-se tendências: por exemplo, se entra mais dinheiro, se as despesas aumentam ou quando houve mais movimento.",
+        "Com 1M, 3M e 6M escolhes o período apresentado."
       ]
     },
     "transactions": {
       "title": "Movimentos",
       "paragraphs": [
         "Os movimentos registam cada alteração do saldo.",
-        "Formam o histórico da conta e mostram com transparência quando foi adicionado ou gasto dinheiro.",
-        "Assim, as alterações podem ser verificadas a qualquer momento."
+        "No topo de «Todos os movimentos» vês o total de receitas e despesas desde o início. Antes de cada mês, um breve resumo mostra como correu esse mês.",
+        "Por baixo seguem-se os movimentos individuais, para que se possa sempre perceber o que realmente aconteceu."
       ]
     },
     "earn": {

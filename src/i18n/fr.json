@@ -185,19 +185,32 @@
   },
   "dashboard": {
     "activityTitle": "Activité",
-    "activityWeek": "Cette semaine",
-    "activityMonth": "Ce mois-ci",
+    "activityRangeLabel": "Période",
+    "ranges": {
+      "1m": {
+        "short": "1M",
+        "long": "Dernier mois"
+      },
+      "3m": {
+        "short": "3M",
+        "long": "3 derniers mois"
+      },
+      "6m": {
+        "short": "6M",
+        "long": "6 derniers mois"
+      }
+    },
     "statIncome": "Revenus",
     "statExpense": "Dépenses",
     "statNet": "Solde",
-    "activityNoWeek": "Aucune opération cette semaine pour l'instant.",
-    "activityEmpty": "Dès que des opérations sont enregistrées, tu verras ici l'évolution du solde.",
-    "trendWeekUp": "Solde en hausse cette semaine",
-    "trendWeekDown": "Solde en baisse cette semaine",
-    "trendMonthUp": "De l'argent a été épargné ce mois-ci",
+    "activityEmpty": "Dès que des opérations sont enregistrées, tu verras ici l'évolution des revenus et des dépenses.",
     "weekTransactions_one": "{{count}} opération cette semaine",
     "weekTransactions_many": "{{count}} opérations cette semaine",
-    "weekTransactions_other": "{{count}} opérations cette semaine"
+    "weekTransactions_other": "{{count}} opérations cette semaine",
+    "activityNotEnoughData": "Il n'y a pas encore assez de données pour cette période.",
+    "chartLabel": "Revenus et dépenses – {{range}}",
+    "chartPeriod": "Période",
+    "chartWeekOf": "Semaine du {{date}}"
   },
   "transaction": {
     "recentTitle": "Dernières opérations",
@@ -249,7 +262,9 @@
     "allTitle": "Toutes les opérations",
     "countFor_one": "{{count}} opération pour {{name}}",
     "countFor_many": "{{count}} opérations pour {{name}}",
-    "countFor_other": "{{count}} opérations pour {{name}}"
+    "countFor_other": "{{count}} opérations pour {{name}}",
+    "totalTitle": "Total",
+    "totalSince": "Depuis {{date}}"
   },
   "wallet": {
     "income": "Revenu",
@@ -456,17 +471,17 @@
     "activity": {
       "title": "Activité",
       "paragraphs": [
-        "L'activité résume les principaux changements récents.",
-        "On voit ainsi rapidement si le solde a augmenté ou diminué dernièrement, sans devoir lire tout l'historique des opérations.",
-        "Cet aperçu donne un coup d'œil rapide sur l'évolution actuelle."
+        "L'activité montre comment le compte a évolué ces derniers temps.",
+        "La ligne verte représente les revenus, la rouge les dépenses. On repère ainsi les tendances : par exemple si plus d'argent arrive, si les dépenses augmentent ou à quels moments il y a eu beaucoup d'activité.",
+        "Avec 1M, 3M et 6M, tu choisis la période affichée."
       ]
     },
     "transactions": {
       "title": "Opérations",
       "paragraphs": [
         "Les opérations enregistrent chaque changement du solde.",
-        "Elles forment l'historique du compte et indiquent clairement quand de l'argent a été ajouté ou dépensé.",
-        "Les changements restent ainsi toujours traçables."
+        "En haut de « Toutes les opérations », tu trouves le total des revenus et des dépenses depuis le début. Avant chaque mois, un court résumé montre comment le mois s'est passé.",
+        "Viennent ensuite les opérations une par une : on peut ainsi toujours retracer ce qui s'est réellement passé."
       ]
     },
     "earn": {
