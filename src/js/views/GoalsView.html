@@ -1,0 +1,90 @@
+<!-- @block: main -->
+<section class="view-goals view-section" aria-label="${t('goal.pageLabel', { name: escapeHtml(child.name) })}">
+
+  <div class="goals-balance-info">
+    <span class="goals-balance-label">${t('goal.availableBalance')}</span>
+    <span class="goals-balance-amount" id="current-balance" data-balance="${child.balance}">
+      ${formatCurrency(child.balance, currency)}
+    </span>
+  </div>
+
+  ${sectionHeader({
+    level: 1, title: t('goal.title'),
+    action: { id: 'btn-new-goal', variant: 'primary', icon: 'plus', label: t('goal.create') },
+  })}
+
+  ${activeGoals.length > 0
+    ? `<ul class="goals-list" aria-label="${t('goal.activeLabel')}">
+        ${activeGoals.map(g => goalCard({ goal: g, currency })).join('')}
+      </ul>`
+    : renderEmptyState({
+        icon: doneGoals.length > 0 ? 'trophy' : 'target',
+        title: doneGoals.length > 0 ? t('goal.allDoneTitle') : t('goal.emptyTitle'),
+        text: doneGoals.length > 0 ? t('goal.allDoneText') : t('goal.emptyText'),
+        actions: [{ action: 'create', label: t('goal.create'), icon: 'plus' }],
+      })}
+
+  ${doneGoals.length > 0 ? `
+    <section aria-labelledby="goals-done-title" class="mt-lg">
+      ${sectionHeader({ id: 'goals-done-title', icon: 'trophy', title: t('goal.purchasedTitle') })}
+      <ul class="goals-list goals-list--completed">
+        ${doneGoals.map(g => goalCard({ goal: g, currency, completed: true })).join('')}
+      </ul>
+    </section>
+  ` : ''}
+
+</section>
+
+<!-- @block: goalCard -->
+<li class="goal-card${isPurchased ? ' purchased' : (isReachable ? ' reachable' : '')}${status?.state === 'almost' ? ' goal-card--almost' : ''}" data-goal-id="${goal.id}">
+  <div class="goal-header">
+    <span class="goal-icon" aria-hidden="true">${icon(goal.icon, { size: 28 })}</span>
+    <div class="goal-info">
+      <div class="goal-name">${escapeHtml(goal.name)}</div>
+      <div class="goal-amounts">
+        ${isPurchased
+          ? t('goal.paid', { amount: `<strong>${formatCurrency(goal.targetAmount, currency)}</strong>` })
+          : isReachable
+            ? t('goal.canBuy', { amount: `<strong class="goal-reachable">${formatCurrency(goal.targetAmount, currency)}</strong>` })
+            : escapeHtml(status.text)
+        }
+      </div>
+    </div>
+    ${isPurchased ? `
+      <span class="goal-complete-badge goal-purchased-badge" aria-label="${t('goal.purchasedBadge')}">
+        🎉 ${t('goal.purchasedBadgeText')}
+      </span>
+    ` : isReachable ? renderStatusHint({ tone: 'success', icon: 'trophy', text: status.text }) : ''}
+  </div>
+
+  ${!isPurchased ? `
+    <div>
+      <div class="goal-progress-label">
+        <span>${t('goal.targetShort', { amount: formatCurrency(goal.targetAmount, currency) })}</span><span>${pct}%</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill${isReachable ? ' complete' : ''}" style="--target-width: ${pct}%;"
+          role="progressbar" aria-valuenow="${pct}" aria-valuemin="0" aria-valuemax="100"
+          aria-label="${t('goal.progressLabel', { name: escapeHtml(goal.name) })}"></div>
+      </div>
+    </div>
+  ` : ''}
+
+  <footer class="goal-footer">
+    ${!isPurchased && isReachable ? `
+      <button class="btn btn-primary btn-sm" data-action="purchase" data-goal-id="${goal.id}" type="button">
+        🛍️ ${t('goal.buyWithAmount', { amount: formatCurrency(goal.targetAmount, currency) })}
+      </button>
+    ` : ''}
+    ${!isPurchased ? `
+      <button class="btn btn-ghost btn-sm" data-action="edit" data-goal-id="${goal.id}" type="button"
+        aria-label="${t('goal.editLabel', { name: escapeHtml(goal.name) })}">
+        ${icon('edit', { size: 16 })} ${t('common.edit')}
+      </button>
+    ` : ''}
+    <button class="btn btn-ghost btn-sm" data-action="delete" data-goal-id="${goal.id}" type="button"
+      aria-label="${t('goal.deleteLabel', { name: escapeHtml(goal.name) })}">
+      ${icon('trash', { size: 16 })} ${t('common.delete')}
+    </button>
+  </footer>
+</li>

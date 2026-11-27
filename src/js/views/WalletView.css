@@ -1,0 +1,325 @@
+/* views/wallet.css – Wallet-Ansicht eines Kindes */
+
+.view-wallet {
+  display: flex;
+  flex-direction: column;
+  gap: var(--section-gap);
+}
+
+/* ── Wallet-Hero ─────────────────────────────────────────────────────────── */
+.wallet-hero {
+  position: relative;
+  border-radius: var(--radius-xl);
+  padding: var(--hero-padding);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  color: var(--hero-ink);
+  background: radial-gradient(var(--hero-shape), var(--hero-start) 0%, var(--hero-end) 100%);
+}
+
+.wallet-hero__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  width: 100%;
+}
+
+.wallet-edit-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  flex-shrink: 0;
+  min-height: var(--touch-sm);
+  padding: 0 var(--space-md);
+  border: none;
+  border-radius: var(--radius-full);
+  background: var(--color-surface-raised);
+  color: var(--child-text);
+  font-family: var(--font-family);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: box-shadow var(--transition-fast), transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+.wallet-edit-btn:hover { box-shadow: var(--shadow-md); opacity: 1; }
+.wallet-edit-btn:active { transform: scale(0.94); }
+.wallet-edit-btn:focus-visible { outline: 3px solid var(--child-primary); outline-offset: 2px; }
+
+.wallet-hero__identity {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  min-width: 0;
+  text-align: left;
+}
+
+.wallet-avatar {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  color: var(--hero-ink);
+  display: grid;
+  place-items: center;
+}
+
+.wallet-name {
+  font-size: var(--text-lg);
+  font-weight: var(--font-medium);
+  line-height: 1.2;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.wallet-balance {
+  font-size: clamp(2.5rem, 8vw, 3.5rem);
+  font-weight: var(--font-bold);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.wallet-hero__facts {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-xs) var(--space-md);
+  font-size: var(--text-xs);
+  font-weight: var(--font-medium);
+}
+
+.wallet-hero__facts li {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.wallet-actions {
+  display: flex;
+  gap: var(--space-md);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ── Schnell-Aktionen ────────────────────────────────────────────────────── */
+.wallet-quick-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+}
+
+/* Hauptaktionen: gefüllte Buttons statt Content-Cards (Ebene 1 der Hierarchie) */
+.quick-action-btn {
+  --qa-bg: var(--action-earn-bg);
+  --qa-bg-hover: var(--action-earn-bg-hover);
+  --qa-bg-active: var(--action-earn-bg-active);
+  --qa-ink: var(--action-earn-ink);
+  display: flex;
+  flex-direction: var(--quick-action-direction);
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs) var(--space-sm);
+  padding: var(--quick-action-padding);
+  background: var(--qa-bg);
+  color: var(--qa-ink);
+  border: none;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--qa-bg) 35%, transparent), var(--shadow-sm);
+  cursor: pointer;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast);
+  text-decoration: none;
+  min-height: 56px;
+  font-family: var(--font-family);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.quick-action-btn--danger {
+  --qa-bg: var(--action-spend-bg);
+  --qa-bg-hover: var(--action-spend-bg-hover);
+  --qa-bg-active: var(--action-spend-bg-active);
+  --qa-ink: var(--action-spend-ink);
+}
+
+@media (hover: hover) {
+  .quick-action-btn:hover {
+    background: var(--qa-bg-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px color-mix(in srgb, var(--qa-bg) 45%, transparent), var(--shadow-md);
+  }
+}
+
+.quick-action-btn:active {
+  background: var(--qa-bg-active);
+  transform: translateY(1px) scale(0.98);
+  box-shadow: var(--shadow-sm);
+}
+
+.quick-action-btn:focus-visible {
+  outline: 3px solid var(--action-focus-ring);
+  outline-offset: 3px;
+}
+
+.quick-action-btn .quick-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: currentColor;
+  /* Icon leicht hervorgehoben in einem halbtransparenten Kreis */
+  background: color-mix(in srgb, currentColor 18%, transparent);
+  border-radius: var(--radius-full);
+  padding: var(--space-xs);
+}
+
+.quick-action-btn span:not(.quick-icon) {
+  font-size: var(--text-base);
+  font-weight: var(--font-bold);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .quick-action-btn,
+  .quick-action-btn:hover,
+  .quick-action-btn:active { transform: none; }
+}
+
+/* ── Card-Fußzeile: Link zur vollständigen Ansicht („Vorschau → alles“) ─── */
+.dashboard-card__more {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  width: 100%;
+  min-height: 44px;
+  margin-top: var(--space-sm);
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--color-border);
+  border-radius: 0;
+  color: var(--child-text);
+  font-weight: var(--font-medium);
+  text-decoration: none;
+}
+
+/* ── Dashboard-Cards (Taschengeld-Regel, Sparziele, Aktivität, Buchungen) ── */
+.dashboard-card {
+  box-shadow: var(--shadow-sm);
+}
+
+/* Aktionen im Bereichskopf in der Farbe des Kindes */
+.view-wallet .section-header__action {
+  color: var(--child-text);
+}
+
+.dashboard-card__status {
+  margin-top: var(--space-sm);
+}
+
+.dashboard-goal-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.wallet-goal-card {
+  background: var(--color-bg);
+  border-radius: var(--radius-md);
+  padding: var(--list-item-padding);
+}
+
+.wallet-goal-card__progress {
+  margin: 0;
+}
+
+.wallet-goal-card--reached {
+  box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--color-success) 45%, transparent);
+}
+
+.wallet-goal-card--almost .wallet-goal-card__rest {
+  color: var(--color-text);
+  font-weight: var(--font-medium);
+}
+
+.wallet-goal-card__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-xs) var(--space-sm);
+  margin-bottom: var(--space-sm);
+}
+
+.wallet-goal-card__title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.wallet-goal-card__title strong {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.wallet-goal-card__header .status-hint {
+  flex-shrink: 0;
+}
+
+.wallet-goal-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0 var(--space-sm);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  margin-top: var(--space-xs);
+}
+
+/* ── Aktivität ───────────────────────────────────────────────────────────── */
+.activity-periods {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.activity-note {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+/* ── Taschengeld-Regeln (Compact) ────────────────────────────────────────── */
+.allowance-list-compact {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.allowance-item-compact {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  background: var(--color-bg);
+  border-radius: var(--radius-md);
+  border-left: 3px solid var(--child-primary, var(--color-primary));
+}
+
+.allowance-item-compact.inactive {
+  opacity: 0.55;
+}
+
+.allowance-item-compact-schedule {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  color: var(--color-text);
+}

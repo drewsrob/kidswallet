@@ -1,0 +1,59 @@
+<!-- @block: main -->
+<section class="view-section" aria-label="${t('allowance.listTitle')}">
+  ${sectionHeader({
+    level: 1, icon: child.avatar, title: child.name, subtitle: t('allowance.listTitle'),
+    action: { id: 'btn-add-allowance', variant: 'primary', icon: 'plus', label: t('allowance.create') },
+  })}
+
+  ${allowances.length > 0
+    ? `<ul class="allowance-list" id="allowance-list" aria-label="${t('allowance.listTitle')}">
+        ${allowances.map(a => allowanceItem({ allowance: a, currency })).join('')}
+      </ul>`
+    : renderEmptyState({
+        icon: 'clock',
+        title: t('allowance.emptyTitle'),
+        text: t('allowance.emptyText'),
+        actions: [{ id: 'btn-empty-add-allowance', label: t('allowance.create'), icon: 'plus' }],
+      })}
+
+  <aside class="allowance-info-note">
+    <p class="allowance-info-note__text">
+      ${icon('info', { size: 16 })}
+      ${t('allowance.autoPayoutNote')}
+    </p>
+  </aside>
+</section>
+
+<!-- @block: allowanceItem -->
+<li class="allowance-item" data-allowance-id="${allowance.id}">
+  <div class="allowance-info">
+    <div class="allowance-amount">${formatCurrency(allowance.amount, currency)}</div>
+    <div class="allowance-schedule">${formatAllowanceSchedule(allowance)}</div>
+    ${allowance.lastExecuted
+      ? `<div class="text-xs text-muted">${t('allowance.lastExecuted', { date: allowance.lastExecuted })}</div>`
+      : ''}
+    ${status ? `<div class="allowance-status">${renderStatusHint(status)}</div>` : ''}
+  </div>
+  <div class="allowance-actions">
+    <label class="toggle">
+      <input type="checkbox"
+        ${allowance.isActive ? 'checked' : ''}
+        role="switch" aria-label="${t('allowance.activeToggle')}"
+        data-action="toggle"
+        data-allowance-id="${allowance.id}">
+      <span class="toggle-slider"></span>
+    </label>
+    <button class="btn btn-ghost btn-sm"
+      data-action="edit" data-allowance-id="${allowance.id}"
+      aria-label="${t('allowance.titleEdit')}"
+      type="button">
+      ${icon('edit', { size: 18 })} ${t('common.edit')}
+    </button>
+    <button class="btn btn-ghost btn-sm"
+      data-action="delete" data-allowance-id="${allowance.id}"
+      aria-label="${t('allowance.deleteLabel')}"
+      type="button">
+      ${icon('trash', { size: 18 })} ${t('common.delete')}
+    </button>
+  </div>
+</li>

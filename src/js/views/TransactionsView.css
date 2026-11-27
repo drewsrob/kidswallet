@@ -1,0 +1,15 @@
+/* views/TransactionsView.css – Seite "Alle Buchungen" */
+.view-transactions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--section-gap);
+}
+
+.transactions-page__month {
+  margin-bottom: var(--space-sm);
+  font-size: var(--text-sm);
+  font-weight: var(--font-bold);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}

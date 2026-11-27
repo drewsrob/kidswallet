@@ -1,0 +1,152 @@
+/* views/goals.css – Sparziele */
+
+.view-goals {
+  display: flex;
+  flex-direction: column;
+  gap: var(--section-gap);
+}
+
+/* ── Balance-Hinweis ─────────────────────────────────────────────────────── */
+.goals-balance-info {
+  background: var(--child-light);
+  border-radius: var(--radius-md);
+  padding: var(--list-item-padding) var(--card-padding);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+}
+
+.goals-balance-label {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.goals-balance-amount {
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  color: var(--child-text);
+}
+
+/* ── Sparziel-Karte ──────────────────────────────────────────────────────── */
+.goal-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: var(--card-padding);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--list-item-gap);
+}
+
+.goal-card.reachable {
+  border: 2px solid var(--color-success);
+  background: var(--color-success-light);
+}
+
+.goal-card.purchased {
+  border: 2px solid var(--color-warning);
+  background: var(--color-warning-light);
+  opacity: 0.85;
+}
+
+.goal-purchased-badge {
+  font-size: var(--text-sm);
+  font-weight: var(--font-bold);
+}
+
+.goals-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--list-item-gap);
+}
+
+.goals-list--completed {
+  margin-top: var(--space-md);
+}
+
+.goal-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-sm) var(--list-item-gap);
+}
+
+.goal-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: var(--child-light);
+  color: var(--child-text);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.goal-info {
+  flex: 1 1 140px;
+  min-width: 0;
+}
+
+.goal-name {
+  font-size: var(--text-lg);
+  font-weight: var(--font-bold);
+  overflow-wrap: anywhere;
+}
+
+.goal-amounts {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.goal-amounts strong {
+  color: var(--child-text);
+}
+
+.goal-amounts strong.goal-reachable {
+  color: var(--color-success-text);
+  font-size: var(--text-base);
+}
+
+.goal-card--almost .goal-amounts {
+  color: var(--color-text);
+  font-weight: var(--font-medium);
+}
+
+.goal-header .status-hint {
+  flex-shrink: 0;
+}
+
+.goal-progress-label {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-xs);
+}
+
+.goal-progress-label span:last-child {
+  flex-shrink: 0;
+}
+
+.goal-card .progress-bar {
+  height: 14px;
+}
+
+.goal-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  justify-content: flex-end;
+}
+
+/* ── Abgeschlossenes Ziel ─────────────────────────────────────────────────── */
+.goal-complete-badge {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: var(--text-sm);
+  color: var(--color-success-text);
+  font-weight: var(--font-bold);
+}

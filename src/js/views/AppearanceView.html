@@ -1,0 +1,89 @@
+<!-- @block: layout -->
+<section class="appearance-view view-section" aria-label="${t('navigation.appearance')}">
+  ${sectionHeader({ level: 1, title: t('navigation.appearance') })}
+
+  <div class="appearance-card card">
+    ${sectionHeader({ icon: 'moon', id: 'appearance-theme-title', title: t('appearance.themeTitle'), help: 'theme' })}
+    <div class="appearance-choices appearance-themes" role="radiogroup"
+      aria-labelledby="appearance-theme-title" aria-describedby="appearance-theme-hint">
+      ${themes.map(th => `
+        <label class="appearance-choice${th.value === theme ? ' active' : ''}">
+          <input type="radio" name="app-theme" id="appearance-theme-${th.value}"
+            value="${th.value}"${th.value === theme ? ' checked' : ''}>
+          <span>${th.label}</span>
+        </label>
+      `).join('')}
+    </div>
+    <p class="appearance-hint" id="appearance-theme-hint">${t('appearance.themeSystemHint')}</p>
+  </div>
+
+  <div class="appearance-card card">
+    ${sectionHeader({
+      icon: 'palette', title: t('appearance.accentTitle'), help: 'accentColor',
+      subtitle: t('appearance.accentSubtitle'),
+    })}
+
+    <!-- Preset swatches -->
+    <div class="appearance-presets" role="group" aria-label="${t('appearance.presetsLabel')}">
+      ${presets.map(p => `
+        <button
+          class="appearance-preset${p.hex.toLowerCase() === current.toLowerCase() ? ' active' : ''}"
+          data-color="${p.hex}"
+          style="--swatch-color: ${p.hex}"
+          type="button"
+          aria-label="${p.label}"
+          aria-pressed="${p.hex.toLowerCase() === current.toLowerCase()}"
+        >
+          <span class="appearance-preset-dot"></span>
+          <span class="appearance-preset-label">${p.label}</span>
+        </button>
+      `).join('')}
+    </div>
+
+    <!-- Beliebige Farbe via Color Wheel -->
+    <label class="appearance-wheel-row" for="appearance-color-input">
+      <span class="appearance-wheel-swatch" id="appearance-wheel-swatch" style="background: ${current}"></span>
+      <span class="appearance-wheel-text">${t('appearance.customColor')}</span>
+      <span class="appearance-wheel-arrow" aria-hidden="true">›</span>
+      <input
+        type="color"
+        id="appearance-color-input"
+        class="appearance-color-input"
+        value="${current}"
+        aria-label="${t('appearance.colorPickerLabel')}"
+      >
+    </label>
+
+    <!-- Live-Vorschau -->
+    <div class="appearance-preview">
+      <span class="appearance-preview-label">${t('appearance.preview')}</span>
+      <div class="appearance-preview-row">
+        <button class="btn btn-primary" id="appearance-preview-btn" type="button" tabindex="-1" aria-hidden="true">${t('appearance.previewButton')}</button>
+        <div
+          class="appearance-preview-badge"
+          id="appearance-preview-badge"
+          style="background: color-mix(in srgb, ${current} 15%, transparent); color: var(--accent-text)"
+        >${t('appearance.previewBadge')}</div>
+      </div>
+    </div>
+
+    <button class="btn btn-primary btn-full mt-lg" id="appearance-save" type="button">
+      ${t('common.save')}
+    </button>
+  </div>
+
+  <div class="appearance-card card">
+    ${sectionHeader({ icon: 'globe', id: 'appearance-language-title', title: t('appearance.languageTitle'), help: 'language' })}
+    <div class="appearance-choices appearance-languages" role="radiogroup"
+      aria-labelledby="appearance-language-title" aria-describedby="appearance-language-hint">
+      ${languages.map(l => `
+        <label class="appearance-choice${l.code === language ? ' active' : ''}" lang="${l.code}">
+          <input type="radio" name="app-language" id="appearance-language-${l.code}"
+            value="${l.code}"${l.code === language ? ' checked' : ''}>
+          <span>${l.label}</span>
+        </label>
+      `).join('')}
+    </div>
+    <p class="appearance-hint" id="appearance-language-hint">${t('appearance.instantHint')}</p>
+  </div>
+</section>

@@ -1,0 +1,142 @@
+<!-- @block: main -->
+<section class="view-wallet view-section" aria-label="${t('wallet.label', { name: escapeHtml(child.name) })}">
+
+  <div class="wallet-hero">
+    <div class="wallet-hero__top">
+      <div class="wallet-hero__identity">
+        <div class="wallet-avatar" aria-hidden="true">${icon(child.avatar, { size: 26 })}</div>
+        <div class="wallet-name">${escapeHtml(child.name)}</div>
+      </div>
+      <button class="wallet-edit-btn" id="btn-edit-child" type="button"
+        aria-label="${t('child.titleEdit', { name: escapeHtml(child.name) })}">
+        ${icon('edit', { size: 16 })}<span>${t('common.edit')}</span>
+      </button>
+    </div>
+    <div class="wallet-balance" data-balance="${child.balance}">${formatCurrency(child.balance, currency)}</div>
+    ${heroFacts.length > 0 ? `
+      <ul class="wallet-hero__facts" aria-label="${t('wallet.factsLabel')}">
+        ${heroFacts.map(f => `<li>${icon(f.icon, { size: 14 })}<span>${escapeHtml(f.text)}</span></li>`).join('')}
+      </ul>` : ''}
+  </div>
+
+  ${renderStatusList(statuses, t('wallet.statusLabel'))}
+
+  <div class="wallet-quick-actions" role="group" aria-label="${t('wallet.actionsLabel')}">
+    <button class="quick-action-btn quick-action-btn--success" id="btn-earn" type="button"
+      aria-label="${t('transaction.earnTitle')}">
+      <span class="quick-icon" aria-hidden="true">${icon('plus-circle', { size: 30 })}</span>
+      <span>${t('wallet.income')}</span>
+    </button>
+    <button class="quick-action-btn quick-action-btn--danger" id="btn-spend" type="button"
+      aria-label="${t('transaction.spendTitle')}">
+      <span class="quick-icon" aria-hidden="true">${icon('minus-circle', { size: 30 })}</span>
+      <span>${t('wallet.expense')}</span>
+    </button>
+  </div>
+
+  <section class="card dashboard-card" aria-labelledby="allowance-card-title">
+    ${sectionHeader({
+      id: 'allowance-card-title', icon: 'clock', title: t('allowance.title'), help: 'allowances',
+      action: allowances.length > 0
+        ? { id: 'btn-manage-allowances', icon: 'settings', label: t('common.manage'), ariaLabel: t('allowance.manage') }
+        : null,
+    })}
+    ${allowances.length > 0
+      ? `<ul class="allowance-list-compact">
+          ${allowances.map(a => allowanceItem({ allowance: a, currency })).join('')}
+        </ul>
+        ${allowanceStatus ? `<div class="dashboard-card__status">${renderStatusHint(allowanceStatus)}</div>` : ''}`
+      : renderEmptyState({
+          variant: 'inline',
+          icon: 'clock',
+          text: t('allowance.emptyText'),
+          actions: [{ id: 'btn-create-allowance', label: t('allowance.create'), icon: 'plus' }],
+        })}
+  </section>
+
+  <section class="card dashboard-card" aria-labelledby="goals-card-title">
+    ${sectionHeader({
+      id: 'goals-card-title', icon: 'target', title: t('goal.title'), help: 'goals',
+      action: goals.length > 0
+        ? { id: 'btn-manage-goals', icon: 'settings', label: t('common.manage'), ariaLabel: t('goal.manage') }
+        : null,
+    })}
+    ${activeGoals.length > 0
+      ? `<div class="dashboard-goal-list">
+          ${activeGoals.map(g => goalItem({ goal: g, currency, balance: child.balance })).join('')}
+        </div>`
+      : renderEmptyState({
+          variant: 'inline',
+          icon: goals.length > 0 ? 'trophy' : 'target',
+          text: goals.length > 0 ? t('goal.allDoneText') : t('goal.emptyText'),
+          actions: [{ id: 'btn-create-goal', label: t('goal.create'), icon: 'plus' }],
+        })}
+  </section>
+
+  <section class="card dashboard-card" aria-labelledby="activity-card-title">
+    ${sectionHeader({ id: 'activity-card-title', icon: 'trending-up', title: t('dashboard.activityTitle'), help: 'activity' })}
+    ${activity.total > 0
+      ? `<div class="activity-periods">
+          ${activity.week.count > 0
+            ? renderPeriodStats(activity.week, t('dashboard.activityWeek'), currency)
+            : `<div class="stat-group">
+                <h3 class="stat-group__title">${t('dashboard.activityWeek')}</h3>
+                <p class="activity-note">${t('dashboard.activityNoWeek')}</p>
+              </div>`}
+          ${renderPeriodStats(activity.month, t('dashboard.activityMonth'), currency)}
+        </div>
+        ${activityTrend ? `<div class="dashboard-card__status">${renderStatusHint(activityTrend)}</div>` : ''}`
+      : renderEmptyState({
+          variant: 'inline',
+          icon: 'trending-up',
+          text: t('dashboard.activityEmpty'),
+        })}
+  </section>
+
+  <section class="card dashboard-card" aria-labelledby="transactions-title">
+    ${sectionHeader({ id: 'transactions-title', icon: 'list', title: t('transaction.recentTitle'), help: 'transactions' })}
+    ${transactions.length > 0
+      ? `${transactionList({ transactions: transactions.slice(0, 10), currency })}
+        <a class="btn btn-ghost dashboard-card__more" id="link-all-transactions"
+          href="#/wallet/${child.id}/transactions">
+          ${t('transaction.showAll')} ${icon('chevron-right', { size: 18 })}
+        </a>`
+      : renderEmptyState({
+          variant: 'inline',
+          icon: 'list',
+          text: t('transaction.emptyText'),
+          actions: [
+            { id: 'btn-empty-earn', label: t('transaction.earnTitle'), icon: 'plus-circle', variant: 'secondary' },
+            { id: 'btn-empty-spend', label: t('transaction.spendTitle'), icon: 'minus-circle', variant: 'secondary' },
+          ],
+        })}
+  </section>
+
+</section>
+
+<!-- @block: allowanceItem -->
+<li class="allowance-item-compact${allowance.isActive ? '' : ' inactive'}">
+  <span class="allowance-item-compact-schedule">
+    ${allowance.frequency === 'weekly'
+      ? t('wallet.allowanceRuleWeekly', { amount: `<strong>${formatCurrency(allowance.amount, currency)}</strong>`, day: DAY_NAMES[allowance.dayOfWeek] })
+      : t('wallet.allowanceRuleMonthly', { amount: `<strong>${formatCurrency(allowance.amount, currency)}</strong>`, day: allowance.dayOfMonth })}
+  </span>
+  ${!allowance.isActive ? `<span class="badge badge-muted">${t('allowance.pausedBadge')}</span>` : ''}
+</li>
+
+<!-- @block: goalItem -->
+<article class="wallet-goal-card wallet-goal-card--${status.state}">
+  <header class="wallet-goal-card__header">
+    <span class="wallet-goal-card__title">${icon(goal.icon, { size: 18, className: 'inline-icon' })} <strong>${escapeHtml(goal.name)}</strong></span>
+    ${status.state === 'reached' ? renderStatusHint({ tone: 'success', icon: 'trophy', text: status.text }) : ''}
+  </header>
+  <div class="progress-bar wallet-goal-card__progress">
+    <div class="progress-fill${status.state === 'reached' ? ' complete' : ''}" style="--target-width: ${status.pct}%;"
+      role="progressbar" aria-valuenow="${status.pct}" aria-valuemin="0" aria-valuemax="100"
+      aria-label="${t('goal.progressLabel', { name: escapeHtml(goal.name) })}"></div>
+  </div>
+  <footer class="wallet-goal-card__meta">
+    <span>${t('goal.saved', { saved: formatCurrency(Math.min(balance, goal.targetAmount), currency), target: formatCurrency(goal.targetAmount, currency) })}</span>
+    ${status.state === 'reached' ? '' : `<span class="wallet-goal-card__rest">${escapeHtml(status.text)}</span>`}
+  </footer>
+</article>

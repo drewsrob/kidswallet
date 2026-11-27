@@ -1,0 +1,24 @@
+<!-- @block: main -->
+<section class="view-transactions view-section" aria-labelledby="transactions-page-title">
+  ${sectionHeader({
+    level: 1, id: 'transactions-page-title', title: t('transaction.allTitle'),
+    subtitle: t('transaction.countFor', { count: transactions.length, name: child.name }),
+  })}
+
+  ${transactions.length === 0
+    ? renderEmptyState({
+        icon: 'list',
+        title: t('transaction.emptyTitle'),
+        text: t('transaction.emptyText'),
+        actions: [
+          { id: 'btn-empty-earn', label: t('transaction.earnTitle'), icon: 'plus-circle', variant: 'secondary' },
+          { id: 'btn-empty-spend', label: t('transaction.spendTitle'), icon: 'minus-circle', variant: 'secondary' },
+        ],
+      })
+    : groups.map(g => `
+      <section class="transactions-page__group" aria-label="${escapeHtml(g.label)}">
+        <h2 class="transactions-page__month">${escapeHtml(g.label)}</h2>
+        ${transactionList(g.items, g.label)}
+      </section>
+    `).join('')}
+</section>
