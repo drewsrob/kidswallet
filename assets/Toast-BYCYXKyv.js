@@ -1,4 +1,0 @@
-import{r as e}from"./index-CAzKeS1O.js";var t=()=>document.getElementById(`toast-container`);function n(n,r=`info`,i=3e3){let a=document.createElement(`div`);a.className=`toast toast-${r}`,a.setAttribute(`role`,`status`);let o={success:e(`check-circle`,{size:18}),error:e(`alert-circle`,{size:18}),info:e(`info`,{size:18}),warning:e(`alert-triangle`,{size:18})};a.innerHTML=`
-    <span class="toast-icon" aria-hidden="true">${o[r]??o.info}</span>
-    <span>${n}</span>
-  `,t().appendChild(a);let s=()=>{a.classList.add(`toast-exit`),a.addEventListener(`animationend`,()=>a.remove(),{once:!0}),setTimeout(()=>a.remove(),400)},c=setTimeout(s,i);a.addEventListener(`click`,()=>{clearTimeout(c),s()})}var r={show:n,success:e=>n(e,`success`),error:e=>n(e,`error`),info:e=>n(e,`info`),warning:e=>n(e,`warning`)};export{r as t};
