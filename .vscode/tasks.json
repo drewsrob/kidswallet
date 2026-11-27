@@ -1,0 +1,48 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Android Sync",
+      "detail": "Web-App bauen und mit dem Android-Projekt synchronisieren",
+      "type": "npm",
+      "script": "android:sync",
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "dedicated", "clear": true }
+    },
+    {
+      "label": "Android Build",
+      "detail": "Debug-APK erstellen",
+      "type": "npm",
+      "script": "android:build",
+      "group": "build",
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "dedicated", "clear": true }
+    },
+    {
+      "label": "Android Install",
+      "detail": "Debug-APK bauen und auf dem angeschlossenen Gerät aktualisieren (Daten bleiben erhalten)",
+      "type": "npm",
+      "script": "android:install",
+      "group": { "kind": "build", "isDefault": true },
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "dedicated", "clear": true }
+    },
+    {
+      "label": "Android Release",
+      "detail": "Release-APK erstellen (unsigniert)",
+      "type": "npm",
+      "script": "android:release",
+      "group": "build",
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "dedicated", "clear": true }
+    },
+    {
+      "label": "Android Run (Gerät/Emulator)",
+      "detail": "npx cap run android – fragt nach Gerät oder Emulator",
+      "type": "npm",
+      "script": "android:run",
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "dedicated", "focus": true, "clear": true }
+    }
+  ]
+}
