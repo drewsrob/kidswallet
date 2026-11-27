@@ -1,0 +1,40 @@
+/* components/SegmentedControl.css – Umschalter mit wenigen Optionen (Stil der Auswahl-Chips) */
+
+.segmented {
+  display: inline-flex;
+  gap: 2px;
+  padding: 3px;
+  border-radius: var(--radius-full);
+  background: var(--color-bg);
+  box-shadow: inset 0 0 0 1px var(--color-border);
+}
+
+.segmented__option {
+  min-width: var(--touch-sm);
+  min-height: var(--touch-sm);
+  padding: 0 var(--space-ms);
+  border: 0;
+  border-radius: var(--radius-full);
+  background: transparent;
+  color: var(--color-text-muted);
+  font: inherit;
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  cursor: pointer;
+  transition: background 150ms ease, color 150ms ease;
+}
+
+.segmented__option:hover {
+  color: var(--color-text);
+}
+
+.segmented__option[aria-pressed="true"] {
+  background: color-mix(in srgb, var(--color-primary) 14%, var(--color-surface));
+  color: var(--accent-text);
+  font-weight: var(--font-bold);
+}
+
+.segmented__option:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}

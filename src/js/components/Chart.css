@@ -1,0 +1,119 @@
+/* components/Chart.css – Schlichtes Verlaufsdiagramm im Stil der Cards */
+
+.chart {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin: 0;
+  animation: pageFadeIn 220ms ease-out both;
+}
+
+.chart__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+/* Innenabstand, damit Punkte am Rand und die oberste Beschriftung nicht abgeschnitten werden */
+.chart__canvas {
+  position: relative;
+  height: 9.5rem;
+  margin: var(--space-md) var(--space-sm) 0;
+}
+
+.chart__svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.chart__grid {
+  stroke: var(--color-border);
+  stroke-width: 1;
+  stroke-dasharray: 3 4;
+}
+
+.chart__grid--base {
+  stroke-dasharray: none;
+}
+
+.chart__y-label {
+  position: absolute;
+  left: 0;
+  transform: translateY(calc(-100% - 2px));
+  font-size: var(--text-xs);
+  line-height: 1;
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+  pointer-events: none;
+}
+
+.chart__line {
+  fill: none;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.chart__dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--color-surface);
+  transform: translate(-50%, -50%);
+  box-sizing: content-box;
+}
+
+/* Farben je Reihe: Linie (stroke), Punkt & Legende (background) */
+.chart__tone--pos    { stroke: var(--color-success); background: var(--color-success); }
+.chart__tone--neg    { stroke: var(--color-danger);  background: var(--color-danger); }
+.chart__tone--accent { stroke: var(--color-primary); background: var(--color-primary); }
+
+.chart__x {
+  position: relative;
+  height: 1.25rem;
+  margin: 0 var(--space-sm);
+}
+
+.chart__x-label {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.chart__x-label--start { transform: none; }
+.chart__x-label--end   { transform: translateX(-100%); }
+
+.chart__legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-xs) var(--space-lg);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--text-sm);
+  color: var(--color-text);
+}
+
+.chart__legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.chart__swatch {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chart { animation: none; }
+}

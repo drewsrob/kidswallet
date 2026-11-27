@@ -27,11 +27,12 @@ import { helpButton } from './HelpButton.js';
  * @param {string} [opts.icon]           Symbol vor dem Titel
  * @param {string} [opts.subtitle]       Zusatzzeile unter dem Titel (Klartext)
  * @param {SectionHeaderAction} [opts.action]
+ * @param {string} [opts.controls]       fertiges HTML (z. B. Zeitraumfilter), steht in der Aktionszeile
  * @param {string} [opts.help]           Schlüssel aus helpTopics.js → Info-Icon rechts außen
  * @param {string} [opts.className]
  * @returns {string} HTML
  */
-export function sectionHeader({ title, id, level = 2, icon, subtitle, action, help, className = '' }) {
+export function sectionHeader({ title, id, level = 2, icon, subtitle, action, controls, help, className = '' }) {
   const tag = `h${level}`;
   const iconSize = level === 1 ? 24 : 18;
   return /* html */`
@@ -42,7 +43,7 @@ export function sectionHeader({ title, id, level = 2, icon, subtitle, action, he
         </${tag}>
         ${help ? helpButton(help) : ''}
       </div>
-      ${action ? `<div class="section-header__actions">${renderAction(action)}</div>` : ''}
+      ${action || controls ? `<div class="section-header__actions">${controls ?? ''}${action ? renderAction(action) : ''}</div>` : ''}
       ${subtitle ? `<p class="section-header__subtitle">${escapeHtml(subtitle)}</p>` : ''}
     </header>`;
 }
