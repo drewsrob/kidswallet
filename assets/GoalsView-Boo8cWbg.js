@@ -1,4 +1,4 @@
-import{C as e,D as t,F as n,G as r,I as i,d as a,k as o,l as s,m as c,t as l,w as u}from"./errors-B_GFX16_.js";import{o as d,u as f}from"./finance-BduCd0kS.js";import{t as p}from"./api-0d9YJt6W.js";import{a as m,r as h,t as g}from"./Modal-BR3LSJ3m.js";import{a as _,c as v,n as y,o as b,t as x}from"./template-CY161wSk.js";import{r as S}from"./status--rfWzDs2.js";import{t as C}from"./GoalForm-CrNCMGFA.js";var w=x(`<!-- @block: main -->\r
+import{C as e,D as t,F as n,G as r,I as i,d as a,k as o,l as s,m as c,t as l,w as u}from"./errors-BuZJOoV2.js";import{o as d,u as f}from"./finance-BjJUG7Vx.js";import{t as p}from"./api-DyjQjSGb.js";import{a as m,r as h,t as g}from"./Modal-B9ryagiW.js";import{a as _,c as v,n as y,o as b,t as x}from"./template-DebUhnZr.js";import{r as S}from"./status-gQimNLBF.js";import{t as C}from"./GoalForm-CDE4M_-7.js";var w=x(`<!-- @block: main -->\r
 <section class="view-goals view-section" aria-label="\${t('goal.pageLabel', { name: escapeHtml(child.name) })}">\r
 \r
   <div class="goals-balance-info">\r

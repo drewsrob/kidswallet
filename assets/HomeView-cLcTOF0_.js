@@ -1,4 +1,4 @@
-import{C as e,D as t,F as n,I as r,N as i,m as a}from"./errors-B_GFX16_.js";import{o}from"./finance-BduCd0kS.js";import{t as s}from"./api-0d9YJt6W.js";import{n as c,t as l}from"./template-CY161wSk.js";import{t as u}from"./status--rfWzDs2.js";import{t as d}from"./ChildForm-BTQezad2.js";var f=l(`<!-- @block: main -->\r
+import{C as e,D as t,F as n,I as r,N as i,m as a}from"./errors-BuZJOoV2.js";import{o}from"./finance-BjJUG7Vx.js";import{t as s}from"./api-DyjQjSGb.js";import{n as c,t as l}from"./template-DebUhnZr.js";import{t as u}from"./status-gQimNLBF.js";import{t as d}from"./ChildForm-DeNQ4ckw.js";var f=l(`<!-- @block: main -->\r
 <section class="view-home view-section" aria-label="\${t('home.label')}">\r
 \r
   \${children.length > 0\r

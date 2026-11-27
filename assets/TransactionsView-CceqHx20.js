@@ -1,4 +1,4 @@
-import{B as e,F as t,G as n,d as r,l as i,w as a}from"./errors-B_GFX16_.js";import{t as o}from"./api-0d9YJt6W.js";import{a as s}from"./Modal-BR3LSJ3m.js";import{n as c,t as l}from"./template-CY161wSk.js";import{a as u,i as d,o as f,r as p}from"./stats-DmoPsUGF.js";var m=l(`<!-- @block: main -->\r
+import{B as e,F as t,G as n,d as r,l as i,w as a}from"./errors-BuZJOoV2.js";import{t as o}from"./api-DyjQjSGb.js";import{a as s}from"./Modal-B9ryagiW.js";import{n as c,t as l}from"./template-DebUhnZr.js";import{a as u,i as d,o as f,r as p}from"./stats-CVgHDsf_.js";var m=l(`<!-- @block: main -->\r
 <section class="view-transactions view-section" aria-labelledby="transactions-page-title">\r
   \${sectionHeader({\r
     level: 1, id: 'transactions-page-title', title: t('transaction.allTitle'),\r
