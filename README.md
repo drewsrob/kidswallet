@@ -10,6 +10,12 @@ npm run dev        # Dev-Server: http://localhost:5173/kidswallet/
 npm run build      # Web-Build (PWA) nach dist/
 ```
 
+## Web-Veröffentlichung
+
+Jeder Push auf `main` baut die PWA per GitHub Actions und veröffentlicht sie auf `gh-pages`.
+Die Live-Seite ist unter https://drewsrob.github.io/kidswallet/ erreichbar. Der Workflow lässt sich
+außerdem im GitHub-Reiter **Actions** manuell starten.
+
 ## Android Build
 
 Die Android-App wird vollständig aus VS Code bzw. dem Terminal gebaut und installiert – Android Studio ist
