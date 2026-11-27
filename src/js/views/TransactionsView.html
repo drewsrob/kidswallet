@@ -15,10 +15,38 @@
           { id: 'btn-empty-spend', label: t('transaction.spendTitle'), icon: 'minus-circle', variant: 'secondary' },
         ],
       })
-    : groups.map(g => `
-      <section class="transactions-page__group" aria-label="${escapeHtml(g.label)}">
-        <h2 class="transactions-page__month">${escapeHtml(g.label)}</h2>
-        ${transactionList(g.items, g.label)}
+    : `
+      <section class="card transactions-total" aria-labelledby="transactions-total-title">
+        ${sectionHeader({
+          id: 'transactions-total-title', icon: 'coin', title: t('transaction.totalTitle'),
+          subtitle: sinceLabel ? t('transaction.totalSince', { date: sinceLabel }) : '',
+        })}
+        ${renderPeriodStats(totals, null, currency)}
       </section>
-    `).join('')}
+      ${groups.map(g => `
+        <section class="transactions-page__group" aria-labelledby="month-${g.key}">
+          ${monthSummary(g)}
+          ${transactionList(g.items, g.label)}
+        </section>
+      `).join('')}
+    `}
 </section>
+
+<!-- @block: monthSummary -->
+<header class="month-summary">
+  <h2 class="transactions-page__month" id="month-${g.key}">${escapeHtml(g.label)}</h2>
+  <dl class="month-summary__stats">
+    <div class="month-summary__stat month-summary__stat--${g.income ? 'pos' : 'muted'}">
+      <dt class="sr-only">${t('dashboard.statIncome')}</dt>
+      <dd>${escapeHtml(formatSignedCurrency(g.income, currency))}</dd>
+    </div>
+    <div class="month-summary__stat month-summary__stat--${g.expense ? 'neg' : 'muted'}">
+      <dt class="sr-only">${t('dashboard.statExpense')}</dt>
+      <dd>${escapeHtml(formatSignedCurrency(-g.expense, currency))}</dd>
+    </div>
+    <div class="month-summary__stat month-summary__stat--net">
+      <dt>${t('dashboard.statNet')}</dt>
+      <dd>${escapeHtml(formatSignedCurrency(g.net, currency))}</dd>
+    </div>
+  </dl>
+</header>

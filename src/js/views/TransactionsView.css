@@ -6,10 +6,53 @@
 }
 
 .transactions-page__month {
-  margin-bottom: var(--space-sm);
+  margin: 0;
   font-size: var(--text-sm);
   font-weight: var(--font-bold);
   color: var(--color-text-muted);
   text-transform: uppercase;
   letter-spacing: 0.04em;
+}
+
+/* ── Monatszusammenfassung ───────────────────────────────────────────────── */
+.month-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: var(--space-sm);
+}
+
+.month-summary__stats {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0 var(--space-md);
+  margin: 0;
+  font-size: var(--text-sm);
+  font-variant-numeric: tabular-nums;
+}
+
+.month-summary__stat {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-xs);
+}
+
+.month-summary__stat dd {
+  margin: 0;
+  font-weight: var(--font-medium);
+}
+
+.month-summary__stat--pos dd   { color: var(--color-success-text); }
+.month-summary__stat--neg dd   { color: var(--color-danger-text); }
+.month-summary__stat--muted dd { color: var(--color-text-muted); }
+
+.month-summary__stat--net {
+  margin-inline-start: auto;
+  color: var(--color-text-muted);
+}
+
+.month-summary__stat--net dd {
+  color: var(--color-text);
+  font-weight: var(--font-bold);
 }

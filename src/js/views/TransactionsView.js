@@ -1,4 +1,4 @@
-// views/TransactionsView.js – Vollständiger Buchungsverlauf (Route: #/wallet/:id/transactions)
+// views/TransactionsView.js – Buchungen: Gesamtübersicht, Monatszusammenfassungen und Verlauf (Route: #/wallet/:id/transactions)
 import './TransactionsView.css';
 
 import { api } from '../api.js';
@@ -10,21 +10,11 @@ import { t, getLocale } from '../i18n.js';
 import { renderTransactionList } from '../components/TransactionList.js';
 import { renderChildNotFound } from '../components/EmptyState.js';
 import { openTransactionForm } from '../components/TransactionForm.js';
+import { getTotals, groupByMonth } from '../stats.js';
 import { parseBlocks, render } from '../template.js';
 import transactionsHtml from './TransactionsView.html?raw';
 
 const blocks = parseBlocks(transactionsHtml);
-function groupByMonth(transactions) {
-  const monthFormat = new Intl.DateTimeFormat(getLocale(), { month: 'long', year: 'numeric' });
-  const groups = [];
-  for (const tx of transactions) {
-    const label = monthFormat.format(new Date(tx.date));
-    const last = groups[groups.length - 1];
-    if (last && last.label === label) last.items.push(tx);
-    else groups.push({ label, items: [tx] });
-  }
-  return groups;
-}
 
 export default class TransactionsView {
   constructor(childId) {
@@ -51,10 +41,18 @@ export default class TransactionsView {
     }
     transactions = [...transactions].sort((a, b) => new Date(b.date) - new Date(a.date));
 
+    const monthFormat = new Intl.DateTimeFormat(getLocale(), { month: 'long', year: 'numeric' });
+    const totals = getTotals(transactions);
+    const groups = groupByMonth(transactions).map(g => ({ ...g, label: monthFormat.format(g.date) }));
+
     return render(blocks.main, {
       child,
       transactions,
-      groups: groupByMonth(transactions),
+      totals,
+      sinceLabel: totals.since ? monthFormat.format(totals.since) : '',
+      groups,
+      currency,
+      monthSummary: (g) => render(blocks.monthSummary, { g, currency }),
       transactionList: (items, label) => renderTransactionList(items, currency, label),
     });
   }
