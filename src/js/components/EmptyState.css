@@ -26,7 +26,8 @@
   gap: var(--space-xs);
 }
 
-.empty-state--page .empty-icon {
+/* .empty-state im Selektor: base.css (.empty-state .empty-icon) kann im Build nach dieser Datei laden */
+.empty-state.empty-state--page .empty-icon {
   /* gedämpft, aber ≥ 3:1 (WCAG Nicht-Text-Kontrast) */
   color: color-mix(in srgb, var(--child-text) 80%, var(--color-surface));
 }
@@ -37,7 +38,7 @@
   gap: var(--space-sm);
 }
 
-.empty-state--inline .empty-icon {
+.empty-state.empty-state--inline .empty-icon {
   /* gedämpft, aber ≥ 3:1 (WCAG Nicht-Text-Kontrast) */
   color: color-mix(in srgb, var(--child-text) 80%, var(--color-surface));
 }
@@ -48,6 +49,6 @@
   max-width: 32ch;
 }
 
-.empty-state--danger .empty-icon {
+.empty-state.empty-state--danger .empty-icon {
   color: var(--color-danger-text);
 }
