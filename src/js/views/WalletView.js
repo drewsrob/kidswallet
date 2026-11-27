@@ -8,6 +8,8 @@ import { openTransactionForm } from '../components/TransactionForm.js';
 import { openChildForm } from '../components/ChildForm.js';
 import { openAllowanceForm } from '../components/AllowanceForm.js';
 import { openGoalForm } from '../components/GoalForm.js';
+import { openFinancialRulesForm, openDebtRepaymentForm } from '../components/FinancialRulesForm.js';
+import { getFinancialStatus, getRepaymentProgress } from '../finance.js';
 import { renderTransactionList } from '../components/TransactionList.js';
 import { renderChildNotFound } from '../components/EmptyState.js';
 import { renderActivityChart, renderActivityRangeControl } from '../components/ActivityChart.js';
@@ -18,6 +20,7 @@ import { t } from '../i18n.js';
 import { Toast } from '../components/Toast.js';
 import { rerenderKeepingFocus } from '../components/Modal.js';
 import { parseBlocks, render } from '../template.js';
+import { icon } from '../icons.js';
 import walletHtml from './WalletView.html?raw';
 
 const blocks = parseBlocks(walletHtml);
@@ -72,6 +75,15 @@ export default class WalletView {
     const transactionList = ({ transactions: txs, currency: cur }) =>
       renderTransactionList(txs, cur, t('transaction.recentTitle'), { variant: 'rows' });
 
+    // Card-Fußzeile; aria-label nennt den Bereich, damit gleichlautende Buttons unterscheidbar sind
+    const footerButton = ({ id, label, ariaLabel, icon: iconName, disabled = false }) => /* html */`
+      <button class="btn btn-ghost card-footer__action" id="${id}" type="button"${ariaLabel ? ` aria-label="${ariaLabel}"` : ''}${disabled ? ' disabled' : ''}>
+        ${iconName ? icon(iconName, { size: 18 }) : ''}<span>${label}</span>
+      </button>`;
+    const cardFooter = (...items) => `<div class="card-footer">${items.filter(Boolean).join('')}</div>`;
+    const manageFooter = (id, ariaLabel, extra = '') => cardFooter(extra,
+      footerButton({ id, label: t('common.manage'), ariaLabel, icon: 'settings' }));
+
     const activeAllowances = allowances.filter(a => a.isActive);
     const allowanceStatus = allowances.length === 0 ? null
       : activeAllowances.length === 0
@@ -83,9 +95,15 @@ export default class WalletView {
     this._transactions = transactions;
     this._currency = currency;
 
+    // „Letzte Buchungen“ zeigt nur die letzten 7 Tage (ab Mitternacht vor 6 Tagen)
+    const recentSince = new Date();
+    recentSince.setHours(0, 0, 0, 0);
+    recentSince.setDate(recentSince.getDate() - 6);
+
     return render(blocks.main, {
       child: this.child,
       transactions,
+      recentTransactions: transactions.filter(tx => new Date(tx.date) >= recentSince),
       goals,
       activeGoals,
       allowances,
@@ -94,9 +112,13 @@ export default class WalletView {
       allowanceItem,
       goalItem,
       transactionList,
+      manageFooter,
+      footerButton,
       allowanceStatus,
       statuses,
       heroFacts,
+      finance: getFinancialStatus(this.child),
+      repayment: getRepaymentProgress(this.child, transactions),
       activityRangeControl: renderActivityRangeControl(this._activityRange),
       activityChart: transactions.length > 0 ? renderActivityChart(transactions, this._activityRange, currency) : '',
     });
@@ -125,6 +147,8 @@ export default class WalletView {
       'btn-empty-earn': () => this._book('earn'),
       'btn-empty-spend': () => this._book('spend'),
       'btn-edit-child': () => this._editChild(),
+      'btn-financial-rules': () => this._editFinancialRules(),
+      'btn-repay-debt': () => this._repayDebt(),
       'btn-manage-allowances': () => this._manageAllowances(),
       'btn-create-allowance': () => this._createAllowance(),
       'btn-manage-goals': () => { location.hash = `#/wallet/${this.childId}/goals`; },
@@ -158,6 +182,14 @@ export default class WalletView {
   async _editChild() {
     if (!(await openChildForm(this.childId))) return;
     await this._refresh();
+  }
+
+  async _editFinancialRules() {
+    if (await openFinancialRulesForm(this.childId)) await this._refresh();
+  }
+
+  async _repayDebt() {
+    if (await openDebtRepaymentForm(this.childId)) await this._refresh();
   }
 
   _manageAllowances() {

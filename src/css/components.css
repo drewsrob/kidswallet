@@ -52,6 +52,47 @@
   border: 1px solid color-mix(in srgb, var(--child-primary) 20%, transparent);
 }
 
+/* Fußzeile reicht bis an die Card-Unterkante: Buttons sitzen mittig zwischen Trennlinie und Rand */
+.card-footer {
+  display: flex;
+  margin: var(--space-md) calc(-1 * var(--card-padding)) calc(-1 * var(--card-padding));
+  border-top: 1px solid var(--color-border);
+}
+
+.card-footer__action {
+  flex: 1 1 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  min-width: 0;
+  min-height: 52px;
+  padding: var(--space-sm);
+  border-radius: 0;
+  color: var(--child-text);
+  font-weight: var(--font-medium);
+  line-height: 1.25;
+  text-align: center;
+  white-space: normal;
+  text-decoration: none;
+}
+
+.card-footer__action svg { flex-shrink: 0; }
+
+.card-footer__action + .card-footer__action {
+  border-left: 1px solid var(--color-border);
+}
+
+/* Untere Ecken der Card übernehmen, damit Hover-/Fokusflächen nicht überstehen */
+.card-footer__action:first-child { border-bottom-left-radius: var(--radius-lg); }
+.card-footer__action:last-child { border-bottom-right-radius: var(--radius-lg); }
+
+.card-footer__action:disabled {
+  color: var(--color-text-muted);
+}
+
+.card-footer__action--danger { color: var(--color-danger-text); }
+
 /* ── Formular ─────────────────────────────────────────────────────────────── */
 .form-group {
   display: flex;
@@ -471,6 +512,21 @@ html.modal-open body {
   font-weight: 600;
 }
 
+.help-terms {
+  display: grid;
+  gap: var(--space-xs);
+  margin: 0;
+}
+
+.help-terms dt {
+  font-weight: 600;
+}
+
+.help-terms dd {
+  margin: 0 0 var(--space-xs);
+  color: var(--color-text-muted);
+}
+
 /* Info-Dialog: auf schmalen Bildschirmen als Bottom-Sheet */
 @media (max-width: 600px) {
   .modal-overlay--sheet {
@@ -800,3 +856,23 @@ html.modal-open body {
 .toggle-switch[aria-checked="true"] .toggle-thumb {
   transform: translateX(20px);
 }
+
+/* Kompakte Kennzahlen (Bezeichnung links, Wert rechts) – Wallet-Schuldenkarte und Auswertungen */
+.finance-facts {
+  display: grid;
+  gap: var(--space-xs, 0.25rem);
+  margin: 0 0 0.75rem;
+}
+.finance-facts > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+}
+.finance-facts dt { color: var(--color-text-muted); }
+.finance-facts dd { margin: 0; text-align: end; font-weight: 600; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.finance-facts__primary dt { color: var(--color-text); font-weight: 600; }
+.finance-facts__primary dd { font-size: 1.25rem; font-weight: 700; }
+.finance-facts__sub { font-size: 0.9rem; padding-inline-start: 0.75rem; }
+.repay-quick { display: flex; flex-wrap: wrap; gap: var(--space-xs); margin-top: var(--space-sm); }
+.repay-quick .btn[aria-pressed="true"] { background: var(--child-fill); color: var(--child-on-fill); }

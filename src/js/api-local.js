@@ -2,7 +2,11 @@
 // Kein Server, kein Netzwerk – alle Daten liegen auf dem Gerät.
 // Gespeichert werden nur sprachneutrale Daten; Fehler tragen i18n-Codes (DomainError).
 
-import { DomainError } from './errors.js';
+import { DomainError } from './domain-error.js';
+import {
+  DEFAULT_FINANCIAL_RULES, validateFinancialRules, migrateChildFinance,
+  getFinancialStatus, bookFinanceTransaction, bookExpense, bookRepayment, bookAllowance, toCents,
+} from './finance.js';
 
 const STORAGE_KEY = 'kidswallet-data';
 
@@ -24,10 +28,11 @@ function defaultData() {
 }
 
 function loadData() {
+  let data;
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return defaultData();
-    const data = JSON.parse(raw);
+    data = JSON.parse(raw);
     // Migrations-Sicherheit: fehlende Arrays auffüllen
     data.children    ??= [];
     data.allowances  ??= [];
@@ -35,10 +40,15 @@ function loadData() {
     data.goals       ??= [];
     data.settings    ??= { currency: '€' };
     data.settings.adminPinHash ??= null;
-    return data;
   } catch {
     return defaultData();
   }
+  let migrated = false;
+  for (const child of data.children) {
+    if (migrateChildFinance(data, child)) migrated = true;
+  }
+  if (migrated) saveData(data);
+  return data;
 }
 
 /**
@@ -149,6 +159,7 @@ function runProcessAllowances(data, now = new Date()) {
   const today     = localDateStr(now);
   let booked = 0;
   let dirty  = false;
+  const due = [];
 
   for (const a of data.allowances) {
     if (migrateLegacyAllowance(data, a, now)) dirty = true;
@@ -167,11 +178,7 @@ function runProcessAllowances(data, now = new Date()) {
       if (!isDue) continue;
 
       const dateStr = localDateStr(d);
-      data.transactions.push({
-        id: crypto.randomUUID(),
-        childId: a.childId,
-        amount: a.amount,
-        type: 'allowance',
+      due.push({ a, dateStr, details: {
         // Sprachneutral: die Anzeige („Taschengeld (Mo)“) entsteht erst beim Rendern
         description: '',
         schedule: a.frequency === 'weekly'
@@ -180,14 +187,17 @@ function runProcessAllowances(data, now = new Date()) {
         date: dateStr === today
           ? now.toISOString()
           : new Date(d.getFullYear(), d.getMonth(), d.getDate(), 8).toISOString(),
-      });
-
-      const child = data.children.find(c => c.id === a.childId);
-      if (child) child.balance = +(child.balance + a.amount).toFixed(2);
-      a.lastExecuted = dateStr;
-      booked++;
-      dirty = true;
+      } });
     }
+  }
+  due.sort((x, y) => x.dateStr.localeCompare(y.dateStr) || x.a.id.localeCompare(y.a.id));
+  for (const { a, dateStr, details } of due) {
+    const child = data.children.find(c => c.id === a.childId);
+    if (!child) throw new DomainError('childNotFound');
+    bookAllowance(data, child, a.amount, { ...details, allowanceId: a.id });
+    a.lastExecuted = dateStr;
+    booked++;
+    dirty = true;
   }
   return { booked, dirty };
 }
@@ -208,6 +218,7 @@ export const api = {
     return Promise.resolve({
       children: data.children.map(c => ({
         ...c,
+        financialStatus: getFinancialStatus(c),
         goals: (activeGoalsByChild[c.id] ?? []).map(g => ({
           id: g.id,
           name: g.name,
@@ -274,7 +285,7 @@ export const api = {
   // ── Kinder ────────────────────────────────────────────────────────────────
 
   getChildren() {
-    return Promise.resolve(loadData().children);
+    return Promise.resolve(loadData().children.map(c => ({ ...c, financialStatus: getFinancialStatus(c) })));
   },
 
   createChild(body) {
@@ -289,6 +300,8 @@ export const api = {
       colorPaletteIndex: Number(body.colorPaletteIndex ?? 0),
       balance: initialBalance,
       createdAt: new Date().toISOString(),
+      financialRules: { ...DEFAULT_FINANCIAL_RULES },
+      debt: { principal: 0, fees: 0 },
     };
     data.children.push(child);
 
@@ -325,6 +338,8 @@ export const api = {
       } catch (_) { /* Ungültige Taschengeld-Daten ignorieren – Kind wurde bereits angelegt */ }
     }
 
+    // Ist heute bereits Zahltag, wird sofort gebucht – nicht erst beim nächsten App-Start
+    runProcessAllowances(data);
     saveData(data);
     return Promise.resolve(child);
   },
@@ -359,6 +374,34 @@ export const api = {
 
   // ── Transaktionen ──────────────────────────────────────────────────────────
 
+  updateFinancialRules(childId, rules) {
+    const validated = validateFinancialRules(rules);
+    const data = loadData();
+    const child = data.children.find(c => c.id === childId);
+    if (!child) throw new DomainError('childNotFound');
+    runProcessAllowances(data);
+    if (validated.allowAdvances && toCents(validated.maxDebt) < toCents(getFinancialStatus(child).totalDebt)) {
+      throw new DomainError('debtLimitBelowOutstanding');
+    }
+    child.financialRules = validated;
+    saveData(data);
+    return Promise.resolve({ ...child, financialStatus: getFinancialStatus(child) });
+  },
+
+  repayDebt(childId, body) {
+    const amount = Number(body.amount);
+    if (!Number.isFinite(amount) || amount <= 0 || Math.abs(amount * 100 - toCents(amount)) > 1e-7) {
+      throw new DomainError('invalidRepayment');
+    }
+    const data = loadData();
+    const child = data.children.find(c => c.id === childId);
+    if (!child) throw new DomainError('childNotFound');
+    runProcessAllowances(data);
+    const transaction = bookRepayment(data, child, amount);
+    saveData(data);
+    return Promise.resolve({ transaction, child: { ...child, financialStatus: getFinancialStatus(child) } });
+  },
+
   getTransactions(childId) {
     const data = loadData();
     if (!data.children.find(c => c.id === childId)) throw new DomainError('childNotFound');
@@ -374,26 +417,24 @@ export const api = {
     if (!child) throw new DomainError('childNotFound');
 
     const amount = Number(body.amount);
-    if (isNaN(amount) || amount === 0) throw new DomainError('invalidAmount');
+    if (!Number.isFinite(amount) || toCents(amount) === 0
+      || Math.abs(amount * 100 - toCents(amount)) > 1e-7) throw new DomainError('invalidAmount');
     if (Math.abs(amount) > 9999.99) throw new DomainError('amountTooLarge');
 
     const validTypes = ['manual', 'goal_allocation'];
     const type        = validTypes.includes(body.type) ? body.type : 'manual';
     const description = sanitize(body.description || '').slice(0, 100);
 
-    const tx = {
-      id: crypto.randomUUID(),
-      childId,
-      amount: +amount.toFixed(2),
-      type,
-      description,
-      date: new Date().toISOString(),
-    };
-    data.transactions.push(tx);
-    child.balance = +(child.balance + amount).toFixed(2);
+    runProcessAllowances(data);
+    const tx = amount < 0
+      ? bookExpense(data, child, -amount, { type, description })
+      : bookFinanceTransaction(data, child, { amount, type, description });
 
     saveData(data);
-    return Promise.resolve({ transaction: tx, newBalance: child.balance });
+    return Promise.resolve({
+      transaction: tx, newBalance: child.balance,
+      child: { ...child, financialStatus: getFinancialStatus(child) },
+    });
   },
 
   // ── Taschengeld-Regeln ─────────────────────────────────────────────────────
@@ -422,6 +463,7 @@ export const api = {
       isActive: true,
     };
     data.allowances.push(allowance);
+    runProcessAllowances(data);
     saveData(data);
     return Promise.resolve(allowance);
   },
@@ -443,6 +485,7 @@ export const api = {
       allowance.isActive = isActive;
     }
 
+    runProcessAllowances(data);
     saveData(data);
     return Promise.resolve(allowance);
   },
@@ -498,22 +541,22 @@ export const api = {
     const goal = data.goals.find(g => g.id === id);
     if (!goal) throw new DomainError('goalNotFound');
 
-    // Ziel kaufen (Guthaben abziehen + als gekauft markieren)
+    // Ziel kaufen – zum tatsächlichen Preis (Angebot/Preiserhöhung); Deckung inkl. Vorschuss prüft bookExpense
     if (body.purchaseGoal) {
       const child = data.children.find(c => c.id === goal.childId);
       if (!child) throw new DomainError('childNotFound');
-      if (child.balance < goal.targetAmount) throw new DomainError('notEnoughBalance');
+      const price = body.purchasePrice === undefined ? goal.targetAmount : Number(body.purchasePrice);
+      if (!Number.isFinite(price) || price <= 0 || price > 99999
+        || Math.abs(price * 100 - toCents(price)) > 1e-7) throw new DomainError('invalidAmount');
+      runProcessAllowances(data);
 
-      child.balance = +(child.balance - goal.targetAmount).toFixed(2);
-      data.transactions.push({
-        id: crypto.randomUUID(),
-        childId: goal.childId,
-        amount: -goal.targetAmount,
+      bookExpense(data, child, price, {
         type: 'goal_purchase',
         // Nur der Zielname; „Gekauft: …“ wird beim Anzeigen übersetzt
         description: goal.name,
-        date: new Date().toISOString(),
+        ...(toCents(price) !== toCents(goal.targetAmount) ? { plannedAmount: goal.targetAmount } : {}),
       });
+      goal.purchasePrice = +price.toFixed(2);
       goal.completedAt = new Date().toISOString();
       goal.purchasedAt = new Date().toISOString();
     }
@@ -536,7 +579,10 @@ export const api = {
 
     saveData(data);
     const child = data.children.find(c => c.id === goal.childId);
-    return Promise.resolve({ goal, newBalance: child?.balance });
+    return Promise.resolve({
+      goal, newBalance: child?.balance,
+      child: child ? { ...child, financialStatus: getFinancialStatus(child) } : null,
+    });
   },
 
   deleteGoal(id) {

@@ -56,3 +56,5 @@
   color: var(--color-text);
   font-weight: var(--font-bold);
 }
+
+.transactions-total__finance { margin: var(--space-md, 1rem) 0 0; }

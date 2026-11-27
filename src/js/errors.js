@@ -4,19 +4,8 @@
 // Erst beim Anzeigen wird die Meldung in die aktuelle Sprache übersetzt.
 
 import { t } from './i18n.js';
-
-export class DomainError extends Error {
-  /**
-   * @param {string} key     Schlüssel unterhalb von errors.*, z. B. 'childNotFound'
-   * @param {object} [params] Interpolationswerte
-   */
-  constructor(key, params) {
-    super(key);
-    this.name = 'DomainError';
-    this.code = key;
-    this.params = params;
-  }
-}
+import { DomainError } from './domain-error.js';
+export { DomainError } from './domain-error.js';
 
 /**
  * Fehler in eine verständliche Meldung übersetzen.

@@ -5,7 +5,7 @@
 // entscheidet ein austauschbarer Storage-Adapter (heute localStorage, später
 // z. B. SQLite oder Cloud), ohne dass sich das Format ändern muss.
 //
-// Format (Version 1):
+// Format (Version 2; Version 1 remains importable):
 // {
 //   "version": 1,
 //   "createdAt": "2026-11-26T10:30:00.000Z",
@@ -18,8 +18,11 @@
 // }
 
 export const BACKUP_APP = 'KidsWallet';
-export const BACKUP_VERSION = 1;
-export const SUPPORTED_BACKUP_VERSIONS = [1];
+import { validateFinancialRules, toCents } from '../finance.js';
+import { DomainError } from '../domain-error.js';
+
+export const BACKUP_VERSION = 2;
+export const SUPPORTED_BACKUP_VERSIONS = [1, 2];
 
 const ENTITY_KEYS = ['children', 'allowances', 'transactions', 'goals'];
 
@@ -175,6 +178,34 @@ export function validateBackup(backup) {
   check(data.allowances, 'allowances', { childId: isId, amount: isNumber });
   check(data.transactions, 'transactions', { childId: isId, amount: isNumber });
   check(data.goals, 'goals', { childId: isId, name: isString, targetAmount: isNumber });
+  for (const child of data.children) {
+    if (child.financialRules === undefined && child.debt === undefined) continue;
+    try {
+      validateFinancialRules(child.financialRules);
+    } catch (error) {
+      if (!(error instanceof DomainError)) throw error;
+      throw new BackupError('corrupt', 'children.financialRules');
+    }
+    if (!isDebt(child.debt) || child.balance < 0
+      || (child.financialRules.allowAdvances
+        && toCents(child.debt.principal) + toCents(child.debt.fees) > toCents(child.financialRules.maxDebt))) {
+      throw new BackupError('corrupt', 'children.debt');
+    }
+  }
+  for (const tx of data.transactions) {
+    if (!['advance', 'loan_fee', 'debt_repayment'].includes(tx.type)) continue;
+    if (![tx.amount, tx.cashChange, tx.principalChange, tx.feeChange, tx.balanceAfter].every(isMoney)
+      || !isDebt(tx.debtAfter) || tx.balanceAfter < 0 || !isId(tx.groupId)) {
+      throw new BackupError('corrupt', 'transactions.finance');
+    }
+    const [amount, cash, principal, fees] = [tx.amount, tx.cashChange, tx.principalChange, tx.feeChange].map(toCents);
+    const valid = tx.type === 'advance'
+      ? amount > 0 && cash === amount && principal === amount && fees === 0
+      : tx.type === 'loan_fee'
+        ? amount < 0 && cash === 0 && principal === 0 && fees === -amount
+        : amount < 0 && cash === amount && principal <= 0 && fees <= 0 && principal + fees === amount;
+    if (!valid) throw new BackupError('corrupt', 'transactions.finance');
+  }
 
   const { settings, preferences } = data;
   if (!isPlainObject(settings) || !isString(settings.currency)
@@ -206,3 +237,9 @@ function isPlainObject(v) { return v !== null && typeof v === 'object' && !Array
 function isString(v) { return typeof v === 'string' && v.trim() !== ''; }
 function isNumber(v) { return typeof v === 'number' && Number.isFinite(v); }
 function isId(v) { return isString(v) || Number.isInteger(v); }
+function isMoney(v) {
+  return isNumber(v) && Number.isSafeInteger(toCents(v)) && Math.abs(v * 100 - toCents(v)) < 1e-7;
+}
+function isDebt(v) {
+  return isPlainObject(v) && isMoney(v.principal) && isMoney(v.fees) && v.principal >= 0 && v.fees >= 0;
+}

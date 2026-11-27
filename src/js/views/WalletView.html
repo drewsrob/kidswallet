@@ -7,16 +7,30 @@
         <div class="wallet-avatar" aria-hidden="true">${icon(child.avatar, { size: 26 })}</div>
         <div class="wallet-name">${escapeHtml(child.name)}</div>
       </div>
-      <button class="wallet-edit-btn" id="btn-edit-child" type="button"
-        aria-label="${t('child.titleEdit', { name: escapeHtml(child.name) })}">
-        ${icon('edit', { size: 16 })}<span>${t('common.edit')}</span>
-      </button>
     </div>
+    <div>${t('finance.availableBalance')}</div>
     <div class="wallet-balance" data-balance="${child.balance}">${formatCurrency(child.balance, currency)}</div>
+    ${finance.advanceActive ? `
+      <dl class="wallet-net">
+        <div class="wallet-net__row wallet-net__row--debt">
+          <dt>${icon('shield', { size: 14 })}${t('finance.openDebt')}</dt>
+          <dd>${formatSignedCurrency(-finance.totalDebt, currency)}</dd>
+        </div>
+        <div class="wallet-net__row">
+          <dt class="wallet-net__label">${t('finance.netBalance')}</dt>
+          <dd class="wallet-net__value">${formatSignedCurrency(finance.netBalance, currency)}</dd>
+        </div>
+      </dl>` : ''}
     ${heroFacts.length > 0 ? `
       <ul class="wallet-hero__facts" aria-label="${t('wallet.factsLabel')}">
         ${heroFacts.map(f => `<li>${icon(f.icon, { size: 14 })}<span>${escapeHtml(f.text)}</span></li>`).join('')}
       </ul>` : ''}
+    <footer class="card-footer wallet-hero__footer">
+      <button class="btn btn-ghost card-footer__action" id="btn-edit-child" type="button"
+        aria-label="${t('child.titleEdit', { name: escapeHtml(child.name) })}">
+        ${icon('edit', { size: 18 })}<span>${t('common.edit')}</span>
+      </button>
+    </footer>
   </div>
 
   ${renderStatusList(statuses, t('wallet.statusLabel'))}
@@ -34,18 +48,36 @@
     </button>
   </div>
 
+  <section class="card dashboard-card" aria-labelledby="finance-card-title">
+    ${sectionHeader({ id: 'finance-card-title', icon: 'shield', title: t('finance.title'), help: 'finance' })}
+    <dl class="finance-facts">
+      <div class="finance-facts__primary"><dt>${t('finance.openDebt')}</dt><dd>${finance.advanceActive
+        ? formatCurrency(finance.totalDebt, currency) : t('finance.noDebt')}</dd></div>
+      <div><dt>${t('finance.totalDebt')}</dt><dd>${formatCurrency(repayment.total, currency)}</dd></div>
+      <div><dt>${t('finance.debtLimit')}</dt><dd>${finance.allowAdvances
+        ? formatCurrency(finance.maxDebt, currency) : t('finance.notAllowed')}</dd></div>
+    </dl>
+    ${finance.advanceActive ? (label => `
+      <div class="finance-repaid">
+        <div class="progress-bar">
+          <div class="progress-fill" style="--target-width: ${repayment.percent}%;" role="progressbar"
+            aria-valuenow="${repayment.percent}" aria-valuemin="0" aria-valuemax="100" aria-label="${label}"></div>
+        </div>
+        <div class="finance-repaid__label" aria-hidden="true">${label}</div>
+      </div>`)(t('finance.repaidOf', { repaid: formatCurrency(repayment.repaid, currency), total: formatCurrency(repayment.total, currency) })) : ''}
+    ${manageFooter('btn-financial-rules', t('finance.manage'), finance.advanceActive
+      ? footerButton({ id: 'btn-repay-debt', label: t('finance.repay'), icon: 'coin', disabled: !(finance.availableBalance > 0) })
+      : '')}
+  </section>
+
   <section class="card dashboard-card" aria-labelledby="allowance-card-title">
-    ${sectionHeader({
-      id: 'allowance-card-title', icon: 'clock', title: t('allowance.title'), help: 'allowances',
-      action: allowances.length > 0
-        ? { id: 'btn-manage-allowances', icon: 'settings', label: t('common.manage'), ariaLabel: t('allowance.manage') }
-        : null,
-    })}
+    ${sectionHeader({ id: 'allowance-card-title', icon: 'clock', title: t('allowance.title'), help: 'allowances' })}
     ${allowances.length > 0
       ? `<ul class="allowance-list-compact">
           ${allowances.map(a => allowanceItem({ allowance: a, currency })).join('')}
         </ul>
-        ${allowanceStatus ? `<div class="dashboard-card__status">${renderStatusHint(allowanceStatus)}</div>` : ''}`
+        ${allowanceStatus ? `<div class="dashboard-card__status">${renderStatusHint(allowanceStatus)}</div>` : ''}
+        ${manageFooter('btn-manage-allowances', t('allowance.manage'))}`
       : renderEmptyState({
           variant: 'inline',
           icon: 'clock',
@@ -55,12 +87,7 @@
   </section>
 
   <section class="card dashboard-card" aria-labelledby="goals-card-title">
-    ${sectionHeader({
-      id: 'goals-card-title', icon: 'target', title: t('goal.title'), help: 'goals',
-      action: goals.length > 0
-        ? { id: 'btn-manage-goals', icon: 'settings', label: t('common.manage'), ariaLabel: t('goal.manage') }
-        : null,
-    })}
+    ${sectionHeader({ id: 'goals-card-title', icon: 'target', title: t('goal.title'), help: 'goals' })}
     ${activeGoals.length > 0
       ? `<div class="dashboard-goal-list">
           ${activeGoals.map(g => goalItem({ goal: g, currency, balance: child.balance })).join('')}
@@ -71,6 +98,7 @@
           text: goals.length > 0 ? t('goal.allDoneText') : t('goal.emptyText'),
           actions: [{ id: 'btn-create-goal', label: t('goal.create'), icon: 'plus' }],
         })}
+    ${goals.length > 0 ? manageFooter('btn-manage-goals', t('goal.manage')) : ''}
   </section>
 
   <section class="card dashboard-card" aria-labelledby="activity-card-title">
@@ -88,13 +116,20 @@
   </section>
 
   <section class="card dashboard-card" aria-labelledby="transactions-title">
-    ${sectionHeader({ id: 'transactions-title', icon: 'list', title: t('transaction.recentTitle'), help: 'transactions' })}
+    ${sectionHeader({
+      id: 'transactions-title', icon: 'list', title: t('transaction.recentTitle'), help: 'transactions',
+      subtitle: transactions.length > 0 ? t('transaction.recentHint') : null,
+    })}
     ${transactions.length > 0
-      ? `${transactionList({ transactions: transactions.slice(0, 10), currency })}
-        <a class="btn btn-ghost dashboard-card__more" id="link-all-transactions"
-          href="#/wallet/${child.id}/transactions">
-          ${t('transaction.showAll')} ${icon('chevron-right', { size: 18 })}
-        </a>`
+      ? `${recentTransactions.length > 0
+          ? transactionList({ transactions: recentTransactions, currency })
+          : `<p class="dashboard-card__hint">${t('transaction.recentEmpty')}</p>`}
+        <div class="card-footer">
+          <a class="btn btn-ghost card-footer__action" id="link-all-transactions"
+            href="#/wallet/${child.id}/transactions">
+            ${t('transaction.showAll')} ${icon('chevron-right', { size: 18 })}
+          </a>
+        </div>`
       : renderEmptyState({
           variant: 'inline',
           icon: 'list',

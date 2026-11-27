@@ -1,4 +1,50 @@
 {
+  "finance": {
+    "title": "Vorschuss & Schulden",
+    "allowAdvances": "Vorschüsse erlauben",
+    "disabledHint": "Ohne Vorschüsse sind nur Ausgaben aus vorhandenem Guthaben möglich. Bestehende Schulden bleiben erhalten.",
+    "maxDebt": "Maximaler Vorschuss",
+    "limitHint": "Das Limit umfasst die gesamte offene Schuld einschließlich aller Leihgebühren.",
+    "feeModel": "Gebühren & Rückzahlung",
+    "models": {
+      "none": "Keine Gebühren",
+      "fixed": "Feste Gebühr",
+      "interest": "Automatische Tilgung"
+    },
+    "fixedFee": "Leihgebühr",
+    "feeHint": "Einmal beim Beginn eines Vorschusses. Erst nach vollständiger Tilgung kann erneut eine Gebühr entstehen.",
+    "repaymentPercent": "Tilgungsanteil vom Taschengeld",
+    "interestHint": "Ein Teil jeder automatischen Taschengeldzahlung wird zur Rückzahlung offener Schulden verwendet. Die Schuld wächst dadurch nicht.",
+    "repaymentHint": "Ohne automatische Tilgung wird das automatische Taschengeld vollständig zur Rückzahlung verwendet, bis alle Schulden beglichen sind. Manuelle Einnahmen bleiben Guthaben; du kannst sie ausdrücklich zur Rückzahlung verwenden. Leihgebühren werden zuerst getilgt.",
+    "invalidValue": "Bitte einen gültigen Betrag bis {{max}} mit höchstens zwei Nachkommastellen eingeben (Limit größer als 0).",
+    "pinReason": "Finanzregeln ändern",
+    "saveFailed": "Die Finanzregeln konnten nicht gespeichert werden.",
+    "saved": "Finanzregeln gespeichert.",
+    "availableBalance": "Verfügbares Guthaben",
+    "totalDebt": "Gesamtschuld",
+    "fees": "Leihgebühren",
+    "netBalance": "Nettostand",
+    "noDebt": "Keine",
+    "repay": "Schulden zurückzahlen",
+    "repayHint": "Möglich sind bis zu {{amount}}.",
+    "repaid": "Schuldenrückzahlung gebucht.",
+    "borrowingAvailable": "Zusätzlich nutzbarer Vorschuss nach Gebühren: {{amount}}.",
+    "legacyAdvance": "Vorschuss – übernommener negativer Saldo",
+    "types": {
+      "advance": "Vorschuss",
+      "loan_fee": "Leihgebühr",
+      "debt_repayment": "Schuldenrückzahlung"
+    },
+    "debtAfter": "Danach offen: {{amount}}",
+    "notAllowed": "Nicht erlaubt",
+    "openDebt": "Offene Schulden",
+    "repaidSoFar": "Bereits zurückgezahlt",
+    "debtLimit": "Schuldenlimit",
+    "repaidOf": "{{repaid}} von {{total}} getilgt",
+    "repayFull": "Vollständig",
+    "repayQuick": "Schnellauswahl",
+    "manage": "Vorschuss & Schulden verwalten"
+  },
   "common": {
     "appName": "KidsWallet",
     "cancel": "Abbrechen",
@@ -113,7 +159,8 @@
     "activeToggle": "Taschengeld-Regel aktiv",
     "deleteLabel": "Taschengeld-Regel löschen",
     "deleteTitle": "Taschengeld-Regel löschen?",
-    "deleteMessage": "Die Regel ({{amount}}, {{schedule}}) wird dauerhaft gelöscht."
+    "deleteMessage": "Die Regel ({{amount}}, {{schedule}}) wird dauerhaft gelöscht.",
+    "activeBadge": "Aktiv"
   },
   "goal": {
     "title": "Sparziele",
@@ -172,10 +219,19 @@
     "editLabel": "Sparziel {{name}} bearbeiten",
     "deleteLabel": "Sparziel {{name}} löschen",
     "purchaseTitle": "{{name}} kaufen?",
-    "purchaseDeducted": "{{amount}} werden vom Guthaben abgezogen.",
     "purchaseBalanceAfter": "Guthaben danach: {{amount}}",
     "deleteTitle": "Sparziel löschen?",
-    "deleteMessage": "Das Sparziel „{{name}}“ wird dauerhaft gelöscht."
+    "deleteMessage": "Das Sparziel „{{name}}“ wird dauerhaft gelöscht.",
+    "adjust": "Anpassen",
+    "adjustLabel": "Sparziel {{name}} anpassen",
+    "titleAdjust": "Sparziel anpassen",
+    "plannedPrice": "Geplanter Preis",
+    "actualPrice": "Tatsächlicher Preis ({{currency}})",
+    "notEnoughFunds": "Für diesen Kauf reicht das verfügbare Guthaben nicht aus.",
+    "adjustGoal": "Ziel anpassen",
+    "purchaseAdvance": "Davon {{amount}} als Vorschuss.",
+    "purchaseAdvanceFee": "Davon {{amount}} als Vorschuss, zzgl. {{fee}} Leihgebühr.",
+    "plannedPriceDetail": "Geplant: {{amount}}"
   },
   "dashboard": {
     "activityTitle": "Aktivität",
@@ -207,6 +263,7 @@
   },
   "transaction": {
     "recentTitle": "Letzte Buchungen",
+    "recentHint": "Hier siehst du die Buchungen der letzten 7 Tage.",
     "emptyTitle": "Noch keine Buchungen",
     "emptyText": "Für dieses Kind wurden noch keine Buchungen erfasst.",
     "earnTitle": "Einnahme erfassen",
@@ -252,6 +309,7 @@
       }
     },
     "showAll": "Alle Buchungen anzeigen",
+    "recentEmpty": "Keine Buchungen in den letzten 7 Tagen.",
     "allTitle": "Alle Buchungen",
     "countFor_one": "{{count}} Buchung für {{name}}",
     "countFor_other": "{{count}} Buchungen für {{name}}",
@@ -394,6 +452,11 @@
     "currencyRequired": "Bitte gib ein Währungssymbol ein."
   },
   "errors": {
+    "invalidFinancialRules": "Bitte gültige Finanzregeln eingeben",
+    "advancesDisabled": "Nicht genug Guthaben – Vorschüsse sind für dieses Kind nicht erlaubt",
+    "debtLimitExceeded": "Die Ausgabe würde das Schuldenlimit einschließlich Leihgebühren überschreiten",
+    "debtLimitBelowOutstanding": "Das Limit darf nicht unter der offenen Gesamtschuld liegen",
+    "invalidRepayment": "Die Rückzahlung muss innerhalb des Guthabens und der offenen Schuld liegen",
     "saveFailed": "Die Änderungen konnten nicht gespeichert werden.",
     "loadFailed": "Die Daten konnten nicht geladen werden.",
     "storageFull": "Der Gerätespeicher ist voll.",
@@ -424,6 +487,34 @@
     "pinNotEnabled": "Der PIN-Schutz ist nicht aktiv"
   },
   "help": {
+    "finance": {
+      "title": "Vorschuss & Schulden",
+      "paragraphs": [
+        "Mit Vorschüssen kann dein Kind etwas kaufen, auch wenn das Guthaben gerade nicht reicht. Ob das möglich ist, wie hoch das Limit ist und welche Gebühren und Rückzahlungsregeln gelten, legst du für jedes Kind einzeln unter „Verwalten“ fest.",
+        "Die Karte zeigt nur den aktuellen Stand: offene Schulden, Gesamtschuld und Schuldenlimit. Die Gesamtschuld ist alles, was seit Beginn des aktuellen Vorschusses geliehen wurde – Leihgebühren eingeschlossen. Der Balken zeigt, wie viel davon bereits getilgt ist.",
+        "Der Nettostand ist das verfügbare Guthaben abzüglich der offenen Schulden – also das, was wirklich übrig ist. Ist er negativ, liegt das Konto eigentlich im Minus.",
+        "Alles bleibt nachvollziehbar: Vorschuss, Leihgebühr, Taschengeld und jede Schuldenrückzahlung erscheinen als eigene Buchung. In den Auswertungen zählen Vorschüsse und Rückzahlungen nicht als Einnahmen oder Ausgaben; Leihgebühren zählen als Ausgabe.",
+        "Werden Vorschüsse abgeschaltet, entstehen keine neuen Schulden – bestehende bleiben, bis sie zurückgezahlt sind. Mit „Schulden zurückzahlen“ setzt du vorhandenes Guthaben gezielt dafür ein, als Teilbetrag oder vollständig."
+      ],
+      "terms": [
+        {
+          "term": "Vorschuss",
+          "text": "Ermöglicht Ausgaben über das vorhandene Guthaben hinaus. Der fehlende Betrag wird als Schuld festgehalten."
+        },
+        {
+          "term": "Schuldenlimit",
+          "text": "Bestimmt die maximale Gesamtverschuldung – Leihgebühren eingeschlossen. Eine Ausgabe, die das Limit überschreiten würde, ist nicht möglich."
+        },
+        {
+          "term": "Leihgebühr",
+          "text": "Einmaliger Zusatzbetrag, wenn ein Vorschuss entsteht. Erst wenn alles zurückgezahlt ist, kann beim nächsten Vorschuss wieder eine Gebühr anfallen."
+        },
+        {
+          "term": "Automatische Tilgung",
+          "text": "Ein fester Teil jeder künftigen Taschengeldzahlung wird zur Rückzahlung genutzt, bis die Schulden beglichen sind. Die Schuld wächst dabei nicht. Ohne automatische Tilgung wird das Taschengeld vollständig zur Rückzahlung verwendet."
+        }
+      ]
+    },
     "close": "Verstanden",
     "buttonLabel": "Wofür ist „{{title}}“ gedacht?",
     "home": {

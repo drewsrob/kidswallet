@@ -94,3 +94,9 @@
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
 }
+.transaction-finance-detail {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}

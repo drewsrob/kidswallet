@@ -9,6 +9,7 @@ import { t } from '../i18n.js';
 import { describeError } from '../errors.js';
 import { amountRule, parseAmount, formatAmountInput } from '../validation.js';
 import { confirmWithPin } from './PinPrompt.js';
+import { getFinancialStatus } from '../finance.js';
 
 const MAX_AMOUNT = 9999.99;
 
@@ -25,6 +26,7 @@ export async function openTransactionForm(childId, kind) {
   if (!child) return false;
 
   const isSpend = kind === 'spend';
+  const finance = getFinancialStatus(child);
   const readAmount = (root) => parseAmount(root.querySelector('#tx-amount')?.value).value;
 
   const modal = new Modal({
@@ -44,7 +46,8 @@ export async function openTransactionForm(childId, kind) {
           <span class="input-affix__unit" aria-hidden="true">${escapeHtml(currency)}</span>
         </div>
         ${isSpend
-          ? `<p class="form-hint" id="tx-amount-hint">${t('transaction.available', { amount: `<strong>${formatCurrency(child.balance, currency)}</strong>` })}</p>`
+          ? `<p class="form-hint" id="tx-amount-hint">${t('transaction.available', { amount: `<strong>${formatCurrency(child.balance, currency)}</strong>` })}
+              ${t('finance.borrowingAvailable', { amount: formatCurrency(finance.remainingAdvance, currency) })}</p>`
           : ''}
       </div>
       <div class="form-group">
@@ -70,7 +73,7 @@ export async function openTransactionForm(childId, kind) {
         type: 'manual',
         description: desc,
       });
-      child.balance = res.newBalance;
+      Object.assign(child, res.child);
       return amt;
     },
     errorMessage: (e) => describeError(e, t('transaction.bookingFailed')),

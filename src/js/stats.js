@@ -8,6 +8,8 @@
 // Erweiterbarkeit (z. B. Premium): weitere Zeiträume in STATS_RANGES ergänzen und mit
 // `premium: true` markieren – getAvailableRanges() blendet sie ohne Freischaltung aus.
 
+import { isFinancingTransfer } from './finance.js';
+
 /**
  * @typedef {Object} StatsRange
  * @property {string} id
@@ -62,10 +64,24 @@ function addBucket(d, bucket) {
 
 const startOfBucket = (d, bucket) => (bucket === 'week' ? startOfWeek(d) : startOfMonth(d));
 
-function periodOut({ income, expense, count }) {
-  return { income: fromCents(income), expense: fromCents(expense), net: fromCents(income - expense), count };
+function periodOut({ income, expense, count, advances = 0, fees = 0, repayments = 0 }) {
+  return {
+    income: fromCents(income), expense: fromCents(expense), net: fromCents(income - expense), count,
+    advances: fromCents(advances), fees: fromCents(fees), repayments: fromCents(repayments),
+  };
 }
 
+const emptyPeriod = () => ({ income: 0, expense: 0, count: 0, advances: 0, fees: 0, repayments: 0 });
+
+function accumulate(period, tx) {
+  const cents = toCents(tx.amount);
+  period.count++;
+  if (tx.type === 'advance') period.advances += cents;
+  if (tx.type === 'debt_repayment') period.repayments -= cents;
+  if (tx.type === 'loan_fee') period.fees -= cents;
+  if (isFinancingTransfer(tx)) return;
+  if (cents >= 0) period.income += cents; else period.expense -= cents;
+}
 // ── Cache ─────────────────────────────────────────────────────────────────────
 
 /** @type {WeakMap<object[], { index?: ReturnType<typeof buildIndex>, series: Map<string, object> }>} */
@@ -83,19 +99,17 @@ function entryFor(transactions) {
  */
 function buildIndex(transactions) {
   const months = new Map();
-  const total = { income: 0, expense: 0, count: 0 };
+  const total = emptyPeriod();
   let oldest = null;
 
   for (const tx of transactions) {
     const date = new Date(tx.date);
     if (Number.isNaN(date.getTime())) continue;
-    const cents = toCents(tx.amount);
     const key = monthKey(date);
     let m = months.get(key);
-    if (!m) months.set(key, (m = { key, income: 0, expense: 0, count: 0 }));
+    if (!m) months.set(key, (m = { key, ...emptyPeriod() }));
     for (const p of [m, total]) {
-      p.count++;
-      if (cents >= 0) p.income += cents; else p.expense -= cents;
+      accumulate(p, tx);
     }
     if (!oldest || date < oldest) oldest = date;
   }
@@ -175,14 +189,14 @@ export function getActivitySeries(transactions, rangeId, now = new Date()) {
 
   const points = [];
   for (let d = firstStart; d < end; d = addBucket(d, bucket)) {
-    points.push({ start: d, income: 0, expense: 0, count: 0 });
+    points.push({ start: d, ...emptyPeriod() });
   }
 
   if (bucket === 'month') {
     // Monatswerte direkt aus dem Index – unabhängig von der Anzahl der Buchungen
     for (const p of points) {
       const m = months.get(monthKey(p.start));
-      if (m) Object.assign(p, { income: m.income, expense: m.expense, count: m.count });
+      if (m) Object.assign(p, m, { start: p.start });
     }
   } else if (points.length) {
     const from = points[0].start;
@@ -194,17 +208,14 @@ export function getActivitySeries(transactions, rangeId, now = new Date()) {
       const i = Math.floor((startOfWeek(date) - from + WEEK_MS / 2) / WEEK_MS);
       const p = points[i];
       if (!p) continue;
-      const cents = toCents(tx.amount);
-      p.count++;
-      if (cents >= 0) p.income += cents; else p.expense -= cents;
+      accumulate(p, tx);
     }
   }
 
   let income = 0, expense = 0, count = 0;
   for (const p of points) {
     income += p.income; expense += p.expense; count += p.count;
-    p.income = fromCents(p.income);
-    p.expense = fromCents(p.expense);
+    Object.assign(p, periodOut(p));
   }
 
   const result = {

@@ -3,6 +3,7 @@ import './TransactionList.css';
 import { formatCurrency, formatRelativeDate, getDayNames } from '../utils.js';
 import { parseBlocks, render } from '../template.js';
 import { t } from '../i18n.js';
+import { toCents } from '../finance.js';
 import html from './TransactionList.html?raw';
 
 const blocks = parseBlocks(html);
@@ -12,10 +13,13 @@ const blocks = parseBlocks(html);
 const KINDS = {
   earn:      { icon: 'plus-circle',  tone: 'pos' },
   spend:     { icon: 'minus-circle', tone: 'neg' },
-  allowance: { icon: 'gift',         tone: 'accent' },
+  allowance: { icon: 'coin',         tone: 'accent' },
   initial:   { icon: 'gift',         tone: 'accent' },
   goal:      { icon: 'target',       tone: 'accent' },
   correction:{ icon: 'edit',         tone: 'accent' },
+  advance:   { icon: 'coin',         tone: 'accent' },
+  loan_fee:  { icon: 'minus-circle', tone: 'neg' },
+  debt_repayment: { icon: 'exchange', tone: 'accent' },
 };
 
 // Ältere Datenstände enthalten deutsche Standardtexte; sie werden wie leere Beschreibungen behandelt.
@@ -27,6 +31,9 @@ const LEGACY_PURCHASE = /^Gekauft: (.+)$/;
 
 function kindOf(tx) {
   switch (tx.type) {
+    case 'advance':
+    case 'loan_fee':
+    case 'debt_repayment': return tx.type;
     case 'allowance':       return 'allowance';
     case 'initial':         return 'initial';
     case 'goal_purchase':
@@ -45,6 +52,9 @@ function allowanceSchedule(tx, desc) {
 }
 
 function titleOf(tx, kindKey, desc) {
+  if (['advance', 'loan_fee', 'debt_repayment'].includes(kindKey)) {
+    return t(tx.migration ? 'finance.legacyAdvance' : `finance.types.${kindKey}`);
+  }
   const generic = t(`transaction.kinds.${kindKey}.generic`);
   if (kindKey === 'allowance') {
     const s = allowanceSchedule(tx, desc);
@@ -62,7 +72,8 @@ export function describeTransaction(tx, currency) {
   const kindKey = kindOf(tx);
   const desc = String(tx.description ?? '').trim();
   const title = titleOf(tx, kindKey, desc);
-  const label = t(`transaction.kinds.${kindKey}.label`);
+  const financial = ['advance', 'loan_fee', 'debt_repayment'].includes(kindKey);
+  const label = t(financial ? `finance.types.${kindKey}` : `transaction.kinds.${kindKey}.label`);
   // Typ nur zusätzlich anzeigen, wenn er nicht schon im Titel steht
   const showLabel = !title.toLowerCase().includes(label.toLowerCase());
   const negative = tx.amount < 0;
@@ -76,6 +87,12 @@ export function describeTransaction(tx, currency) {
     dateLabel: formatRelativeDate(tx.date),
     amountClass: negative ? 'amount-negative' : 'amount-positive',
     amountText: `${negative ? '\u2212' : '+'}${formatCurrency(Math.abs(tx.amount), currency)}`,
+    detail: financial && tx.debtAfter ? t('finance.debtAfter', {
+      amount: formatCurrency((toCents(tx.debtAfter.principal) + toCents(tx.debtAfter.fees)) / 100, currency),
+    }) : tx.type === 'goal_purchase' && tx.plannedAmount
+      ? t('goal.plannedPriceDetail', { amount: formatCurrency(tx.plannedAmount, currency) }) : '',
+    groupId: tx.groupId ?? '',
+    transactionId: tx.id,
   };
 }
 

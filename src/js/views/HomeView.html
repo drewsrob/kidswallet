@@ -29,7 +29,7 @@
   tabindex="0"
   aria-label="${goalSummary
     ? t('home.cardLabelWithGoal', { name: escapeHtml(child.name), balance: formatCurrency(child.balance, currency), goal: escapeHtml(goalSummary) })
-    : t('home.cardLabel', { name: escapeHtml(child.name), balance: formatCurrency(child.balance, currency) })}"
+    : t('home.cardLabel', { name: escapeHtml(child.name), balance: formatCurrency(child.balance, currency) })}${finance.advanceActive ? `, ${t('finance.openDebt')}: ${formatCurrency(finance.totalDebt, currency)}` : ''}"
   style="--card-index: ${childIndex}; --card-primary: ${colors.primary}; --card-light: ${colors.light}; --card-start-l: ${colors.hero.startL}; --card-end-l: ${colors.hero.endL}; --card-start-d: ${colors.hero.startD}; --card-end-d: ${colors.hero.endD}; --card-ink-l: ${colors.hero.inkL}">
   <div class="child-card__avatar" aria-hidden="true">
     ${icon(child.avatar, { size: 36 })}
@@ -38,5 +38,6 @@
   <div class="child-card__balance" data-balance="${child.balance}">
     ${formatCurrency(child.balance, currency)}
   </div>
+  ${finance.advanceActive ? `<div class="child-card__debt">${t('finance.openDebt')}: ${formatCurrency(finance.totalDebt, currency)}</div>` : ''}
   ${goalFooter}
 </article>

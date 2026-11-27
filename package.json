@@ -5,6 +5,7 @@
   "type": "module",
   "main": "server.js",
   "scripts": {
+    "test": "node --test",
     "dev": "concurrently -n API,VITE -c cyan,magenta \"node --watch server.js\" \"vite\"",
     "dev:api": "node --watch server.js",
     "dev:client": "vite",

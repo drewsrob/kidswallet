@@ -1,4 +1,50 @@
 {
+  "finance": {
+    "title": "Anticipos y deudas",
+    "allowAdvances": "Permitir anticipos",
+    "disabledHint": "Sin anticipos, solo se puede gastar el saldo disponible. Las deudas existentes se mantienen.",
+    "maxDebt": "Anticipo máximo",
+    "limitHint": "El límite incluye toda la deuda pendiente y las comisiones.",
+    "feeModel": "Comisiones y devolución",
+    "models": {
+      "none": "Sin comisiones",
+      "fixed": "Comisión fija",
+      "interest": "Amortización automática"
+    },
+    "fixedFee": "Comisión del préstamo",
+    "feeHint": "Una sola vez al iniciar un anticipo. Solo se puede cobrar de nuevo tras devolver toda la deuda.",
+    "repaymentPercent": "Parte de la paga para amortizar",
+    "interestHint": "Una parte de cada paga automática se destina a devolver la deuda pendiente. La deuda no crece.",
+    "repaymentHint": "Sin amortización automática, la paga automática se usa por completo para devolver la deuda hasta saldarla. Los ingresos manuales quedan disponibles; puedes usarlos expresamente para devolver. Las comisiones se devuelven primero.",
+    "invalidValue": "Introduce un importe válido hasta {{max}} con dos decimales como máximo (límite mayor que 0).",
+    "pinReason": "Cambiar reglas financieras",
+    "saveFailed": "No se pudieron guardar las reglas financieras.",
+    "saved": "Reglas financieras guardadas.",
+    "availableBalance": "Saldo disponible",
+    "totalDebt": "Deuda total",
+    "fees": "Comisiones",
+    "netBalance": "Saldo neto",
+    "noDebt": "Ninguna",
+    "repay": "Devolver deuda",
+    "repayHint": "Se puede devolver hasta {{amount}}.",
+    "repaid": "Devolución de deuda registrada.",
+    "borrowingAvailable": "Anticipo adicional disponible tras comisiones: {{amount}}.",
+    "legacyAdvance": "Anticipo – saldo negativo anterior trasladado",
+    "types": {
+      "advance": "Anticipo",
+      "loan_fee": "Comisión del préstamo",
+      "debt_repayment": "Devolución de deuda"
+    },
+    "debtAfter": "Pendiente después: {{amount}}",
+    "notAllowed": "No permitidos",
+    "openDebt": "Deuda pendiente",
+    "repaidSoFar": "Ya devuelto",
+    "debtLimit": "Límite de deuda",
+    "repaidOf": "{{repaid}} de {{total}} devuelto",
+    "repayFull": "Completo",
+    "repayQuick": "Selección rápida",
+    "manage": "Gestionar anticipos y deudas"
+  },
   "common": {
     "appName": "KidsWallet",
     "cancel": "Cancelar",
@@ -115,7 +161,8 @@
     "activeToggle": "Regla de paga activa",
     "deleteLabel": "Eliminar regla de paga",
     "deleteTitle": "¿Eliminar regla de paga?",
-    "deleteMessage": "La regla ({{amount}}, {{schedule}}) se eliminará de forma permanente."
+    "deleteMessage": "La regla ({{amount}}, {{schedule}}) se eliminará de forma permanente.",
+    "activeBadge": "Activa"
   },
   "goal": {
     "title": "Metas de ahorro",
@@ -178,10 +225,19 @@
     "editLabel": "Editar meta de ahorro {{name}}",
     "deleteLabel": "Eliminar meta de ahorro {{name}}",
     "purchaseTitle": "¿Comprar {{name}}?",
-    "purchaseDeducted": "Se descontarán {{amount}} del saldo.",
     "purchaseBalanceAfter": "Saldo después: {{amount}}",
     "deleteTitle": "¿Eliminar meta de ahorro?",
-    "deleteMessage": "La meta de ahorro «{{name}}» se eliminará de forma permanente."
+    "deleteMessage": "La meta de ahorro «{{name}}» se eliminará de forma permanente.",
+    "adjust": "Ajustar",
+    "adjustLabel": "Ajustar la meta de ahorro {{name}}",
+    "titleAdjust": "Ajustar meta de ahorro",
+    "plannedPrice": "Precio previsto",
+    "actualPrice": "Precio real ({{currency}})",
+    "notEnoughFunds": "El saldo disponible no alcanza para esta compra.",
+    "adjustGoal": "Ajustar meta",
+    "purchaseAdvance": "De ello, {{amount}} como anticipo.",
+    "purchaseAdvanceFee": "De ello, {{amount}} como anticipo, más {{fee}} de comisión.",
+    "plannedPriceDetail": "Previsto: {{amount}}"
   },
   "dashboard": {
     "activityTitle": "Actividad",
@@ -214,6 +270,7 @@
   },
   "transaction": {
     "recentTitle": "Últimos movimientos",
+    "recentHint": "Aquí ves los movimientos de los últimos 7 días.",
     "emptyTitle": "Todavía no hay movimientos",
     "emptyText": "Aún no se ha registrado ningún movimiento para este niño.",
     "earnTitle": "Registrar ingreso",
@@ -259,6 +316,7 @@
       }
     },
     "showAll": "Ver todos los movimientos",
+    "recentEmpty": "No hay movimientos en los últimos 7 días.",
     "allTitle": "Todos los movimientos",
     "countFor_one": "{{count}} movimiento de {{name}}",
     "countFor_many": "{{count}} movimientos de {{name}}",
@@ -404,6 +462,11 @@
     "currencyRequired": "Introduce un símbolo de moneda."
   },
   "errors": {
+    "invalidFinancialRules": "Introduce reglas financieras válidas",
+    "advancesDisabled": "Saldo insuficiente – no se permiten anticipos para este niño",
+    "debtLimitExceeded": "Este gasto superaría el límite de deuda, incluidas las comisiones",
+    "debtLimitBelowOutstanding": "El límite no puede ser menor que la deuda total pendiente",
+    "invalidRepayment": "La devolución no puede superar el saldo disponible ni la deuda pendiente",
     "saveFailed": "No se pudieron guardar los cambios.",
     "loadFailed": "No se pudieron cargar los datos.",
     "storageFull": "El almacenamiento del dispositivo está lleno.",
@@ -434,6 +497,34 @@
     "pinNotEnabled": "La protección con PIN no está activada"
   },
   "help": {
+    "finance": {
+      "title": "Anticipos y deudas",
+      "paragraphs": [
+        "Los anticipos permiten que tu hijo compre algo aunque el saldo no alcance en ese momento. Si es posible, cuál es el límite y qué comisiones y reglas de devolución se aplican lo decides para cada niño en «Gestionar».",
+        "La tarjeta solo muestra el estado actual: deuda pendiente, deuda total y límite de deuda. La deuda total es todo lo prestado desde el inicio del anticipo actual, incluidas las comisiones. La barra muestra cuánto se ha devuelto ya.",
+        "El saldo neto es el saldo disponible menos la deuda pendiente: lo que realmente queda. Si es negativo, la cuenta está en realidad en números rojos.",
+        "Todo es transparente: anticipos, comisiones, paga y cada devolución aparecen como operaciones separadas. En las estadísticas, anticipos y devoluciones no cuentan como ingresos ni gastos; las comisiones cuentan como gasto.",
+        "Si se desactivan los anticipos, no se generan nuevas deudas; las existentes se mantienen hasta devolverlas. Con «Devolver deuda» usas saldo disponible para ello, en parte o por completo."
+      ],
+      "terms": [
+        {
+          "term": "Anticipo",
+          "text": "Permite gastar más allá del saldo disponible. La cantidad que falta queda registrada como deuda."
+        },
+        {
+          "term": "Límite de deuda",
+          "text": "Fija la deuda total máxima, comisiones incluidas. No se permite un gasto que supere el límite."
+        },
+        {
+          "term": "Comisión",
+          "text": "Importe adicional único al comenzar un anticipo. Solo cuando todo está devuelto puede volver a cobrarse en un nuevo anticipo."
+        },
+        {
+          "term": "Amortización automática",
+          "text": "Una parte fija de cada paga futura se destina a la devolución hasta saldar la deuda. La deuda no crece. Sin amortización automática, se usa la paga completa."
+        }
+      ]
+    },
     "close": "Entendido",
     "buttonLabel": "¿Para qué sirve «{{title}}»?",
     "home": {

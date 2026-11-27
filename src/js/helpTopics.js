@@ -22,21 +22,24 @@ export const HELP_TOPICS = {
   accentColor: { icon: 'palette' },
   language: { icon: 'globe' },
   backup: { icon: 'shield' },
+  finance: { icon: 'shield' },
 };
 
 /**
  * Übersetztes Hilfethema oder null, falls unbekannt
  * @param {string} key
- * @returns {{ title: string, paragraphs: string[], icon: string, tone?: string } | null}
+ * @returns {{ title: string, paragraphs: string[], terms: { term: string, text: string }[], icon: string, tone?: string } | null}
  */
 export function getHelpTopic(key) {
   const meta = HELP_TOPICS[key];
   if (!meta || !hasKey(`help.${key}.title`)) return null;
   const paragraphs = t(`help.${key}.paragraphs`, { returnObjects: true });
+  const terms = hasKey(`help.${key}.terms`) ? t(`help.${key}.terms`, { returnObjects: true }) : [];
   return {
     ...meta,
     title: t(`help.${key}.title`),
     paragraphs: Array.isArray(paragraphs) ? paragraphs : [],
+    terms: Array.isArray(terms) ? terms : [],
   };
 }
 

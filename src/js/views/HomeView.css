@@ -91,6 +91,21 @@
   color: var(--card-on-primary);
 }
 
+.child-card__debt {
+  display: inline-block;
+  margin-top: var(--space-xs);
+  padding: 2px var(--space-sm);
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.35);
+  color: var(--card-on-primary);
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+
+[data-theme="dark"] .child-card__debt {
+  background: rgba(0, 0, 0, 0.25);
+}
+
 /* Sparzielbereich: dezente, transparente FlÃ¤che statt eigener Box (keine â€žCard in Cardâ€œ) */
 .child-card__goals {
   --goals-surface: rgba(255, 255, 255, 0.35);

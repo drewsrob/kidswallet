@@ -79,7 +79,7 @@
 /* ── Wallet-Hero ─────────────────────────────────────────────────────────── */
 .skeleton-wallet-hero {
   border-radius: var(--radius-xl);
-  padding: var(--hero-padding);
+  padding: var(--hero-padding-y) var(--hero-padding-x);
   background: var(--color-surface);
   box-shadow: var(--shadow-md);
   display: flex;

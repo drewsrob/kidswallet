@@ -160,7 +160,8 @@
   --touch-target:      44px;   /* Mindest-Trefferfläche für Icon- und Kopf-Aktionen */
   --card-title-size:   var(--text-xl);
 
-  --hero-padding:      var(--space-xl);
+  --hero-padding-y:    var(--space-xl);
+  --hero-padding-x:    var(--space-xl);
 
   --quick-action-direction: column;
   --quick-action-padding:   var(--space-lg);
@@ -193,7 +194,8 @@
     --touch-sm:          44px;
     --card-title-size:   var(--text-lg);
 
-    --hero-padding:      var(--space-lg) var(--space-md);
+    --hero-padding-y:    var(--space-lg);
+    --hero-padding-x:    var(--space-md);
 
     --quick-action-direction: row;
     --quick-action-padding:   var(--space-sm) var(--space-md);

@@ -18,7 +18,9 @@ export function openHelp(key) {
     tone: help.tone,
     sheet: true,
     describeContent: true,
-    content: `<div class="help-info">${help.paragraphs.map(p => `<p>${escapeHtml(p)}</p>`).join('')}</div>`,
+    content: `<div class="help-info">${help.paragraphs.map(p => `<p>${escapeHtml(p)}</p>`).join('')}${help.terms.length
+      ? `<dl class="help-terms">${help.terms.map(({ term, text }) => `<dt>${escapeHtml(term)}</dt><dd>${escapeHtml(text)}</dd>`).join('')}</dl>`
+      : ''}</div>`,
     actions: [{ label: t('help.close'), value: 'close', variant: 'primary' }],
   }).open();
 }

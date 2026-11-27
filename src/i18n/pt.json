@@ -1,4 +1,50 @@
 {
+  "finance": {
+    "title": "Adiantamentos e dívidas",
+    "allowAdvances": "Permitir adiantamentos",
+    "disabledHint": "Sem adiantamentos, só é possível gastar o saldo disponível. As dívidas existentes mantêm-se.",
+    "maxDebt": "Adiantamento máximo",
+    "limitHint": "O limite inclui toda a dívida pendente e as taxas de empréstimo.",
+    "feeModel": "Taxas e reembolso",
+    "models": {
+      "none": "Sem taxas",
+      "fixed": "Taxa fixa",
+      "interest": "Amortização automática"
+    },
+    "fixedFee": "Taxa de empréstimo",
+    "feeHint": "Uma vez no início do adiantamento. Só pode ser cobrada novamente após o pagamento integral.",
+    "repaymentPercent": "Parte da mesada para amortizar",
+    "interestHint": "Uma parte de cada mesada automática é usada para pagar a dívida pendente. A dívida não aumenta.",
+    "repaymentHint": "Sem amortização automática, a mesada automática é usada por completo para pagar a dívida até estar liquidada. Os rendimentos manuais ficam disponíveis; podes usá-los explicitamente para pagar. As taxas são pagas primeiro.",
+    "invalidValue": "Introduz um valor válido até {{max}}, com no máximo duas casas decimais (limite superior a 0).",
+    "pinReason": "Alterar regras financeiras",
+    "saveFailed": "Não foi possível guardar as regras financeiras.",
+    "saved": "Regras financeiras guardadas.",
+    "availableBalance": "Saldo disponível",
+    "totalDebt": "Dívida total",
+    "fees": "Taxas de empréstimo",
+    "netBalance": "Saldo líquido",
+    "noDebt": "Nenhuma",
+    "repay": "Pagar dívida",
+    "repayHint": "É possível até {{amount}}.",
+    "repaid": "Reembolso registado.",
+    "borrowingAvailable": "Adiantamento adicional disponível após taxas: {{amount}}.",
+    "legacyAdvance": "Adiantamento – saldo negativo anterior transferido",
+    "types": {
+      "advance": "Adiantamento",
+      "loan_fee": "Taxa de empréstimo",
+      "debt_repayment": "Reembolso de dívida"
+    },
+    "debtAfter": "Em dívida depois: {{amount}}",
+    "notAllowed": "Não permitidos",
+    "openDebt": "Dívida pendente",
+    "repaidSoFar": "Já reembolsado",
+    "debtLimit": "Limite de dívida",
+    "repaidOf": "{{repaid}} de {{total}} pago",
+    "repayFull": "Tudo",
+    "repayQuick": "Seleção rápida",
+    "manage": "Gerir adiantamentos e dívidas"
+  },
   "common": {
     "appName": "KidsWallet",
     "cancel": "Cancelar",
@@ -115,7 +161,8 @@
     "activeToggle": "Regra de mesada ativa",
     "deleteLabel": "Eliminar regra de mesada",
     "deleteTitle": "Eliminar regra de mesada?",
-    "deleteMessage": "A regra ({{amount}}, {{schedule}}) será eliminada permanentemente."
+    "deleteMessage": "A regra ({{amount}}, {{schedule}}) será eliminada permanentemente.",
+    "activeBadge": "Ativa"
   },
   "goal": {
     "title": "Objetivos de poupança",
@@ -178,10 +225,19 @@
     "editLabel": "Editar objetivo {{name}}",
     "deleteLabel": "Eliminar objetivo {{name}}",
     "purchaseTitle": "Comprar {{name}}?",
-    "purchaseDeducted": "{{amount}} serão descontados do saldo.",
     "purchaseBalanceAfter": "Saldo depois: {{amount}}",
     "deleteTitle": "Eliminar objetivo de poupança?",
-    "deleteMessage": "O objetivo «{{name}}» será eliminado permanentemente."
+    "deleteMessage": "O objetivo «{{name}}» será eliminado permanentemente.",
+    "adjust": "Ajustar",
+    "adjustLabel": "Ajustar a meta de poupança {{name}}",
+    "titleAdjust": "Ajustar meta de poupança",
+    "plannedPrice": "Preço previsto",
+    "actualPrice": "Preço real ({{currency}})",
+    "notEnoughFunds": "O saldo disponível não é suficiente para esta compra.",
+    "adjustGoal": "Ajustar meta",
+    "purchaseAdvance": "Destes, {{amount}} como adiantamento.",
+    "purchaseAdvanceFee": "Destes, {{amount}} como adiantamento, mais {{fee}} de taxa.",
+    "plannedPriceDetail": "Previsto: {{amount}}"
   },
   "dashboard": {
     "activityTitle": "Atividade",
@@ -214,6 +270,7 @@
   },
   "transaction": {
     "recentTitle": "Últimos movimentos",
+    "recentHint": "Aqui vês os movimentos dos últimos 7 dias.",
     "emptyTitle": "Ainda sem movimentos",
     "emptyText": "Ainda não foram registados movimentos para esta criança.",
     "earnTitle": "Registar receita",
@@ -259,6 +316,7 @@
       }
     },
     "showAll": "Ver todos os movimentos",
+    "recentEmpty": "Sem movimentos nos últimos 7 dias.",
     "allTitle": "Todos os movimentos",
     "countFor_one": "{{count}} movimento de {{name}}",
     "countFor_many": "{{count}} movimentos de {{name}}",
@@ -404,6 +462,11 @@
     "currencyRequired": "Introduz um símbolo de moeda."
   },
   "errors": {
+    "invalidFinancialRules": "Introduz regras financeiras válidas",
+    "advancesDisabled": "Saldo insuficiente – não são permitidos adiantamentos para esta criança",
+    "debtLimitExceeded": "Esta despesa ultrapassaria o limite de dívida, incluindo taxas",
+    "debtLimitBelowOutstanding": "O limite não pode ser inferior à dívida total pendente",
+    "invalidRepayment": "O reembolso não pode ultrapassar o saldo disponível nem a dívida pendente",
     "saveFailed": "Não foi possível guardar as alterações.",
     "loadFailed": "Não foi possível carregar os dados.",
     "storageFull": "O armazenamento do dispositivo está cheio.",
@@ -434,6 +497,34 @@
     "pinNotEnabled": "A proteção por PIN não está ativa"
   },
   "help": {
+    "finance": {
+      "title": "Adiantamentos e dívidas",
+      "paragraphs": [
+        "Os adiantamentos permitem que a criança compre algo mesmo quando o saldo ainda não chega. Se isso é possível, qual o limite e que taxas e regras de reembolso se aplicam decides para cada criança em «Gerir».",
+        "O cartão mostra apenas o estado atual: dívida em aberto, dívida total e limite de dívida. A dívida total é tudo o que foi emprestado desde o início do adiantamento atual, incluindo taxas. A barra mostra quanto já foi pago.",
+        "O saldo líquido é o saldo disponível menos a dívida em aberto – o que realmente sobra. Se for negativo, a conta está na verdade no vermelho.",
+        "Tudo fica transparente: adiantamentos, taxas, mesada e cada reembolso aparecem como movimentos separados. Nas estatísticas, adiantamentos e reembolsos não contam como rendimentos nem despesas; as taxas contam como despesa.",
+        "Se os adiantamentos forem desativados, não surgem novas dívidas; as existentes mantêm-se até serem pagas. Com «Pagar dívida» usas o saldo disponível para isso, em parte ou na totalidade."
+      ],
+      "terms": [
+        {
+          "term": "Adiantamento",
+          "text": "Permite gastar além do saldo disponível. O montante em falta fica registado como dívida."
+        },
+        {
+          "term": "Limite de dívida",
+          "text": "Define a dívida total máxima, incluindo taxas. Uma despesa que ultrapasse o limite não é possível."
+        },
+        {
+          "term": "Taxa de empréstimo",
+          "text": "Montante extra único quando começa um adiantamento. Só depois de tudo pago pode voltar a ser cobrada num novo adiantamento."
+        },
+        {
+          "term": "Amortização automática",
+          "text": "Uma parte fixa de cada mesada futura é usada para pagar até a dívida estar liquidada. A dívida não aumenta. Sem amortização automática, é usada a mesada completa."
+        }
+      ]
+    },
     "close": "Percebi",
     "buttonLabel": "Para que serve «{{title}}»?",
     "home": {

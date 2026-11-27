@@ -1,4 +1,50 @@
 {
+  "finance": {
+    "title": "Advances & debt",
+    "allowAdvances": "Allow advances",
+    "disabledHint": "Without advances, spending is limited to available funds. Existing debt remains payable.",
+    "maxDebt": "Maximum advance",
+    "limitHint": "The limit includes all outstanding debt and borrowing fees.",
+    "feeModel": "Fees & repayment",
+    "models": {
+      "none": "No fees",
+      "fixed": "Fixed fee",
+      "interest": "Automatic repayment"
+    },
+    "fixedFee": "Borrowing fee",
+    "feeHint": "Charged once when borrowing starts. A new fee is possible only after all debt is repaid.",
+    "repaymentPercent": "Repayment share of allowance",
+    "interestHint": "Part of every automatic allowance payment is used to repay outstanding debt. The debt does not grow.",
+    "repaymentHint": "Without automatic repayment, the automatic allowance is used in full to repay debt until everything is paid off. Manual income stays available; you can explicitly use it for repayment. Borrowing fees are repaid first.",
+    "invalidValue": "Enter a valid amount up to {{max}} with at most two decimal places (limit greater than 0).",
+    "pinReason": "Change financial rules",
+    "saveFailed": "The financial rules could not be saved.",
+    "saved": "Financial rules saved.",
+    "availableBalance": "Available balance",
+    "totalDebt": "Total debt",
+    "fees": "Borrowing fees",
+    "netBalance": "Net position",
+    "noDebt": "None",
+    "repay": "Repay debt",
+    "repayHint": "Up to {{amount}} is possible.",
+    "repaid": "Debt repayment recorded.",
+    "borrowingAvailable": "Additional advance available after fees: {{amount}}.",
+    "legacyAdvance": "Advance – migrated negative balance",
+    "types": {
+      "advance": "Advance",
+      "loan_fee": "Borrowing fee",
+      "debt_repayment": "Debt repayment"
+    },
+    "debtAfter": "Outstanding afterwards: {{amount}}",
+    "notAllowed": "Not allowed",
+    "openDebt": "Outstanding debt",
+    "repaidSoFar": "Repaid so far",
+    "debtLimit": "Debt limit",
+    "repaidOf": "{{repaid}} of {{total}} repaid",
+    "repayFull": "In full",
+    "repayQuick": "Quick select",
+    "manage": "Manage advances & debt"
+  },
   "common": {
     "appName": "KidsWallet",
     "cancel": "Cancel",
@@ -113,7 +159,8 @@
     "activeToggle": "Allowance rule active",
     "deleteLabel": "Delete allowance rule",
     "deleteTitle": "Delete allowance rule?",
-    "deleteMessage": "The rule ({{amount}}, {{schedule}}) will be permanently deleted."
+    "deleteMessage": "The rule ({{amount}}, {{schedule}}) will be permanently deleted.",
+    "activeBadge": "Active"
   },
   "goal": {
     "title": "Savings goals",
@@ -172,10 +219,19 @@
     "editLabel": "Edit savings goal {{name}}",
     "deleteLabel": "Delete savings goal {{name}}",
     "purchaseTitle": "Buy {{name}}?",
-    "purchaseDeducted": "{{amount}} will be deducted from the balance.",
     "purchaseBalanceAfter": "Balance afterwards: {{amount}}",
     "deleteTitle": "Delete savings goal?",
-    "deleteMessage": "The savings goal “{{name}}” will be permanently deleted."
+    "deleteMessage": "The savings goal “{{name}}” will be permanently deleted.",
+    "adjust": "Adjust",
+    "adjustLabel": "Adjust savings goal {{name}}",
+    "titleAdjust": "Adjust savings goal",
+    "plannedPrice": "Planned price",
+    "actualPrice": "Actual price ({{currency}})",
+    "notEnoughFunds": "The available balance is not enough for this purchase.",
+    "adjustGoal": "Adjust goal",
+    "purchaseAdvance": "{{amount}} of it as an advance.",
+    "purchaseAdvanceFee": "{{amount}} of it as an advance, plus a {{fee}} loan fee.",
+    "plannedPriceDetail": "Planned: {{amount}}"
   },
   "dashboard": {
     "activityTitle": "Activity",
@@ -207,6 +263,7 @@
   },
   "transaction": {
     "recentTitle": "Recent transactions",
+    "recentHint": "Showing transactions from the last 7 days.",
     "emptyTitle": "No transactions yet",
     "emptyText": "No transactions have been recorded for this child yet.",
     "earnTitle": "Record income",
@@ -252,6 +309,7 @@
       }
     },
     "showAll": "Show all transactions",
+    "recentEmpty": "No transactions in the last 7 days.",
     "allTitle": "All transactions",
     "countFor_one": "{{count}} transaction for {{name}}",
     "countFor_other": "{{count}} transactions for {{name}}",
@@ -394,6 +452,11 @@
     "currencyRequired": "Please enter a currency symbol."
   },
   "errors": {
+    "invalidFinancialRules": "Please enter valid financial rules",
+    "advancesDisabled": "Insufficient funds – advances are not allowed for this child",
+    "debtLimitExceeded": "This expense would exceed the debt limit including borrowing fees",
+    "debtLimitBelowOutstanding": "The limit cannot be lower than the total outstanding debt",
+    "invalidRepayment": "Repayment must not exceed available funds or outstanding debt",
     "saveFailed": "The changes couldn't be saved.",
     "loadFailed": "The data couldn't be loaded.",
     "storageFull": "The device storage is full.",
@@ -424,6 +487,34 @@
     "pinNotEnabled": "PIN protection is not enabled"
   },
   "help": {
+    "finance": {
+      "title": "Advances & debt",
+      "paragraphs": [
+        "Advances let your child buy something even when the balance is not enough right now. Whether this is possible, how high the limit is and which fees and repayment rules apply is set per child under “Manage”.",
+        "The card only shows the current state: outstanding debt, total debt and debt limit. Total debt is everything borrowed since the current advance began – loan fees included. The bar shows how much of it has already been repaid.",
+        "The net position is the available balance minus the outstanding debt – what is really left. If it is negative, the account is actually in the red.",
+        "Everything stays traceable: advances, borrowing fees, allowance and every debt repayment appear as separate transactions. In the statistics, advances and repayments count neither as income nor as expenses; borrowing fees count as expenses.",
+        "If advances are switched off, no new debt arises – existing debt remains until it is repaid. With “Repay debt” you deliberately use available balance for this, as a partial amount or in full."
+      ],
+      "terms": [
+        {
+          "term": "Advance",
+          "text": "Allows spending beyond the available balance. The missing amount is recorded as debt."
+        },
+        {
+          "term": "Debt limit",
+          "text": "Sets the maximum total debt – including borrowing fees. An expense that would exceed the limit is not possible."
+        },
+        {
+          "term": "Borrowing fee",
+          "text": "A one-time extra amount when an advance starts. Only after everything is repaid can a new advance incur a fee again."
+        },
+        {
+          "term": "Automatic repayment",
+          "text": "A fixed share of every future allowance payment is used for repayment until the debt is settled. The debt does not grow. Without automatic repayment, the full allowance is used for repayment."
+        }
+      ]
+    },
     "close": "Got it",
     "buttonLabel": "What is “{{title}}” for?",
     "home": {

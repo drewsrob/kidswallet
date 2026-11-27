@@ -1,4 +1,50 @@
 {
+  "finance": {
+    "title": "Avances et dettes",
+    "allowAdvances": "Autoriser les avances",
+    "disabledHint": "Sans avance, seules les dépenses couvertes par le solde sont possibles. Les dettes existantes restent dues.",
+    "maxDebt": "Avance maximale",
+    "limitHint": "Le plafond comprend la totalité des dettes et des frais d'emprunt.",
+    "feeModel": "Frais et remboursement",
+    "models": {
+      "none": "Sans frais",
+      "fixed": "Frais fixes",
+      "interest": "Remboursement automatique"
+    },
+    "fixedFee": "Frais d'emprunt",
+    "feeHint": "Une seule fois au début d'une avance. De nouveaux frais ne sont possibles qu'après remboursement intégral.",
+    "repaymentPercent": "Part de l'argent de poche pour rembourser",
+    "interestHint": "Une partie de chaque versement automatique d'argent de poche sert à rembourser la dette. La dette n'augmente pas.",
+    "repaymentHint": "Sans remboursement automatique, l'argent de poche automatique sert entièrement à rembourser jusqu'à ce que tout soit réglé. Les revenus manuels restent disponibles ; tu peux les utiliser explicitement pour rembourser. Les frais sont remboursés en premier.",
+    "invalidValue": "Saisis un montant valide jusqu'à {{max}}, avec deux décimales maximum (plafond supérieur à 0).",
+    "pinReason": "Modifier les règles financières",
+    "saveFailed": "Impossible d'enregistrer les règles financières.",
+    "saved": "Règles financières enregistrées.",
+    "availableBalance": "Solde disponible",
+    "totalDebt": "Dette totale",
+    "fees": "Frais d'emprunt",
+    "netBalance": "Solde net",
+    "noDebt": "Aucune",
+    "repay": "Rembourser la dette",
+    "repayHint": "Jusqu’à {{amount}} possible.",
+    "repaid": "Remboursement enregistré.",
+    "borrowingAvailable": "Avance supplémentaire disponible après frais : {{amount}}.",
+    "legacyAdvance": "Avance – ancien solde négatif repris",
+    "types": {
+      "advance": "Avance",
+      "loan_fee": "Frais d'emprunt",
+      "debt_repayment": "Remboursement de dette"
+    },
+    "debtAfter": "Reste d? ensuite : {{amount}}",
+    "notAllowed": "Non autorisées",
+    "openDebt": "Dette restante",
+    "repaidSoFar": "Déjà remboursé",
+    "debtLimit": "Plafond de dette",
+    "repaidOf": "{{repaid}} sur {{total}} remboursés",
+    "repayFull": "Tout",
+    "repayQuick": "Sélection rapide",
+    "manage": "Gérer avances et dettes"
+  },
   "common": {
     "appName": "KidsWallet",
     "cancel": "Annuler",
@@ -115,7 +161,8 @@
     "activeToggle": "Règle d'argent de poche active",
     "deleteLabel": "Supprimer la règle d'argent de poche",
     "deleteTitle": "Supprimer la règle d'argent de poche ?",
-    "deleteMessage": "La règle ({{amount}}, {{schedule}}) sera supprimée définitivement."
+    "deleteMessage": "La règle ({{amount}}, {{schedule}}) sera supprimée définitivement.",
+    "activeBadge": "Active"
   },
   "goal": {
     "title": "Objectifs d'épargne",
@@ -178,10 +225,19 @@
     "editLabel": "Modifier l'objectif {{name}}",
     "deleteLabel": "Supprimer l'objectif {{name}}",
     "purchaseTitle": "Acheter {{name}} ?",
-    "purchaseDeducted": "{{amount}} seront déduits du solde.",
     "purchaseBalanceAfter": "Solde après achat : {{amount}}",
     "deleteTitle": "Supprimer l'objectif d'épargne ?",
-    "deleteMessage": "L'objectif d'épargne « {{name}} » sera supprimé définitivement."
+    "deleteMessage": "L'objectif d'épargne « {{name}} » sera supprimé définitivement.",
+    "adjust": "Ajuster",
+    "adjustLabel": "Ajuster l’objectif d’épargne {{name}}",
+    "titleAdjust": "Ajuster l’objectif d’épargne",
+    "plannedPrice": "Prix prévu",
+    "actualPrice": "Prix réel ({{currency}})",
+    "notEnoughFunds": "Le solde disponible ne suffit pas pour cet achat.",
+    "adjustGoal": "Ajuster l’objectif",
+    "purchaseAdvance": "Dont {{amount}} en avance.",
+    "purchaseAdvanceFee": "Dont {{amount}} en avance, plus {{fee}} de frais d’emprunt.",
+    "plannedPriceDetail": "Prévu : {{amount}}"
   },
   "dashboard": {
     "activityTitle": "Activité",
@@ -214,6 +270,7 @@
   },
   "transaction": {
     "recentTitle": "Dernières opérations",
+    "recentHint": "Opérations des 7 derniers jours.",
     "emptyTitle": "Aucune opération",
     "emptyText": "Aucune opération n'a encore été enregistrée pour cet enfant.",
     "earnTitle": "Ajouter un revenu",
@@ -259,6 +316,7 @@
       }
     },
     "showAll": "Voir toutes les opérations",
+    "recentEmpty": "Aucune opération ces 7 derniers jours.",
     "allTitle": "Toutes les opérations",
     "countFor_one": "{{count}} opération pour {{name}}",
     "countFor_many": "{{count}} opérations pour {{name}}",
@@ -404,6 +462,11 @@
     "currencyRequired": "Saisis un symbole monétaire."
   },
   "errors": {
+    "invalidFinancialRules": "Saisis des règles financières valides",
+    "advancesDisabled": "Solde insuffisant – les avances ne sont pas autorisées pour cet enfant",
+    "debtLimitExceeded": "Cette dépense dépasserait le plafond de dette, frais compris",
+    "debtLimitBelowOutstanding": "Le plafond ne peut pas être inférieur à la dette totale restante",
+    "invalidRepayment": "Le remboursement ne peut dépasser le solde disponible ni la dette restante",
     "saveFailed": "Impossible d'enregistrer les modifications.",
     "loadFailed": "Impossible de charger les données.",
     "storageFull": "La mémoire de l'appareil est pleine.",
@@ -434,6 +497,34 @@
     "pinNotEnabled": "La protection par PIN n’est pas active"
   },
   "help": {
+    "finance": {
+      "title": "Avances et dettes",
+      "paragraphs": [
+        "Les avances permettent à ton enfant d'acheter quelque chose même si son solde ne suffit pas encore. Si c'est possible, le plafond et les règles de frais et de remboursement se règlent pour chaque enfant via « Gérer ».",
+        "La carte n’affiche que l’état actuel : dette restante, dette totale et plafond de dette. La dette totale correspond à tout ce qui a été emprunté depuis le début de l’avance en cours, frais inclus. La barre montre la part déjà remboursée.",
+        "Le solde net est le solde disponible moins la dette restante – ce qui reste vraiment. S’il est négatif, le compte est en réalité dans le rouge.",
+        "Tout reste transparent : avances, frais, argent de poche et chaque remboursement apparaissent comme des opérations séparées. Dans les statistiques, avances et remboursements ne comptent ni comme revenus ni comme dépenses ; les frais comptent comme dépense.",
+        "Si les avances sont désactivées, aucune nouvelle dette n’apparaît ; les dettes existantes restent jusqu’à leur remboursement. Avec « Rembourser la dette », tu utilises le solde disponible, en partie ou en totalité."
+      ],
+      "terms": [
+        {
+          "term": "Avance",
+          "text": "Permet de dépenser au-delà du solde disponible. Le montant manquant est enregistré comme dette."
+        },
+        {
+          "term": "Plafond d'endettement",
+          "text": "Fixe la dette totale maximale, frais d'emprunt compris. Une dépense qui dépasserait le plafond n'est pas possible."
+        },
+        {
+          "term": "Frais d'emprunt",
+          "text": "Montant supplémentaire unique au début d'une avance. Ce n'est qu'après remboursement complet qu'une nouvelle avance peut à nouveau entraîner des frais."
+        },
+        {
+          "term": "Remboursement automatique",
+          "text": "Une part fixe de chaque futur versement d'argent de poche sert au remboursement jusqu'à extinction de la dette. La dette n'augmente pas. Sans remboursement automatique, tout l'argent de poche est utilisé."
+        }
+      ]
+    },
     "close": "Compris",
     "buttonLabel": "À quoi sert « {{title}} » ?",
     "home": {

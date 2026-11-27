@@ -8,6 +8,7 @@ import { openChildForm } from '../components/ChildForm.js';
 import { getPaletteColors, escapeHtml, animateCountUp } from '../utils.js';
 import { icon } from '../icons.js';
 import { getChildCardGoal } from '../status.js';
+import { getFinancialStatus } from '../finance.js';
 import { parseBlocks, render } from '../template.js';
 import homeHtml from './HomeView.html?raw';
 
@@ -53,7 +54,7 @@ export default class HomeView {
       }
       const goalSummary = cardGoal ? cardGoal.summary : '';
 
-      return render(blocks.childCard, { child, currency: cur, colors, goalFooter, goalSummary, childIndex });
+      return render(blocks.childCard, { child, currency: cur, colors, goalFooter, goalSummary, childIndex, finance: getFinancialStatus(child) });
     };
 
     return render(blocks.main, { children, currency, childCard });

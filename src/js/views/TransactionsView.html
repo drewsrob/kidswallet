@@ -22,6 +22,12 @@
           subtitle: sinceLabel ? t('transaction.totalSince', { date: sinceLabel }) : '',
         })}
         ${renderPeriodStats(totals, null, currency)}
+        ${totals.advances || totals.fees || totals.repayments ? `
+          <dl class="finance-facts transactions-total__finance" aria-label="${t('finance.title')}">
+            <div><dt>${t('finance.types.advance')}</dt><dd>${formatCurrency(totals.advances, currency)}</dd></div>
+            ${totals.fees ? `<div><dt>${t('finance.fees')}</dt><dd>${formatCurrency(totals.fees, currency)}</dd></div>` : ''}
+            <div><dt>${t('finance.repaidSoFar')}</dt><dd>${formatCurrency(totals.repayments, currency)}</dd></div>
+          </dl>` : ''}
       </section>
       ${groups.map(g => `
         <section class="transactions-page__group" aria-labelledby="month-${g.key}">
