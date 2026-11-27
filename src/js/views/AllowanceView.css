@@ -27,17 +27,23 @@
 .allowance-item {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  gap: var(--space-sm) var(--list-item-gap);
-  padding: var(--list-item-padding) var(--card-padding);
+  align-items: flex-start;
+  gap: var(--space-md) var(--list-item-gap);
+  /* unten volle Card-Polsterung: der Footer hebt sie per negativem Rand auf */
+  padding: var(--list-item-padding) var(--card-padding) var(--card-padding);
   background: var(--color-surface);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
 }
 
 .allowance-info {
-  flex: 1 1 200px;
+  flex: 1 1 0;
   min-width: 0;
+}
+
+.allowance-item > .card-footer {
+  flex: 0 0 calc(100% + 2 * var(--card-padding));
+  margin-top: 0;
 }
 
 .allowance-amount {
@@ -51,12 +57,16 @@
   color: var(--color-text-muted);
 }
 
-.allowance-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-sm);
+/* Schalter oben rechts mit Zustandstext (Aktiv / Pausiert) */
+.allowance-switch {
+  display: inline-flex;
   align-items: center;
-  margin-left: auto;
+  gap: var(--space-xs);
+  flex-shrink: 0;
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--color-text-muted);
+  cursor: pointer;
 }
 
 /* Toggle-Switch für aktiv/inaktiv */

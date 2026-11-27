@@ -34,26 +34,29 @@
       : ''}
     ${status ? `<div class="allowance-status">${renderStatusHint(status)}</div>` : ''}
   </div>
-  <div class="allowance-actions">
-    <label class="toggle">
+  <label class="allowance-switch">
+    <span class="allowance-switch__text" aria-hidden="true">${allowance.isActive ? t('allowance.activeBadge') : t('allowance.pausedBadge')}</span>
+    <span class="toggle">
       <input type="checkbox"
         ${allowance.isActive ? 'checked' : ''}
         role="switch" aria-label="${t('allowance.activeToggle')}"
         data-action="toggle"
         data-allowance-id="${allowance.id}">
       <span class="toggle-slider"></span>
-    </label>
-    <button class="btn btn-ghost btn-sm"
+    </span>
+  </label>
+  <footer class="card-footer">
+    <button class="btn btn-ghost card-footer__action"
       data-action="edit" data-allowance-id="${allowance.id}"
       aria-label="${t('allowance.titleEdit')}"
       type="button">
-      ${icon('edit', { size: 18 })} ${t('common.edit')}
+      ${icon('edit', { size: 18 })}<span>${t('common.edit')}</span>
     </button>
-    <button class="btn btn-ghost btn-sm"
+    <button class="btn btn-ghost card-footer__action card-footer__action--danger"
       data-action="delete" data-allowance-id="${allowance.id}"
       aria-label="${t('allowance.deleteLabel')}"
       type="button">
-      ${icon('trash', { size: 18 })} ${t('common.delete')}
+      ${icon('trash', { size: 18 })}<span>${t('common.delete')}</span>
     </button>
-  </div>
+  </footer>
 </li>
