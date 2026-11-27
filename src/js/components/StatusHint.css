@@ -1,0 +1,39 @@
+/* components/StatusHint.css – Dezente, getönte Status-Chips */
+
+.status-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-xs);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.status-hint {
+  --status-color: var(--child-text);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  max-width: 100%;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--status-color) 12%, transparent);
+  color: var(--color-text);
+  font-size: var(--text-sm);
+  line-height: 1.3;
+  text-decoration: none;
+}
+
+.status-hint svg {
+  flex-shrink: 0;
+  color: var(--status-color);
+}
+
+.status-hint--success   { --status-color: var(--color-success-text); }
+.status-hint--attention { --status-color: var(--color-warning-text); }
+
+a.status-hint:hover,
+a.status-hint:focus-visible {
+  background: color-mix(in srgb, var(--status-color) 22%, transparent);
+}

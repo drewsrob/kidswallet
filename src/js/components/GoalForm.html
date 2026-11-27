@@ -1,0 +1,19 @@
+<!-- @block: goalForm -->
+<div class="form-group form-group--primary">
+  <label class="form-label" for="goal-name-input">${t('goal.nameLabel')}</label>
+  <input class="form-input" id="goal-name-input" type="text" enterkeyhint="done"
+    placeholder="${t('goal.namePlaceholder')}" maxlength="60" autocomplete="off" aria-required="true"
+    value="${escapeHtml(existing?.name ?? '')}">
+</div>
+<div class="form-group">
+  <label class="form-label" for="goal-target-input">${t('goal.targetLabel', { currency: escapeHtml(currency) })}</label>
+  <div class="input-affix">
+    <input class="form-input" id="goal-target-input" type="text" inputmode="decimal" enterkeyhint="done"
+      placeholder="${formatAmountInput(0)}" autocomplete="off" aria-required="true"
+      value="${formatAmountInput(existing?.targetAmount)}">
+    <span class="input-affix__unit" aria-hidden="true">${escapeHtml(currency)}</span>
+  </div>
+</div>
+<div class="form-group">
+  ${symbolPicker}
+</div>

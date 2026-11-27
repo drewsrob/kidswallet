@@ -1,0 +1,37 @@
+<!-- @block: allowanceForm -->
+<div class="form-group form-group--primary">
+  <label class="form-label" for="allowance-amount">${t('transaction.amountLabel', { currency: escapeHtml(currency) })}</label>
+  <div class="input-affix">
+    <input class="form-input form-input--amount" id="allowance-amount" type="text" inputmode="decimal"
+      enterkeyhint="done" aria-required="true" autocomplete="off"
+      value="${formatAmountInput(existing?.amount)}" placeholder="${formatAmountInput(0)}">
+    <span class="input-affix__unit" aria-hidden="true">${escapeHtml(currency)}</span>
+  </div>
+</div>
+
+<div class="form-row">
+  <div class="form-group">
+    <label class="form-label" for="allowance-frequency">${t('allowance.frequencyLabel')}</label>
+    <select class="form-select" id="allowance-frequency">
+      <option value="weekly"  ${(!existing || existing.frequency === 'weekly')  ? 'selected' : ''}>${t('allowance.frequencyWeekly')}</option>
+      <option value="monthly" ${existing?.frequency === 'monthly' ? 'selected' : ''}>${t('allowance.frequencyMonthly')}</option>
+    </select>
+  </div>
+
+  <div class="form-group" id="weekly-options" ${(!existing || existing.frequency === 'weekly') ? '' : 'hidden'}>
+    <label class="form-label" for="allowance-day-of-week">${t('allowance.weekdayLabel')}</label>
+    <select class="form-select" id="allowance-day-of-week">
+      ${DAY_NAMES.map((name, idx) => `
+        <option value="${idx}" ${dayOfWeek === idx ? 'selected' : ''}>${name}</option>
+      `).join('')}
+    </select>
+  </div>
+
+  <div class="form-group" id="monthly-options" ${existing?.frequency === 'monthly' ? '' : 'hidden'}>
+    <label class="form-label" for="allowance-day-of-month">${t('allowance.monthDayLabel')}</label>
+    <input class="form-input" id="allowance-day-of-month" type="text" inputmode="numeric"
+      enterkeyhint="done" autocomplete="off" aria-describedby="allowance-day-of-month-hint"
+      value="${existing?.dayOfMonth ?? 1}" placeholder="1">
+    <p class="form-hint" id="allowance-day-of-month-hint">${t('allowance.monthDayHint')}</p>
+  </div>
+</div>

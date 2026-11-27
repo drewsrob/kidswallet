@@ -1,0 +1,53 @@
+/* components/EmptyState.css – Ergänzt .empty-state aus base.css */
+
+.empty-state__title {
+  margin: 0;
+  font-size: var(--text-lg);
+  font-weight: var(--font-bold);
+  color: var(--color-text);
+}
+
+.empty-state__text {
+  margin: 0;
+}
+
+.empty-state__actions {
+  display: flex;
+  flex-direction: var(--actions-direction);
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: var(--actions-align);
+  gap: var(--space-sm);
+}
+
+.empty-state__actions .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.empty-state--page .empty-icon {
+  /* gedämpft, aber ≥ 3:1 (WCAG Nicht-Text-Kontrast) */
+  color: color-mix(in srgb, var(--child-text) 80%, var(--color-surface));
+}
+
+/* Innerhalb einer Card: kompakter, Titel steht bereits im Card-Header */
+.empty-state--inline {
+  padding: var(--space-md) var(--space-sm) var(--space-sm);
+  gap: var(--space-sm);
+}
+
+.empty-state--inline .empty-icon {
+  /* gedämpft, aber ≥ 3:1 (WCAG Nicht-Text-Kontrast) */
+  color: color-mix(in srgb, var(--child-text) 80%, var(--color-surface));
+}
+
+.empty-state--inline .empty-state__text {
+  margin-bottom: var(--space-xs);
+  font-size: var(--text-sm);
+  max-width: 32ch;
+}
+
+.empty-state--danger .empty-icon {
+  color: var(--color-danger-text);
+}

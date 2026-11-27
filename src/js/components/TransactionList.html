@@ -1,0 +1,16 @@
+<!-- @block: transactionList -->
+<ul class="${className}" aria-label="${label}">
+  ${items.map((tx, i) => `
+    <li class="transaction-item" style="animation-delay: ${Math.min(i, 10) * 45}ms">
+      <div class="transaction-icon transaction-icon--${tx.tone}" aria-hidden="true">${icon(tx.icon, { size: 20 })}</div>
+      <div class="transaction-meta">
+        <div class="transaction-desc">${escapeHtml(tx.title)}</div>
+        <div class="transaction-sub">
+          ${tx.showLabel ? `<span class="transaction-type">${tx.label}</span><span aria-hidden="true">·</span>` : ''}
+          <time class="transaction-date" datetime="${tx.date}">${tx.dateLabel}</time>
+        </div>
+      </div>
+      <div class="transaction-amount ${tx.amountClass}">${tx.amountText}</div>
+    </li>
+  `).join('')}
+</ul>
